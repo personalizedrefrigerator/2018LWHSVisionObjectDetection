@@ -1,0 +1,41 @@
+#include<iostream>
+#include<opencv2/opencv.hpp>
+#include<opencv2/imgproc.hpp>
+
+//Testing check-in
+
+int main()
+{
+	cv::Mat image=cv::Mat::zeros(4, 4, CV_8UC1);
+
+	std::cout << image << "\n";
+
+	// Open a camera.
+	cv::VideoCapture video;
+	video.open(0);
+
+	// Open a window.
+	cv::namedWindow("Camera View", cv::WINDOW_AUTOSIZE);
+
+	// Create a variable to store the current frame.
+	cv::Mat currentFrame, lastFrame;
+
+	// Create a variable to store the last key.
+	char lastKey='\0';
+
+	video >> lastFrame;
+	currentFrame.copyTo(lastFrame);
+	do
+	{
+		video >> currentFrame;
+		currentFrame=currentFrame.colRange(0,
+			currentFrame.size().height);
+		currentFrame=currentFrame;
+		cv::imshow("Camera View", currentFrame);
+		lastKey = cv::waitKey(1);
+		currentFrame.copyTo(lastFrame);
+	}
+	while(lastKey != 'q');
+
+	return 0;
+}

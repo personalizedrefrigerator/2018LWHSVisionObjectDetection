@@ -4,7 +4,9 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/bob/Documents/OpenCV/robotVision/main.cpp" "/home/bob/Documents/OpenCV/robotVision/CMakeFiles/Vision.dir/main.cpp.o"
+  "/home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/Source/CameraFilter.cpp" "/home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/CMakeFiles/Vision.dir/Source/CameraFilter.cpp.o"
+  "/home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/Source/CameraNormalizer.cpp" "/home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/CMakeFiles/Vision.dir/Source/CameraNormalizer.cpp.o"
+  "/home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/main.cpp" "/home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/CMakeFiles/Vision.dir/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

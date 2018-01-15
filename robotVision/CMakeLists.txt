@@ -10,7 +10,7 @@ include_directories(${OPENCV_INCLUDE_DIRS})
 include_directories(Headers)
 
 # Create variables to store the source files stored in the root directory.
-set(SOURCE_NAMES "")
+set(SOURCE_NAMES "CameraNormalizer.cpp;CameraFilter.cpp")
 
 set(SOURCE_DIR "Source")
 
@@ -20,8 +20,8 @@ foreach(CURRENT ${SOURCE_NAMES})
  set(SOURCES "${SOURCES};${SOURCE_DIR}/${CURRENT}")
 endforeach()
 
-if(NOT ${SOURCES} EQUAL "")
- add_executable(Vision ${SOURCES})
+if(NOT "${SOURCES}" EQUAL "")
+ add_executable(Vision main.cpp ${SOURCES})
 else()
  add_executable(Vision main.cpp)
 endif()

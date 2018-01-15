@@ -1,5 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/Vision.dir/main.cpp.o"
+  "CMakeFiles/Vision.dir/Source/CameraNormalizer.cpp.o"
+  "CMakeFiles/Vision.dir/Source/CameraFilter.cpp.o"
   "Vision.pdb"
   "Vision"
 )

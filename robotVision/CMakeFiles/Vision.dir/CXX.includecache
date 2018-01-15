@@ -1,4 +1,4 @@
-#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
 
 #IncludeRegexScan: ^.*$
 
@@ -6,13 +6,31 @@
 
 #IncludeRegexTransform: 
 
-/home/bob/Documents/OpenCV/robotVision/main.cpp
+/home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/Source/CameraFilter.cpp
+CameraFilter.h
+/home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/Source/CameraFilter.h
+
+/home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/Source/CameraNormalizer.cpp
+CameraNormalizer.h
+/home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/Source/CameraNormalizer.h
+opencv2/opencv.hpp
+-
+opencv2/imgproc.hpp
+-
+fstream
+-
+sstream
+-
+
+/home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/main.cpp
 iostream
 -
 opencv2/opencv.hpp
 -
 opencv2/imgproc.hpp
 -
+CameraFilter.h
+/home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/CameraFilter.h
 
 /usr/local/include/opencv/cxcore.h
 opencv2/core/core_c.h
@@ -134,6 +152,10 @@ popcntintrin.h
 immintrin.h
 -
 arm_neon.h
+-
+immintrin.h
+-
+immintrin.h
 -
 immintrin.h
 -
@@ -1279,4 +1301,20 @@ opencv2/videostab/global_motion.hpp
 /usr/local/include/opencv2/videostab/opencv2/videostab/global_motion.hpp
 opencv2/videostab/log.hpp
 /usr/local/include/opencv2/videostab/opencv2/videostab/log.hpp
+
+Headers/CameraFilter.h
+opencv2/opencv.hpp
+-
+opencv2/imgproc.hpp
+-
+CameraNormalizer.h
+Headers/CameraNormalizer.h
+
+Headers/CameraNormalizer.h
+opencv2/opencv.hpp
+-
+opencv2/imgproc.hpp
+-
+string
+-
 

@@ -1,4 +1,4 @@
-# Install script for directory: /home/bob/Documents/OpenCV/robotVision
+# Install script for directory: /home/killdozer/Documents/Programming/VisionObjectDetection/robotVision
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -40,5 +40,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/bob/Documents/OpenCV/robotVision/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

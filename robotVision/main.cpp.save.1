@@ -1,59 +1,11 @@
 #include<iostream>
-
-// OpenCV headers.
 #include<opencv2/opencv.hpp>
 #include<opencv2/imgproc.hpp>
 
-// Headers from this program.
-#include "CameraFilter.h"
-
-// The main method.
+//
 int main()
 {
-
-	// Create a filter.
-	CameraFilter filter=CameraFilter(0);
-	
-	// Open a camera.
-	cv::VideoCapture video;
-	video.open(0);
-
-	// Create a variable to store the current frame.
-	cv::Mat currentFrame;
-
-	// Write to the current frame.
-	video >> currentFrame;
-	
-	// Open a window.
-	cv::namedWindow("Camera View", cv::WINDOW_AUTOSIZE);
-
-	// Create a variable to store the last key.
-	char lastKey='\0';
-
-	// Enter the main loop.
-	do
-	{
-		video >> currentFrame;
-		filter.setData(currentFrame);
-		filter.normalize();
-
-		cv::imshow("Camera View", currentFrame);
-		
-		// Wait at least 1 ms for a key.
-		lastKey = cv::waitKey(1);
-	} // Stop when 'q' is pressed.
-	while(lastKey != 'q');
-
-	return 0;
-}
-
-
-// The result of learning OpenCV. Change things in this function to quickly test them.
-int testCode()
-{
 	cv::Mat image=cv::Mat::zeros(4, 4, CV_8UC1);
-	// Open a window.
-	cv::namedWindow("Camera View", cv::WINDOW_AUTOSIZE);
 
 	std::cout << image << "\n";
 
@@ -74,6 +26,10 @@ int testCode()
 	//currentFrame.copyTo(lastFrame);
 
 	std::vector<cv::Point2f> corners;
+
+	std::vector<std::vector<cv::Point3f>> cornerPoints;
+
+	std::vector<std::vector<
 
 	// Calibrate the camera.
 
@@ -108,9 +64,10 @@ int testCode()
 			//std::cout << "Found!";
 			cv::cornerSubPix(lastFrame, corners, cv::Size(10, 10), cv::Size(-1, -1), cv::TermCriteria(CV_TERMCRIT_EPS + CV_TERMCRIT_ITER, 30, 0.1));
 			cv::drawChessboardCorners(currentFrame, cornerSize, cv::Mat(corners), success);
+			
 		}
+		cv::undistort(currentFrame, currentFrame, cameraMatrix, distanceCoefficents);
 		cv::imshow("Camera View", currentFrame);
-
 		lastKey = cv::waitKey(1);
 		currentFrame.copyTo(lastFrame);
 	}

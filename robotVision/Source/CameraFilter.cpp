@@ -34,14 +34,23 @@ void CameraFilter::otherFilters()
 {
 	// Learning to use cornerHarris, see
 	// https://docs.opencv.org/master/d4/d7d/tutorial_harris_detector.html
+
+	// Create matricies for output.
 	cv::Mat grayscaleVersion, result, normalResult, scaled;
+
+	// Convert camera data to grayscale.
 	cvtColor(data, grayscaleVersion, cv::COLOR_BGR2GRAY);
 	result=cv::Mat::zeros(grayscaleVersion.size(), CV_64F);
+
+	// Run cornerHarris to detect corners, 8x8 search region per pixel.
 	cv::cornerHarris(grayscaleVersion, result, 8, 5, 0.01, cv::BORDER_DEFAULT);
 
+	// Normalize the result.
 	cv::normalize(result, normalResult, 0, 255, cv::NORM_MINMAX, CV_64F, cv::Mat());
 	//cv::convertScaleAbs(normalResult, scaled); // Make 8 bit unsigned ints.
 	//normalResult=result;
+
+	// Take the average.
 	double avg=0.0;
 	int count=0;
 	for(int y=0; y<normalResult.rows; y++)
@@ -54,13 +63,16 @@ void CameraFilter::otherFilters()
 	}
 	avg/=count;
 
+	// For each potential corner,
+	int x;
 	for(int y=0; y<normalResult.rows; y++)
 	{
-		for(int x=0; x<normalResult.cols; x++)
+		for(x=0; x<normalResult.cols; x++)
 		{
-			if((int)normalResult.at<double>(y, x) > avg*1.1)
+			if((int)normalResult.at<double>(y, x) > avg*1.05)
 			{
-				cv::circle(data, cv::Point(x, y), 1, cv::Scalar(0, 100, 100, 200), 1, 8, 0); // 8 is line type.
+				// Draw a circle.
+				cv::circle(data, cv::Point(x, y), 1, cv::Scalar(0, 200, 100, 200), 1, 8, 0); // 8 is line type.
 			}
 		}
 	}

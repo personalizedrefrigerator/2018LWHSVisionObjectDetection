@@ -21,8 +21,10 @@ class CameraNormalizer
 	void setCameraNumber(unsigned int cameraNumber); 
 	void setCornerSize(cv::Size cornerSize); // TODO: Implement.
 
-	bool loadData(); // TODO: Implement.
+	bool loadData();
 	bool loadData(std::string filePathToLoad) {}; // TODO: Implement.
+
+	void setConfigurationURLBasedOnCameraNumber();
 	
 	private:
 	std::string filePath="cameraConfiguration.txt";

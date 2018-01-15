@@ -30,7 +30,9 @@ void CameraNormalizer::calibrate(bool useUI)
 	{
 		// Create a name to use for the calibration window.
 		std::string calibrationWindowName="Calibration Window";
-
+		
+		std::cout << "Calibrating camera " << cameraNumber << '\n';
+		
 		// Open the camera.
 		cv::VideoCapture video;
 		video.open(cameraNumber);
@@ -213,14 +215,13 @@ bool CameraNormalizer::loadData()
 		if(newCamera != cameraNumber)
 		{
 			// Try changing the file name.
-			std::stringstream newFilePath;
-			newFilePath << "cameraConfiguration" << cameraNumber << ".txt";
-			filePath=newFilePath.str();
+			setConfigurationURLBasedOnCameraNumber();
+
+			fileInput.close();
 
 			// Try to re-load the data.
 			bool result = loadData();
 
-			fileInput.close();
 
 			return result;
 		}		
@@ -230,8 +231,23 @@ bool CameraNormalizer::loadData()
 	}
 	else
 	{
-		return false;
+		// Try changing the file name.
+		setConfigurationURLBasedOnCameraNumber();
+
+		// Try to re-load the data.
+		bool result = loadData();
+
+		return result;
 	}
+}
+
+// Set the file path based on the camera number.
+void CameraNormalizer::setConfigurationURLBasedOnCameraNumber()
+{
+	// Try changing the file name.
+	std::stringstream newFilePath;
+	newFilePath << "cameraConfiguration" << cameraNumber << ".txt";
+	filePath=newFilePath.str();
 }
 
 // Convert an OpenCV matrix to a readable format.

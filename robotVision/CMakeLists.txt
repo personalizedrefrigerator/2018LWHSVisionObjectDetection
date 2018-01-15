@@ -1,5 +1,7 @@
-cmake_minimum_required(VERSION 3.0)
+cmake_minimum_required(VERSION 3.1) #CMAKE_CXX_STANDARD
 project(Vision)
+
+set(CMAKE_CXX_STANDARD 11)
 
 find_package(OpenCV REQUIRED)
 

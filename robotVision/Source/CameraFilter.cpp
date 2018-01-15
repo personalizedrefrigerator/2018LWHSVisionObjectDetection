@@ -5,7 +5,7 @@ CameraFilter::CameraFilter(unsigned int cameraNumber)//cv::Mat startingData, uns
 {
 	//data=startingData;
 
-	//normalizer.setCameraNumber(cameraNumber);
+	normalizer.setCameraNumber(cameraNumber);
 	bool couldLoadData=normalizer.loadData();
 	
 	// If a file containing the calibration data couldn't be found,

@@ -10,13 +10,16 @@
 // The main method.
 int main()
 {
+ 	int cameraNumber=1;
 
 	// Create a filter.
-	CameraFilter filter=CameraFilter(0);
+	CameraFilter filter=CameraFilter(cameraNumber);
 	
+	std::cout << "Attempting to access camera " << cameraNumber << '\n';
+
 	// Open a camera.
 	cv::VideoCapture video;
-	video.open(0);
+	video.open(cameraNumber);
 
 	// Create a variable to store the current frame.
 	cv::Mat currentFrame;

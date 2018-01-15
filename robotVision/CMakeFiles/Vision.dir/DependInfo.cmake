@@ -4,17 +4,16 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/Source/CameraFilter.cpp" "/home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/CMakeFiles/Vision.dir/Source/CameraFilter.cpp.o"
-  "/home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/Source/CameraNormalizer.cpp" "/home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/CMakeFiles/Vision.dir/Source/CameraNormalizer.cpp.o"
-  "/home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/main.cpp" "/home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/CMakeFiles/Vision.dir/main.cpp.o"
+  "/home/ubuntu/VisionObjectDetection/robotVision/Source/CameraFilter.cpp" "/home/ubuntu/VisionObjectDetection/robotVision/CMakeFiles/Vision.dir/Source/CameraFilter.cpp.o"
+  "/home/ubuntu/VisionObjectDetection/robotVision/Source/CameraNormalizer.cpp" "/home/ubuntu/VisionObjectDetection/robotVision/CMakeFiles/Vision.dir/Source/CameraNormalizer.cpp.o"
+  "/home/ubuntu/VisionObjectDetection/robotVision/main.cpp" "/home/ubuntu/VisionObjectDetection/robotVision/CMakeFiles/Vision.dir/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
+  "/usr/include/opencv"
   "Headers"
-  "/usr/local/include"
-  "/usr/local/include/opencv"
   )
 
 # Targets to which this target links.

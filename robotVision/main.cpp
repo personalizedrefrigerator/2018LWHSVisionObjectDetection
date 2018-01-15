@@ -88,7 +88,7 @@ int testCode()
 			cv::Point(-1, -1), 3);
 		cv::dilate(currentFrame, currentFrame, erodeDilateElement,
 			cv::Point(-1, -1),  3);*/
-/*
+
 		int x, y;
 		unsigned char * ptr;
 		for(y=0; y<currentFrame.rows;y++)
@@ -98,7 +98,7 @@ int testCode()
 			{
 				ptr[x*3]*=y;
 			}
-		}*/
+		}
 		cv::Size cornerSize=cv::Size(9, 6);
 		cv::cvtColor(currentFrame, lastFrame, CV_RGB2GRAY);
 		bool success=cv::findChessboardCorners(lastFrame, cornerSize, corners, cv::CALIB_CB_FAST_CHECK + cv::CALIB_CB_ADAPTIVE_THRESH + cv::CALIB_CB_NORMALIZE_IMAGE);

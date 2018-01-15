@@ -128,11 +128,11 @@ void CameraNormalizer::calibrate(bool useUI)
 		float squareLength=20.0f;
 
 		// Add the corners to the array.
-		for(int x=0; x<cornerSize.width; x++)
+		for(int y=0; y<cornerSize.height; y++)
 		{
-			for(int y=0; y<cornerSize.height; y++)
+			for(int x=0; x<cornerSize.width; x++)
 			{
-				actualCornerLocations.at(0).push_back(cv::Point3f(x*squareLength, y*squareLength, 0)); // All have a z of 0.
+				actualCornerLocations.at(0).push_back(cv::Point3f((x)*squareLength, (y)*squareLength, 0)); // All have a z of 0.
 			}
 		}
 		
@@ -168,9 +168,9 @@ void CameraNormalizer::saveCalibration()
 	
 	// Write the data to the file.
 	fileOutput << cameraNumber << '\n';
-	fileOutput << cameraMatrix << '\n';
-	fileOutput << distortionCoefficents << '\n';
-	fileOutput << cornerSize << '\n';
+	fileOutput << serializeMatrix(cameraMatrix) << '\n';
+	fileOutput << serializeMatrix(distortionCoefficents) << '\n';
+	fileOutput << serializeSize(cornerSize) << '\n';
 	
 	// Close the file.
 	fileOutput.close();
@@ -183,4 +183,215 @@ void CameraNormalizer::normalize(cv::Mat cameraData)
 	cameraData.copyTo(copyOfData);
 	// Undistort the camera.
 	cv::undistort(copyOfData, cameraData, cameraMatrix, distortionCoefficents);
+}
+
+// Load the data.
+bool CameraNormalizer::loadData()
+{
+	std::ifstream fileInput;
+	fileInput.open(filePath);
+	
+	// If the file can be read from,
+	if(fileInput.good())
+	{
+		// Create variables to store different parts of the data.
+		std::string cameraNumberData, cameraMatrixData, distortionCoefficentsData, cornerSizeData;
+
+		// Load data into these.
+		std::getline(fileInput, cameraNumberData);
+		std::getline(fileInput, cameraMatrixData);
+		std::getline(fileInput, distortionCoefficentsData);
+		std::getline(fileInput, cornerSizeData);
+
+		// Load these matricies.
+		cameraMatrix = recallSerializedMatrix(cameraMatrixData);
+		distortionCoefficents = recallSerializedMatrix(distortionCoefficentsData);
+		cornerSize = recallSerializedSize(cornerSizeData);
+		
+		int newCamera=atoi(cameraNumberData.c_str());
+		// If the new camera number != the old camera number.
+		if(newCamera != cameraNumber)
+		{
+			// Try changing the file name.
+			std::stringstream newFilePath;
+			newFilePath << "cameraConfiguration" << cameraNumber << ".txt";
+			filePath=newFilePath.str();
+
+			// Try to re-load the data.
+			bool result = loadData();
+
+			fileInput.close();
+
+			return result;
+		}		
+
+		fileInput.close();
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
+// Convert an OpenCV matrix to a readable format.
+std::string CameraNormalizer::serializeMatrix(cv::Mat input)
+{
+	// Create variables to be used while traversing the input.
+	int x, y;
+	double* rowPointer;
+
+	// Create a variable to accumulate the result.
+	std::stringstream resultStream;
+
+	// Store the width of the current frame.
+	int width=input.size().width;
+	
+	// Add the matrix's dimensions to the output.
+	resultStream << '[' << input.rows << 'x' << width << ']';
+
+	for(y=0; y<input.rows; y++)
+	{
+		rowPointer=input.ptr<double>(y); // TODO: Change this from CV_64F to a template argument.
+		for(x=0; x<width; x++)
+		{
+			resultStream << rowPointer[x] << "C";
+		}
+		resultStream << "R";
+	}
+
+	// Return the string version of the matrix.
+	return resultStream.str();
+}
+
+// Recall a serialized matrix.
+cv::Mat CameraNormalizer::recallSerializedMatrix(std::string input)
+{
+	// Make a variable to store the current character.
+	char currentCharacter;
+	
+	// Create a variable to store the current part.
+	std::stringstream currentPart;
+
+	// Create variables to store the width and height.
+	int width=0, height=0;
+
+	// Create variables to store the current position.
+	int currentX=0, currentY=0;
+
+	// Create a matrix to store the output.
+	cv::Mat output;
+
+	// The current double value.
+	double currentValue;
+
+	// Extract the dimensions of the matrix.
+	for(int i=1; i<input.length(); i++)
+	{
+		// Update the current character.
+		currentCharacter=input.at(i);
+		
+		switch(currentCharacter)
+		{
+			case ']': // Matricies are heightxwidth.
+				// Convert the current part to an integer.
+				width=atoi(currentPart.str().c_str());
+				
+				// The width and height are probably both found. Create the matrix.
+				output=cv::Mat::zeros(height, width, CV_64F);
+				
+				// Clear the current part.
+				currentPart.str("");
+			break;
+			case 'x':
+				// Convert the current part to an integer.
+				height=atoi(currentPart.str().c_str());
+
+				// Clear the current part.
+				currentPart.str("");
+			break;
+			case 'C':
+				// Store the current value.
+				currentValue=atof(currentPart.str().c_str());
+				
+				// Place the current value into the matrix. This may fail (though works with std::vector).
+				output.at<double>(currentY, currentX) = currentValue;				
+				
+				// Increase the x-position.
+				currentX++;
+
+				// If the current x position is larger than or equal to the matrix's length,
+				if(currentX >= width)
+				{
+					// Go to the next row.
+					currentX=0;
+					currentY++;
+
+					// If no more rows,
+					if(currentY >= height)
+					{
+						// Stop.
+						return output;
+					}
+				}
+
+				// Clear the current part.
+				currentPart.str("");
+			break;
+			case 'R':
+				// Do nothing. 'R' is handled by the last 'C'.
+			break;
+			default:
+				currentPart << currentCharacter;
+			break;
+		}
+	}
+
+	// Return the output.
+	return output;	
+}
+
+// Serialize a size.
+std::string CameraNormalizer::serializeSize(cv::Size input)
+{
+	std::stringstream output;
+	
+	output << input.width << 'x' << input.height;
+
+	// Return the output.
+	return output.str();
+}
+
+// Recall a serialized size.
+cv::Size CameraNormalizer::recallSerializedSize(std::string input)
+{
+	// Create a variable to store the current character.
+	char currentCharacter;
+	
+	// Store the current part, width of the size, and height of the size.
+	std::stringstream currentPart;
+	int width=0, height;
+
+	for(int i=0; i<input.length(); i++)
+	{
+		// Update the current character.
+		currentCharacter=input.at(i);
+
+		// If an x, move to accumulating the height.
+		if(currentCharacter == 'x')
+		{
+			width=atoi(currentPart.str().c_str());
+
+			// Clear the current part.
+			currentPart.str("");
+		}
+		else
+		{
+			// Add the current character to the current part.
+			currentPart << currentCharacter;
+		}
+	}
+
+	height=atoi(currentPart.str().c_str());
+	return cv::Size(width, height);
 }

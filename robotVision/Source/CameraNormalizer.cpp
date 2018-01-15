@@ -50,7 +50,7 @@ void CameraNormalizer::calibrate(bool useUI)
 		// Store the found corners.
 		std::vector<cv::Point2f> cornersFound;
 
-		std::vector<std::vector<cv::Point2f>> allCornersFound;
+		std::vector<std::vector<cv::Point2f> > allCornersFound;
 		
 		// Create a variable to store whether the chess-board has been found.
 		bool chessboardFound=false;
@@ -120,7 +120,7 @@ void CameraNormalizer::calibrate(bool useUI)
 		}
 
 		// Generate how the corners should be. TODO: Put this in a seperate function.
-		std::vector<std::vector<cv::Point3f>> actualCornerLocations;
+		std::vector<std::vector<cv::Point3f> > actualCornerLocations;
 		
 		actualCornerLocations.push_back(std::vector<cv::Point3f>());
 

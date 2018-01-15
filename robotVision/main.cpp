@@ -35,7 +35,7 @@ int main()
 	{
 		video >> currentFrame;
 		filter.setData(currentFrame);
-		filter.normalize();
+		filter.runAllFilters();
 
 		cv::imshow("Camera View", currentFrame);
 		

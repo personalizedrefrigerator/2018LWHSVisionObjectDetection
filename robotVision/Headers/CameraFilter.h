@@ -14,6 +14,9 @@ class CameraFilter
 {
 	public:
 	void normalize();
+	void erodeAndDilate();
+	void otherFilters();
+	
 	void runAllFilters();
 
 	void setData(cv::Mat); // cv::Mat does not store the matrix data, but a pointer/refrence to it! This does not copy the entire image.

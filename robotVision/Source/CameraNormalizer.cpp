@@ -121,6 +121,9 @@ void CameraNormalizer::calibrate(bool useUI)
 			}
 		}
 
+		// Release the video.
+		video.release();
+
 		// Generate how the corners should be. TODO: Put this in a seperate function.
 		std::vector<std::vector<cv::Point3f> > actualCornerLocations;
 		

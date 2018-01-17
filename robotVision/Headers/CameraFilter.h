@@ -15,7 +15,8 @@ class CameraFilter
 	public:
 	void normalize();
 	void erodeAndDilate();
-	void otherFilters();
+	void cornerHarris();
+	void detectCorners();
 	
 	void runAllFilters();
 

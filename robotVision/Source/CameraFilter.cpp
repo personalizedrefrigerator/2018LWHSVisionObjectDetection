@@ -29,8 +29,8 @@ void CameraFilter::normalize()
 	normalizer.normalize(data);
 }
 
-// Run other functions.
-void CameraFilter::otherFilters()
+// Run cornerHarris to detect corners.
+void CameraFilter::cornerHarris()
 {
 	// Learning to use cornerHarris, see
 	// https://docs.opencv.org/master/d4/d7d/tutorial_harris_detector.html
@@ -78,6 +78,29 @@ void CameraFilter::otherFilters()
 	}
 }
 
+// Detect corners.
+void CameraFilter::detectCorners()
+{
+	// Define matricies.
+	cv::Mat grayscaleVersion;
+
+	// Convert camera data to grayscale.
+	cvtColor(data, grayscaleVersion, cv::COLOR_BGR2GRAY);
+
+	// Create an array to store the corners found.
+	std::vector<cv::Point2f> cornersFound;
+	
+	// Find the first 40 corners.
+	cv::goodFeaturesToTrack(grayscaleVersion, cornersFound, 100, 0.01, 1, cv::Mat(), 8, 5, false, 0.03);
+
+	// For each corner,
+	for(unsigned int i=0; i<cornersFound.size(); i++)
+	{
+		// Draw a circle.
+		cv::circle(data, cornersFound.at(i), 4, cv::Scalar(0, 100, 200, 200), 1, 8, 0); // 8 is line type.
+	}
+}
+
 // Erode and dilate the camera input.
 void CameraFilter::erodeAndDilate()
 {
@@ -96,5 +119,6 @@ void CameraFilter::runAllFilters()
 {
 	normalize();
 	erodeAndDilate();
-	otherFilters();
+	//detectCorners();
+	cornerHarris();
 }

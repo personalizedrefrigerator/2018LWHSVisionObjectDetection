@@ -10,7 +10,13 @@
 // The main method.
 int main()
 {
- 	int cameraNumber=1;
+	// Allocate memory to store the camera number.
+ 	int cameraNumber=0;
+
+
+	// Request the camera number.
+	std::cout << "Camera number: ";
+	std::cin >> cameraNumber;
 
 	// Create a filter.
 	CameraFilter filter=CameraFilter(cameraNumber);

@@ -5,6 +5,7 @@
 
 // Standard libs.
 #include<queue>
+#include<stdlib>
 
 // Include self-defined libraries.
 #include "Point3D.h"
@@ -124,5 +125,70 @@ void PlaneDetector::detectSignificantPoints()
 		// Update the previous versions,
 		lastEdgeSlope=currentEdgeSlope;
 		previousLine=nextLine;
+	}
+}
+
+// Note that a point was visited.
+void PlaneDetector::setVisited(Point2D point, bool visited)
+{
+	unsigned int index=point.x+point.y*image.cols;
+
+	if(isOnImage(point) && visited != nullptr && index<visitedLength)
+	{
+		visited[index]=visited;
+	}
+}
+
+// Get whether a point was visited.
+bool PlaneDetector::getVisited(Point2D point)
+{
+	unsigned int index=point.x+point.y*image.cols;
+
+	if(isOnImage(point) && visited != nullptr && index<visitedLength)
+	{
+		return visited[index];
+	}
+
+	return true;
+}
+
+// Clear the array of visited pixels.
+void PlaneDetector::clearVisited()
+{
+	if(visited != nullptr)
+	{
+		free(visited);
+	}
+
+	visitedLength=image.rows*image.cols;
+
+	visitedByteLength=visitedLength*sizeof(bool);
+
+	// TODO: Check this, sizeof(bool) might be 1/3...
+	visited=(bool *)malloc(visitedByteLength);
+
+	memset(visited, false, visitedByteLength);
+}
+
+// Check whether a point is on the image.
+bool PlaneDetector::isOnImage(int x, int y)
+{
+	bool isOnImage=x >= 0 && y >= 0 && x < image.cols && y<image.rows;
+}
+
+// Check whether a Point2D is on the image.
+bool PlaneDetector::isOnImage(Point2D point)
+{
+	return isOnImage(point.x, point.y);
+}
+
+// 
+
+// Deconstruct the detector.
+PlaneDetector::~PlaneDetector()
+{
+	if(visited != nullptr)
+	{
+		free(visited);
 	}
 }

@@ -1,18 +1,16 @@
-#include "Point3D.h"
-
-// The definitions of methods for the Point3D object.
+#include "Point2D.h"
+// The definitions of methods for the Point2D object.
 // Henry Heino.
 
 // Construct a Point3D.
-Point3D::Point3D(double x, double y, double z)
+Point3D::Point2D(double x, double y)
 {
 	this->x=x;
 	this->y=y;
-	this->z=z;
 }
 
 // Get a component of the point.
-double Point3D::getComponent(char componentName)
+double Point2D::getComponent(char componentName)
 {
 	switch(componentName)
 	{
@@ -22,10 +20,19 @@ double Point3D::getComponent(char componentName)
 		case 'y':
 			return y;
 		break;
-		case 'z':
-			return z;
 		break;
 		default:
 			return 0; // Return 0. The point has no components in greater than 3 dimensions.
 	}
+}
+
+// Manipulate and get visited.
+void Point2D::setVisited(bool setTo)
+{
+	this->visited=setTo;
+}
+
+bool Point2D::getVisited()
+{
+	return visited;
 }

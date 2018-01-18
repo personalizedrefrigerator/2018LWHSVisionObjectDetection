@@ -87,17 +87,66 @@ void CameraFilter::detectCorners()
 	// Convert camera data to grayscale.
 	cvtColor(data, grayscaleVersion, cv::COLOR_BGR2GRAY);
 
+	// Normalize the brightness and change the contrast.
+	cv::equalizeHist(grayscaleVersion, grayscaleVersion);
+
+	// Detect edges.
+	//cv::Canny(grayscaleVersion, grayscaleVersion, 80, 160);
+
 	// Create an array to store the corners found.
 	std::vector<cv::Point2f> cornersFound;
 	
-	// Find the first 40 corners.
-	cv::goodFeaturesToTrack(grayscaleVersion, cornersFound, 100, 0.01, 1, cv::Mat(), 8, 5, false, 0.03);
+	// Find the first 1500 corners, in an 8x8 area.
+	cv::goodFeaturesToTrack(grayscaleVersion, cornersFound, 1500, 0.01, 20, cv::Mat(), 10, false, 0.04);
 
 	// For each corner,
 	for(unsigned int i=0; i<cornersFound.size(); i++)
 	{
 		// Draw a circle.
-		cv::circle(data, cornersFound.at(i), 4, cv::Scalar(0, 100, 200, 200), 1, 8, 0); // 8 is line type.
+		cv::circle(data, cornersFound.at(i), 4, cv::Scalar(0, 100, 200, 200), 2, 8, 0); // 8 is line type. 2 is line-width.
+	}
+}
+
+void CameraFilter::detectLineSegments()
+{
+	cv::Mat edges;
+
+	std::vector<cv::Vec4i> lines;
+
+	// Define matricies.
+	cv::Mat grayscaleVersion;
+
+	// Convert camera data to grayscale.
+	cvtColor(data, grayscaleVersion, cv::COLOR_BGR2GRAY);
+
+	// Normalize the brightness and change the contrast.
+	cv::equalizeHist(grayscaleVersion, grayscaleVersion);
+	// Detect edges.
+	cv::Canny(data, edges, 50, 150, 3);
+	//edges.copyTo(data);
+	// Run a Hough line transform. 1 location accuracy, angle accuracy, threshold, min line length,
+	//min gap.
+	cv::HoughLinesP(edges, lines, 2, 1, 10, 54, 10);
+
+	// For each line,
+	for(int i=0; i<lines.size(); i++)
+	{
+		cv::Vec4i currentLine=lines.at(i);
+		cv::line(data, cv::Point(currentLine[0], currentLine[1]), cv::Point(currentLine[2],
+			currentLine[3]), cv::Scalar(255, 255, 0), 4, cv::LINE_AA);
+	}
+
+	// For all edges,
+	for(int y=0; y<data.rows; y++)
+	{
+		for(int x=0; x<data.cols; x++)
+		{
+			if(edges.at<unsigned char>(y, x) > 100)
+			{
+				data.at<unsigned char>(y, x*3)=0;
+				data.at<unsigned char>(y, x*3+1)=0;
+			}
+		}
 	}
 }
 
@@ -105,7 +154,7 @@ void CameraFilter::detectCorners()
 void CameraFilter::erodeAndDilate()
 {
 	cv::Mat erodeDilateElement=cv::getStructuringElement(cv::MORPH_RECT, 
-			cv::Size(5, 5)); // Change the size to emphasize different shapes.
+			cv::Size(3, 3)); // Change the size to emphasize different shapes.
 	
 	// Erode and dilate
 	cv::erode(data, data, erodeDilateElement,
@@ -119,6 +168,8 @@ void CameraFilter::runAllFilters()
 {
 	normalize();
 	erodeAndDilate();
+	//detectCorners();
+	detectLineSegments();
 	//detectCorners();
 	cornerHarris();
 }

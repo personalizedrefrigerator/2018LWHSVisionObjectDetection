@@ -17,6 +17,7 @@ class CameraFilter
 	void erodeAndDilate();
 	void cornerHarris();
 	void detectCorners();
+	void detectLineSegments();
 	
 	void runAllFilters();
 

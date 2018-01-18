@@ -1,5 +1,7 @@
 #include<iostream>
 
+#include<stdlib>
+
 // OpenCV headers.
 #include<opencv2/opencv.hpp>
 #include<opencv2/imgproc.hpp>
@@ -16,7 +18,12 @@ int main()
 
 	// Request the camera number.
 	std::cout << "Camera number: ";
-	std::cin >> cameraNumber;
+
+	// Create a variable to store the string version of the camera number.
+	std::string cameraNumberResponse;
+	std::cin >> cameraNumberResponse;
+
+	cameraNumber=atoi(cameraNumberResponse);
 
 	// Create a filter.
 	CameraFilter filter=CameraFilter(cameraNumber);

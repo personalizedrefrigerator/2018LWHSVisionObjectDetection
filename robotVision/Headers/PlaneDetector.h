@@ -21,6 +21,11 @@ class PlaneDetector
 	void showPlaneRegion(cv::Mat imageToUse);
 	void setFocalLengths(double fX, double fY);
 
+	// Manipulate whether a pixel is considered "visited."
+	void setVisited(Point2D point, bool setTo);
+	bool getVisited(Point2D point);
+	void clearVisited();
+
 	Line getSlopeOfEdge(unsigned int startIndex, unsigned int numberToConsider);
 
 	Color getColorAt(int x, int y);
@@ -40,4 +45,8 @@ class PlaneDetector
 	double fX=10.0, fY=10.0;
 
 	int colorChangeThreshold=20;
+
+	// An array storing whether any given pixel has been visited.
+	bool * visited;
+	unsigned int visitedLength=0;
 };

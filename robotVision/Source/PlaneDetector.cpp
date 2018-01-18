@@ -104,7 +104,7 @@ void PlaneDetector::detectSignificantPoints()
 		nextLine=getSlopeOfEdge(pixelIndex, numberOfPixelsConsidering);
 
 		// Get the slope of the current part of the edge.
-		currentEdgeSlope=nextLine.getAngleFromHorizontal() % PI; // TODO: If PI is undefined, #define it. PI ~= 3.1415926535898
+		currentEdgeSlope=nextLine.getAngle(edgePoints2D.at(pixelIndex)) % PI; // TODO: If PI is undefined, #define it. PI ~= 3.1415926535898
 
 		if(currentEdgeSlope > PI/2)
 		{
@@ -199,6 +199,37 @@ Color PlaneDetector::getColorAt(int x, int y)
 Color PlaneDetector::getColorAt(Point2D point)
 {
 	return getColorAt(point.x, point.y);
+}
+
+// Find the average slope of an edge.
+Line PlaneDetector::getSlopeOfEdge(unsigned int startIndex, unsigned int numberOfPointsToConsider)
+{
+	if(numberOfPointsToConsider == 0 || startIndex+numberOfPointsToConsider >= edgePoints2D.size())
+	{
+		return Line(Point2D(0, 0), Point2D(0, 0));
+	}
+	double averagedX=0.0;
+	double averagedY=0.0;
+
+	double previousX=edgePoints2D.at(startIndex).x, previousY=edgePoints2D.at(startIndex).y;
+
+	for(int index=startIndex+1; index<startIndex+numberOfPointsToConsider; index++)
+	{
+		averagedX+=edgePoints2D.at(index).x-previousX;
+		averagedY+=edgePoints2D.at(index).y-previousY;
+
+		// TODO: Store edgePoints2D.at(index) in a seprate variable.
+		previousX=edgePoints2D.at(index).x;
+		previousY=edgePoints2D.at(index).y;
+	}
+	averagedX/=numberOfPointsToConsider;
+	averagedY/=numberOfPointsToConsider;
+
+	Point2D point1=edgePoints2D.at(startIndex);
+	Point2D point2=Point2D(point1.x+averagedX, point2.y+averagedY);
+
+	Line result=Line(point1, point2);
+	return result;
 }
 
 // Deconstruct the detector.

@@ -80,16 +80,35 @@ void PlaneDetector::detectSignificantPoints()
 	Line previousLine, nextLine;
 
 	bool firstTime=true;
+	double currentEdgeSlope, lastEdgeSlope;
+
+
 
 	// Go through all of the edges, C at a time.
 	for(int pixelIndex=0; pixelIndex < edgePoints2D.size(); pixelIndex++)
 	{
 		nextLine=getSlopeOfEdge(pixelIndex, numberOfPixelsConsidering);
+
+		// Get the slope of the current part of the edge.
+		currentEdgeSlope=nextLine.getAngleFromHorizontal() % PI; // TODO: If PI is undefined, #define it. PI ~= 3.1415926535898
+
+		if(currentEdgeSlope > PI/2)
+		{
+			currentEdgeSlope=PI-currentEdgeSlope;
+		}
+
 		if(!firstTime)
 		{
 			firstTime=false;
+
+
+
+			if(currentEdgeSlope )
 			// TODO: Implement this...
 		}
+
+		// Update the previous versions,
+		lastEdgeSlope=currentEdgeSlope;
 		previousLine=nextLine;
 	}
 }

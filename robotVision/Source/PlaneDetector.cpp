@@ -38,10 +38,14 @@ void PlaneDetector::detectPoints2D()
 	Point2D considering;
 	int x, y;
 
+	// Clear what has been visited.
+	clearVisited();
+
 	// Add points to the plane.
 	do
 	{
 		current=fringe.pop_front();
+		setVisited(current, true);
 		
 		for(x=-1; x<=1; x++)
 		{
@@ -54,15 +58,19 @@ void PlaneDetector::detectPoints2D()
 				
 				considering=Point2D(current.x+x, current.y+y);
 
-				//TODO: Make color change take direction into account.
-				if(isOnImage(considering) && getColorAt(current)-getColorAt(considering) >= colorChangeThreshold)
+				// If it hasn't been seen already,
+				if(!getVisited(considering))
 				{
-					fringe.push_back(considering);
-					planePoints.push_back(considering);
-				}
-				else if(isOnImage(considering))// Otherwise, so long as on the image, it is an edge.
-				{
-					edgePoints2D.push_back(considering);
+					//TODO: Make color change take direction into account.
+					if(isOnImage(considering) && getColorAt(current)-getColorAt(considering) >= colorChangeThreshold)
+					{
+						fringe.push_back(considering);
+						planePoints.push_back(considering);
+					}
+					else if(isOnImage(considering))// Otherwise, so long as on the image, it is an edge.
+					{
+						edgePoints2D.push_back(considering);
+					}
 				}
 			}
 		}
@@ -70,9 +78,14 @@ void PlaneDetector::detectPoints2D()
 	while(fringe.size() > 0);
 }
 
+// Detect points considered "significant." Where the angle between the current and the last changes more than a specified value.
 void PlaneDetector::detectSignificantPoints()
 {
-	unsigned int numberOfPixelsConsidering=5;
+	significantPoints.clear();
+
+	unsigned int numberOfPixelsConsidering=7;
+
+	double accuracy=3.0;
 
 	double averageChange;
 	double maxDifference;
@@ -101,10 +114,11 @@ void PlaneDetector::detectSignificantPoints()
 		{
 			firstTime=false;
 
-
-
-			if(currentEdgeSlope )
-			// TODO: Implement this...
+			if((int)(currentEdgeSlope*accuracy) != (int)(lastEdgeSlope*accuracy))
+			{
+				// Add the pixel to the significant points.
+				significantPoints.push_back(edgePoints2D.at(pixelIndex));
+			}
 		}
 
 		// Update the previous versions,

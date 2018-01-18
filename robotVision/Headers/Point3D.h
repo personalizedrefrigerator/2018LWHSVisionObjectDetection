@@ -2,7 +2,7 @@
 // A class storing a simple point, and opperations related to this.
 // Henry Heino
 
-class Point3D
+class Point3D : public Point
 {
 	// This is, for now, essentialy a struct, to store information about a point.
 	//Add applicable methods, if needed, later.

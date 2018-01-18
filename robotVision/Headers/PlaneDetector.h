@@ -7,6 +7,7 @@
 #include "Point3D.h"
 #include "Point2D.h"
 #include "Color.h"
+#include "Line.h"
 
 // Detect a plane and points on it.
 //Henry Heino
@@ -19,6 +20,8 @@ class PlaneDetector
 	void detectSignificantPoints();
 	void showPlaneRegion(cv::Mat imageToUse);
 	void setFocalLengths(double fX, double fY);
+
+	Line getSlopeOfEdge(unsigned int startIndex, unsigned int numberToConsider);
 
 	Color getColorAt(int x, int y);
 	Color getColorAt(Point2D point);

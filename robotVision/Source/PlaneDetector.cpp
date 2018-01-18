@@ -60,7 +60,7 @@ void PlaneDetector::detectPoints2D()
 					fringe.push_back(considering);
 					planePoints.push_back(considering);
 				}
-				else // Otherwise, it is an edge.
+				else if(isOnImage(considering))// Otherwise, so long as on the image, it is an edge.
 				{
 					edgePoints2D.push_back(considering);
 				}
@@ -70,4 +70,26 @@ void PlaneDetector::detectPoints2D()
 	while(fringe.size() > 0);
 }
 
-void PlaneDetector::showPlaneRegion
+void PlaneDetector::detectSignificantPoints()
+{
+	unsigned int numberOfPixelsConsidering=5;
+
+	double averageChange;
+	double maxDifference;
+
+	Line previousLine, nextLine;
+
+	bool firstTime=true;
+
+	// Go through all of the edges, C at a time.
+	for(int pixelIndex=0; pixelIndex < edgePoints2D.size(); pixelIndex++)
+	{
+		nextLine=getSlopeOfEdge(pixelIndex, numberOfPixelsConsidering);
+		if(!firstTime)
+		{
+			firstTime=false;
+			// TODO: Implement this...
+		}
+		previousLine=nextLine;
+	}
+}

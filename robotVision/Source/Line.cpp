@@ -27,3 +27,14 @@ double Line::getSlope(char dimension1, char dimension2)
 	// Return deltaRise / deltaRun.
 	return deltaRise/deltaRun;
 }
+
+// Get whether the slope exists on a given dimension
+//TODO: Fix errors when deltaRun is 0.
+double Line::getSlope(char dimension)
+{
+	// Calculate drun.
+	double deltaRun=point1.getComponent(dimension2)-point2.getComponent(dimension2);
+
+	// The slope is only defined if drun != 0.
+	return deltaRun != 0;
+}

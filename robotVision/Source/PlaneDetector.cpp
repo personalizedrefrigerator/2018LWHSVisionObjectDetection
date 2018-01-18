@@ -104,7 +104,7 @@ void PlaneDetector::detectSignificantPoints()
 		nextLine=getSlopeOfEdge(pixelIndex, numberOfPixelsConsidering);
 
 		// Get the slope of the current part of the edge.
-		currentEdgeSlope=nextLine.getAngle(edgePoints2D.at(pixelIndex)) % PI; // TODO: If PI is undefined, #define it. PI ~= 3.1415926535898
+		currentEdgeSlope=nextLine.getAngle2D(edgePoints2D.at(pixelIndex)) % PI; // TODO: If PI is undefined, #define it. PI ~= 3.1415926535898
 
 		if(currentEdgeSlope > PI/2)
 		{

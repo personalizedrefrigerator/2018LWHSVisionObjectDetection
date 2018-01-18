@@ -18,15 +18,15 @@ class PlaneDetector
 	void setImage(cv::Mat image);
 	void detectPoints2D();
 	void detectSignificantPoints();
-	void showPlaneRegion(cv::Mat imageToUse);
-	void setFocalLengths(double fX, double fY);
+	void showPlaneRegion(cv::Mat imageToUse);// TODO:Implement
+	void setFocalLengths(double fX, double fY);// TODO:Implement
 
 	// Manipulate whether a pixel is considered "visited."
 	void setVisited(Point2D point, bool setTo);
 	bool getVisited(Point2D point);
 	void clearVisited();
 
-	Line getSlopeOfEdge(unsigned int startIndex, unsigned int numberToConsider);
+	Line getSlopeOfEdge(unsigned int startIndex, unsigned int numberToConsider);// TODO:Implement
 
 	Color getColorAt(int x, int y);
 	Color getColorAt(Point2D point);
@@ -34,6 +34,8 @@ class PlaneDetector
 	bool isOnImage(Point2D point);
 
 	std::vector<Point3D> getSignificantPoints();	
+
+	~PlaneDetector();
 
 	private:
 	std::vector<Point3D> significantPoints;
@@ -47,6 +49,7 @@ class PlaneDetector
 	int colorChangeThreshold=20;
 
 	// An array storing whether any given pixel has been visited.
-	bool * visited;
+	bool * visited=nullptr;
 	unsigned int visitedLength=0;
+	unsigned int visitedByteLength=0;
 };

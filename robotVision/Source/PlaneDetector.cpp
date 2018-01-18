@@ -182,7 +182,24 @@ bool PlaneDetector::isOnImage(Point2D point)
 	return isOnImage(point.x, point.y);
 }
 
-// 
+// Get the color at a location.
+Color PlaneDetector::getColorAt(int x, int y)
+{
+	unsigned char * ptr=image.ptr<unsigned char>(y);
+	
+	// TODO: Detect the format of the image and act accordingly.
+	unsigned char blue=ptr[x*3],
+			green=ptr[x*3+1],
+			red=ptr[x*3+1];
+
+	return Color(red, green, blue);
+}
+
+// Get the color at a Point2D.
+Color PlaneDetector::getColorAt(Point2D point)
+{
+	return getColorAt(point.x, point.y);
+}
 
 // Deconstruct the detector.
 PlaneDetector::~PlaneDetector()

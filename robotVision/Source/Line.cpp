@@ -51,7 +51,7 @@ double Line::getAngle2D(Point2D at)
 
 		//Point2D point2=Point2D(at.getComponent('x')+1, at.getComponent('y')+slopedYdX);
 
-		double angle=atan(slopedYdX/1);
+		double angle=atan(slopedYdX/1)+PI;
 		return angle;
 	}
 	return PI/2; // TODO:If PI is undefined, define it to 3.141592653589793.

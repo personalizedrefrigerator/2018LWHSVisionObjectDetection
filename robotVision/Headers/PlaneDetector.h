@@ -38,7 +38,7 @@ class PlaneDetector
 	~PlaneDetector();
 
 	private:
-	std::vector<Point3D> significantPoints;
+	std::vector<Point2D> significantPoints;
 	std::vector<Point2D> edgePoints2D;
 	std::vector<Point2D> planePoints;
 	cv::Mat image;

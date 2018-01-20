@@ -29,8 +29,8 @@ void PlaneDetector::detectPoints2D()
 	std::deque<Point2D> fringe;
 	//fringe.reserve(image.rows*image.cols);
 
-	// Choose a point at the very bottom.
-	Point2D current=Point2D(image.rows-1, image.cols/2);
+	// Choose a point at the center of the screen.
+	Point2D current=Point2D(image.rows/2, image.cols/2);
 
 	// Initialize/clear arrays.
 	planePoints.clear();
@@ -130,13 +130,17 @@ void PlaneDetector::detectSignificantPoints()
 
 	double angle;
 
+	// Create a variable to store the number of pixels actualy
+	//touching the line.
+	unsigned int pixelsOnLine;
+
 	//std::cout << "Go through all of the edges, C at a time.\n";
-	for(int pixelIndex=0; pixelIndex < edgePoints2D.size(); pixelIndex+=10)
+	for(int pixelIndex=0; pixelIndex < edgePoints2D.size(); pixelIndex++)
 	{
 		// Get the slope of the current edge (the current pixel and the next
 		//numberOfPixelsConsidering).
 		//std::cout << "Getting edge slope\n";
-		getSlopeOfEdge(nextLine, pixelIndex, numberOfPixelsConsidering);
+		pixelsOnLine=getSlopeOfEdge(nextLine, pixelIndex, numberOfPixelsConsidering);
 		//nextLine.freeMemory=true; // The points in the line can be freed from memory on deconstruct.
 		//std::cout << "Getting angle 2D.\n";
 		// Get the angle the line makes with the horizontal axis.
@@ -144,12 +148,12 @@ void PlaneDetector::detectSignificantPoints()
 
 		//std::cout << "Getting slope of current part of edge.\n";
 		// Get the slope of the current part of the edge.
-		currentEdgeSlope=angle-PI*((int)(angle / PI)); // TODO: If PI is undefined, #define it. PI ~= 3.1415926535898
+		currentEdgeSlope=angle; // TODO: If PI is undefined, #define it. PI ~= 3.1415926535898
 
-		if(currentEdgeSlope > PI/2)
+		/*if(currentEdgeSlope > PI/2)
 		{
 			currentEdgeSlope=PI-currentEdgeSlope;
-		}
+		}*/
 
 		if(!firstTime)
 		{
@@ -158,7 +162,7 @@ void PlaneDetector::detectSignificantPoints()
 			{
 				continue;
 			}
-			if((int)(currentEdgeSlope*accuracy) != (int)(lastEdgeSlope*accuracy))
+			if((int)(currentEdgeSlope*accuracy) != (int)(lastEdgeSlope*accuracy) && pixelsOnLine >= numberOfPixelsConsidering*2/3)
 			{
 				// Add the pixel to the significant points.
 				significantPoints.push_back(edgePoints2D.at(pixelIndex));
@@ -319,26 +323,31 @@ Color PlaneDetector::getColorAt(Point2D point)
 	return getColorAt(point.x, point.y);
 }
 
-// Find the average slope of an edge.
-void PlaneDetector::getSlopeOfEdge(Line &output, unsigned int startIndex, unsigned int numberOfPointsToConsider)
+// Find the average slope of an edge. Return the number of points on the edge.
+unsigned int PlaneDetector::getSlopeOfEdge(Line &output, unsigned int startIndex, unsigned int numberOfPointsToConsider)
 {
 	if(numberOfPointsToConsider == 0 || startIndex+numberOfPointsToConsider >= edgePoints2D.size())
 	{
 		output.setPoints(new Point2D(0, 0), new Point2D(0, 0));
+		return 0;
 	}
+
+	unsigned int pixelsOnLine=0;
 	double averagedX=0.0;
 	double averagedY=0.0;
 
 	double previousX=edgePoints2D.at(startIndex).x, previousY=edgePoints2D.at(startIndex).y;
 
+	Point2D currentPoint;
 	for(int index=startIndex+1; index<startIndex+numberOfPointsToConsider && index < edgePoints2D.size(); index++)
 	{
-		averagedX+=edgePoints2D.at(index).x-previousX;
-		averagedY+=edgePoints2D.at(index).y-previousY;
+		currentPoint=edgePoints2D.at(index);
+		averagedX+=currentPoint.x-previousX;
+		averagedY+=currentPoint.y-previousY;
 
 		// TODO: Store edgePoints2D.at(index) in a seprate variable.
-		previousX=edgePoints2D.at(index).x;
-		previousY=edgePoints2D.at(index).y;
+		previousX=currentPoint.x;
+		previousY=currentPoint.y;
 	}
 	averagedX/=numberOfPointsToConsider;
 	averagedY/=numberOfPointsToConsider;
@@ -349,7 +358,62 @@ void PlaneDetector::getSlopeOfEdge(Line &output, unsigned int startIndex, unsign
 	Point2D * point1=new Point2D(edgePoints2D.at(startIndex).x, edgePoints2D.at(startIndex).y);
 	Point2D * point2=new Point2D(point1->x+averagedX, point1->y+averagedY);
 
+	// Update the points on the output.
 	output.setPoints(point1, point2);
+
+	// Create variables to store the current x and y position.
+	int currentX, currentY;
+
+	// Create a variable to store the y podition of the current part of the line.
+	int lineY;
+
+	// For every pixel on the line,
+	for(int index=startIndex; index<startIndex+numberOfPointsToConsider; index++)
+	{
+		currentPoint=edgePoints2D.at(index);
+		
+		currentX=currentPoint.x;
+		currentY=currentPoint.y;
+
+		if(output.getDefinedAt('x', currentX))
+		{
+			lineY=output.getAt('y', 'x', currentX);
+
+			if(lineY == currentY)
+			{
+				pixelsOnLine++;
+			}
+		}
+		
+	}
+
+	return pixelsOnLine;
+}
+
+// Set the maximum color distance change for a point to still be considered a part of the object.
+void PlaneDetector::setColorChangeThreshold(double setTo)
+{
+	colorChangeThreshold=setTo;
+}
+
+// Set the maximum color distance from.
+void PlaneDetector::setAverageChangeThreshold(double setTo)
+{
+	averageChangeThreshold=setTo;
+}
+
+// Set the accuracy for detecting significant points.
+void PlaneDetector::setSignificantPointAccuracy(double setTo)
+{
+	significantPointAccuracy=setTo;
+}
+
+// Set options based on a PlaneDetectorOptions object.
+void PlaneDetector::setOptions(PlaneDetectorOptions options)
+{
+	setColorChangeThreshold(options.colorChangeThreshold);
+	setAverageChangeThreshold(options.averageChangeThreshold);
+	setSignificantPointAccuracy(options.significantPointAccuracy);
 }
 
 // Deconstruct the detector.

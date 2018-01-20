@@ -17,5 +17,10 @@ class Line
 	void setPoints(Point * point1, Point * point2);
 	double getAngle2D();
 	bool hasSlope(char dimensionAcross);
+
+	// Get the line at a specified point.
+	int getAt(char dimension1, char dimension2, int location);
+	bool getDefinedAt(char dimension, int location);
+ 
 	~Line();
 };

@@ -9,6 +9,8 @@
 #include "Color.h"
 #include "Line.h"
 
+#include "PlaneDetectorOptions.h"
+
 // Detect a plane and points on it.
 //Henry Heino
 
@@ -27,7 +29,7 @@ class PlaneDetector
 	bool getVisited(Point2D point);
 	void clearVisited();
 
-	void getSlopeOfEdge(Line &output, unsigned int startIndex, unsigned int numberToConsider);
+	unsigned int getSlopeOfEdge(Line &output, unsigned int startIndex, unsigned int numberToConsider); // Returns the points on the line.
 	bool getIsFullEdge(unsigned int start, unsigned int stop, unsigned int maxJump);
 
 	Color getColorAt(int x, int y);
@@ -36,6 +38,13 @@ class PlaneDetector
 	bool isOnImage(Point2D point);
 
 	std::vector<Point3D> getSignificantPoints();	// TODO: Implement
+	
+	void setColorChangeThreshold(double setTo);
+	void setAverageChangeThreshold(double setTo);
+	void setSignificantPointAccuracy(double setTo);
+
+	// Set options related to the plane detector.
+	void setOptions(PlaneDetectorOptions options);
 
 	~PlaneDetector();
 
@@ -50,7 +59,7 @@ class PlaneDetector
 
 	double colorChangeThreshold=15;
 	double averageChangeThreshold=48.0;
-	double significantPointAccuracy=0.75;
+	double significantPointAccuracy=3.0;
 
 	// An array storing whether any given pixel has been visited.
 	std::vector<bool> visited;

@@ -1,5 +1,7 @@
 #include "CameraFilter.h"
 
+#include "PlaneDetectorOptions.h"
+
 // Construct a filtering object.
 CameraFilter::CameraFilter(unsigned int cameraNumber)//cv::Mat startingData, unsigned int cameraNumber)
 {
@@ -137,7 +139,7 @@ void CameraFilter::detectLineSegments()
 	{
 		cv::Vec4i currentLine=lines.at(i);
 		cv::line(data, cv::Point(currentLine[0], currentLine[1]), cv::Point(currentLine[2],
-			currentLine[3]), cv::Scalar(255, 255, 0), 4, cv::LINE_AA);
+			currentLine[3]), cv::Scalar(255, 255, 0), 4, 1);//cv::LINE_AA);
 	}
 
 	// For all edges,
@@ -176,6 +178,12 @@ void CameraFilter::showPlane()
 	//std::cout << "Detecting significant points.\n";
 	planeDetector.detectSignificantPoints(); // Detect parts of the edge deemed "significant."
 	planeDetector.showPlaneRegion(data);
+}
+
+// Set the plane detector options.
+void CameraFilter::setPlaneDetectorOptions(PlaneDetectorOptions options)
+{
+	planeDetector.setOptions(options);
 }
 
 // Run all camera filters.

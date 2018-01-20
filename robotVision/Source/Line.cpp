@@ -79,6 +79,35 @@ void Line::setPoints(Point * newPoint1, Point * newPoint2)
 	this->point2=newPoint2;
 }
 
+// Get the line's output at a specific point.
+int Line::getAt(char dimension1, char dimension2, int location)
+{
+	// So long as the line has slope on the dimension,
+	if(hasSlope(dimension2))
+	{
+		// Get the slope.
+		double slope=getSlope(dimension1, dimension2);
+
+		int result=this->point1->getComponent(dimension1)+slope*(location-this->point1->getComponent(dimension2));
+
+		return result;
+	}
+	return 0;
+}
+
+// Get whether the line has slope at a specific location.
+bool Line::getDefinedAt(char dimension, int location)
+{
+	bool hasSlopeInDimension=hasSlope(dimension);
+
+	if(!hasSlopeInDimension)
+	{
+		return location == point1->getComponent(dimension);
+	}
+
+	return hasSlopeInDimension;
+}
+
 // Deconstruct.
 Line::~Line()
 {

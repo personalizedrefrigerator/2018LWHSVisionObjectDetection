@@ -25,6 +25,8 @@ class CameraFilter
 	
 	void runAllFilters();
 
+	void setPlaneDetectorOptions(PlaneDetectorOptions options);
+
 	void setData(cv::Mat); // cv::Mat does not store the matrix data, but a pointer/refrence to it! This does not copy the entire image.
 	cv::Mat getData();
 

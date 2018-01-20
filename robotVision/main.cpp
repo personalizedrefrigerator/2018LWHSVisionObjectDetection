@@ -9,9 +9,16 @@
 // Headers from this program.
 #include "CameraFilter.h"
 
+// Run cmake to compile this for release, as
+//cmake ../robotVision -DCMAKE_BUILD_TYPE=Release
+
+
 // The main method.
 int main()
 {
+	Line testLine=Line(new Point2D(0,0), new Point2D(1, 1));
+	std::cout << testLine.getAngle2D();
+
 	// Allocate memory to store the camera number.
  	int cameraNumber=0;
 
@@ -20,10 +27,10 @@ int main()
 	std::cout << "Camera number: ";
 
 	// Create a variable to store the string version of the camera number.
-	std::string cameraNumberResponse="0";
-	//std::cin >> cameraNumberResponse;
+	std::string cameraNumberResponse;
+	std::cin >> cameraNumberResponse;
 
-	cameraNumber=1;//atoi(cameraNumberResponse.c_str());
+	cameraNumber=atoi(cameraNumberResponse.c_str());
 
 	// Create a filter.
 	CameraFilter filter=CameraFilter(cameraNumber);
@@ -51,7 +58,7 @@ int main()
 	{
 		video >> currentFrame;
 		filter.setData(currentFrame);
-		filter.runAllFilters();
+		filter.runAllFilters();		
 
 		cv::imshow("Camera View", currentFrame);
 		

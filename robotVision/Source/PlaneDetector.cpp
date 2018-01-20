@@ -25,8 +25,9 @@ void PlaneDetector::setImage(cv::Mat image)
 // Run BFS, to find points that could be on the plane.
 void PlaneDetector::detectPoints2D()
 {
-	// BFS, starting at bottom.
+	// DFS, starting at bottom.
 	std::deque<Point2D> fringe;
+	//fringe.reserve(image.rows*image.cols);
 
 	// Choose a point at the very bottom.
 	Point2D current=Point2D(image.rows-1, image.cols/2);
@@ -41,23 +42,41 @@ void PlaneDetector::detectPoints2D()
 	
 	// Define variables.
 	Point2D considering=Point2D(0, 0);
-	int x, y;
+	int x, y, times=0;
 
 	// Clear what has been visited.
 	clearVisited();
 
+	Color mainColor=getColorAt(current);
+
+	unsigned int totalR=0;
+	unsigned int totalG=0;
+	unsigned int totalB=0;
+
+	Color currentColor=Color(0, 0, 0);
+
+	unsigned int fringeSize=1;
+
 	// Add points to the plane.
 	do
 	{
-		current=fringe.front();
-		fringe.pop_front();
+		times++;
+		current=fringe.back();
+		fringeSize-=1;
 		setVisited(current, true);
-		
+
+		currentColor=getColorAt(current);
+		totalR+=currentColor.getR();
+		totalG+=currentColor.getG();
+		totalB+=currentColor.getB();
+		mainColor=Color(totalR/times, totalG/times, totalB/times);
+
+		//std::cout << "START" << fringe.size() << "\n";
 		for(x=-1; x<=1; x++)
 		{
 			for(y=-1; y<=1; y++)
 			{
-				if(x == 0 || y == 0)
+				if(x == 0 && y == 0)
 				{
 					continue;
 				}
@@ -67,11 +86,16 @@ void PlaneDetector::detectPoints2D()
 				// If it hasn't been seen already,
 				if(!getVisited(considering))
 				{
+					setVisited(considering, true);
+					//std::cout << isOnImage(considering) << "\n";
 					//TODO: Make color change take direction into account.
-					if(isOnImage(considering) && getColorAt(current)-getColorAt(considering) >= colorChangeThreshold)
+					if(isOnImage(considering) && (getColorAt(current)-getColorAt(considering) <= colorChangeThreshold && getColorAt(current)-mainColor <= averageChangeThreshold || times < 20))
 					{
-						fringe.push_back(considering);
+						fringe.push_front(considering);
+						fringeSize++;
 						planePoints.push_back(considering);
+
+						//std::cout << "ADDED " << fringe.size() << "," << considering.x << "," << considering.y << "\n";
 					}
 					else if(isOnImage(considering))// Otherwise, so long as on the image, it is an edge.
 					{
@@ -80,8 +104,11 @@ void PlaneDetector::detectPoints2D()
 				}
 			}
 		}
+		fringe.pop_back();
+
+		//std::cout << fringe.size() << "\n";
 	}
-	while(fringe.size() > 0);
+	while(fringeSize > 0);
 }
 
 // Detect points considered "significant." Where the angle between the current and the last changes more than a specified value.
@@ -89,29 +116,35 @@ void PlaneDetector::detectSignificantPoints()
 {
 	significantPoints.clear();
 
-	unsigned int numberOfPixelsConsidering=7;
+	unsigned int numberOfPixelsConsidering=100;
 
-	double accuracy=3.0;
+	double accuracy=significantPointAccuracy;
 
 	double averageChange;
 	double maxDifference;
 
-	Line previousLine, nextLine;
+	Line nextLine;
 
 	bool firstTime=true;
 	double currentEdgeSlope, lastEdgeSlope;
 
 	double angle;
 
-	// Go through all of the edges, C at a time.
-	for(int pixelIndex=0; pixelIndex < edgePoints2D.size(); pixelIndex++)
+	//std::cout << "Go through all of the edges, C at a time.\n";
+	for(int pixelIndex=0; pixelIndex < edgePoints2D.size(); pixelIndex+=10)
 	{
-		nextLine=getSlopeOfEdge(pixelIndex, numberOfPixelsConsidering);
-
+		// Get the slope of the current edge (the current pixel and the next
+		//numberOfPixelsConsidering).
+		//std::cout << "Getting edge slope\n";
+		getSlopeOfEdge(nextLine, pixelIndex, numberOfPixelsConsidering);
+		//nextLine.freeMemory=true; // The points in the line can be freed from memory on deconstruct.
+		//std::cout << "Getting angle 2D.\n";
+		// Get the angle the line makes with the horizontal axis.
 		angle=nextLine.getAngle2D();
 
+		//std::cout << "Getting slope of current part of edge.\n";
 		// Get the slope of the current part of the edge.
-		currentEdgeSlope=angle-PI*((int)(nextLine.getAngle2D() / PI)); // TODO: If PI is undefined, #define it. PI ~= 3.1415926535898
+		currentEdgeSlope=angle-PI*((int)(angle / PI)); // TODO: If PI is undefined, #define it. PI ~= 3.1415926535898
 
 		if(currentEdgeSlope > PI/2)
 		{
@@ -120,18 +153,103 @@ void PlaneDetector::detectSignificantPoints()
 
 		if(!firstTime)
 		{
-			firstTime=false;
-
+			
+			if(!getIsFullEdge(pixelIndex-numberOfPixelsConsidering, pixelIndex+numberOfPixelsConsidering, 1))
+			{
+				continue;
+			}
 			if((int)(currentEdgeSlope*accuracy) != (int)(lastEdgeSlope*accuracy))
 			{
 				// Add the pixel to the significant points.
 				significantPoints.push_back(edgePoints2D.at(pixelIndex));
 			}
 		}
+		else
+		{
+			firstTime=false;
+		}
 
 		// Update the previous versions,
 		lastEdgeSlope=currentEdgeSlope;
-		previousLine=nextLine;
+		//previousLine=nextLine;
+	}
+}
+
+// Get whether an edge is full.
+bool PlaneDetector::getIsFullEdge(unsigned int start, unsigned int stop, unsigned int maxJump)
+{
+	bool firstTime=true;
+	Point2D point, previousPoint;
+	unsigned int pointIndex, deltaX, deltaY;
+
+	for(pointIndex=0; pointIndex<edgePoints2D.size(); pointIndex++)
+	{
+		point=edgePoints2D.at(pointIndex);
+		if(!firstTime)
+		{
+			deltaX=abs(point.x-previousPoint.x);
+			deltaY=abs(point.y-previousPoint.y);
+			if(deltaX > maxJump || deltaY > maxJump)
+			{
+				return false;
+			}
+		}
+		else
+		{
+			firstTime=true;
+		}
+		previousPoint=point;
+	}
+	return true;
+}
+
+// Draw the detected plane and other information found onto the provided image. Provide a color image.
+void PlaneDetector::showPlaneRegion(cv::Mat image)
+{
+	Point2D point;
+	int c,
+		pointIndex;
+
+	for(pointIndex=0; pointIndex<planePoints.size(); pointIndex++)
+	{
+		point=planePoints.at(pointIndex);
+
+		if(point.y < 0 || point.y >= image.rows || point.x < 0 || point.x >= image.cols)
+		{
+			continue;
+		}
+
+		for(c=0; c<3; c++)
+		{
+			image.at<unsigned char>(point.y, point.x*3+c)=255-c*40;
+		}
+	}
+
+	for(pointIndex=0; pointIndex<edgePoints2D.size(); pointIndex++)
+	{
+		point=edgePoints2D.at(pointIndex);
+
+		if(point.y < 0 || point.y >= image.rows || point.x < 0 || point.x >= image.cols)
+		{
+			continue;
+		}
+
+		for(c=0; c<3; c++)
+		{
+			image.at<unsigned char>(point.y, point.x*3+c)=0+c*100;
+		}
+	}
+
+	for(pointIndex=0; pointIndex<significantPoints.size(); pointIndex++)
+	{
+		point=significantPoints.at(pointIndex);
+
+		if(point.y < 0 || point.y >= image.rows || point.x < 0 || point.x >= image.cols)
+		{
+			continue;
+		}
+
+		cv::circle(image, cv::Point(point.x, point.y), 5, cv::Scalar(0, 255, 100, 200), 2, 8, 0); // 8 is line type.
 	}
 }
 
@@ -173,6 +291,7 @@ void PlaneDetector::clearVisited()
 bool PlaneDetector::isOnImage(int x, int y)
 {
 	bool isOnImage=x >= 0 && y >= 0 && x < image.cols && y<image.rows;
+	return isOnImage;
 }
 
 // Check whether a Point2D is on the image.
@@ -201,18 +320,18 @@ Color PlaneDetector::getColorAt(Point2D point)
 }
 
 // Find the average slope of an edge.
-Line PlaneDetector::getSlopeOfEdge(unsigned int startIndex, unsigned int numberOfPointsToConsider)
+void PlaneDetector::getSlopeOfEdge(Line &output, unsigned int startIndex, unsigned int numberOfPointsToConsider)
 {
 	if(numberOfPointsToConsider == 0 || startIndex+numberOfPointsToConsider >= edgePoints2D.size())
 	{
-		return Line(new Point2D(0, 0), new Point2D(0, 0));
+		output.setPoints(new Point2D(0, 0), new Point2D(0, 0));
 	}
 	double averagedX=0.0;
 	double averagedY=0.0;
 
 	double previousX=edgePoints2D.at(startIndex).x, previousY=edgePoints2D.at(startIndex).y;
 
-	for(int index=startIndex+1; index<startIndex+numberOfPointsToConsider; index++)
+	for(int index=startIndex+1; index<startIndex+numberOfPointsToConsider && index < edgePoints2D.size(); index++)
 	{
 		averagedX+=edgePoints2D.at(index).x-previousX;
 		averagedY+=edgePoints2D.at(index).y-previousY;
@@ -224,11 +343,13 @@ Line PlaneDetector::getSlopeOfEdge(unsigned int startIndex, unsigned int numberO
 	averagedX/=numberOfPointsToConsider;
 	averagedY/=numberOfPointsToConsider;
 
-	Point2D * point1=new Point2D(edgePoints2D.at(startIndex));
+	//auto point1= std::make_shared<Point2D>(edgePoints2D.at(startIndex).x, edgePoints2D.at(startIndex).y);
+// point1.get() // this will return a raw pointer
+	
+	Point2D * point1=new Point2D(edgePoints2D.at(startIndex).x, edgePoints2D.at(startIndex).y);
 	Point2D * point2=new Point2D(point1->x+averagedX, point1->y+averagedY);
 
-	Line result=Line(point1, point2);
-	return result;
+	output.setPoints(point1, point2);
 }
 
 // Deconstruct the detector.

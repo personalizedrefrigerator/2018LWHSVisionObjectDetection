@@ -1,6 +1,5 @@
 #include "Point.h"
 #include "Line.h"
-
 #include <math.h>
 // The definition of functions defined for a line.
 //Henry Heino.
@@ -21,8 +20,8 @@ Line::Line(Point * point1, Point * point2)
 Line::Line()
 {
 	// Assign pointers.
-	this->point1=new Point2D();
-	this->point2=new Point2D();
+	this->point1=new Point2D(0, 0);
+	this->point2=new Point2D(0, 0);
 }
 
 // Get the slope from a to b.
@@ -63,7 +62,21 @@ double Line::getAngle2D()
 
 		return angle;
 	}
+
+	
 	return PI/2; // TODO:If PI is undefined, define it to 3.141592653589793.
+}
+
+// Set the points
+void Line::setPoints(Point * newPoint1, Point * newPoint2)
+{
+	// Free memory.
+	delete this->point1;
+	delete this->point2;
+
+	// Update the points.
+	this->point1=newPoint1;
+	this->point2=newPoint2;
 }
 
 // Deconstruct.

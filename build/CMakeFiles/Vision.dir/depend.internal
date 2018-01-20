@@ -4,6 +4,12 @@
 CMakeFiles/Vision.dir/Source/CameraFilter.cpp.o
  /home/killdozer/Documents/Programming/VisionObjectDetection/VisionObjectDetection/robotVision/Headers/CameraFilter.h
  /home/killdozer/Documents/Programming/VisionObjectDetection/VisionObjectDetection/robotVision/Headers/CameraNormalizer.h
+ /home/killdozer/Documents/Programming/VisionObjectDetection/VisionObjectDetection/robotVision/Headers/Color.h
+ /home/killdozer/Documents/Programming/VisionObjectDetection/VisionObjectDetection/robotVision/Headers/Line.h
+ /home/killdozer/Documents/Programming/VisionObjectDetection/VisionObjectDetection/robotVision/Headers/PlaneDetector.h
+ /home/killdozer/Documents/Programming/VisionObjectDetection/VisionObjectDetection/robotVision/Headers/Point.h
+ /home/killdozer/Documents/Programming/VisionObjectDetection/VisionObjectDetection/robotVision/Headers/Point2D.h
+ /home/killdozer/Documents/Programming/VisionObjectDetection/VisionObjectDetection/robotVision/Headers/Point3D.h
  /home/killdozer/Documents/Programming/VisionObjectDetection/VisionObjectDetection/robotVision/Source/CameraFilter.cpp
  /usr/local/include/opencv/cxcore.h
  /usr/local/include/opencv2/calib3d.hpp
@@ -404,6 +410,12 @@ CMakeFiles/Vision.dir/Source/Point3D.cpp.o
 CMakeFiles/Vision.dir/main.cpp.o
  /home/killdozer/Documents/Programming/VisionObjectDetection/VisionObjectDetection/robotVision/Headers/CameraFilter.h
  /home/killdozer/Documents/Programming/VisionObjectDetection/VisionObjectDetection/robotVision/Headers/CameraNormalizer.h
+ /home/killdozer/Documents/Programming/VisionObjectDetection/VisionObjectDetection/robotVision/Headers/Color.h
+ /home/killdozer/Documents/Programming/VisionObjectDetection/VisionObjectDetection/robotVision/Headers/Line.h
+ /home/killdozer/Documents/Programming/VisionObjectDetection/VisionObjectDetection/robotVision/Headers/PlaneDetector.h
+ /home/killdozer/Documents/Programming/VisionObjectDetection/VisionObjectDetection/robotVision/Headers/Point.h
+ /home/killdozer/Documents/Programming/VisionObjectDetection/VisionObjectDetection/robotVision/Headers/Point2D.h
+ /home/killdozer/Documents/Programming/VisionObjectDetection/VisionObjectDetection/robotVision/Headers/Point3D.h
  /home/killdozer/Documents/Programming/VisionObjectDetection/VisionObjectDetection/robotVision/main.cpp
  /usr/local/include/opencv/cxcore.h
  /usr/local/include/opencv2/calib3d.hpp

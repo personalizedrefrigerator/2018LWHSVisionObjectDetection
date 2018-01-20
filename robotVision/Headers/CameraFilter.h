@@ -9,6 +9,9 @@
 // Include the camera normalizer (for correcting camera errors).
 #include "CameraNormalizer.h"
 
+// Include the plane detector.
+#include "PlaneDetector.h"
+
 
 class CameraFilter
 {
@@ -18,6 +21,7 @@ class CameraFilter
 	void cornerHarris();
 	void detectCorners();
 	void detectLineSegments();
+	void showPlane();
 	
 	void runAllFilters();
 
@@ -31,4 +35,5 @@ class CameraFilter
 
 	bool normalized=false;
 	CameraNormalizer normalizer=CameraNormalizer();
+	PlaneDetector planeDetector=PlaneDetector();
 };

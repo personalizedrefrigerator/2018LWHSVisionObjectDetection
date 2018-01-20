@@ -3,6 +3,12 @@
 
 CMakeFiles/Vision.dir/Source/CameraFilter.cpp.o: /home/killdozer/Documents/Programming/VisionObjectDetection/VisionObjectDetection/robotVision/Headers/CameraFilter.h
 CMakeFiles/Vision.dir/Source/CameraFilter.cpp.o: /home/killdozer/Documents/Programming/VisionObjectDetection/VisionObjectDetection/robotVision/Headers/CameraNormalizer.h
+CMakeFiles/Vision.dir/Source/CameraFilter.cpp.o: /home/killdozer/Documents/Programming/VisionObjectDetection/VisionObjectDetection/robotVision/Headers/Color.h
+CMakeFiles/Vision.dir/Source/CameraFilter.cpp.o: /home/killdozer/Documents/Programming/VisionObjectDetection/VisionObjectDetection/robotVision/Headers/Line.h
+CMakeFiles/Vision.dir/Source/CameraFilter.cpp.o: /home/killdozer/Documents/Programming/VisionObjectDetection/VisionObjectDetection/robotVision/Headers/PlaneDetector.h
+CMakeFiles/Vision.dir/Source/CameraFilter.cpp.o: /home/killdozer/Documents/Programming/VisionObjectDetection/VisionObjectDetection/robotVision/Headers/Point.h
+CMakeFiles/Vision.dir/Source/CameraFilter.cpp.o: /home/killdozer/Documents/Programming/VisionObjectDetection/VisionObjectDetection/robotVision/Headers/Point2D.h
+CMakeFiles/Vision.dir/Source/CameraFilter.cpp.o: /home/killdozer/Documents/Programming/VisionObjectDetection/VisionObjectDetection/robotVision/Headers/Point3D.h
 CMakeFiles/Vision.dir/Source/CameraFilter.cpp.o: /home/killdozer/Documents/Programming/VisionObjectDetection/VisionObjectDetection/robotVision/Source/CameraFilter.cpp
 CMakeFiles/Vision.dir/Source/CameraFilter.cpp.o: /usr/local/include/opencv/cxcore.h
 CMakeFiles/Vision.dir/Source/CameraFilter.cpp.o: /usr/local/include/opencv2/calib3d.hpp
@@ -403,6 +409,12 @@ CMakeFiles/Vision.dir/Source/Point3D.cpp.o: /home/killdozer/Documents/Programmin
 
 CMakeFiles/Vision.dir/main.cpp.o: /home/killdozer/Documents/Programming/VisionObjectDetection/VisionObjectDetection/robotVision/Headers/CameraFilter.h
 CMakeFiles/Vision.dir/main.cpp.o: /home/killdozer/Documents/Programming/VisionObjectDetection/VisionObjectDetection/robotVision/Headers/CameraNormalizer.h
+CMakeFiles/Vision.dir/main.cpp.o: /home/killdozer/Documents/Programming/VisionObjectDetection/VisionObjectDetection/robotVision/Headers/Color.h
+CMakeFiles/Vision.dir/main.cpp.o: /home/killdozer/Documents/Programming/VisionObjectDetection/VisionObjectDetection/robotVision/Headers/Line.h
+CMakeFiles/Vision.dir/main.cpp.o: /home/killdozer/Documents/Programming/VisionObjectDetection/VisionObjectDetection/robotVision/Headers/PlaneDetector.h
+CMakeFiles/Vision.dir/main.cpp.o: /home/killdozer/Documents/Programming/VisionObjectDetection/VisionObjectDetection/robotVision/Headers/Point.h
+CMakeFiles/Vision.dir/main.cpp.o: /home/killdozer/Documents/Programming/VisionObjectDetection/VisionObjectDetection/robotVision/Headers/Point2D.h
+CMakeFiles/Vision.dir/main.cpp.o: /home/killdozer/Documents/Programming/VisionObjectDetection/VisionObjectDetection/robotVision/Headers/Point3D.h
 CMakeFiles/Vision.dir/main.cpp.o: /home/killdozer/Documents/Programming/VisionObjectDetection/VisionObjectDetection/robotVision/main.cpp
 CMakeFiles/Vision.dir/main.cpp.o: /usr/local/include/opencv/cxcore.h
 CMakeFiles/Vision.dir/main.cpp.o: /usr/local/include/opencv2/calib3d.hpp

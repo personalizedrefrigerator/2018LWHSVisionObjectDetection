@@ -24,6 +24,7 @@ CameraFilter::CameraFilter(unsigned int cameraNumber)//cv::Mat startingData, uns
 void CameraFilter::setData(cv::Mat data)
 {
 	this->data=data;
+	planeDetector.setImage(data);
 }
 
 // Correct errors in the camera.
@@ -124,12 +125,12 @@ void CameraFilter::detectLineSegments()
 
 	// Normalize the brightness and change the contrast.
 	cv::equalizeHist(grayscaleVersion, grayscaleVersion);
-	// Detect edges.
-	cv::Canny(data, edges, 50, 150, 3);
+	// Detect edges. Min Max size.
+	cv::Canny(data, edges, 50, 140, 3);
 	//edges.copyTo(data);
 	// Run a Hough line transform. 1 location accuracy, angle accuracy, threshold, min line length,
 	//min gap.
-	cv::HoughLinesP(edges, lines, 2, 1, 10, 54, 10);
+	cv::HoughLinesP(edges, lines, 2, 1, 10, 54, 1);
 
 	// For each line,
 	for(int i=0; i<lines.size(); i++)
@@ -148,6 +149,7 @@ void CameraFilter::detectLineSegments()
 			{
 				data.at<unsigned char>(y, x*3)=0;
 				data.at<unsigned char>(y, x*3+1)=0;
+				data.at<unsigned char>(y, x*3+1)=255;
 			}
 		}
 	}
@@ -166,13 +168,24 @@ void CameraFilter::erodeAndDilate()
 			cv::Point(-1, -1),  1); // An anchor of nowhere and 1 iteration.
 }
 
+// Show a plane found by the plane detector.
+void CameraFilter::showPlane()
+{
+	//std::cout << "Detecting 2D points.\n";
+	planeDetector.detectPoints2D(); // Detect the points on the plane.
+	//std::cout << "Detecting significant points.\n";
+	planeDetector.detectSignificantPoints(); // Detect parts of the edge deemed "significant."
+	planeDetector.showPlaneRegion(data);
+}
+
 // Run all camera filters.
 void CameraFilter::runAllFilters()
 {
 	normalize();
 	erodeAndDilate();
 	//detectCorners();
-	detectLineSegments();
+	//detectLineSegments();
 	//detectCorners();
-	cornerHarris();
+	//cornerHarris();
+	showPlane();
 }

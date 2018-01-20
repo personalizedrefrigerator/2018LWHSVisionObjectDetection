@@ -34,10 +34,54 @@ int Color::getColor()
 	}
 }
 
+
+// Get red, green, and blue components of the color.
+unsigned char Color::getR()
+{
+	return r;
+}
+
+unsigned char Color::getG()
+{
+	return g;
+}
+
+unsigned char Color::getB()
+{
+	return b;
+}
+
 double Color::operator-(Color other)
 {
-	short deltaR=(short)r-other.r;
-	short deltaG=(short)g-other.g;
-	short deltaB=(short)b-other.b;
+	unsigned int deltaR=(unsigned int)r-other.r;
+	unsigned int deltaG=(unsigned int)g-other.g;
+	unsigned int deltaB=(unsigned int)b-other.b;
 	return sqrt(deltaR*deltaR + deltaG*deltaG + deltaB*deltaB);
+}
+
+Color Color::operator/(double divideBy)
+{
+	unsigned char newRed, newGreen, newBlue;
+	newRed=(unsigned char)(r/divideBy);
+	newGreen=(unsigned char)(g/divideBy);
+	newBlue=(unsigned char)(b/divideBy);
+	
+	return Color(newRed, newGreen, newBlue);
+}
+
+Color Color::operator+(Color sumWith)
+{
+	unsigned char newRed, newGreen, newBlue;
+	newRed=(unsigned char)(r + sumWith.getR());
+	newGreen=(unsigned char)(g + sumWith.getG());
+	newBlue=(unsigned char)(b + sumWith.getB());
+	
+	return Color(newRed, newGreen, newBlue);
+}
+
+void Color::operator+=(Color sumWith)
+{
+	r+=sumWith.getR();
+	g+=sumWith.getG();
+	b+=sumWith.getB();
 }

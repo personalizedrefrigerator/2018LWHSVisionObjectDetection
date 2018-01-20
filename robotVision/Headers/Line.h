@@ -7,13 +7,14 @@
 class Line
 {
 	private:
-	Point * point1;
-	Point * point2;
+	Point * point1=nullptr;
+	Point * point2=nullptr;
 
 	public:
 	Line();
 	Line(Point * point1, Point * point2);
 	double getSlope(char dimension, char dimensionAcross); // Get the slope of the line, across a given dimension.
+	void setPoints(Point * point1, Point * point2);
 	double getAngle2D();
 	bool hasSlope(char dimensionAcross);
 	~Line();

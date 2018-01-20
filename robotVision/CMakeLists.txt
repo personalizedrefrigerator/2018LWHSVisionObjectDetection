@@ -1,4 +1,6 @@
 cmake_minimum_required(VERSION 3.1) #CMAKE_CXX_STANDARD
+
+set(CMAKE_CONFIGURATION_TYPES Release CACHE STRING "" FORCE)
 project(Vision)
 
 set(CMAKE_CXX_STANDARD 11)

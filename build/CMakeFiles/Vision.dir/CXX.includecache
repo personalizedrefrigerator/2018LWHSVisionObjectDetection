@@ -13,6 +13,8 @@ opencv2/imgproc.hpp
 -
 CameraNormalizer.h
 /home/killdozer/Documents/Programming/VisionObjectDetection/VisionObjectDetection/robotVision/Headers/CameraNormalizer.h
+PlaneDetector.h
+/home/killdozer/Documents/Programming/VisionObjectDetection/VisionObjectDetection/robotVision/Headers/PlaneDetector.h
 
 /home/killdozer/Documents/Programming/VisionObjectDetection/VisionObjectDetection/robotVision/Headers/CameraNormalizer.h
 opencv2/opencv.hpp

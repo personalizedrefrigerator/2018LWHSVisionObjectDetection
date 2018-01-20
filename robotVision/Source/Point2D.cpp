@@ -3,10 +3,16 @@
 // Henry Heino.
 
 // Construct a Point3D.
-Point3D::Point2D(double x, double y)
+Point2D::Point2D(double x, double y)
 {
 	this->x=x;
 	this->y=y;
+}
+
+Point2D::Point2D(const Point2D& makeFrom)
+{
+	this->x=makeFrom.x;
+	this->y=makeFrom.y;
 }
 
 // Get a component of the point.

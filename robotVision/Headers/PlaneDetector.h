@@ -49,7 +49,6 @@ class PlaneDetector
 	int colorChangeThreshold=20;
 
 	// An array storing whether any given pixel has been visited.
-	bool * visited=nullptr;
+	std::vector<bool> visited;
 	unsigned int visitedLength=0;
-	unsigned int visitedByteLength=0;
 };

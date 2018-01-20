@@ -2,5 +2,6 @@
 
 class Point
 {
+    public:
     virtual double getComponent(char componentName)=0;
 };

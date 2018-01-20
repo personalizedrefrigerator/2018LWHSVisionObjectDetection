@@ -12,6 +12,10 @@
 #include "Point2D.h"
 #include "Color.h"
 
+// Include math.
+#include <math.h>
+#define PI 3.1415926535897932384626433
+
 // Set the plane detector's image.
 void PlaneDetector::setImage(cv::Mat image)
 {
@@ -22,7 +26,7 @@ void PlaneDetector::setImage(cv::Mat image)
 void PlaneDetector::detectPoints2D()
 {
 	// BFS, starting at bottom.
-	std::queue<Point2D> fringe;
+	std::deque<Point2D> fringe;
 
 	// Choose a point at the very bottom.
 	Point2D current=Point2D(image.rows-1, image.cols/2);
@@ -36,7 +40,7 @@ void PlaneDetector::detectPoints2D()
 	planePoints.push_back(current);
 	
 	// Define variables.
-	Point2D considering;
+	Point2D considering=Point2D(0, 0);
 	int x, y;
 
 	// Clear what has been visited.
@@ -45,7 +49,8 @@ void PlaneDetector::detectPoints2D()
 	// Add points to the plane.
 	do
 	{
-		current=fringe.pop_front();
+		current=fringe.front();
+		fringe.pop_front();
 		setVisited(current, true);
 		
 		for(x=-1; x<=1; x++)
@@ -96,15 +101,17 @@ void PlaneDetector::detectSignificantPoints()
 	bool firstTime=true;
 	double currentEdgeSlope, lastEdgeSlope;
 
-
+	double angle;
 
 	// Go through all of the edges, C at a time.
 	for(int pixelIndex=0; pixelIndex < edgePoints2D.size(); pixelIndex++)
 	{
 		nextLine=getSlopeOfEdge(pixelIndex, numberOfPixelsConsidering);
 
+		angle=nextLine.getAngle2D();
+
 		// Get the slope of the current part of the edge.
-		currentEdgeSlope=nextLine.getAngle2D(edgePoints2D.at(pixelIndex)) % PI; // TODO: If PI is undefined, #define it. PI ~= 3.1415926535898
+		currentEdgeSlope=angle-PI*((int)(nextLine.getAngle2D() / PI)); // TODO: If PI is undefined, #define it. PI ~= 3.1415926535898
 
 		if(currentEdgeSlope > PI/2)
 		{
@@ -133,9 +140,9 @@ void PlaneDetector::setVisited(Point2D point, bool visited)
 {
 	unsigned int index=point.x+point.y*image.cols;
 
-	if(isOnImage(point) && visited != nullptr && index<visitedLength)
+	if(isOnImage(point) && index<visitedLength)
 	{
-		visited[index]=visited;
+		this->visited.at(index)=visited;
 	}
 }
 
@@ -144,9 +151,9 @@ bool PlaneDetector::getVisited(Point2D point)
 {
 	unsigned int index=point.x+point.y*image.cols;
 
-	if(isOnImage(point) && visited != nullptr && index<visitedLength)
+	if(isOnImage(point) && index<visitedLength)
 	{
-		return visited[index];
+		return visited.at(index);
 	}
 
 	return true;
@@ -155,19 +162,11 @@ bool PlaneDetector::getVisited(Point2D point)
 // Clear the array of visited pixels.
 void PlaneDetector::clearVisited()
 {
-	if(visited != nullptr)
-	{
-		free(visited);
-	}
+	visited.clear();
 
 	visitedLength=image.rows*image.cols;
-
-	visitedByteLength=visitedLength*sizeof(bool);
-
-	// TODO: Check this, sizeof(bool) might be 1/3...
-	visited=(bool *)malloc(visitedByteLength);
-
-	memset(visited, false, visitedByteLength);
+	visited.resize(visitedLength, false);
+	//visitedByteLength=visitedLength*sizeof(bool);
 }
 
 // Check whether a point is on the image.
@@ -206,7 +205,7 @@ Line PlaneDetector::getSlopeOfEdge(unsigned int startIndex, unsigned int numberO
 {
 	if(numberOfPointsToConsider == 0 || startIndex+numberOfPointsToConsider >= edgePoints2D.size())
 	{
-		return Line(Point2D(0, 0), Point2D(0, 0));
+		return Line(new Point2D(0, 0), new Point2D(0, 0));
 	}
 	double averagedX=0.0;
 	double averagedY=0.0;
@@ -225,8 +224,8 @@ Line PlaneDetector::getSlopeOfEdge(unsigned int startIndex, unsigned int numberO
 	averagedX/=numberOfPointsToConsider;
 	averagedY/=numberOfPointsToConsider;
 
-	Point2D point1=edgePoints2D.at(startIndex);
-	Point2D point2=Point2D(point1.x+averagedX, point2.y+averagedY);
+	Point2D * point1=new Point2D(edgePoints2D.at(startIndex));
+	Point2D * point2=new Point2D(point1->x+averagedX, point1->y+averagedY);
 
 	Line result=Line(point1, point2);
 	return result;
@@ -235,8 +234,5 @@ Line PlaneDetector::getSlopeOfEdge(unsigned int startIndex, unsigned int numberO
 // Deconstruct the detector.
 PlaneDetector::~PlaneDetector()
 {
-	if(visited != nullptr)
-	{
-		free(visited);
-	}
+	// Free any pointers here.
 }

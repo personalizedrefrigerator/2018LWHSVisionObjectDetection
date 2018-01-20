@@ -1,6 +1,6 @@
 #include "Color.h"
 
-#include <math>
+#include <math.h>
 
 Color::Color(unsigned char r, unsigned char g, unsigned char b)
 {
@@ -34,7 +34,7 @@ int Color::getColor()
 	}
 }
 
-double Color::operator-(Color &other)
+double Color::operator-(Color other)
 {
 	short deltaR=(short)r-other.r;
 	short deltaG=(short)g-other.g;

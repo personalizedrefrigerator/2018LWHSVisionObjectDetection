@@ -1,0 +1,3 @@
+/home/killdozer/Documents/Programming/VisionObjectDetection/VisionObjectDetection/build/CMakeFiles/rebuild_cache.dir
+/home/killdozer/Documents/Programming/VisionObjectDetection/VisionObjectDetection/build/CMakeFiles/Vision.dir
+/home/killdozer/Documents/Programming/VisionObjectDetection/VisionObjectDetection/build/CMakeFiles/edit_cache.dir

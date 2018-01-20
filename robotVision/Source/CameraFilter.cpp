@@ -4,10 +4,13 @@
 CameraFilter::CameraFilter(unsigned int cameraNumber)//cv::Mat startingData, unsigned int cameraNumber)
 {
 	//data=startingData;
-
+	std::cout << "Loading camera filter...\n";
 	normalizer.setCameraNumber(cameraNumber);
+	std::cout << "Attemptint to load data...\n";
 	bool couldLoadData=normalizer.loadData();
 	
+	std::cout << "Data loaded!" << couldLoadData << "\n";
+
 	// If a file containing the calibration data couldn't be found,
 	if(!couldLoadData)
 	{

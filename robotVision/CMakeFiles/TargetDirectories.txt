@@ -1,3 +1,0 @@
-/home/bob/VisionObjectDetection/robotVision/CMakeFiles/edit_cache.dir
-/home/bob/VisionObjectDetection/robotVision/CMakeFiles/rebuild_cache.dir
-/home/bob/VisionObjectDetection/robotVision/CMakeFiles/Vision.dir

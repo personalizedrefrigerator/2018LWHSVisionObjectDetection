@@ -20,10 +20,10 @@ int main()
 	std::cout << "Camera number: ";
 
 	// Create a variable to store the string version of the camera number.
-	std::string cameraNumberResponse;
-	std::cin >> cameraNumberResponse;
+	std::string cameraNumberResponse="0";
+	//std::cin >> cameraNumberResponse;
 
-	cameraNumber=atoi(cameraNumberResponse.c_str());
+	cameraNumber=1;//atoi(cameraNumberResponse.c_str());
 
 	// Create a filter.
 	CameraFilter filter=CameraFilter(cameraNumber);

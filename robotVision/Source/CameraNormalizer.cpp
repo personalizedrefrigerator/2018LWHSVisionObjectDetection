@@ -193,12 +193,15 @@ void CameraNormalizer::normalize(cv::Mat cameraData)
 // Load the data.
 bool CameraNormalizer::loadData()
 {
+	std::cout << "Starting to load data.\n";
 	std::ifstream fileInput;
+	std::cout << "Opened file input.\n";
 	fileInput.open(filePath);
 	
 	// If the file can be read from,
 	if(fileInput.good())
 	{
+		std::cout << "The file can be read from.\n";
 		// Create variables to store different parts of the data.
 		std::string cameraNumberData, cameraMatrixData, distortionCoefficentsData, cornerSizeData;
 
@@ -218,14 +221,20 @@ bool CameraNormalizer::loadData()
 		if(newCamera != cameraNumber)
 		{
 			// Try changing the file name.
-			setConfigurationURLBasedOnCameraNumber();
+			bool nameChanged=setConfigurationURLBasedOnCameraNumber();
 
 			fileInput.close();
 
-			// Try to re-load the data.
-			bool result = loadData();
+			bool result=false;
 
+			// If the name changed.
+			if(nameChanged)
+			{
+				// Try to re-load the data.
+				result = loadData();
+			}
 
+			// Return the result.
 			return result;
 		}		
 
@@ -235,22 +244,32 @@ bool CameraNormalizer::loadData()
 	else
 	{
 		// Try changing the file name.
-		setConfigurationURLBasedOnCameraNumber();
+		bool nameChanged=setConfigurationURLBasedOnCameraNumber();
 
-		// Try to re-load the data.
-		bool result = loadData();
+		bool result=false;
+		// If the name changed.
+		if(nameChanged)
+		{
+			// Try to re-load the data.
+			result = loadData();
+		}
 
+		// Return the result.
 		return result;
 	}
 }
 
-// Set the file path based on the camera number.
-void CameraNormalizer::setConfigurationURLBasedOnCameraNumber()
+// Set the file path based on the camera number. Return whether the name changed.
+bool CameraNormalizer::setConfigurationURLBasedOnCameraNumber()
 {
+	std::string oldPath=filePath;
+
 	// Try changing the file name.
 	std::stringstream newFilePath;
 	newFilePath << "cameraConfiguration" << cameraNumber << ".txt";
 	filePath=newFilePath.str();
+
+	return oldPath != filePath; // != is overloaded for std::string.
 }
 
 // Convert an OpenCV matrix to a readable format.

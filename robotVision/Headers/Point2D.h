@@ -13,6 +13,8 @@ class Point2D : public Point
 
 
 	Point2D(double x, double y);
+	Point2D(const Point2D&);
+	Point2D() {};
 
 	// Get the component of the vector on the specified dimension.
 	double getComponent(char componentName);

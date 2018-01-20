@@ -24,7 +24,7 @@ class CameraNormalizer
 	bool loadData();
 	bool loadData(std::string filePathToLoad) {}; // TODO: Implement.
 
-	void setConfigurationURLBasedOnCameraNumber();
+	bool setConfigurationURLBasedOnCameraNumber(); // Returns whether the name changed.
 	
 	private:
 	std::string filePath="cameraConfiguration.txt";

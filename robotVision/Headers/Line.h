@@ -7,12 +7,14 @@
 class Line
 {
 	private:
-	Point point1;
-	Point point2;
+	Point * point1;
+	Point * point2;
 
 	public:
-	Line(Point point1, Point point2);
+	Line();
+	Line(Point * point1, Point * point2);
 	double getSlope(char dimension, char dimensionAcross); // Get the slope of the line, across a given dimension.
-	double getAngle2D(Point2D at);
-	bool getHasSlope(char dimensionAcross);
+	double getAngle2D();
+	bool hasSlope(char dimensionAcross);
+	~Line();
 };

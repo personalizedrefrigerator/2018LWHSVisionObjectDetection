@@ -1,6 +1,6 @@
 #include<iostream>
 
-#include<stdlib>
+#include<cstdlib>
 
 // OpenCV headers.
 #include<opencv2/opencv.hpp>
@@ -23,7 +23,7 @@ int main()
 	std::string cameraNumberResponse;
 	std::cin >> cameraNumberResponse;
 
-	cameraNumber=atoi(cameraNumberResponse);
+	cameraNumber=atoi(cameraNumberResponse.c_str());
 
 	// Create a filter.
 	CameraFilter filter=CameraFilter(cameraNumber);

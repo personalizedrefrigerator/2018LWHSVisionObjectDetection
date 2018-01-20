@@ -1,4 +1,4 @@
-#include "Line.h"
+#pragma once
 #include "Point.h"
 #include "Point2D.h"
 

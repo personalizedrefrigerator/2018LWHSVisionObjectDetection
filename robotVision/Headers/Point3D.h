@@ -1,4 +1,5 @@
 #pragma once
+#include "Point.h"
 // A class storing a simple point, and opperations related to this.
 // Henry Heino
 

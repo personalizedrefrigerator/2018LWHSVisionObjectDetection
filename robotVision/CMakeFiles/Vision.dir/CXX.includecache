@@ -1,4 +1,4 @@
-#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
 
 #IncludeRegexScan: ^.*$
 
@@ -6,13 +6,13 @@
 
 #IncludeRegexTransform: 
 
-/home/killdozer/Documents/Programming/VisionObjectDetection/VisionObjectDetection/robotVision/Source/CameraFilter.cpp
+/home/bob/VisionObjectDetection/robotVision/Source/CameraFilter.cpp
 CameraFilter.h
-/home/killdozer/Documents/Programming/VisionObjectDetection/VisionObjectDetection/robotVision/Source/CameraFilter.h
+/home/bob/VisionObjectDetection/robotVision/Source/CameraFilter.h
 
-/home/killdozer/Documents/Programming/VisionObjectDetection/VisionObjectDetection/robotVision/Source/CameraNormalizer.cpp
+/home/bob/VisionObjectDetection/robotVision/Source/CameraNormalizer.cpp
 CameraNormalizer.h
-/home/killdozer/Documents/Programming/VisionObjectDetection/VisionObjectDetection/robotVision/Source/CameraNormalizer.h
+/home/bob/VisionObjectDetection/robotVision/Source/CameraNormalizer.h
 opencv2/opencv.hpp
 -
 opencv2/imgproc.hpp
@@ -22,15 +22,55 @@ fstream
 sstream
 -
 
-/home/killdozer/Documents/Programming/VisionObjectDetection/VisionObjectDetection/robotVision/main.cpp
+/home/bob/VisionObjectDetection/robotVision/Source/Color.cpp
+Color.h
+/home/bob/VisionObjectDetection/robotVision/Source/Color.h
+math
+-
+
+/home/bob/VisionObjectDetection/robotVision/Source/Line.cpp
+Point.h
+/home/bob/VisionObjectDetection/robotVision/Source/Point.h
+Line.h
+/home/bob/VisionObjectDetection/robotVision/Source/Line.h
+math
+-
+
+/home/bob/VisionObjectDetection/robotVision/Source/PlaneDetector.cpp
+PlaneDetector.h
+/home/bob/VisionObjectDetection/robotVision/Source/PlaneDetector.h
+opencv2/opencv.hpp
+-
+queue
+-
+cstdlib
+-
+Point3D.h
+/home/bob/VisionObjectDetection/robotVision/Source/Point3D.h
+Point2D.h
+/home/bob/VisionObjectDetection/robotVision/Source/Point2D.h
+Color.h
+/home/bob/VisionObjectDetection/robotVision/Source/Color.h
+
+/home/bob/VisionObjectDetection/robotVision/Source/Point2D.cpp
+Point2D.h
+/home/bob/VisionObjectDetection/robotVision/Source/Point2D.h
+
+/home/bob/VisionObjectDetection/robotVision/Source/Point3D.cpp
+Point3D.h
+/home/bob/VisionObjectDetection/robotVision/Source/Point3D.h
+
+/home/bob/VisionObjectDetection/robotVision/main.cpp
 iostream
+-
+cstdlib
 -
 opencv2/opencv.hpp
 -
 opencv2/imgproc.hpp
 -
 CameraFilter.h
-/home/killdozer/Documents/Programming/VisionObjectDetection/VisionObjectDetection/robotVision/CameraFilter.h
+/home/bob/VisionObjectDetection/robotVision/CameraFilter.h
 
 /usr/local/include/opencv/cxcore.h
 opencv2/core/core_c.h
@@ -152,10 +192,6 @@ popcntintrin.h
 immintrin.h
 -
 arm_neon.h
--
-immintrin.h
--
-immintrin.h
 -
 immintrin.h
 -
@@ -1317,4 +1353,34 @@ opencv2/imgproc.hpp
 -
 string
 -
+
+Headers/Color.h
+
+Headers/Line.h
+Point.h
+Headers/Point.h
+Point2D.h
+Headers/Point2D.h
+
+Headers/PlaneDetector.h
+opencv2/opencv.hpp
+-
+Point3D.h
+Headers/Point3D.h
+Point2D.h
+Headers/Point2D.h
+Color.h
+Headers/Color.h
+Line.h
+Headers/Line.h
+
+Headers/Point.h
+
+Headers/Point2D.h
+Point.h
+Headers/Point.h
+
+Headers/Point3D.h
+Point.h
+Headers/Point.h
 

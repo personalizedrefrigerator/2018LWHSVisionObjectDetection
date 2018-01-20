@@ -5,7 +5,7 @@
 
 // Standard libs.
 #include<queue>
-#include<stdlib>
+#include<cstdlib>
 
 // Include self-defined libraries.
 #include "Point3D.h"

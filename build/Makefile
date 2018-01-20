@@ -177,6 +177,33 @@ Source/CameraNormalizer.cpp.s:
 	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/Source/CameraNormalizer.cpp.s
 .PHONY : Source/CameraNormalizer.cpp.s
 
+Source/CameraOptionsTrackbarManager.o: Source/CameraOptionsTrackbarManager.cpp.o
+
+.PHONY : Source/CameraOptionsTrackbarManager.o
+
+# target to build an object file
+Source/CameraOptionsTrackbarManager.cpp.o:
+	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/Source/CameraOptionsTrackbarManager.cpp.o
+.PHONY : Source/CameraOptionsTrackbarManager.cpp.o
+
+Source/CameraOptionsTrackbarManager.i: Source/CameraOptionsTrackbarManager.cpp.i
+
+.PHONY : Source/CameraOptionsTrackbarManager.i
+
+# target to preprocess a source file
+Source/CameraOptionsTrackbarManager.cpp.i:
+	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/Source/CameraOptionsTrackbarManager.cpp.i
+.PHONY : Source/CameraOptionsTrackbarManager.cpp.i
+
+Source/CameraOptionsTrackbarManager.s: Source/CameraOptionsTrackbarManager.cpp.s
+
+.PHONY : Source/CameraOptionsTrackbarManager.s
+
+# target to generate assembly for a file
+Source/CameraOptionsTrackbarManager.cpp.s:
+	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/Source/CameraOptionsTrackbarManager.cpp.s
+.PHONY : Source/CameraOptionsTrackbarManager.cpp.s
+
 Source/Color.o: Source/Color.cpp.o
 
 .PHONY : Source/Color.o
@@ -354,6 +381,9 @@ help:
 	@echo "... Source/CameraNormalizer.o"
 	@echo "... Source/CameraNormalizer.i"
 	@echo "... Source/CameraNormalizer.s"
+	@echo "... Source/CameraOptionsTrackbarManager.o"
+	@echo "... Source/CameraOptionsTrackbarManager.i"
+	@echo "... Source/CameraOptionsTrackbarManager.s"
 	@echo "... Source/Color.o"
 	@echo "... Source/Color.i"
 	@echo "... Source/Color.s"

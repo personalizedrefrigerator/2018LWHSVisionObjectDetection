@@ -7,6 +7,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/Vision.dir/Source/Point3D.cpp.o"
   "CMakeFiles/Vision.dir/Source/Line.cpp.o"
   "CMakeFiles/Vision.dir/Source/Color.cpp.o"
+  "CMakeFiles/Vision.dir/Source/CameraOptionsTrackbarManager.cpp.o"
   "Vision.pdb"
   "Vision"
 )

@@ -15,6 +15,9 @@ CMakeFiles/Vision.dir/Source/CameraFilter.cpp.o
 CMakeFiles/Vision.dir/Source/CameraNormalizer.cpp.o
  /home/ubuntu/VisionObjectDetection/robotVision/Headers/CameraNormalizer.h
  /home/ubuntu/VisionObjectDetection/robotVision/Source/CameraNormalizer.cpp
+CMakeFiles/Vision.dir/Source/CameraOptionsTrackbarManager.cpp.o
+ /home/ubuntu/VisionObjectDetection/robotVision/Headers/CameraOptionsTrackbarManager.h
+ /home/ubuntu/VisionObjectDetection/robotVision/Source/CameraOptionsTrackbarManager.cpp
 CMakeFiles/Vision.dir/Source/Color.cpp.o
  /home/ubuntu/VisionObjectDetection/robotVision/Headers/Color.h
  /home/ubuntu/VisionObjectDetection/robotVision/Source/Color.cpp
@@ -43,6 +46,7 @@ CMakeFiles/Vision.dir/Source/Point3D.cpp.o
 CMakeFiles/Vision.dir/main.cpp.o
  /home/ubuntu/VisionObjectDetection/robotVision/Headers/CameraFilter.h
  /home/ubuntu/VisionObjectDetection/robotVision/Headers/CameraNormalizer.h
+ /home/ubuntu/VisionObjectDetection/robotVision/Headers/CameraOptionsTrackbarManager.h
  /home/ubuntu/VisionObjectDetection/robotVision/Headers/Color.h
  /home/ubuntu/VisionObjectDetection/robotVision/Headers/Line.h
  /home/ubuntu/VisionObjectDetection/robotVision/Headers/PlaneDetector.h

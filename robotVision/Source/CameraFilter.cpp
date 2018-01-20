@@ -103,7 +103,7 @@ void CameraFilter::detectCorners()
 	std::vector<cv::Point2f> cornersFound;
 	
 	// Find the first 1500 corners, in an 8x8 area.
-	cv::goodFeaturesToTrack(grayscaleVersion, cornersFound, 1500, 0.01, 20, cv::Mat(), 10, false, 0.04);
+	cv::goodFeaturesToTrack(grayscaleVersion, cornersFound, 1500, 0.01, 50, cv::Mat(), 15, true, 0.08);
 
 	// For each corner,
 	for(unsigned int i=0; i<cornersFound.size(); i++)
@@ -176,7 +176,7 @@ void CameraFilter::showPlane()
 	//std::cout << "Detecting 2D points.\n";
 	planeDetector.detectPoints2D(); // Detect the points on the plane.
 	//std::cout << "Detecting significant points.\n";
-	planeDetector.detectSignificantPoints(); // Detect parts of the edge deemed "significant."
+	//planeDetector.detectSignificantPoints(); // Detect parts of the edge deemed "significant."
 	planeDetector.showPlaneRegion(data);
 }
 
@@ -191,9 +191,9 @@ void CameraFilter::runAllFilters()
 {
 	normalize();
 	erodeAndDilate();
-	//detectCorners();
 	//detectLineSegments();
 	//detectCorners();
-	//cornerHarris();
 	showPlane();
+	detectCorners();
+	//cornerHarris();
 }

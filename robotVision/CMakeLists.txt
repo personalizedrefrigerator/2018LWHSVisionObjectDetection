@@ -14,7 +14,7 @@ include_directories(${OPENCV_INCLUDE_DIRS})
 include_directories(Headers)
 
 # Create variables to store the source files stored in the root directory.
-set(SOURCE_NAMES "CameraNormalizer.cpp;CameraFilter.cpp;PlaneDetector.cpp;Point2D.cpp;Point3D.cpp;Line.cpp;Color.cpp")
+set(SOURCE_NAMES "CameraNormalizer.cpp;CameraFilter.cpp;PlaneDetector.cpp;Point2D.cpp;Point3D.cpp;Line.cpp;Color.cpp;CameraOptionsTrackbarManager.cpp")
 
 set(SOURCE_DIR "Source")
 

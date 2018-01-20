@@ -61,7 +61,8 @@ void PlaneDetector::detectPoints2D()
 	do
 	{
 		times++;
-		current=fringe.back();
+		current=fringe.front();
+		fringe.pop_front();
 		fringeSize-=1;
 		setVisited(current, true);
 
@@ -104,7 +105,6 @@ void PlaneDetector::detectPoints2D()
 				}
 			}
 		}
-		fringe.pop_back();
 
 		//std::cout << fringe.size() << "\n";
 	}
@@ -116,35 +116,37 @@ void PlaneDetector::detectSignificantPoints()
 {
 	significantPoints.clear();
 
-	unsigned int numberOfPixelsConsidering=100;
+	unsigned int numberOfPixelsConsidering=40;
 
 	double accuracy=significantPointAccuracy;
 
 	double averageChange;
 	double maxDifference;
 
-	Line nextLine;
+	Line nextLine, previousLine;
 
 	bool firstTime=true;
 	double currentEdgeSlope, lastEdgeSlope;
 
-	double angle;
+	double angle, lastAngle;
 
 	// Create a variable to store the number of pixels actualy
 	//touching the line.
-	unsigned int pixelsOnLine;
+	unsigned int pixelsOnLine, pixelsOnPreviousLine;
 
 	//std::cout << "Go through all of the edges, C at a time.\n";
-	for(int pixelIndex=0; pixelIndex < edgePoints2D.size(); pixelIndex++)
+	for(int pixelIndex=numberOfPixelsConsidering; pixelIndex < edgePoints2D.size()-numberOfPixelsConsidering; pixelIndex+=10)
 	{
 		// Get the slope of the current edge (the current pixel and the next
 		//numberOfPixelsConsidering).
 		//std::cout << "Getting edge slope\n";
+		pixelsOnPreviousLine=getSlopeOfEdge(previousLine, pixelIndex-numberOfPixelsConsidering, pixelIndex);
 		pixelsOnLine=getSlopeOfEdge(nextLine, pixelIndex, numberOfPixelsConsidering);
 		//nextLine.freeMemory=true; // The points in the line can be freed from memory on deconstruct.
 		//std::cout << "Getting angle 2D.\n";
 		// Get the angle the line makes with the horizontal axis.
 		angle=nextLine.getAngle2D();
+		lastAngle=previousLine.getAngle2D();
 
 		//std::cout << "Getting slope of current part of edge.\n";
 		// Get the slope of the current part of the edge.
@@ -162,7 +164,8 @@ void PlaneDetector::detectSignificantPoints()
 			{
 				continue;
 			}
-			if((int)(currentEdgeSlope*accuracy) != (int)(lastEdgeSlope*accuracy) && pixelsOnLine >= numberOfPixelsConsidering*2/3)
+
+			if((int)(currentEdgeSlope*accuracy) != (int)(lastAngle*accuracy) && pixelsOnLine >= numberOfPixelsConsidering*2/3 && pixelsOnPreviousLine >= numberOfPixelsConsidering*2/3)
 			{
 				// Add the pixel to the significant points.
 				significantPoints.push_back(edgePoints2D.at(pixelIndex));
@@ -174,7 +177,7 @@ void PlaneDetector::detectSignificantPoints()
 		}
 
 		// Update the previous versions,
-		lastEdgeSlope=currentEdgeSlope;
+		//lastEdgeSlope=currentEdgeSlope;
 		//previousLine=nextLine;
 	}
 }
@@ -240,7 +243,7 @@ void PlaneDetector::showPlaneRegion(cv::Mat image)
 
 		for(c=0; c<3; c++)
 		{
-			image.at<unsigned char>(point.y, point.x*3+c)=0+c*100;
+			//image.at<unsigned char>(point.y, point.x*3+c)=0+c*100;
 		}
 	}
 
@@ -368,7 +371,7 @@ unsigned int PlaneDetector::getSlopeOfEdge(Line &output, unsigned int startIndex
 	int lineY;
 
 	// For every pixel on the line,
-	for(int index=startIndex; index<startIndex+numberOfPointsToConsider; index++)
+	for(int index=startIndex; index<startIndex+numberOfPointsToConsider && index < edgePoints2D.size(); index++)
 	{
 		currentPoint=edgePoints2D.at(index);
 		
@@ -379,7 +382,7 @@ unsigned int PlaneDetector::getSlopeOfEdge(Line &output, unsigned int startIndex
 		{
 			lineY=output.getAt('y', 'x', currentX);
 
-			if(lineY == currentY)
+			if((int)(lineY/4) == (int)(currentY/4))
 			{
 				pixelsOnLine++;
 			}

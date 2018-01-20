@@ -8,6 +8,7 @@
 
 // Headers from this program.
 #include "CameraFilter.h"
+#include "CameraOptionsTrackbarManager.h"
 
 // Run cmake to compile this for release, as
 //cmake ../robotVision -DCMAKE_BUILD_TYPE=Release
@@ -50,6 +51,24 @@ int main()
 	// Open a window.
 	cv::namedWindow("Camera View", cv::WINDOW_AUTOSIZE);
 
+	// Create a trackbar manager.
+	CameraOptionsTrackbarManager trackbarManager=CameraOptionsTrackbarManager();
+
+	// Create a variable to store information from the trackbars.
+	PlaneDetectorOptions options=PlaneDetectorOptions();
+	
+	trackbarManager.setWindowName("Camera View");
+
+	int colorChangeThreshold=(int)options.colorChangeThreshold; 
+	int averageChangeThreshold=(int)options.averageChangeThreshold;
+	int significantPointAccuracy=(int)(options.significantPointAccuracy*10);
+
+	// Add trackbars.
+	trackbarManager.addTrackbar(std::string("Color Change Threshold"), 256, &colorChangeThreshold);
+	trackbarManager.addTrackbar(std::string("Average Value Change Threshold"), 256, &averageChangeThreshold);
+	trackbarManager.addTrackbar(std::string("Significant point accuracy."), 100, &significantPointAccuracy);
+
+
 	// Create a variable to store the last key.
 	char lastKey='\0';
 
@@ -58,6 +77,12 @@ int main()
 	{
 		video >> currentFrame;
 		filter.setData(currentFrame);
+
+		options.colorChangeThreshold=(double)colorChangeThreshold;
+		options.averageChangeThreshold=(double)averageChangeThreshold;
+		options.significantPointAccuracy=significantPointAccuracy/10.0;
+
+		filter.setPlaneDetectorOptions(options);
 		filter.runAllFilters();		
 
 		cv::imshow("Camera View", currentFrame);

@@ -6,6 +6,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_CHECK_CXX
   "/home/ubuntu/VisionObjectDetection/robotVision/Source/CameraFilter.cpp" "/home/ubuntu/VisionObjectDetection/build/CMakeFiles/Vision.dir/Source/CameraFilter.cpp.o"
   "/home/ubuntu/VisionObjectDetection/robotVision/Source/CameraNormalizer.cpp" "/home/ubuntu/VisionObjectDetection/build/CMakeFiles/Vision.dir/Source/CameraNormalizer.cpp.o"
+  "/home/ubuntu/VisionObjectDetection/robotVision/Source/CameraOptionsTrackbarManager.cpp" "/home/ubuntu/VisionObjectDetection/build/CMakeFiles/Vision.dir/Source/CameraOptionsTrackbarManager.cpp.o"
   "/home/ubuntu/VisionObjectDetection/robotVision/Source/Color.cpp" "/home/ubuntu/VisionObjectDetection/build/CMakeFiles/Vision.dir/Source/Color.cpp.o"
   "/home/ubuntu/VisionObjectDetection/robotVision/Source/Line.cpp" "/home/ubuntu/VisionObjectDetection/build/CMakeFiles/Vision.dir/Source/Line.cpp.o"
   "/home/ubuntu/VisionObjectDetection/robotVision/Source/PlaneDetector.cpp" "/home/ubuntu/VisionObjectDetection/build/CMakeFiles/Vision.dir/Source/PlaneDetector.cpp.o"

@@ -59,7 +59,7 @@ class PlaneDetector
 
 	double colorChangeThreshold=15;
 	double averageChangeThreshold=48.0;
-	double significantPointAccuracy=3.0;
+	double significantPointAccuracy=5.0;
 
 	// An array storing whether any given pixel has been visited.
 	std::vector<bool> visited;

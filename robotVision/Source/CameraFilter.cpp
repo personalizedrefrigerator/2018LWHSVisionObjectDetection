@@ -103,7 +103,7 @@ void CameraFilter::detectCorners()
 	std::vector<cv::Point2f> cornersFound;
 	
 	// Find the first 1500 corners, in an 8x8 area.
-	cv::goodFeaturesToTrack(grayscaleVersion, cornersFound, 1500, 0.01, 50, cv::Mat(), 15, true, 0.08);
+	cv::goodFeaturesToTrack(grayscaleVersion, cornersFound, 1500, 0.01, 3, cv::Mat(), 9, false, 0.08);
 
 	// For each corner,
 	for(unsigned int i=0; i<cornersFound.size(); i++)
@@ -158,16 +158,39 @@ void CameraFilter::detectLineSegments()
 }
 
 // Erode and dilate the camera input.
-void CameraFilter::erodeAndDilate()
+void CameraFilter::erodeAndDilate(cv::Mat dataToUse, unsigned int recursions)
 {
-	cv::Mat erodeDilateElement=cv::getStructuringElement(cv::MORPH_RECT, 
-			cv::Size(3, 3)); // Change the size to emphasize different shapes.
+	cv::Mat erodeDilateElement=cv::getStructuringElement(cv::MORPH_ELLIPSE, 
+			cv::Size(5, 5)); // Change the size to emphasize different shapes.
 	
 	// Erode and dilate
-	cv::erode(data, data, erodeDilateElement,
-			cv::Point(-1, -1), 1); // An anchor of nowhere and 1 iteration.
-		cv::dilate(data, data, erodeDilateElement,
-			cv::Point(-1, -1),  1); // An anchor of nowhere and 1 iteration.
+	cv::dilate(dataToUse, dataToUse, erodeDilateElement,
+			cv::Point(-1, -1),  recursions); // An anchor of nowhere and 1 iteration.
+	cv::erode(dataToUse, dataToUse, erodeDilateElement,
+			cv::Point(-1, -1), recursions); // An anchor of nowhere and 1 iteration.
+}
+
+void CameraFilter::erodeAndDilate()
+{
+	erodeAndDilate(data, 1);
+}
+
+// Divide an image's colors into tiers.
+void CameraFilter::tier(int multiplier)
+{
+	int x, y, c;
+	unsigned char * ptr;
+	for(y=0; y<data.rows;y++)
+	{
+		ptr=data.ptr<unsigned char>(y);
+		for(x=0; x<data.cols; x++)
+		{
+			for(c=0; c<3; c++)
+			{
+				ptr[x*3+c]=((unsigned char)(ptr[x*3+c]/multiplier))*multiplier;
+			}
+		}
+	}
 }
 
 // Show a plane found by the plane detector.
@@ -176,8 +199,43 @@ void CameraFilter::showPlane()
 	//std::cout << "Detecting 2D points.\n";
 	planeDetector.detectPoints2D(); // Detect the points on the plane.
 	//std::cout << "Detecting significant points.\n";
+
+	cv::Mat planeOutput=cv::Mat::zeros(data.rows, data.cols, CV_8UC3);
+	planeDetector.showPlaneRegion(planeOutput);
+	erodeAndDilate(planeOutput, 5);
+	
+	cv::Mat grayscaleVersion;
+	// Convert camera data to grayscale.
+	cvtColor(planeOutput, grayscaleVersion, cv::COLOR_BGR2GRAY);
+
+	// Create an array to store the corners found.
+	std::vector<cv::Point2f> cornersFound;
+	
+	// Find the first 4 corners, 0.1 quality, 7 min distance, empty mask, block size of 15, using
+	//a harris detector.
+	cv::goodFeaturesToTrack(grayscaleVersion, cornersFound, cornersToFind, 0.001, minCornerDistance, cv::Mat(), cornerBlockSize, useCornerHarris, cornerK);
+
+
 	//planeDetector.detectSignificantPoints(); // Detect parts of the edge deemed "significant."
 	planeDetector.showPlaneRegion(data);
+
+	// For each corner,
+	for(unsigned int i=0; i<cornersFound.size(); i++)
+	{
+		// Draw a circle.
+		cv::circle(data, cornersFound.at(i), 4, cv::Scalar(0, 100, 200, 200), 2, 8, 0); // 8 is line type. 2 is line-width.
+	}
+	
+}
+
+// Configure corner detection options.
+void CameraFilter::configureCornerDetection(double k, int cornersToFind, int minCornerDistance, int cornerBlockSize, bool useCornerHarris)
+{
+	this->cornerK=k;
+	this->cornersToFind=cornersToFind;
+	this->minCornerDistance=minCornerDistance;
+	this->cornerBlockSize=cornerBlockSize;
+	this->useCornerHarris=useCornerHarris;
 }
 
 // Set the plane detector options.
@@ -190,10 +248,11 @@ void CameraFilter::setPlaneDetectorOptions(PlaneDetectorOptions options)
 void CameraFilter::runAllFilters()
 {
 	normalize();
+	//tier(50);
 	erodeAndDilate();
 	//detectLineSegments();
 	//detectCorners();
 	showPlane();
-	detectCorners();
+	//detectCorners();
 	//cornerHarris();
 }

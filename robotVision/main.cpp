@@ -61,12 +61,20 @@ int main()
 
 	int colorChangeThreshold=(int)options.colorChangeThreshold; 
 	int averageChangeThreshold=(int)options.averageChangeThreshold;
-	int significantPointAccuracy=(int)(options.significantPointAccuracy*10);
+	int cornerK=4000,
+		cornersToFind=4,
+		minCornerDistance=4,
+		cornerBlockSize=10,
+		cornerHarris=0;
 
 	// Add trackbars.
 	trackbarManager.addTrackbar(std::string("Color Change Threshold"), 256, &colorChangeThreshold);
 	trackbarManager.addTrackbar(std::string("Average Value Change Threshold"), 256, &averageChangeThreshold);
-	trackbarManager.addTrackbar(std::string("Significant point accuracy."), 100, &significantPointAccuracy);
+	trackbarManager.addTrackbar(std::string("Corner K."), 16000, &cornerK);
+	trackbarManager.addTrackbar(std::string("Corners to find."), 20, &cornersToFind);
+	trackbarManager.addTrackbar(std::string("Minimum corner distance."), 160, &minCornerDistance);
+	trackbarManager.addTrackbar(std::string("Corner block size."), 20, &cornerBlockSize);
+	trackbarManager.addTrackbar(std::string("Corner harris?"), 1, &cornerHarris);
 
 
 	// Create a variable to store the last key.
@@ -75,12 +83,14 @@ int main()
 	// Enter the main loop.
 	do
 	{
+		// Load the current image seen by the camera into the current frame.
 		video >> currentFrame;
 		filter.setData(currentFrame);
 
 		options.colorChangeThreshold=(double)colorChangeThreshold;
 		options.averageChangeThreshold=(double)averageChangeThreshold;
-		options.significantPointAccuracy=significantPointAccuracy/10.0;
+
+		filter.configureCornerDetection((double)(cornerK/100000.0), cornersToFind+1, minCornerDistance+1, cornerBlockSize+1, (bool)cornerHarris);
 
 		filter.setPlaneDetectorOptions(options);
 		filter.runAllFilters();		
@@ -94,6 +104,10 @@ int main()
 
 	return 0;
 }
+
+
+
+
 
 
 // The result of learning OpenCV. Change things in this function to quickly test them.

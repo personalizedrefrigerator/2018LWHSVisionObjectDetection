@@ -4,10 +4,13 @@
 #include<opencv2/opencv.hpp>
 #include<opencv2/imgproc.hpp>
 
+#include "Point2D.h"
+#include <vector>
+
 class CornerDetector
 {
 	public:
-	void detectCorners(cv::Mat grayscaleInputImage);
+	std::vector<Point2D> detectCorners(cv::Mat grayscaleInputImage);
 	
 	void setOptions(double k, int cornersToFind, int minCornerDistance, int cornerBlockSize, bool useCornerHarris, double quality);
 	

@@ -8,10 +8,12 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/ubuntu/VisionObjectDetection/robotVision/Source/CameraNormalizer.cpp" "/home/ubuntu/VisionObjectDetection/build/CMakeFiles/Vision.dir/Source/CameraNormalizer.cpp.o"
   "/home/ubuntu/VisionObjectDetection/robotVision/Source/CameraOptionsTrackbarManager.cpp" "/home/ubuntu/VisionObjectDetection/build/CMakeFiles/Vision.dir/Source/CameraOptionsTrackbarManager.cpp.o"
   "/home/ubuntu/VisionObjectDetection/robotVision/Source/Color.cpp" "/home/ubuntu/VisionObjectDetection/build/CMakeFiles/Vision.dir/Source/Color.cpp.o"
+  "/home/ubuntu/VisionObjectDetection/robotVision/Source/CornerDetector.cpp" "/home/ubuntu/VisionObjectDetection/build/CMakeFiles/Vision.dir/Source/CornerDetector.cpp.o"
   "/home/ubuntu/VisionObjectDetection/robotVision/Source/Line.cpp" "/home/ubuntu/VisionObjectDetection/build/CMakeFiles/Vision.dir/Source/Line.cpp.o"
   "/home/ubuntu/VisionObjectDetection/robotVision/Source/PlaneDetector.cpp" "/home/ubuntu/VisionObjectDetection/build/CMakeFiles/Vision.dir/Source/PlaneDetector.cpp.o"
   "/home/ubuntu/VisionObjectDetection/robotVision/Source/Point2D.cpp" "/home/ubuntu/VisionObjectDetection/build/CMakeFiles/Vision.dir/Source/Point2D.cpp.o"
   "/home/ubuntu/VisionObjectDetection/robotVision/Source/Point3D.cpp" "/home/ubuntu/VisionObjectDetection/build/CMakeFiles/Vision.dir/Source/Point3D.cpp.o"
+  "/home/ubuntu/VisionObjectDetection/robotVision/Source/Shape.cpp" "/home/ubuntu/VisionObjectDetection/build/CMakeFiles/Vision.dir/Source/Shape.cpp.o"
   "/home/ubuntu/VisionObjectDetection/robotVision/main.cpp" "/home/ubuntu/VisionObjectDetection/build/CMakeFiles/Vision.dir/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")

@@ -231,6 +231,33 @@ Source/Color.cpp.s:
 	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/Source/Color.cpp.s
 .PHONY : Source/Color.cpp.s
 
+Source/CornerDetector.o: Source/CornerDetector.cpp.o
+
+.PHONY : Source/CornerDetector.o
+
+# target to build an object file
+Source/CornerDetector.cpp.o:
+	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/Source/CornerDetector.cpp.o
+.PHONY : Source/CornerDetector.cpp.o
+
+Source/CornerDetector.i: Source/CornerDetector.cpp.i
+
+.PHONY : Source/CornerDetector.i
+
+# target to preprocess a source file
+Source/CornerDetector.cpp.i:
+	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/Source/CornerDetector.cpp.i
+.PHONY : Source/CornerDetector.cpp.i
+
+Source/CornerDetector.s: Source/CornerDetector.cpp.s
+
+.PHONY : Source/CornerDetector.s
+
+# target to generate assembly for a file
+Source/CornerDetector.cpp.s:
+	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/Source/CornerDetector.cpp.s
+.PHONY : Source/CornerDetector.cpp.s
+
 Source/Line.o: Source/Line.cpp.o
 
 .PHONY : Source/Line.o
@@ -339,6 +366,33 @@ Source/Point3D.cpp.s:
 	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/Source/Point3D.cpp.s
 .PHONY : Source/Point3D.cpp.s
 
+Source/Shape.o: Source/Shape.cpp.o
+
+.PHONY : Source/Shape.o
+
+# target to build an object file
+Source/Shape.cpp.o:
+	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/Source/Shape.cpp.o
+.PHONY : Source/Shape.cpp.o
+
+Source/Shape.i: Source/Shape.cpp.i
+
+.PHONY : Source/Shape.i
+
+# target to preprocess a source file
+Source/Shape.cpp.i:
+	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/Source/Shape.cpp.i
+.PHONY : Source/Shape.cpp.i
+
+Source/Shape.s: Source/Shape.cpp.s
+
+.PHONY : Source/Shape.s
+
+# target to generate assembly for a file
+Source/Shape.cpp.s:
+	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/Source/Shape.cpp.s
+.PHONY : Source/Shape.cpp.s
+
 main.o: main.cpp.o
 
 .PHONY : main.o
@@ -387,6 +441,9 @@ help:
 	@echo "... Source/Color.o"
 	@echo "... Source/Color.i"
 	@echo "... Source/Color.s"
+	@echo "... Source/CornerDetector.o"
+	@echo "... Source/CornerDetector.i"
+	@echo "... Source/CornerDetector.s"
 	@echo "... Source/Line.o"
 	@echo "... Source/Line.i"
 	@echo "... Source/Line.s"
@@ -399,6 +456,9 @@ help:
 	@echo "... Source/Point3D.o"
 	@echo "... Source/Point3D.i"
 	@echo "... Source/Point3D.s"
+	@echo "... Source/Shape.o"
+	@echo "... Source/Shape.i"
+	@echo "... Source/Shape.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

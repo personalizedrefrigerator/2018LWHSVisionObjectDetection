@@ -36,6 +36,16 @@ opencv2/highgui.hpp
 
 /home/ubuntu/VisionObjectDetection/robotVision/Headers/Color.h
 
+/home/ubuntu/VisionObjectDetection/robotVision/Headers/CornerDetector.h
+opencv2/opencv.hpp
+-
+opencv2/imgproc.hpp
+-
+Point2D.h
+/home/ubuntu/VisionObjectDetection/robotVision/Headers/Point2D.h
+vector
+-
+
 /home/ubuntu/VisionObjectDetection/robotVision/Headers/Line.h
 Point.h
 /home/ubuntu/VisionObjectDetection/robotVision/Headers/Point.h
@@ -68,6 +78,16 @@ Point.h
 Point.h
 /home/ubuntu/VisionObjectDetection/robotVision/Headers/Point.h
 
+/home/ubuntu/VisionObjectDetection/robotVision/Headers/Shape.h
+vector
+-
+Point2D.h
+/home/ubuntu/VisionObjectDetection/robotVision/Headers/Point2D.h
+CornerDetector.h
+/home/ubuntu/VisionObjectDetection/robotVision/Headers/CornerDetector.h
+opencv2/opencv.hpp
+-
+
 /home/ubuntu/VisionObjectDetection/robotVision/Source/CameraFilter.cpp
 CameraFilter.h
 /home/ubuntu/VisionObjectDetection/robotVision/Source/CameraFilter.h
@@ -95,6 +115,10 @@ Color.h
 /home/ubuntu/VisionObjectDetection/robotVision/Source/Color.h
 math.h
 -
+
+/home/ubuntu/VisionObjectDetection/robotVision/Source/CornerDetector.cpp
+CornerDetector.h
+/home/ubuntu/VisionObjectDetection/robotVision/Source/CornerDetector.h
 
 /home/ubuntu/VisionObjectDetection/robotVision/Source/Line.cpp
 Point.h
@@ -129,6 +153,12 @@ Point2D.h
 /home/ubuntu/VisionObjectDetection/robotVision/Source/Point3D.cpp
 Point3D.h
 /home/ubuntu/VisionObjectDetection/robotVision/Source/Point3D.h
+
+/home/ubuntu/VisionObjectDetection/robotVision/Source/Shape.cpp
+Shape.h
+/home/ubuntu/VisionObjectDetection/robotVision/Source/Shape.h
+math.h
+-
 
 /home/ubuntu/VisionObjectDetection/robotVision/main.cpp
 iostream

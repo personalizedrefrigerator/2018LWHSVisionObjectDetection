@@ -1,7 +1,7 @@
 // Include the necessary libraries.
 #include "Shape.h"
 
-#include <math>
+#include <math.h>
 
 // Construct the shape, taking the edges and contents.
 Shape::Shape(std::vector<Point2D> edges, std::vector<Point2D> contents)
@@ -125,7 +125,7 @@ void Shape::calculateCorners()
 		else
 		{ // Otherwise,
 
-			unsigned int difference=distanceSquared-lastDistanceSquared;
+			unsigned int difference=currentDistanceSquared-lastDistanceSquared;
 			/*if(difference >= 0)
 			{
 				lastWasIncreasing = true;
@@ -180,14 +180,14 @@ void Shape::drawSelf(cv::Mat outputImage, unsigned int colorsPerPixel)
 
 		for(colorIndex=0; colorIndex<colorsPerPixel; colorIndex++)
 		{
-			outputImage.at<unsigned char>(point.y, point.x*3+colorIndex)=205-colorIndex*50;
+			outputImage.at<unsigned char>(currentPoint.y, currentPoint.x*3+colorIndex)=205-colorIndex*50;
 		}
 	}
 	
 	// For every pixel on the edges,
 	for(pointIndex=0; pointIndex<edges.size(); pointIndex++)
 	{
-		currentPoint=edgePoints2D.at(pointIndex);
+		currentPoint=edges.at(pointIndex);
 
 		// Don't draw the pixel if it's off the screen.
 		if(currentPoint.y < 0 || currentPoint.y >= outputImage.rows || currentPoint.x < 0 || currentPoint.x >= outputImage.cols)
@@ -198,7 +198,7 @@ void Shape::drawSelf(cv::Mat outputImage, unsigned int colorsPerPixel)
 		// For the blue, green, and red components of the color.
 		for(colorIndex=0; colorIndex<colorsPerPixel; colorIndex++)
 		{
-			image.at<unsigned char>(currentPoint.y, currentPoint.x*3+c)=(sin(pointIndex)*256);
+			outputImage.at<unsigned char>(currentPoint.y, currentPoint.x*3+colorIndex)=(sin(pointIndex)*256);
 		}
 	}
 }
@@ -229,7 +229,7 @@ void Shape::setCornerDetector(CornerDetector * cornerDetector)
 }
 
 // On deconstruction.
-void Shape::~Shape()
+Shape::~Shape()
 {
 	delete cornerDetector;
 }

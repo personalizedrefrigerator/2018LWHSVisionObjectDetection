@@ -21,6 +21,11 @@ CMakeFiles/Vision.dir/Source/CameraOptionsTrackbarManager.cpp.o: /home/ubuntu/Vi
 CMakeFiles/Vision.dir/Source/Color.cpp.o: /home/ubuntu/VisionObjectDetection/robotVision/Headers/Color.h
 CMakeFiles/Vision.dir/Source/Color.cpp.o: /home/ubuntu/VisionObjectDetection/robotVision/Source/Color.cpp
 
+CMakeFiles/Vision.dir/Source/CornerDetector.cpp.o: /home/ubuntu/VisionObjectDetection/robotVision/Headers/CornerDetector.h
+CMakeFiles/Vision.dir/Source/CornerDetector.cpp.o: /home/ubuntu/VisionObjectDetection/robotVision/Headers/Point.h
+CMakeFiles/Vision.dir/Source/CornerDetector.cpp.o: /home/ubuntu/VisionObjectDetection/robotVision/Headers/Point2D.h
+CMakeFiles/Vision.dir/Source/CornerDetector.cpp.o: /home/ubuntu/VisionObjectDetection/robotVision/Source/CornerDetector.cpp
+
 CMakeFiles/Vision.dir/Source/Line.cpp.o: /home/ubuntu/VisionObjectDetection/robotVision/Headers/Line.h
 CMakeFiles/Vision.dir/Source/Line.cpp.o: /home/ubuntu/VisionObjectDetection/robotVision/Headers/Point.h
 CMakeFiles/Vision.dir/Source/Line.cpp.o: /home/ubuntu/VisionObjectDetection/robotVision/Headers/Point2D.h
@@ -42,6 +47,12 @@ CMakeFiles/Vision.dir/Source/Point2D.cpp.o: /home/ubuntu/VisionObjectDetection/r
 CMakeFiles/Vision.dir/Source/Point3D.cpp.o: /home/ubuntu/VisionObjectDetection/robotVision/Headers/Point.h
 CMakeFiles/Vision.dir/Source/Point3D.cpp.o: /home/ubuntu/VisionObjectDetection/robotVision/Headers/Point3D.h
 CMakeFiles/Vision.dir/Source/Point3D.cpp.o: /home/ubuntu/VisionObjectDetection/robotVision/Source/Point3D.cpp
+
+CMakeFiles/Vision.dir/Source/Shape.cpp.o: /home/ubuntu/VisionObjectDetection/robotVision/Headers/CornerDetector.h
+CMakeFiles/Vision.dir/Source/Shape.cpp.o: /home/ubuntu/VisionObjectDetection/robotVision/Headers/Point.h
+CMakeFiles/Vision.dir/Source/Shape.cpp.o: /home/ubuntu/VisionObjectDetection/robotVision/Headers/Point2D.h
+CMakeFiles/Vision.dir/Source/Shape.cpp.o: /home/ubuntu/VisionObjectDetection/robotVision/Headers/Shape.h
+CMakeFiles/Vision.dir/Source/Shape.cpp.o: /home/ubuntu/VisionObjectDetection/robotVision/Source/Shape.cpp
 
 CMakeFiles/Vision.dir/main.cpp.o: /home/ubuntu/VisionObjectDetection/robotVision/Headers/CameraFilter.h
 CMakeFiles/Vision.dir/main.cpp.o: /home/ubuntu/VisionObjectDetection/robotVision/Headers/CameraNormalizer.h

@@ -33,7 +33,7 @@ class Shape
 	std::vector<Point2D> getEdges();
 	std::vector<Point2D> getContents();
 	
-	void setCornerDetector(CornerDetector cornerDetector);
+	void setCornerDetector(CornerDetector * cornerDetector);
 
 	private:
 	std::vector<Point2D> edges;
@@ -57,6 +57,6 @@ class Shape
 	
 	// The detector to be used to detect corners.
 	CornerDetector * cornerDetector=new CornerDetector();
-}
+};
 
 

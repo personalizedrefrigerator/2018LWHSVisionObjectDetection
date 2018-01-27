@@ -36,7 +36,7 @@ void CameraFilter::normalize()
 }
 
 // Run cornerHarris to detect corners.
-void CameraFilter::cornerHarris()
+/*void CameraFilter::cornerHarris()
 {
 	// Learning to use cornerHarris, see
 	// https://docs.opencv.org/master/d4/d7d/tutorial_harris_detector.html
@@ -82,10 +82,10 @@ void CameraFilter::cornerHarris()
 			}
 		}
 	}
-}
+}*/
 
 // Detect corners.
-void CameraFilter::detectCorners()
+/*void CameraFilter::detectCorners()
 {
 	// Define matricies.
 	cv::Mat grayscaleVersion;
@@ -111,9 +111,9 @@ void CameraFilter::detectCorners()
 		// Draw a circle.
 		cv::circle(data, cornersFound.at(i), 4, cv::Scalar(0, 100, 200, 200), 2, 8, 0); // 8 is line type. 2 is line-width.
 	}
-}
+}*/
 
-void CameraFilter::detectLineSegments()
+/*void CameraFilter::detectLineSegments()
 {
 	cv::Mat edges;
 
@@ -155,12 +155,13 @@ void CameraFilter::detectLineSegments()
 			}
 		}
 	}
-}
+}*/
 
 // Erode and dilate the camera input.
 void CameraFilter::erodeAndDilate(cv::Mat dataToUse, unsigned int recursions)
 {
-	cv::Mat erodeDilateElement=cv::getStructuringElement(cv::MORPH_ELLIPSE, 
+	//recursions=1;
+	cv::Mat erodeDilateElement=cv::getStructuringElement(cv::MORPH_RECT, 
 			cv::Size(5, 5)); // Change the size to emphasize different shapes.
 	
 	// Erode and dilate

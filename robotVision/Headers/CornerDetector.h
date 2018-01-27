@@ -1,27 +1,18 @@
 #pragma once
-// A class wrapping functions for finding the corners of an object.
-//Henry Heino.
 
-// Include necessary standard libraries.
-#include <vector>
-
-// Include necessary other libraries.
-#include "Shape.h"
-#include "Point2D.h"
-
-// Include OpenCV headers.
+// Include opencv libraries.
 #include<opencv2/opencv.hpp>
 #include<opencv2/imgproc.hpp>
 
 class CornerDetector
 {
 	public:
-	void setShape(cv::Mat shape);
-	void detectCorners();
-
-	std::vector<Point2D> getCorners();
-
+	void detectCorners(cv::Mat grayscaleInputImage);
+	
+	void setOptions(double k, int cornersToFind, int minCornerDistance, int cornerBlockSize, bool useCornerHarris, double quality);
+	
 	private:
-	cv::Mat currentShape;
-	std::vector<Point2D> corners;
-}
+	double cornerK=0.04, quality=0.01;
+	int cornersToFind=4, minCornerDistance=4, cornerBlockSize=9;
+	bool useCornerHarris=false;
+};

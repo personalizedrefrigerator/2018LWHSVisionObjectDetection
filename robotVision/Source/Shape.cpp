@@ -1,6 +1,8 @@
 // Include the necessary libraries.
 #include "Shape.h"
 
+#include <math>
+
 // Construct the shape, taking the edges and contents.
 Shape::Shape(std::vector<Point2D> edges, std::vector<Point2D> contents)
 {
@@ -21,8 +23,8 @@ Shape::Shape()
 	this->corners.clear();
 }
 
-// Calculate the center of the shape.
-void Shape::calculateCenter()
+// Calculate the center of the shape and a screen size that will work when displaying the image.
+void Shape::calculateCenterAndOkScreenSize()
 {
 	// Find the average x and y values of the shape.
 
@@ -41,6 +43,17 @@ void Shape::calculateCenter()
 		// Add its x and y components to the accumulator.
 		averageX+=currentPoint.x;
 		averageY+=currentPoint.y;
+		
+		// If larger than the current screen size, update that.
+		if(currentPoint.x > screenWidth)
+		{
+			screenWidth=currentPoint.x;
+		}
+		
+		if(currentPoint.y > screenHeight)
+		{
+			screenHeight=currentPoint.y;
+		}
 	}
 
 	// Find the average x and y positions by dividing the accumulated sum by the number of points
@@ -52,7 +65,7 @@ void Shape::calculateCenter()
 	center=Point2D((int)averageX, (int)averageY);
 }
 
-// Calculate the shape's corners.
+// Calculate the shape's corners. TODO: Finish this.
 void Shape::calculateCorners()
 {
 	// Be sure that the edges are sorte so the points touch each other. 
@@ -80,10 +93,12 @@ void Shape::calculateCorners()
 
 	// Create variables to store whether the distance-squared was increasing the last time,
 	//and whether it is the 1st time through the loop.
-	bool lastWasIncreasing, firstTime=true;
+	bool lastWasIncreasing, firstTime=true, secondTime=true;
 	
 	// Create a variable to store the last distance-squared.
-	unsigned int lastDistanceSquared;
+	unsigned int lastDistanceSquared, lastDistanceDifference;
+	
+	// Keep track of the number of points 
 
 	// For every point on the edge.
 	for(int pointIndex=0; pointIndex < this->edges.size(); pointIndex++)
@@ -106,20 +121,115 @@ void Shape::calculateCorners()
 		{
 			// It will no longer be the first time through the loop.
 			firstTime=false;
-
-			// Calculate
 		}
 		else
 		{ // Otherwise,
 
 			unsigned int difference=distanceSquared-lastDistanceSquared;
-			if(difference >= 0)
+			/*if(difference >= 0)
 			{
-				
+				lastWasIncreasing = true;
+			}*/
+			
+			if(!secondTime)
+			{
+				// If the positivity is different between
+				//the current and last distance,
+				if(difference < 0 ^ lastDistanceDifference < 0)
+				{
+					
+				}
 			}
+			
+			secondTime=false;
+
+			// Store the last difference.
+			lastDistanceDifference=difference;
 		}
 
 		// Update the last distance-squared.
 		lastDistanceSquared=currentDistanceSquared;
 	}
+}
+
+// Calculate the angle to the center of the shape.
+void Shape::calculateAngle()
+{
+	angleX=atan(center.x/screenZ);
+	angleY=atan(center.y/screenZ);
+}
+
+// Draw the shape.
+void Shape::drawSelf(cv::Mat outputImage, unsigned int colorsPerPixel)
+{
+	// Create variables to store the current position in the edges, and in the contents.
+	unsigned int pointIndex, colorIndex;
+	
+	// Create a variable to store the current point.
+	Point2D currentPoint;
+	
+	// For every pixel in the contents.
+	for(pointIndex=0; pointIndex<contents.size(); pointIndex++)
+	{
+		currentPoint=contents.at(pointIndex);
+		
+		if(currentPoint.y < 0 || currentPoint.y >= outputImage.rows || currentPoint.x < 0 || currentPoint.x >= outputImage.cols)
+		{
+			continue;
+		}
+
+		for(colorIndex=0; colorIndex<colorsPerPixel; colorIndex++)
+		{
+			outputImage.at<unsigned char>(point.y, point.x*3+colorIndex)=205-colorIndex*50;
+		}
+	}
+	
+	// For every pixel on the edges,
+	for(pointIndex=0; pointIndex<edges.size(); pointIndex++)
+	{
+		currentPoint=edgePoints2D.at(pointIndex);
+
+		// Don't draw the pixel if it's off the screen.
+		if(currentPoint.y < 0 || currentPoint.y >= outputImage.rows || currentPoint.x < 0 || currentPoint.x >= outputImage.cols)
+		{
+			continue;
+		}
+
+		// For the blue, green, and red components of the color.
+		for(colorIndex=0; colorIndex<colorsPerPixel; colorIndex++)
+		{
+			image.at<unsigned char>(currentPoint.y, currentPoint.x*3+c)=(sin(pointIndex)*256);
+		}
+	}
+}
+
+// Calculate the corners of the shape using OpenCV's corner detector.
+void Shape::calculateCornersCV()
+{
+	// Create an empty image, assuming the screen size has been found.
+	cv::Mat outputImage=cv::Mat::zeros(screenHeight, screenWidth, CV_8UC1);
+	
+	// Draw the shape onto an empty image.
+	drawSelf(outputImage, 1);
+	
+	// Detect the corners.
+	corners=cornerDetector->detectCorners(outputImage);
+}
+
+// Set the screen's Z position.
+void Shape::setScreenZ(double screenZ)
+{
+	this->screenZ=screenZ;
+}
+
+// Set the corner detector.
+void Shape::setCornerDetector(CornerDetector * cornerDetector)
+{
+	this->cornerDetector=cornerDetector;
+}
+
+// On deconstruction.
+void Shape::~Shape()
+{
+	delete cornerDetector;
 }

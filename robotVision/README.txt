@@ -14,5 +14,5 @@ https://wpilib.screenstepslive.com/s/currentCS/m/vision/l/479908-reading-array-v
 Prebuilt NT (NetworkTable) library for TX1 ARM:
 https://www.chiefdelphi.com/forums/showthread.php?t=153782
 https://www.chiefdelphi.com/forums/showthread.php?t=142570
-https://www.dropbox.com/s/8sz4synzktl87pe/network_tables.zip?dl=0
+https://github.com/ApesofWrath/ALZ-117
 

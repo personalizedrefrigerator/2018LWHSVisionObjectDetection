@@ -11,8 +11,6 @@ Network table and WPILib resources:
 https://wpilib.screenstepslive.com/s/3120/m/7912/l/85672-what-is-wpilib
 https://wpilib.screenstepslive.com/s/currentCS/m/vision/l/479908-reading-array-values-published-by-networktables
 
-Prebuilt NT (NetworkTable) library for TX1 ARM:
-https://www.chiefdelphi.com/forums/showthread.php?t=153782
-https://www.chiefdelphi.com/forums/showthread.php?t=142570
-https://github.com/ApesofWrath/ALZ-117
-
+NT (NetworkTable) library for TX1 ARM:
+https://elinux.org/Jetson/FRC_Setup
+https://www.chiefdelphi.com/forums/showthread.php?t=160760&highlight=jetson

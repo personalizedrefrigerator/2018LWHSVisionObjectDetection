@@ -203,6 +203,17 @@ void Shape::drawSelf(cv::Mat outputImage, unsigned int colorsPerPixel)
 	}
 }
 
+// Draw a representation of the shape, including the center point.
+void Shape::drawDebugOutput(cv::Mat outputImage)
+{
+	// Draw the contents and edges.
+	drawSelf(outputImage, 3);
+	
+	
+	// Draw the corners.
+	
+}
+
 // Calculate the corners of the shape using OpenCV's corner detector.
 void Shape::calculateCornersCV()
 {

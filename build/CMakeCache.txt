@@ -305,6 +305,9 @@ Vision_BINARY_DIR:STATIC=/home/ubuntu/VisionObjectDetection/build
 //Value Computed by CMake
 Vision_SOURCE_DIR:STATIC=/home/ubuntu/VisionObjectDetection/robotVision
 
+//The directory containing a CMake configuration file for wpilib.
+wpilib_DIR:PATH=wpilib_DIR-NOTFOUND
+
 
 ########################
 # INTERNAL cache entries

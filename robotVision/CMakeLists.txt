@@ -6,6 +6,7 @@ project(Vision)
 set(CMAKE_CXX_STANDARD 11)
 
 find_package(OpenCV REQUIRED)
+//find_package(wpilib REQUIRED)
 
 include_directories(${OPENCV_INCLUDE_DIRS})
 

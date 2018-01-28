@@ -27,6 +27,7 @@ class Shape
 	void calculateCornersCV(); 
 	
 	void drawSelf(cv::Mat outputImage, unsigned int colorsPerPixel);
+	void drawDebugOutput(cv::Mat outputImage);
 	
 	void setScreenZ(double screenZ);
 

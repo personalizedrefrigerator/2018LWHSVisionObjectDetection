@@ -209,9 +209,20 @@ void Shape::drawDebugOutput(cv::Mat outputImage)
 	// Draw the contents and edges.
 	drawSelf(outputImage, 3);
 	
-	
+	// Create a variable to store the index in the array of corners.
+	unsigned int cornerIndex=0;
+
+	// Create a variable to store the current corner.
+	Point2D currentCorner;
+
 	// Draw the corners.
-	
+	for(cornerIndex=0; cornerIndex < corners.size(); cornerIndex++)
+	{
+		currentCorner=corners.at(cornerIndex);
+
+		// Draw a circle at the current point, cv::Scalar stores the color. 8 is the line type. 2 is the line width.
+		cv::circle(image, cv::Point(currentCorner.x, currentCorner.y), 5, cv::Scalar(0, 255, 100, 200), 2, 8, 0); // 8 is line type.
+	}
 }
 
 // Calculate the corners of the shape using OpenCV's corner detector.

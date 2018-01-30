@@ -22,15 +22,21 @@ void PlaneDetector::setImage(cv::Mat image)
 	this->image=image;
 }
 
-// Run BFS, to find points that could be on the plane.
+// Overloaded version of detectPoints2D(Point2D).
 void PlaneDetector::detectPoints2D()
+{
+	detectPoints2D(Point2D(image.rows/2, image.cols/2));
+}
+
+// Run BFS, to find points that could be on the plane.
+void PlaneDetector::detectPoints2D(Point2D startPoint)
 {
 	// DFS, starting at bottom.
 	std::deque<Point2D> fringe;
 	//fringe.reserve(image.rows*image.cols);
 
-	// Choose a point at the center of the screen.
-	Point2D current=Point2D(image.rows/2, image.cols/2);
+	// Start at the given start point.
+	Point2D current=startPoint;
 
 	// Initialize/clear arrays.
 	planePoints.clear();
@@ -109,6 +115,8 @@ void PlaneDetector::detectPoints2D()
 		//std::cout << fringe.size() << "\n";
 	}
 	while(fringeSize > 0);
+
+	averageColor=mainColor;
 }
 
 // Detect points considered "significant." Where the angle between the current and the last changes more than a specified value.
@@ -261,37 +269,28 @@ void PlaneDetector::showPlaneRegion(cv::Mat image)
 }
 
 // Note that a point was visited.
-void PlaneDetector::setVisited(Point2D point, bool visited)
+void PlaneDetector::setVisited(Point2D point, bool isVisited)
 {
-	unsigned int index=point.x+point.y*image.cols;
-
-	if(isOnImage(point) && index<visitedLength)
-	{
-		this->visited.at(index)=visited;
-	}
+	this->visited.setVisited(point, isVisited);
 }
 
 // Get whether a point was visited.
 bool PlaneDetector::getVisited(Point2D point)
 {
-	unsigned int index=point.x+point.y*image.cols;
-
-	if(isOnImage(point) && index<visitedLength)
-	{
-		return visited.at(index);
-	}
-
-	return true;
+	return visited.getVisited(point);
 }
 
 // Clear the array of visited pixels.
 void PlaneDetector::clearVisited()
 {
 	visited.clear();
+	visited.setSize(image.cols, image.rows);
+}
 
-	visitedLength=image.rows*image.cols;
-	visited.resize(visitedLength, false);
-	//visitedByteLength=visitedLength*sizeof(bool);
+// Get the visited list.
+VisitedList& PlaneDetector::getVisitedList()
+{
+	return visited;
 }
 
 // Check whether a point is on the image.
@@ -417,6 +416,14 @@ void PlaneDetector::setOptions(PlaneDetectorOptions options)
 	setColorChangeThreshold(options.colorChangeThreshold);
 	setAverageChangeThreshold(options.averageChangeThreshold);
 	setSignificantPointAccuracy(options.significantPointAccuracy);
+}
+
+// Output the data found to a shape.
+void PlaneDetector::outputToShape(Shape &outputShape)
+{
+	outputShape.setEdges(edgePoints2D);
+	outputShape.setContents(planePoints);
+	outputShape.setAverageColor(averageColor);
 }
 
 // Deconstruct the detector.

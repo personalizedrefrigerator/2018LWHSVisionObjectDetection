@@ -253,7 +253,7 @@ void CameraFilter::runAllFilters()
 	erodeAndDilate();
 	//detectLineSegments();
 	//detectCorners();
-	showPlane();
+	//showPlane();
 	//detectCorners();
 	//cornerHarris();
 }

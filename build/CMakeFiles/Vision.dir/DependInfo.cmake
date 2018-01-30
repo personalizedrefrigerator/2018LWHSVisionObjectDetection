@@ -4,24 +4,27 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/ubuntu/VisionObjectDetection/robotVision/Source/CameraFilter.cpp" "/home/ubuntu/VisionObjectDetection/build/CMakeFiles/Vision.dir/Source/CameraFilter.cpp.o"
-  "/home/ubuntu/VisionObjectDetection/robotVision/Source/CameraNormalizer.cpp" "/home/ubuntu/VisionObjectDetection/build/CMakeFiles/Vision.dir/Source/CameraNormalizer.cpp.o"
-  "/home/ubuntu/VisionObjectDetection/robotVision/Source/CameraOptionsTrackbarManager.cpp" "/home/ubuntu/VisionObjectDetection/build/CMakeFiles/Vision.dir/Source/CameraOptionsTrackbarManager.cpp.o"
-  "/home/ubuntu/VisionObjectDetection/robotVision/Source/Color.cpp" "/home/ubuntu/VisionObjectDetection/build/CMakeFiles/Vision.dir/Source/Color.cpp.o"
-  "/home/ubuntu/VisionObjectDetection/robotVision/Source/CornerDetector.cpp" "/home/ubuntu/VisionObjectDetection/build/CMakeFiles/Vision.dir/Source/CornerDetector.cpp.o"
-  "/home/ubuntu/VisionObjectDetection/robotVision/Source/Line.cpp" "/home/ubuntu/VisionObjectDetection/build/CMakeFiles/Vision.dir/Source/Line.cpp.o"
-  "/home/ubuntu/VisionObjectDetection/robotVision/Source/PlaneDetector.cpp" "/home/ubuntu/VisionObjectDetection/build/CMakeFiles/Vision.dir/Source/PlaneDetector.cpp.o"
-  "/home/ubuntu/VisionObjectDetection/robotVision/Source/Point2D.cpp" "/home/ubuntu/VisionObjectDetection/build/CMakeFiles/Vision.dir/Source/Point2D.cpp.o"
-  "/home/ubuntu/VisionObjectDetection/robotVision/Source/Point3D.cpp" "/home/ubuntu/VisionObjectDetection/build/CMakeFiles/Vision.dir/Source/Point3D.cpp.o"
-  "/home/ubuntu/VisionObjectDetection/robotVision/Source/Shape.cpp" "/home/ubuntu/VisionObjectDetection/build/CMakeFiles/Vision.dir/Source/Shape.cpp.o"
-  "/home/ubuntu/VisionObjectDetection/robotVision/main.cpp" "/home/ubuntu/VisionObjectDetection/build/CMakeFiles/Vision.dir/main.cpp.o"
+  "/home/killdozer/Documents/Programming/VisionObjectDetection/VisionObjectDetection/robotVision/Source/CameraFilter.cpp" "/home/killdozer/Documents/Programming/VisionObjectDetection/VisionObjectDetection/build/CMakeFiles/Vision.dir/Source/CameraFilter.cpp.o"
+  "/home/killdozer/Documents/Programming/VisionObjectDetection/VisionObjectDetection/robotVision/Source/CameraNormalizer.cpp" "/home/killdozer/Documents/Programming/VisionObjectDetection/VisionObjectDetection/build/CMakeFiles/Vision.dir/Source/CameraNormalizer.cpp.o"
+  "/home/killdozer/Documents/Programming/VisionObjectDetection/VisionObjectDetection/robotVision/Source/CameraOptionsTrackbarManager.cpp" "/home/killdozer/Documents/Programming/VisionObjectDetection/VisionObjectDetection/build/CMakeFiles/Vision.dir/Source/CameraOptionsTrackbarManager.cpp.o"
+  "/home/killdozer/Documents/Programming/VisionObjectDetection/VisionObjectDetection/robotVision/Source/Color.cpp" "/home/killdozer/Documents/Programming/VisionObjectDetection/VisionObjectDetection/build/CMakeFiles/Vision.dir/Source/Color.cpp.o"
+  "/home/killdozer/Documents/Programming/VisionObjectDetection/VisionObjectDetection/robotVision/Source/CornerDetector.cpp" "/home/killdozer/Documents/Programming/VisionObjectDetection/VisionObjectDetection/build/CMakeFiles/Vision.dir/Source/CornerDetector.cpp.o"
+  "/home/killdozer/Documents/Programming/VisionObjectDetection/VisionObjectDetection/robotVision/Source/Line.cpp" "/home/killdozer/Documents/Programming/VisionObjectDetection/VisionObjectDetection/build/CMakeFiles/Vision.dir/Source/Line.cpp.o"
+  "/home/killdozer/Documents/Programming/VisionObjectDetection/VisionObjectDetection/robotVision/Source/PlaneDetector.cpp" "/home/killdozer/Documents/Programming/VisionObjectDetection/VisionObjectDetection/build/CMakeFiles/Vision.dir/Source/PlaneDetector.cpp.o"
+  "/home/killdozer/Documents/Programming/VisionObjectDetection/VisionObjectDetection/robotVision/Source/Point2D.cpp" "/home/killdozer/Documents/Programming/VisionObjectDetection/VisionObjectDetection/build/CMakeFiles/Vision.dir/Source/Point2D.cpp.o"
+  "/home/killdozer/Documents/Programming/VisionObjectDetection/VisionObjectDetection/robotVision/Source/Point3D.cpp" "/home/killdozer/Documents/Programming/VisionObjectDetection/VisionObjectDetection/build/CMakeFiles/Vision.dir/Source/Point3D.cpp.o"
+  "/home/killdozer/Documents/Programming/VisionObjectDetection/VisionObjectDetection/robotVision/Source/Shape.cpp" "/home/killdozer/Documents/Programming/VisionObjectDetection/VisionObjectDetection/build/CMakeFiles/Vision.dir/Source/Shape.cpp.o"
+  "/home/killdozer/Documents/Programming/VisionObjectDetection/VisionObjectDetection/robotVision/Source/ShapeDetector.cpp" "/home/killdozer/Documents/Programming/VisionObjectDetection/VisionObjectDetection/build/CMakeFiles/Vision.dir/Source/ShapeDetector.cpp.o"
+  "/home/killdozer/Documents/Programming/VisionObjectDetection/VisionObjectDetection/robotVision/Source/VisitedList.cpp" "/home/killdozer/Documents/Programming/VisionObjectDetection/VisionObjectDetection/build/CMakeFiles/Vision.dir/Source/VisitedList.cpp.o"
+  "/home/killdozer/Documents/Programming/VisionObjectDetection/VisionObjectDetection/robotVision/main.cpp" "/home/killdozer/Documents/Programming/VisionObjectDetection/VisionObjectDetection/build/CMakeFiles/Vision.dir/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
-  "/usr/include/opencv"
-  "/home/ubuntu/VisionObjectDetection/robotVision/Headers"
+  "/home/killdozer/Documents/Programming/VisionObjectDetection/VisionObjectDetection/robotVision/Headers"
+  "/usr/local/include"
+  "/usr/local/include/opencv"
   )
 
 # Targets to which this target links.

@@ -1,3 +1,5 @@
+#Execute with: cmake ../robotVision -DCMAKE_BUILD_TYPE=Release
+
 cmake_minimum_required(VERSION 3.1) #CMAKE_CXX_STANDARD
 
 set(CMAKE_CONFIGURATION_TYPES Release CACHE STRING "" FORCE)
@@ -6,7 +8,7 @@ project(Vision)
 set(CMAKE_CXX_STANDARD 11)
 
 find_package(OpenCV REQUIRED)
-//find_package(wpilib REQUIRED)
+#find_package(wpilib REQUIRED)
 
 include_directories(${OPENCV_INCLUDE_DIRS})
 
@@ -15,7 +17,7 @@ include_directories(${OPENCV_INCLUDE_DIRS})
 include_directories(Headers)
 
 # Create variables to store the source files stored in the root directory.
-set(SOURCE_NAMES "CameraNormalizer.cpp;CameraFilter.cpp;PlaneDetector.cpp;Point2D.cpp;Point3D.cpp;Line.cpp;Color.cpp;CameraOptionsTrackbarManager.cpp;Shape.cpp;CornerDetector.cpp")
+set(SOURCE_NAMES "CameraNormalizer.cpp;CameraFilter.cpp;PlaneDetector.cpp;Point2D.cpp;Point3D.cpp;Line.cpp;Color.cpp;CameraOptionsTrackbarManager.cpp;Shape.cpp;CornerDetector.cpp;VisitedList.cpp;ShapeDetector.cpp")
 
 set(SOURCE_DIR "Source")
 

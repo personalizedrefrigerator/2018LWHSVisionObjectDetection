@@ -8,9 +8,14 @@ std::vector<Point2D> CornerDetector::detectCorners(cv::Mat inputImage)
 {
 	// Create an array to store the corners found.
 	std::vector<cv::Point2f> cornersFound;
-	
+
+	cv::Mat inputImage2;
+
+	// Convert the input to grayscale.
+	cvtColor(inputImage, inputImage2, cv::COLOR_BGR2GRAY);
+
 	// Find the corners.
-	cv::goodFeaturesToTrack(inputImage, cornersFound, cornersToFind, quality, minCornerDistance, cv::Mat(), cornerBlockSize, useCornerHarris, cornerK);
+	cv::goodFeaturesToTrack(inputImage2, cornersFound, cornersToFind, quality, minCornerDistance, cv::Mat(), cornerBlockSize, useCornerHarris, cornerK);
 	
 	// Convert the array of found corners into an array of Point2Ds.
 	std::vector<Point2D> result;
@@ -23,7 +28,6 @@ std::vector<Point2D> CornerDetector::detectCorners(cv::Mat inputImage)
 		currentPoint=cornersFound.at(cornersIndex);
 		result.push_back(Point2D(currentPoint.x, currentPoint.y));
 	}
-	
 	
 	return result;
 }

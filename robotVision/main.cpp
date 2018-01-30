@@ -8,6 +8,7 @@
 
 // Headers from this program.
 #include "CameraFilter.h"
+#include "ShapeDetector.h"
 #include "CameraOptionsTrackbarManager.h"
 
 // Run cmake to compile this for release, as
@@ -80,12 +81,23 @@ int main()
 	// Create a variable to store the last key.
 	char lastKey='\0';
 
+	ShapeDetector detector=ShapeDetector();
+
+	Shape mainShape;
+
+	mainShape.setCenterLocation(Point2D(100, 100));
+
+	double rating=-1.0;
+
+	bool foundShape=false;
+
 	// Enter the main loop.
 	do
 	{
 		// Load the current image seen by the camera into the current frame.
 		video >> currentFrame;
 		filter.setData(currentFrame);
+		detector.setImage(currentFrame);
 
 		options.colorChangeThreshold=(double)colorChangeThreshold;
 		options.averageChangeThreshold=(double)averageChangeThreshold;
@@ -94,6 +106,34 @@ int main()
 
 		filter.setPlaneDetectorOptions(options);
 		filter.runAllFilters();		
+
+		detector.clearFoundShapes();
+
+		foundShape=true;
+
+		//detector.detectShapes();
+		if(!detector.findTargetAndUpdate(mainShape, rating))
+		{
+			detector.detectShapes();
+
+			foundShape=detector.findTargetAndUpdate(mainShape, rating);
+		}
+
+		if(foundShape)
+		{
+
+			mainShape.calculateCenterAndOkScreenSize();
+
+
+
+			//mainShape.calculateCornersCV();
+
+
+
+			mainShape.drawDebugOutput(currentFrame);
+
+		}
+		rating=0.0;
 
 		cv::imshow("Camera View", currentFrame);
 		

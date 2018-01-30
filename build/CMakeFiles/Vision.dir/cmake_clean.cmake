@@ -10,6 +10,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/Vision.dir/Source/CameraOptionsTrackbarManager.cpp.o"
   "CMakeFiles/Vision.dir/Source/Shape.cpp.o"
   "CMakeFiles/Vision.dir/Source/CornerDetector.cpp.o"
+  "CMakeFiles/Vision.dir/Source/VisitedList.cpp.o"
+  "CMakeFiles/Vision.dir/Source/ShapeDetector.cpp.o"
   "Vision.pdb"
   "Vision"
 )

@@ -1,4 +1,6 @@
 #pragma once
+// TODO: Remove and replace this class.
+
 
 // Include opencv libraries.
 #include<opencv2/opencv.hpp>
@@ -8,10 +10,12 @@
 #include "Point2D.h"
 #include "Color.h"
 #include "Line.h"
+#include "Shape.h"
+#include "VisitedList.h"
 
 #include "PlaneDetectorOptions.h"
 
-// Detect a plane and points on it.
+// Detect a plane and points on it. This class is slowly being removed. DO NOT ADD TO IT.
 //Henry Heino
 
 class PlaneDetector
@@ -19,6 +23,7 @@ class PlaneDetector
 	public:
 	PlaneDetector() {};
 	void setImage(cv::Mat image);
+	void detectPoints2D(Point2D startPosition);
 	void detectPoints2D();
 	void detectSignificantPoints();
 	void showPlaneRegion(cv::Mat imageToUse);
@@ -27,6 +32,7 @@ class PlaneDetector
 	// Manipulate whether a pixel is considered "visited."
 	void setVisited(Point2D point, bool setTo);
 	bool getVisited(Point2D point);
+	VisitedList& getVisitedList();
 	void clearVisited();
 
 	unsigned int getSlopeOfEdge(Line &output, unsigned int startIndex, unsigned int numberToConsider); // Returns the points on the line.
@@ -46,12 +52,18 @@ class PlaneDetector
 	// Set options related to the plane detector.
 	void setOptions(PlaneDetectorOptions options);
 
+	// Output detected information into a shape.
+	void outputToShape(Shape &shape);
+
 	~PlaneDetector();
 
 	private:
 	std::vector<Point2D> significantPoints;
 	std::vector<Point2D> edgePoints2D;
 	std::vector<Point2D> planePoints;
+
+	Color averageColor=Color(0,0,0);
+
 	cv::Mat image;
 
 	// Initialize focal lengths.
@@ -62,6 +74,6 @@ class PlaneDetector
 	double significantPointAccuracy=5.0;
 
 	// An array storing whether any given pixel has been visited.
-	std::vector<bool> visited;
+	VisitedList visited;
 	unsigned int visitedLength=0;
 };

@@ -3,6 +3,8 @@
 
 #include <math.h>
 
+#define E 2.718281828
+
 // Construct the shape, taking the edges and contents.
 Shape::Shape(std::vector<Point2D> edges, std::vector<Point2D> contents)
 {
@@ -221,7 +223,7 @@ void Shape::drawDebugOutput(cv::Mat outputImage)
 		currentCorner=corners.at(cornerIndex);
 
 		// Draw a circle at the current point, cv::Scalar stores the color. 8 is the line type. 2 is the line width.
-		cv::circle(image, cv::Point(currentCorner.x, currentCorner.y), 5, cv::Scalar(0, 255, 100, 200), 2, 8, 0); // 8 is line type.
+		cv::circle(outputImage, cv::Point(currentCorner.x, currentCorner.y), 5, cv::Scalar(0, 255, 100, 200), 2, 8, 0); // 8 is line type.
 	}
 }
 
@@ -229,13 +231,104 @@ void Shape::drawDebugOutput(cv::Mat outputImage)
 void Shape::calculateCornersCV()
 {
 	// Create an empty image, assuming the screen size has been found.
-	cv::Mat outputImage=cv::Mat::zeros(screenHeight, screenWidth, CV_8UC1);
+	cv::Mat outputImage=cv::Mat::zeros(screenHeight, screenWidth, CV_8UC3);
 	
 	// Draw the shape onto an empty image.
-	drawSelf(outputImage, 1);
+	drawSelf(outputImage, 3);
 	
 	// Detect the corners.
-	corners=cornerDetector->detectCorners(outputImage);
+	corners=cornerDetector.detectCorners(outputImage);
+}
+
+// Get how well the shape matches another.
+double Shape::getMatchForShape(Shape &other)
+{
+	double result=0.0;
+	
+	// Base how well it matches on the distance from the center,
+	Point2D otherCenter=other.getCenter();
+	Point2D myCenter=getCenter();
+
+	double deltaX=otherCenter.x-myCenter.x;
+	double deltaY=otherCenter.y-myCenter.y;
+
+	// Compute the distance squared between the two.
+	double distanceSquaredToCenter=deltaX*deltaX+deltaY*deltaY;
+
+	double averageColorDifference=other.getAverageColor()-getAverageColor();
+
+	double sizeDifference=getContentSize() - other.getContentSize();
+	sizeDifference*=sizeDifference;
+
+	// Average the results of the sigmoid function on the distance to the center, the size difference, and the average color difference.
+	result+=1/(pow(E, -E + distanceSquaredToCenter));
+	result+=1/(pow(E, -E + averageColorDifference));
+	result+=1/(pow(E, -E + sizeDifference));
+	result/=3;
+
+	return result;
+}
+
+// Create the shape from another.
+void Shape::fromOther(Shape & other)
+{
+	setAverageColor(other.getAverageColor());
+	setEdges(other.getEdges());
+	setContents(other.getContents());
+	setCenterLocation(other.getCenter());
+}
+
+// Get the shape's edges.
+std::vector<Point2D> Shape::getEdges()
+{
+	return edges;
+}
+
+// Get the shape's contents.
+std::vector<Point2D> Shape::getContents()
+{
+	return contents;
+}
+
+// Get the center point.
+Point2D Shape::getCenter()
+{
+	return center;
+}
+
+// Get the average color.
+Color Shape::getAverageColor()
+{
+	return averageColor;
+}
+
+// Get the shape's area.
+unsigned int Shape::getContentSize()
+{
+	return contents.size();
+}
+
+// Set the edges and contents.
+void Shape::setEdges(std::vector<Point2D> edges)
+{
+	this->edges=edges;
+}
+
+void Shape::setContents(std::vector<Point2D> content)
+{
+	this->contents=content;
+}
+
+// Set the shape's average color.
+void Shape::setAverageColor(Color newAverageColor)
+{
+	averageColor=newAverageColor;
+}
+
+// Set the center point's location.
+void Shape::setCenterLocation(Point2D newPosition)
+{
+	center=newPosition;
 }
 
 // Set the screen's Z position.
@@ -245,7 +338,7 @@ void Shape::setScreenZ(double screenZ)
 }
 
 // Set the corner detector.
-void Shape::setCornerDetector(CornerDetector * cornerDetector)
+void Shape::setCornerDetector(CornerDetector &cornerDetector)
 {
 	this->cornerDetector=cornerDetector;
 }
@@ -253,5 +346,5 @@ void Shape::setCornerDetector(CornerDetector * cornerDetector)
 // On deconstruction.
 Shape::~Shape()
 {
-	delete cornerDetector;
+	// Free pointers
 }

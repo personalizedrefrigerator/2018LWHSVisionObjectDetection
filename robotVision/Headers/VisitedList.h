@@ -1,0 +1,30 @@
+#pragma once
+
+// A class to keep track of visited pixels on an image.
+// Henry Heino.
+
+// Include needed libraries.
+#include "Point2D.h"
+
+// Standard libraries.
+#include <vector>
+
+class VisitedList
+{
+	public:
+	VisitedList(); // Construct a new VisitedList.
+
+	void setSize(unsigned int width, unsigned int height); // Set the size of the list.
+
+	void setVisited(Point2D point, bool setTo); // Note that a specific point has been visited.
+	bool getVisited(Point2D point); // Get whether a pixel has been visited.
+	void clear(); // Clear the list of visited pixels.
+
+	std::vector<bool>& getVisited(); // Get the array of visited locations.
+
+	void addVisitedItemsFromOther(VisitedList &other); // Add all visited locations from the other visited list.
+
+	private:
+	std::vector<bool> visited;
+	unsigned int width=0, height=0, listLength;
+};

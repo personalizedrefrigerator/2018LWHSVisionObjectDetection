@@ -126,7 +126,7 @@ int main()
 
 
 
-			//mainShape.calculateCornersCV();
+			mainShape.calculateCornersCV();
 
 
 

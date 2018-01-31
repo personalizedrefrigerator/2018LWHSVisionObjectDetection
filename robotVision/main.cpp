@@ -94,10 +94,16 @@ int main()
 	// Enter the main loop.
 	do
 	{
+		//std::cout << "Starting loop.\n";
 		// Load the current image seen by the camera into the current frame.
 		video >> currentFrame;
 		filter.setData(currentFrame);
+
+
 		detector.setImage(currentFrame);
+
+
+		//std::cout << "Image set.\n";
 
 		options.colorChangeThreshold=(double)colorChangeThreshold;
 		options.averageChangeThreshold=(double)averageChangeThreshold;
@@ -105,37 +111,56 @@ int main()
 		filter.configureCornerDetection((double)(cornerK/100000.0), cornersToFind+1, minCornerDistance+1, cornerBlockSize+1, (bool)cornerHarris);
 
 		filter.setPlaneDetectorOptions(options);
+		detector.setPlaneDetectorOptions(options);
 		filter.runAllFilters();		
 
+	
+		
+		//std::cout << "Clearing found...\n";
 		detector.clearFoundShapes();
+		//std::cout << "Done!\n";
 
 		foundShape=true;
+
+		//std::cout << "Finding shapes.\n";
 
 		//detector.detectShapes();
 		if(!detector.findTargetAndUpdate(mainShape, rating))
 		{
+			//std::cout << "Was false.\n";
 			detector.detectShapes();
 
+			//std::cout << "Done detecting shapes.\n";
+
 			foundShape=detector.findTargetAndUpdate(mainShape, rating);
+			//std::cout << "Updated!\n";
 		}
 
 		if(foundShape)
 		{
-
+			//std::cout << "Starting...\n";
 			mainShape.calculateCenterAndOkScreenSize();
+			//std::cout << "Ending...\n";
 
 
 
-			//mainShape.calculateCornersCV();
+			mainShape.calculateCornersCV();
 
-
+			//std::cout << "Done calculating corners.\n";
 
 			mainShape.drawDebugOutput(currentFrame);
 
-		}
-		rating=0.0;
+			//std::cout << "Done drwawing debug output.\n";
 
+		}
+		rating=0.21;
+
+		//std::cout << "Imshow.\n";
+		
 		cv::imshow("Camera View", currentFrame);
+
+
+		//std::cout << "Done.\n";
 		
 		// Wait at least 1 ms for a key.
 		lastKey = cv::waitKey(1);

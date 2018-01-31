@@ -45,7 +45,7 @@ class Shape
 	void setAverageColor(Color newAverageColor); // Set the known average color of the shape.
 	void setCenterLocation(Point2D newPosition); // Change the location of the center.
 
-	void fromOther(Shape &other); // Create the current shape from another.
+	void fromOther(Shape & other); // Create the current shape from another.
 
 	void setCornerDetector(CornerDetector & cornerDetector); // Set the device used to detect corners.
 

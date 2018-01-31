@@ -28,43 +28,53 @@ Shape::Shape()
 // Calculate the center of the shape and a screen size that will work when displaying the image.
 void Shape::calculateCenterAndOkScreenSize()
 {
-	// Find the average x and y values of the shape.
 
-	// Create variables to accumulate the sum, then to be used to find the average x and y.
-	double averageX, averageY;
+	// Create a variable to store the number of points.
+	unsigned int numberOfPoints=this->contents.size(), pointIndex=0;
 
-	// Create a variable to store the current point.
-	Point2D currentPoint;
-
-	// For every point on the shape.
-	for(int pointIndex=0; pointIndex < this->contents.size(); pointIndex++)
+	// So long as there were points to consider,
+	if(numberOfPoints > 0)
 	{
-		// Store the current point.
-		currentPoint=this->contents.at(pointIndex);
+		// Find the average x and y values of the shape.
 
-		// Add its x and y components to the accumulator.
-		averageX+=currentPoint.x;
-		averageY+=currentPoint.y;
-		
-		// If larger than the current screen size, update that.
-		if(currentPoint.x > screenWidth)
+		// Create variables to accumulate the sum, then to be used to find the average x and y.
+		double averageX, averageY;
+
+		// Create a variable to store the current point.
+		Point2D currentPoint;
+
+
+		// For every point on the shape.
+		for(pointIndex=0; pointIndex < numberOfPoints; pointIndex++)
 		{
-			screenWidth=currentPoint.x;
+			// Store the current point.
+			currentPoint=this->contents.at(pointIndex);
+
+			// Add its x and y components to the accumulator.
+			averageX+=currentPoint.x;
+			averageY+=currentPoint.y;
+			
+			// If larger than the current screen size, update that.
+			if(currentPoint.x > screenWidth)
+			{
+				screenWidth=currentPoint.x;
+			}
+			
+			if(currentPoint.y > screenHeight)
+			{
+				screenHeight=currentPoint.y;
+			}
 		}
-		
-		if(currentPoint.y > screenHeight)
-		{
-			screenHeight=currentPoint.y;
-		}
+
+	
+		// Find the average x and y positions by dividing the accumulated sum by the number of points
+		//considered.
+		averageX /= numberOfPoints;
+		averageY /= numberOfPoints;
+
+		// Store these in the center point.
+		center=Point2D((int)averageX, (int)averageY);
 	}
-
-	// Find the average x and y positions by dividing the accumulated sum by the number of points
-	//considered.
-	averageX /= this->contents.size();
-	averageY /= this->contents.size();
-
-	// Store these in the center point.
-	center=Point2D((int)averageX, (int)averageY);
 }
 
 // Calculate the shape's corners. TODO: Finish this.
@@ -241,7 +251,7 @@ void Shape::calculateCornersCV()
 }
 
 // Get how well the shape matches another.
-double Shape::getMatchForShape(Shape &other)
+double Shape::getMatchForShape(Shape & other)
 {
 	double result=0.0;
 	
@@ -261,9 +271,9 @@ double Shape::getMatchForShape(Shape &other)
 	sizeDifference*=sizeDifference;
 
 	// Average the results of the sigmoid function on the distance to the center, the size difference, and the average color difference.
-	result+=1/(pow(E, -E + distanceSquaredToCenter));
-	result+=1/(pow(E, -E + averageColorDifference));
-	result+=1/(pow(E, -E + sizeDifference));
+	result+=1/(pow(E, -E + distanceSquaredToCenter/30)+1);
+	result+=1/(pow(E, -E + averageColorDifference/30)+1);
+	result+=1/(pow(E, -E + sizeDifference/30)+1);
 	result/=3;
 
 	return result;

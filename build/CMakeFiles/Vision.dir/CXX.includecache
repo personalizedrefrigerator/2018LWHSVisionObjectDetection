@@ -185,8 +185,6 @@ math.h
 /home/killdozer/Documents/Programming/VisionObjectDetection/VisionObjectDetection/robotVision/Source/ShapeDetector.cpp
 ShapeDetector.h
 /home/killdozer/Documents/Programming/VisionObjectDetection/VisionObjectDetection/robotVision/Source/ShapeDetector.h
-iostream
--
 
 /home/killdozer/Documents/Programming/VisionObjectDetection/VisionObjectDetection/robotVision/Source/VisitedList.cpp
 VisitedList.h

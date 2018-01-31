@@ -1,8 +1,6 @@
 #include "ShapeDetector.h"
 
 
-#include <iostream>
-
 // Constructor.
 ShapeDetector::ShapeDetector()
 {
@@ -59,9 +57,9 @@ void ShapeDetector::detectShapes()
 //Returns true on success.
 bool ShapeDetector::findTargetAndUpdate(Shape &target, double worstMatch)
 {
+
 	// Go through all shapes found, ask the target for a comparison.
 	unsigned int numberOfShapes=foundShapes.size();
-
 
 	// Find at least one shape.
 	if(numberOfShapes == 0)
@@ -71,7 +69,10 @@ bool ShapeDetector::findTargetAndUpdate(Shape &target, double worstMatch)
 
 		// Find a shape.
 		Shape currentShape;
-		detector.detectPoints2D(target.getCenter());
+
+		Point2D center=target.getCenter();
+
+		detector.detectPoints2D(center);
 		detector.outputToShape(currentShape);
 		
 
@@ -79,6 +80,7 @@ bool ShapeDetector::findTargetAndUpdate(Shape &target, double worstMatch)
 		foundShapes.push_back(currentShape);
 		numberOfShapes++;
 	}
+	
 
 	double rating=0.0;
 
@@ -91,7 +93,7 @@ bool ShapeDetector::findTargetAndUpdate(Shape &target, double worstMatch)
 	for(unsigned int shapeIndex=0; shapeIndex<numberOfShapes; shapeIndex++)
 	{
 		Shape & currentShape=foundShapes.at(shapeIndex);
-		
+
 		rating=target.getMatchForShape(currentShape);
 
 		// If this rating is the best so far, note this.
@@ -102,9 +104,10 @@ bool ShapeDetector::findTargetAndUpdate(Shape &target, double worstMatch)
 		}
 	}
 
+	double difference=greatestRating-worstMatch;
 
 	// If the greatest rating was good enough,
-	if(greatestRating >= worstMatch)
+	if(difference >= 0)
 	{
 		target.fromOther(foundShapes.at(indexOfGreatestRating)); // Copy from the best rated.
 		return true;

@@ -31,6 +31,12 @@ void PlaneDetector::detectPoints2D()
 // Run BFS, to find points that could be on the plane.
 void PlaneDetector::detectPoints2D(Point2D startPoint)
 {
+	// Stop if the start point isn't on the image.
+	if(!isOnImage(startPoint))
+	{
+		return;
+	}
+
 	// DFS, starting at bottom.
 	std::deque<Point2D> fringe;
 	//fringe.reserve(image.rows*image.cols);

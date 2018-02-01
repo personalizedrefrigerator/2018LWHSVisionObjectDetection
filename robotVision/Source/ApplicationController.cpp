@@ -109,7 +109,7 @@ void ApplicationController::mainLoop()
 
 	int colorChangeThreshold=(int)options.colorChangeThreshold; 
 	int averageChangeThreshold=(int)options.averageChangeThreshold;
-	int minRating=0.21;
+	int minRating=21;
 	int cornerK=4000,
 		cornersToFind=4,
 		minCornerDistance=4,
@@ -172,6 +172,9 @@ void ApplicationController::mainLoop()
 
 			filter.setPlaneDetectorOptions(options);
 			detector.setPlaneDetectorOptions(options);
+
+			// Configure the corner detection for the main shape's corner detector. A 0.1 quality.
+			mainShape.getCornerDetector().setOptions((double)(cornerK/100000.0), cornersToFind+1, minCornerDistance+1, cornerBlockSize+1, (bool)cornerHarris, 0.01);
 		}
 		filter.runAllFilters();		
 

@@ -12,6 +12,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/Vision.dir/Source/CornerDetector.cpp.o"
   "CMakeFiles/Vision.dir/Source/VisitedList.cpp.o"
   "CMakeFiles/Vision.dir/Source/ShapeDetector.cpp.o"
+  "CMakeFiles/Vision.dir/Source/ApplicationController.cpp.o"
   "Vision.pdb"
   "Vision"
 )

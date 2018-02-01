@@ -48,6 +48,7 @@ class PlaneDetector
 	void setColorChangeThreshold(double setTo);
 	void setAverageChangeThreshold(double setTo);
 	void setSignificantPointAccuracy(double setTo);
+	void setStartingPixels(unsigned int startingPixels);
 
 	// Set options related to the plane detector.
 	void setOptions(PlaneDetectorOptions options);
@@ -72,6 +73,8 @@ class PlaneDetector
 	double colorChangeThreshold=15;
 	double averageChangeThreshold=48.0;
 	double significantPointAccuracy=5.0;
+
+	unsigned int startingPixels=30;
 
 	// An array storing whether any given pixel has been visited.
 	VisitedList visited;

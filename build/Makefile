@@ -123,6 +123,33 @@ Vision/fast:
 	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/build
 .PHONY : Vision/fast
 
+Source/ApplicationController.o: Source/ApplicationController.cpp.o
+
+.PHONY : Source/ApplicationController.o
+
+# target to build an object file
+Source/ApplicationController.cpp.o:
+	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/Source/ApplicationController.cpp.o
+.PHONY : Source/ApplicationController.cpp.o
+
+Source/ApplicationController.i: Source/ApplicationController.cpp.i
+
+.PHONY : Source/ApplicationController.i
+
+# target to preprocess a source file
+Source/ApplicationController.cpp.i:
+	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/Source/ApplicationController.cpp.i
+.PHONY : Source/ApplicationController.cpp.i
+
+Source/ApplicationController.s: Source/ApplicationController.cpp.s
+
+.PHONY : Source/ApplicationController.s
+
+# target to generate assembly for a file
+Source/ApplicationController.cpp.s:
+	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/Source/ApplicationController.cpp.s
+.PHONY : Source/ApplicationController.cpp.s
+
 Source/CameraFilter.o: Source/CameraFilter.cpp.o
 
 .PHONY : Source/CameraFilter.o
@@ -483,6 +510,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... Vision"
 	@echo "... edit_cache"
+	@echo "... Source/ApplicationController.o"
+	@echo "... Source/ApplicationController.i"
+	@echo "... Source/ApplicationController.s"
 	@echo "... Source/CameraFilter.o"
 	@echo "... Source/CameraFilter.i"
 	@echo "... Source/CameraFilter.s"

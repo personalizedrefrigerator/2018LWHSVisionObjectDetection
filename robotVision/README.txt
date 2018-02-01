@@ -1,7 +1,5 @@
 This program was created for the 2018 build season, for the Lake Washington High School FRC Robotics team.
 
-The stack currently overflows, due to part of the ShapeDetector class, or one of its members.
-
 To compile this on Linux, from the build directory, run:
 cmake ../robotVision -DCMAKE_BUILD_TYPE=Release
 

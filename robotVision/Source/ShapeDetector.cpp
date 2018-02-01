@@ -26,10 +26,13 @@ void ShapeDetector::detectShapes()
 
 	Point2D currentPoint;
 
+	unsigned int deltaX=image.cols/40;
+	unsigned int deltaY=image.rows/20;
+	
 	// For every pixel,
-	for(x=0; x<image.cols; x+=20)
+	for(x=0; x<image.cols; x+=deltaX)
 	{
-		for(y=0; y<image.rows; y+=20)
+		for(y=x/deltaX; y<image.rows; y+=deltaY)
 		{
 			currentPoint.x=x;
 			currentPoint.y=y;

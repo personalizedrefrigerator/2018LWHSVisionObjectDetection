@@ -102,7 +102,7 @@ void PlaneDetector::detectPoints2D(Point2D startPoint)
 					setVisited(considering, true);
 					//std::cout << isOnImage(considering) << "\n";
 					//TODO: Make color change take direction into account.
-					if(isOnImage(considering) && (getColorAt(current)-getColorAt(considering) <= colorChangeThreshold && getColorAt(current)-mainColor <= averageChangeThreshold || times < 20))
+					if(isOnImage(considering) && (getColorAt(current)-getColorAt(considering) <= colorChangeThreshold && getColorAt(current)-mainColor <= averageChangeThreshold || times < startingPixels))
 					{
 						fringe.push_front(considering);
 						fringeSize++;
@@ -416,12 +416,19 @@ void PlaneDetector::setSignificantPointAccuracy(double setTo)
 	significantPointAccuracy=setTo;
 }
 
+// Set the number of starting pixels.
+void PlaneDetector::setStartingPixels(unsigned int newStartingPixels)
+{
+	startingPixels=newStartingPixels;
+}
+
 // Set options based on a PlaneDetectorOptions object.
 void PlaneDetector::setOptions(PlaneDetectorOptions options)
 {
 	setColorChangeThreshold(options.colorChangeThreshold);
 	setAverageChangeThreshold(options.averageChangeThreshold);
 	setSignificantPointAccuracy(options.significantPointAccuracy);
+	setStartingPixels(options.startingPixels);
 }
 
 // Output the data found to a shape.

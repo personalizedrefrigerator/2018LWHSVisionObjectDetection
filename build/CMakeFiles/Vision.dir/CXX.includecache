@@ -6,6 +6,10 @@
 
 #IncludeRegexTransform: 
 
+/home/killdozer/Documents/Programming/VisionObjectDetection/VisionObjectDetection/robotVision/Headers/ApplicationController.h
+iostream
+-
+
 /home/killdozer/Documents/Programming/VisionObjectDetection/VisionObjectDetection/robotVision/Headers/CameraFilter.h
 opencv2/opencv.hpp
 -
@@ -110,6 +114,26 @@ Point2D.h
 vector
 -
 
+/home/killdozer/Documents/Programming/VisionObjectDetection/VisionObjectDetection/robotVision/Source/ApplicationController.cpp
+ApplicationController.h
+/home/killdozer/Documents/Programming/VisionObjectDetection/VisionObjectDetection/robotVision/Source/ApplicationController.h
+iostream
+-
+sstream
+-
+cstdlib
+-
+opencv2/opencv.hpp
+-
+opencv2/imgproc.hpp
+-
+CameraFilter.h
+/home/killdozer/Documents/Programming/VisionObjectDetection/VisionObjectDetection/robotVision/Source/CameraFilter.h
+ShapeDetector.h
+/home/killdozer/Documents/Programming/VisionObjectDetection/VisionObjectDetection/robotVision/Source/ShapeDetector.h
+CameraOptionsTrackbarManager.h
+/home/killdozer/Documents/Programming/VisionObjectDetection/VisionObjectDetection/robotVision/Source/CameraOptionsTrackbarManager.h
+
 /home/killdozer/Documents/Programming/VisionObjectDetection/VisionObjectDetection/robotVision/Source/CameraFilter.cpp
 CameraFilter.h
 /home/killdozer/Documents/Programming/VisionObjectDetection/VisionObjectDetection/robotVision/Source/CameraFilter.h
@@ -191,20 +215,8 @@ VisitedList.h
 /home/killdozer/Documents/Programming/VisionObjectDetection/VisionObjectDetection/robotVision/Source/VisitedList.h
 
 /home/killdozer/Documents/Programming/VisionObjectDetection/VisionObjectDetection/robotVision/main.cpp
-iostream
--
-cstdlib
--
-opencv2/opencv.hpp
--
-opencv2/imgproc.hpp
--
-CameraFilter.h
-/home/killdozer/Documents/Programming/VisionObjectDetection/VisionObjectDetection/robotVision/CameraFilter.h
-ShapeDetector.h
-/home/killdozer/Documents/Programming/VisionObjectDetection/VisionObjectDetection/robotVision/ShapeDetector.h
-CameraOptionsTrackbarManager.h
-/home/killdozer/Documents/Programming/VisionObjectDetection/VisionObjectDetection/robotVision/CameraOptionsTrackbarManager.h
+ApplicationController.h
+/home/killdozer/Documents/Programming/VisionObjectDetection/VisionObjectDetection/robotVision/ApplicationController.h
 
 /usr/local/include/opencv/cxcore.h
 opencv2/core/core_c.h

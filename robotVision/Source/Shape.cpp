@@ -244,6 +244,32 @@ void Shape::drawDebugOutput(cv::Mat outputImage)
 		// Draw a circle at the center point, cv::Scalar stores the color. 8 is the line type. 2 is the line width.
 		cv::circle(outputImage, cv::Point(center.x, center.y), 5, cv::Scalar(255, 0, 100, 200), 2, 8, 0);
 	}
+
+	// If there is a first point,
+	if(getContentSize() > 0)
+	{
+		// Get the first point.
+		Point2D firstPoint=getFirstPoint();
+
+		// As long as the first point is on the screen.
+		if(isOnScreen(firstPoint))
+		{
+			// Draw a circle at the first point.
+			cv::circle(outputImage, cv::Point(firstPoint.x, firstPoint.y), 5, cv::Scalar(255, 100, 255, 200), 2, 8, 0);
+		}
+	}
+}
+
+// Get the first point on the shape.
+void Shape::getFirstPoint()
+{
+	return contents.at(0);
+}
+
+// Get whether a point could be on the screen.
+void Shape::isOnScreen(Point2D point)
+{
+	return point.x >= 0 && point.y >= 0 && point.x < screenWidth && point.y < screenHeight;
 }
 
 // Calculate the corners of the shape using OpenCV's corner detector.

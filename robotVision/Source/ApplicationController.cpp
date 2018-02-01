@@ -109,6 +109,7 @@ void ApplicationController::mainLoop()
 
 	int colorChangeThreshold=(int)options.colorChangeThreshold; 
 	int averageChangeThreshold=(int)options.averageChangeThreshold;
+	int minRating=0.21;
 	int cornerK=4000,
 		cornersToFind=4,
 		minCornerDistance=4,
@@ -123,6 +124,7 @@ void ApplicationController::mainLoop()
 		// Add trackbars.
 		trackbarManager.addTrackbar(std::string("Color Change Threshold"), 256, &colorChangeThreshold);
 		trackbarManager.addTrackbar(std::string("Average Value Change Threshold"), 256, &averageChangeThreshold);
+		trackbarManager.addTrackbar(std::string("Minimum rating."), 100, &minRating);
 		trackbarManager.addTrackbar(std::string("Corner K."), 16000, &cornerK);
 		trackbarManager.addTrackbar(std::string("Corners to find."), 20, &cornersToFind);
 		trackbarManager.addTrackbar(std::string("Minimum corner distance."), 160, &minCornerDistance);
@@ -212,7 +214,9 @@ void ApplicationController::mainLoop()
 			//std::cout << "Done drwawing debug output.\n";
 
 		}
-		rating=0.21;
+
+		// Set the rating to the minimum.
+		rating=minRating/100.0;
 
 		//std::cout << "Imshow.\n";
 		

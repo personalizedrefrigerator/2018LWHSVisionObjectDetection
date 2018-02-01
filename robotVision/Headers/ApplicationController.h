@@ -1,5 +1,6 @@
 #pragma once
 
+// Streams.
 #include <iostream>
 
 // A clas to run and control the application.
@@ -8,21 +9,22 @@
 class ApplicationController
 {
 	public:
-	ApplicationController();
-	void setShowUserInterface(bool);
-	void setCameraNumber(unsigned int cameraNumber);
-	void setLogInformation(bool logInfo);
-	void setOutputStream(std::ostream * newOutput);
-	void logOutput(std::string output);
+	ApplicationController(); // Make a new ApplicationController.
+	void setShowUserInterface(bool); // Set whether the user interface should be shown while running the program.
+	void setCameraNumber(unsigned int cameraNumber); // Set the camera to use for the program.
+	void setLogInformation(bool logInfo); // Set whether to log information to the console.
+	void setOutputStream(std::ostream * newOutput); // Set the output stream.
+	void logOutput(std::string output); // Log text to the output stream.
 
-	void mainLoop();
+	void mainLoop(); // The main program loop.
 
 
 	private:
-	bool showUI=true;
-	unsigned int cameraNumber=0;
-	bool cameraNumberSet=false;
-	bool logInfo=false;
+	bool showUI=true; // Whether to show UI.
+	unsigned int cameraNumber=0; // The camera number to use.
+	bool cameraNumberSet=false; // Whether the client has set the camera number.
+	bool logInfo=false; // Whether output should be logged.
 
+	// The stream to log output to.
 	std::ostream * outputStream=&(std::cout);
 };

@@ -37,7 +37,10 @@ class Shape
 	std::vector<Point2D> getContents(); // Get the shape's contents.
 	unsigned int getContentSize(); // Get the shape's area.
 	Point2D getCenter(); // Get the center point.
+	void getFirstPoint(); // Get the first point.
 	Color getAverageColor(); // Get the average color.
+
+	bool isOnScreen(Point2D point); // Get whether a point is on the screen.
 
 	// Update edges and content.
 	void setEdges(std::vector<Point2D> edges); // Set the edges of the shape.

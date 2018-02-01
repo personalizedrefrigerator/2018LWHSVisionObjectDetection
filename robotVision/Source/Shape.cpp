@@ -321,6 +321,12 @@ Color Shape::getAverageColor()
 	return averageColor;
 }
 
+// Get the corner detector.
+CornerDetector & Shape::getCornerDetector()
+{
+	return this->cornerDetector;
+}
+
 // Get the shape's area.
 unsigned int Shape::getContentSize()
 {

@@ -47,7 +47,8 @@ class Shape
 
 	void fromOther(Shape & other); // Create the current shape from another.
 
-	void setCornerDetector(CornerDetector & cornerDetector); // Set the device used to detect corners.
+	void setCornerDetector(CornerDetector & cornerDetector); // Set the object used to detect corners.
+	CornerDetector & getCornerDetector(); // Get the object used to detect corners.
 
 	double getMatchForShape(Shape &other); // Get how well the other shape seems to match this shape.
 

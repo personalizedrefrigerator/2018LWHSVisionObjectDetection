@@ -239,7 +239,7 @@ void Shape::drawDebugOutput(cv::Mat outputImage)
 	// Draw a circle at the center.
 
 	// As long as the center is on the screen,
-	if(center.x >= 0 && center.y >= 0 && center.x< screenWidth && center.y < screenHeight)
+	if(isOnScreen(center))
 	{
 		// Draw a circle at the center point, cv::Scalar stores the color. 8 is the line type. 2 is the line width.
 		cv::circle(outputImage, cv::Point(center.x, center.y), 5, cv::Scalar(255, 0, 100, 200), 2, 8, 0);

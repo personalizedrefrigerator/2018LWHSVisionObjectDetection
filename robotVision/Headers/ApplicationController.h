@@ -17,6 +17,9 @@ class ApplicationController
 	void logOutput(std::string output); // Log text to the output stream.
 
 	void mainLoop(); // The main program loop.
+	void demoStitcher(); // Demo the image stitcher.
+	
+	unsigned int promptForCamera(); // Ask the user to select a camera.
 
 
 	private:

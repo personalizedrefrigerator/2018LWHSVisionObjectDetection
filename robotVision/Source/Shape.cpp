@@ -38,7 +38,7 @@ void Shape::calculateCenterAndOkScreenSize()
 		// Find the average x and y values of the shape.
 
 		// Create variables to accumulate the sum, then to be used to find the average x and y.
-		double averageX, averageY;
+		double averageX=0, averageY=0;
 
 		// Create a variable to store the current point.
 		Point2D currentPoint;
@@ -51,8 +51,14 @@ void Shape::calculateCenterAndOkScreenSize()
 			currentPoint=this->contents.at(pointIndex);
 
 			// Add its x and y components to the accumulator.
-			averageX+=currentPoint.x;
-			averageY+=currentPoint.y;
+			
+			// So long as the point's x and y are greater than 0.
+			
+			if(currentPoint.x >= 0 && currentPoint.y >= 0)
+			{
+				averageX+=currentPoint.x;
+				averageY+=currentPoint.y;
+			}
 			
 			// If larger than the current screen size, update that.
 			if(currentPoint.x > screenWidth)
@@ -73,7 +79,7 @@ void Shape::calculateCenterAndOkScreenSize()
 		averageY /= numberOfPoints;
 
 		// Store these in the center point.
-		center=Point2D((int)averageX, (int)averageY);
+		center=Point2D(averageX, averageY);
 	}
 }
 
@@ -210,7 +216,7 @@ void Shape::drawSelf(cv::Mat outputImage, unsigned int colorsPerPixel)
 		// For the blue, green, and red components of the color.
 		for(colorIndex=0; colorIndex<colorsPerPixel; colorIndex++)
 		{
-			outputImage.at<unsigned char>(currentPoint.y, currentPoint.x*3+colorIndex)=(sin(pointIndex)*256);
+			outputImage.at<unsigned char>(currentPoint.y, currentPoint.x*3+colorIndex)=(abs(sin(pointIndex))*256);
 		}
 	}
 }
@@ -261,13 +267,13 @@ void Shape::drawDebugOutput(cv::Mat outputImage)
 }
 
 // Get the first point on the shape.
-void Shape::getFirstPoint()
+Point2D Shape::getFirstPoint()
 {
 	return contents.at(0);
 }
 
 // Get whether a point could be on the screen.
-void Shape::isOnScreen(Point2D point)
+bool Shape::isOnScreen(Point2D point)
 {
 	return point.x >= 0 && point.y >= 0 && point.x < screenWidth && point.y < screenHeight;
 }

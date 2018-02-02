@@ -56,20 +56,82 @@ void ApplicationController::logOutput(std::string output)
 	}
 }
 
+// Prompt the user for a camera.
+unsigned int ApplicationController::promptForCamera()
+{
+	// Request the camera number.
+	std::cout << "Camera number: ";
+
+	// Create a variable to store the string version of the camera number.
+	std::string cameraNumberResponse;
+	std::cin >> cameraNumberResponse;
+	
+	// Return the integer version.
+	return atoi(cameraNumberResponse.c_str());
+}
+
+// Demo the image stitcher.
+void ApplicationController::demoStitcher()
+{
+	// Request two cameras.
+	unsigned int camera1=promptForCamera(),
+		camera2=promptForCamera();
+		
+	// Create filters.
+	CameraFilter filter1=CameraFilter(camera1);
+	CameraFilter filter2=CameraFilter(camera2);
+	
+	// Open cameras.
+	cv::VideoCapture video1, video2;
+	video1.open(camera1);
+	video2.open(camera2);
+
+	// Create a variable to store the current frame.
+	cv::Mat currentFrame;
+	
+	// Create variables to store the results from the individual cameras.
+	cv::Mat image1, image2;
+	
+	// If showing UI,
+	if(showUI)
+	{
+		// Open a window.
+		cv::namedWindow("Camera View", cv::WINDOW_AUTOSIZE);
+	}
+	
+	// Create a variable to store the last key.
+	char lastKey='\0';
+	
+	// Enter the main loop.
+	do
+	{
+		//logOutput("Starting loop.\n");
+
+		// Load the current image seen by the camera into the current frame.
+		video1 >> image1;
+		video2 >> image2;
+		
+		currentFrame=filter1.stitchTwo(image1, image2);
+		
+		// If showing UI,
+		if(showUI && currentFrame.rows > 0 && currentFrame.cols > 0)
+		{
+			cv::imshow("Camera View", currentFrame);
+		}
+		
+		// Wait at least 1 ms for a key.
+		lastKey = cv::waitKey(1);
+	} // Stop when 'q' is pressed.
+	while(lastKey != 'q');
+}
+
 // Run the main application loop. TODO: Allow this to be better changed from outside the class.
 void ApplicationController::mainLoop()
 {
 	// If the camera number has not been explicitly set,
 	if(!cameraNumberSet)
 	{
-		// Request the camera number.
-		std::cout << "Camera number: ";
-
-		// Create a variable to store the string version of the camera number.
-		std::string cameraNumberResponse;
-		std::cin >> cameraNumberResponse;
-
-		cameraNumber=atoi(cameraNumberResponse.c_str());
+		cameraNumber=promptForCamera();
 	}
 
 	// Create a filter.

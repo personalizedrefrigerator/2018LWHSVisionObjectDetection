@@ -2,6 +2,9 @@
 
 #include "PlaneDetectorOptions.h"
 
+#include <vector>
+#include<opencv2/stitching.hpp>
+
 // Construct a filtering object.
 CameraFilter::CameraFilter(unsigned int cameraNumber)//cv::Mat startingData, unsigned int cameraNumber)
 {
@@ -229,6 +232,36 @@ void CameraFilter::showPlane()
 	
 }
 
+// Stitch images together.
+cv::Mat CameraFilter::stitch(std::vector<cv::Mat> inputs)
+{
+	cv::Mat output;
+
+	// If the stitcher hasn't been made,
+	if(!stitcherMade)
+	{
+		// Make an image stitcher. cv::Stitcher::Mode::PANORAMA is 0.
+		//cv::Stitcher::Mode mode=cv::Stitcher::PANORAMA;
+		stitcher=cv::Stitcher::createDefault(true);
+		
+		// Note that one was made.
+		stitcherMade=true;
+	}
+	stitcher.stitch(inputs, output);
+	
+	return output;
+}
+
+// Stitch just two images together.
+cv::Mat CameraFilter::stitchTwo(cv::Mat image1, cv::Mat image2)
+{
+	std::vector<cv::Mat> inputs;
+	inputs.push_back(image1);
+	inputs.push_back(image2);
+	
+	return stitch(inputs);
+}
+
 // Configure corner detection options.
 void CameraFilter::configureCornerDetection(double k, int cornersToFind, int minCornerDistance, int cornerBlockSize, bool useCornerHarris)
 {
@@ -256,4 +289,14 @@ void CameraFilter::runAllFilters()
 	//showPlane();
 	//detectCorners();
 	//cornerHarris();
+}
+
+// Deconstruct.
+CameraFilter::~CameraFilter()
+{
+	// If a stitcher was made, delete it.
+	/*if(stitcherMade)
+	{
+		delete stitcher;
+	}*/
 }

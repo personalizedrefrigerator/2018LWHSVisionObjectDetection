@@ -5,6 +5,7 @@
 // Include opencv libraries.
 #include<opencv2/opencv.hpp>
 #include<opencv2/imgproc.hpp>
+#include<opencv2/stitching.hpp>
 
 // Include the camera normalizer (for correcting camera errors).
 #include "CameraNormalizer.h"
@@ -12,10 +13,14 @@
 // Include the plane detector.
 #include "PlaneDetector.h"
 
+#include<vector>
+
 
 class CameraFilter
 {
 	public:
+	~CameraFilter();
+	
 	void normalize();
 	void erodeAndDilate();
 	void erodeAndDilate(cv::Mat image, unsigned int recursions);
@@ -26,6 +31,9 @@ class CameraFilter
 	void tier(int multiplier);
 	
 	void runAllFilters();
+	
+	cv::Mat stitch(std::vector<cv::Mat> inputs);
+	cv::Mat stitchTwo(cv::Mat input1, cv::Mat input2); // Stitch just two images together.
 
 	void setPlaneDetectorOptions(PlaneDetectorOptions options);
 
@@ -38,6 +46,9 @@ class CameraFilter
 
 	private:
 	cv::Mat data;
+	
+	bool stitcherMade=true;
+	cv::Stitcher stitcher=cv::Stitcher::createDefault();
 
 	bool normalized=false;
 	CameraNormalizer normalizer=CameraNormalizer();

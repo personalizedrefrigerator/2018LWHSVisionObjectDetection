@@ -204,6 +204,8 @@ void ApplicationController::mainLoop()
 
 	mainShape.setCenterLocation(Point2D(100, 100));
 
+	mainShape.setScreenZ(filter.getNormalizer().getFocalLengthX()); // Set an estimate for the Z position of the screen from the camera.
+
 	double rating=-1.0;
 
 	bool foundShape=false;

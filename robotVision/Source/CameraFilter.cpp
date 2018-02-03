@@ -232,6 +232,12 @@ void CameraFilter::showPlane()
 	
 }
 
+// Get the camera's normalizer.
+CameraNormalizer & CameraFilter::getNormalizer()
+{
+	return normalizer;
+}
+
 // Stitch images together.
 cv::Mat CameraFilter::stitch(std::vector<cv::Mat> inputs)
 {

@@ -32,6 +32,8 @@ class CameraFilter
 	
 	void runAllFilters();
 	
+	CameraNormalizer & getNormalizer();
+	
 	cv::Mat stitch(std::vector<cv::Mat> inputs);
 	cv::Mat stitchTwo(cv::Mat input1, cv::Mat input2); // Stitch just two images together.
 

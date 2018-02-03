@@ -23,6 +23,9 @@ class CameraNormalizer
 
 	bool loadData();
 	bool loadData(std::string filePathToLoad) {}; // TODO: Implement.
+	
+	double getFocalLengthX(); // Get the X portion of the focal length stored in the camera matrix.
+	double getFocalLengthY(); // Get the Y component of the focal length stored in the camera matrix.
 
 	bool setConfigurationURLBasedOnCameraNumber(); // Returns whether the name changed.
 	

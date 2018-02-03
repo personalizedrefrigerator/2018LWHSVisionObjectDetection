@@ -162,6 +162,27 @@ void CameraNormalizer::calibrate(bool useUI)
 	}
 }
 
+// Get the X component of the focal length. Assumes cameraMatrix has been initialized.
+double CameraNormalizer::getFocalLengthX()
+{
+	// f_sub_x is at (0,0) in the camera matrix.
+	double focalX=cameraMatrix.at<double>(0, 0);
+	
+	// Return the focal length.
+	return focalX;
+}
+
+// Get the Y component of the focal length. Call calibrate first or load a camera matrix.
+double CameraNormalizer::getFocalLengthY()
+{
+	// f_sub_y is at (1,1) in the camera matrix.
+	double focalY=cameraMatrix.at<double>(1, 1);
+	
+	// Return the focal length.
+	return focalY;
+}
+
+
 // Save the current calibration.
 void CameraNormalizer::saveCalibration()
 {

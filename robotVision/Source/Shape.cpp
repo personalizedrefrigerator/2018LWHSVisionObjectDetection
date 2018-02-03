@@ -4,6 +4,7 @@
 #include <math.h>
 
 #define E 2.718281828
+#define PI 3.1415926535897932384626433
 
 // Construct the shape, taking the edges and contents.
 Shape::Shape(std::vector<Point2D> edges, std::vector<Point2D> contents)
@@ -260,10 +261,10 @@ void Shape::drawDebugOutput(cv::Mat outputImage)
 		// Draw text indicating the size and angle.
 		std::stringstream outputText;
 		outputText << "Size: ";
-		outputText << contents.size() << "." << "\n";
-		outputText << "Center angle: " <<  angleX << ", " << angleY;
+		outputText << contents.size() << ". ";
+		outputText << "ANGLE: " <<  angleX*180/PI << ", " << angleY*180/PI;
 		// Font 2.
-		putText(outputImage, outputText.str(), cv::Point(center.x, center.y), 5, 0.5, cv::Scalar(255,0,0, 200));
+		putText(outputImage, outputText.str(), cv::Point(center.x-50, center.y), 2, 0.35, cv::Scalar(0,0,255, 200));
 	}
 
 	// If there is a first point,

@@ -24,7 +24,7 @@ class Shape
 	
 	// Calculate the corners and center point.
 	void calculateCenterAndOkScreenSize();
-	void calculateAngle(); // Calculate the angle to the center of the shape.
+	void calculateAngle(unsigned int screenWidth, unsigned int screenHeight); // Calculate the angle to the center of the shape.
 	void calculateCorners(); // TODO: Finish implementing later.
 	void calculateCornersCV(); // Find the corners of the shape, using OpenCV.
 	

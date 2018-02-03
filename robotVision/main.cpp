@@ -16,7 +16,7 @@ int main()
 	controller.setLogInformation(false);
 
 	// Run the main loop.
-	//controller.mainLoop();
-	controller.demoStitcher();
+	controller.mainLoop();
+	//controller.demoStitcher();
 }
 

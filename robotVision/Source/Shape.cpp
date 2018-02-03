@@ -171,10 +171,15 @@ void Shape::calculateCorners()
 }
 
 // Calculate the angle to the center of the shape.
-void Shape::calculateAngle()
+void Shape::calculateAngle(unsigned int screenWidth, unsigned int screenHeight)
 {
-	angleX=atan(center.x/screenZ);
-	angleY=atan(center.y/screenZ);
+	// Find the x and y parts of the position.
+	double x=center.x-screenWidth/2;
+	double y=center.y-screenHeight/2;
+	
+	// Compute the x and y parts of the angle.
+	angleX=atan(x/screenZ);
+	angleY=atan(y/screenZ);
 }
 
 // Draw the shape.
@@ -198,7 +203,7 @@ void Shape::drawSelf(cv::Mat outputImage, unsigned int colorsPerPixel)
 
 		for(colorIndex=0; colorIndex<colorsPerPixel; colorIndex++)
 		{
-			outputImage.at<unsigned char>(currentPoint.y, currentPoint.x*3+colorIndex)=205-colorIndex*50;
+			outputImage.at<unsigned char>(currentPoint.y, currentPoint.x*colorsPerPixel+colorIndex)=205-colorIndex*50;
 		}
 	}
 	
@@ -216,7 +221,7 @@ void Shape::drawSelf(cv::Mat outputImage, unsigned int colorsPerPixel)
 		// For the blue, green, and red components of the color.
 		for(colorIndex=0; colorIndex<colorsPerPixel; colorIndex++)
 		{
-			outputImage.at<unsigned char>(currentPoint.y, currentPoint.x*3+colorIndex)=(abs(sin(pointIndex))*256);
+			outputImage.at<unsigned char>(currentPoint.y, currentPoint.x*colorsPerPixel+colorIndex)=(abs(sin(pointIndex))*256);
 		}
 	}
 }
@@ -249,6 +254,16 @@ void Shape::drawDebugOutput(cv::Mat outputImage)
 	{
 		// Draw a circle at the center point, cv::Scalar stores the color. 8 is the line type. 2 is the line width.
 		cv::circle(outputImage, cv::Point(center.x, center.y), 5, cv::Scalar(255, 0, 100, 200), 2, 8, 0);
+		
+		calculateAngle(outputImage.cols, outputImage.rows);
+		
+		// Draw text indicating the size and angle.
+		std::stringstream outputText;
+		outputText << "Size: ";
+		outputText << contents.size() << "." << "\n";
+		outputText << "Center angle: " <<  angleX << ", " << angleY;
+		// Font 2.
+		putText(outputImage, outputText.str(), cv::Point(center.x, center.y), 5, 0.5, cv::Scalar(255,0,0, 200));
 	}
 
 	// If there is a first point,
@@ -269,7 +284,14 @@ void Shape::drawDebugOutput(cv::Mat outputImage)
 // Get the first point on the shape.
 Point2D Shape::getFirstPoint()
 {
-	return contents.at(0);
+	if(contents.size() > 0)
+	{
+		return contents.at(0);
+	}
+	else
+	{
+		return Point2D(0,0);
+	}
 }
 
 // Get whether a point could be on the screen.

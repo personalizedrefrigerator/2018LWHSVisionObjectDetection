@@ -73,15 +73,26 @@ bool ShapeDetector::findTargetAndUpdate(Shape &target, double worstMatch)
 		// Find a shape.
 		Shape currentShape;
 
-		Point2D center=target.getCenter();
+		Point2D point1=target.getFirstPoint(),
+			point2=target.getCenter();
 
-		detector.detectPoints2D(center);
+		// Detect from the center.
+		detector.detectPoints2D(point2);
 		detector.outputToShape(currentShape);
 		
-
+		
 		// Add the current shape to those found.
 		foundShapes.push_back(currentShape);
-		numberOfShapes++;
+		
+		// Detect from the other point.
+		detector.detectPoints2D(point1);
+		detector.outputToShape(currentShape);
+		
+		
+		// Add the current shape to those found.
+		foundShapes.push_back(currentShape);
+
+		numberOfShapes+=2;
 	}
 	
 

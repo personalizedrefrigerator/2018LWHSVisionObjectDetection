@@ -11,6 +11,9 @@
 #include "CornerDetector.h"
 #include "Color.h"
 
+// Include options structures.
+#include "ShapeComparisonOptions.h"
+
 // Include OpenCV libraries.
 #include<opencv2/opencv.hpp>
 
@@ -53,7 +56,9 @@ class Shape
 	void setCornerDetector(CornerDetector & cornerDetector); // Set the object used to detect corners.
 	CornerDetector & getCornerDetector(); // Get the object used to detect corners.
 
-	double getMatchForShape(Shape &other); // Get how well the other shape seems to match this shape.
+	double getMatchForShape(Shape & other); // Get how well the other shape seems to match this shape.
+	ShapeComparisonOptions& getShapeComparisonOptions(); // Get options for comparing this and another shape.
+	void setShapeComparisonOptions(ShapeComparisonOptions newOptions); // Set the options for comparing this to another shape.
 
 	private:
 	std::vector<Point2D> edges;
@@ -80,6 +85,9 @@ class Shape
 	
 	// The detector to be used to detect corners.
 	CornerDetector cornerDetector=CornerDetector();
+	
+	// The options for comparing this and another shape.
+	ShapeComparisonOptions comparisonOptions;
 };
 
 

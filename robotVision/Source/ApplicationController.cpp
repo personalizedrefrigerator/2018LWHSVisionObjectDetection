@@ -47,15 +47,6 @@ void ApplicationController::setOutputStream(std::ostream * newOutput)
 	outputStream=newOutput;
 }
 
-// Log output, if specified.
-void ApplicationController::logOutput(std::string output)
-{
-	if(logInfo)
-	{
-		(*outputStream) << output;
-	}
-}
-
 // Prompt the user for a camera.
 unsigned int ApplicationController::promptForCamera()
 {
@@ -96,7 +87,7 @@ void ApplicationController::demoStitcher()
 	if(showUI)
 	{
 		// Open a window.
-		cv::namedWindow("Camera View", cv::WINDOW_AUTOSIZE);
+		cv::namedWindow("Camera View", cv::WINDOW_NORMAL);
 	}
 	
 	// Create a variable to store the last key.
@@ -213,7 +204,7 @@ void ApplicationController::mainLoop()
 	// Enter the main loop.
 	do
 	{
-		//logOutput("Starting loop.\n");
+		logOutput("Starting loop.\n");
 
 		// Load the current image seen by the camera into the current frame.
 		video >> currentFrame;
@@ -223,7 +214,7 @@ void ApplicationController::mainLoop()
 		detector.setImage(currentFrame);
 
 
-		//logOutput("Image set.\n");
+		logOutput("Image set.\n");
 
 		// If showing UI,
 		if(showUI)
@@ -246,22 +237,25 @@ void ApplicationController::mainLoop()
 		
 		//logOutput("Clearing found...\n");
 		detector.clearFoundShapes();
-		//logOutput("Done!\n");
+		logOutput("Done!\n");
 
 		foundShape=true;
 
-		//logOutput("Finding shapes.\n");
+		logOutput("Finding shapes.\n");
+
+		detector.clearComparisonShapes();
+		detector.addComparisonShape(mainShape);
 
 		//detector.detectShapes();
 		if(!detector.findTargetAndUpdate(mainShape, rating))
 		{
-			//logOutput("Was false.\n");
-			detector.detectShapes();
+			logOutput("Was false.\n");
+			detector.detectAllShapes();
 
-			//logOutput("Done detecting shapes.\n");
+			logOutput("Done detecting shapes.\n");
 
 			foundShape=detector.findTargetAndUpdate(mainShape, rating);
-			//logOutput("Updated!\n");
+			logOutput("Updated!\n");
 		}
 
 		if(foundShape)

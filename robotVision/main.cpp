@@ -13,7 +13,7 @@ int main()
 	
 	// Set options.
 	controller.setShowUserInterface(true);
-	controller.setLogInformation(false);
+	controller.setLogInformation(true);
 
 	// Run the main loop.
 	controller.mainLoop();

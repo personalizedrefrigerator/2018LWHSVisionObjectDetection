@@ -315,7 +315,7 @@ void Shape::calculateCornersCV()
 }
 
 // Get how well the shape matches another.
-double Shape::getMatchForShape(Shape & other)
+double Shape::getMatchForShape(Shape &other)
 {
 	double result=0.0;
 	
@@ -335,10 +335,9 @@ double Shape::getMatchForShape(Shape & other)
 	sizeDifference*=sizeDifference;
 
 	// Average the results of the sigmoid function on the distance to the center, the size difference, and the average color difference.
-	result+=1/(pow(E, -E + distanceSquaredToCenter/30)+1);
-	result+=1/(pow(E, -E + averageColorDifference/30)+1);
-	result+=1/(pow(E, -E + sizeDifference/30)+1);
-	result/=3;
+	result+=comparisonOptions.sizePortion/(pow(E, -E + distanceSquaredToCenter*comparisonOptions.sizeDeltaMultiplier)+1);
+	result+=comparisonOptions.colorPortion/(pow(E, -E + averageColorDifference*comparisonOptions.colorDeltaMultiplier)+1);
+	result+=comparisonOptions.centerDeltaPortion/(pow(E, -E + sizeDifference*comparisonOptions.centerPointDeltaMultiplier)+1);
 
 	return result;
 }
@@ -350,6 +349,20 @@ void Shape::fromOther(Shape & other)
 	setEdges(other.getEdges());
 	setContents(other.getContents());
 	setCenterLocation(other.getCenter());
+	
+	setShapeComparisonOptions(other.getShapeComparisonOptions());
+}
+
+// Get the options used to compare this shape to another.
+ShapeComparisonOptions& Shape::getShapeComparisonOptions()
+{
+	return comparisonOptions;
+}
+
+// Set the options used for comparing shapes.
+void Shape::setShapeComparisonOptions(ShapeComparisonOptions newOptions)
+{
+	comparisonOptions=newOptions;
 }
 
 // Get the shape's edges.

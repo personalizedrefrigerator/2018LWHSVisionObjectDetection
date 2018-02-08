@@ -401,6 +401,18 @@ unsigned int Shape::getContentSize()
 	return contents.size();
 }
 
+// Get the shape's x rotation.
+double Shape::getXAngle()
+{
+	return angleX;
+}
+
+// Get the shape's y rotation.
+double Shape::getYAngle()
+{
+	return angleY;
+}
+
 // Set the edges and contents.
 void Shape::setEdges(std::vector<Point2D> edges)
 {

@@ -16,6 +16,9 @@
 #include "ShapeDetector.h"
 #include "CameraOptionsTrackbarManager.h"
 
+// Include the network communication class.
+#include "NetworkCommunicator.h"
+
 // Construct.
 ApplicationController::ApplicationController()
 {
@@ -59,6 +62,25 @@ unsigned int ApplicationController::promptForCamera()
 	
 	// Return the integer version.
 	return atoi(cameraNumberResponse.c_str());
+}
+
+// Log output to the output stream.
+void ApplicationController::logOutput(std::string output)
+{
+	if(logInfo)
+	{
+		(*outputStream) << output;
+	}
+}
+
+// Demo the network tables.
+void ApplicationController::demoNetworkTables()
+{
+	// Create the network table.
+	NetworkCommunicator mainCommunicator=NetworkCommunicator("10.58.27.2", "testTable");
+	
+	// Update a value.
+	mainCommunicator.updateValue("testValue", 123);
 }
 
 // Demo the image stitcher.
@@ -186,6 +208,13 @@ void ApplicationController::mainLoop()
 	}
 
 
+	NetworkCommunicator * networkCommunicator; // Create a variable to store the network communicator to be used to communicate with the other parts of the robot.
+	
+	if(!showUI)
+	{
+		networkCommunicator=new NetworkCommunicator("10.58.27.2", "visionTable");
+	}
+
 	// Create a variable to store the last key.
 	char lastKey='\0';
 
@@ -204,7 +233,7 @@ void ApplicationController::mainLoop()
 	// Enter the main loop.
 	do
 	{
-		logOutput("Starting loop.\n");
+		//logOutput("Starting loop.\n");
 
 		// Load the current image seen by the camera into the current frame.
 		video >> currentFrame;
@@ -214,7 +243,7 @@ void ApplicationController::mainLoop()
 		detector.setImage(currentFrame);
 
 
-		logOutput("Image set.\n");
+		//logOutput("Image set.\n");
 
 		// If showing UI,
 		if(showUI)
@@ -237,11 +266,11 @@ void ApplicationController::mainLoop()
 		
 		//logOutput("Clearing found...\n");
 		detector.clearFoundShapes();
-		logOutput("Done!\n");
+		//logOutput("Done!\n");
 
 		foundShape=true;
 
-		logOutput("Finding shapes.\n");
+		//logOutput("Finding shapes.\n");
 
 		detector.clearComparisonShapes();
 		detector.addComparisonShape(mainShape);
@@ -249,13 +278,13 @@ void ApplicationController::mainLoop()
 		//detector.detectShapes();
 		if(!detector.findTargetAndUpdate(mainShape, rating))
 		{
-			logOutput("Was false.\n");
+			//logOutput("Was false.\n");
 			detector.detectAllShapes();
 
-			logOutput("Done detecting shapes.\n");
+			//logOutput("Done detecting shapes.\n");
 
 			foundShape=detector.findTargetAndUpdate(mainShape, rating);
-			logOutput("Updated!\n");
+			//logOutput("Updated!\n");
 		}
 
 		if(foundShape)
@@ -271,10 +300,20 @@ void ApplicationController::mainLoop()
 			//std::cout << "Done calculating corners.\n";
 
 			mainShape.drawDebugOutput(currentFrame);
+			
+			// If no UI,
+			if(!showUI)
+			{
+				networkCommunicator->updateValue<double>("RotationDelta", mainShape.getXAngle());
+				networkCommunicator->updateValue<double>("Size", mainShape.getContentSize());
+			}
 
 			//std::cout << "Done drwawing debug output.\n";
 
 		}
+		
+		// If looking for rotation, give the rotation.
+		
 
 		// Set the rating to the minimum.
 		rating=minRating/100.0;
@@ -291,7 +330,10 @@ void ApplicationController::mainLoop()
 		//std::cout << "Done.\n";
 		
 		// Wait at least 1 ms for a key.
-		lastKey = cv::waitKey(1);
+		if(showUI)
+		{
+			lastKey = cv::waitKey(1);
+		}
 	} // Stop when 'q' is pressed.
 	while(lastKey != 'q');
 }

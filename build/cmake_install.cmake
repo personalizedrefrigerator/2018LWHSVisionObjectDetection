@@ -1,4 +1,4 @@
-# Install script for directory: /home/ubuntu/VisionObjectDetection/robotVision
+# Install script for directory: /home/ubuntu/VisionObjectDetection
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

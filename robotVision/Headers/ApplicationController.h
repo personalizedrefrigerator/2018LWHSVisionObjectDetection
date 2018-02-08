@@ -18,6 +18,7 @@ class ApplicationController
 
 	void mainLoop(); // The main program loop.
 	void demoStitcher(); // Demo the image stitcher.
+	void demoNetworkTables(); // Demo network tables.
 	
 	unsigned int promptForCamera(); // Ask the user to select a camera.
 

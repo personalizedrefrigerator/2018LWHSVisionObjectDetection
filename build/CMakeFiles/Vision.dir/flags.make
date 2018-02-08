@@ -6,5 +6,5 @@ CXX_FLAGS = -O3 -DNDEBUG   -std=gnu++11
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/usr/include/opencv -I/home/ubuntu/VisionObjectDetection/robotVision/Headers 
+CXX_INCLUDES = -I/usr/include/opencv -I/home/ubuntu/VisionObjectDetection/ntcore/include -I/home/ubuntu/VisionObjectDetection/ntcore/wpiutil/include -I/home/ubuntu/VisionObjectDetection/robotVision/Headers 
 

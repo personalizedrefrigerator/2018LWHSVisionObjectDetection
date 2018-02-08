@@ -1,0 +1,1 @@
+/usr/bin/c++    -fPIC -std=c++1y -Wformat=2 -Wall -Wextra -Werror -pedantic -Wno-unused-parameter   CMakeFiles/server.dir/server.cpp.o  -o server -rdynamic ../libntcore.so.1.0.0 -lpthread ../libwpiutil.a -Wl,-rpath,/home/ubuntu/Documents/ntcore 

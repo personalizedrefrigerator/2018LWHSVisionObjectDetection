@@ -43,7 +43,7 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/ubuntu/VisionObjectDetection/robotVision
+CMAKE_SOURCE_DIR = /home/ubuntu/VisionObjectDetection
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = /home/ubuntu/VisionObjectDetection/build
@@ -57,376 +57,402 @@ include CMakeFiles/Vision.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/Vision.dir/flags.make
 
-CMakeFiles/Vision.dir/main.cpp.o: CMakeFiles/Vision.dir/flags.make
-CMakeFiles/Vision.dir/main.cpp.o: /home/ubuntu/VisionObjectDetection/robotVision/main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/VisionObjectDetection/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Vision.dir/main.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Vision.dir/main.cpp.o -c /home/ubuntu/VisionObjectDetection/robotVision/main.cpp
+CMakeFiles/Vision.dir/robotVision/main.cpp.o: CMakeFiles/Vision.dir/flags.make
+CMakeFiles/Vision.dir/robotVision/main.cpp.o: ../robotVision/main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/VisionObjectDetection/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Vision.dir/robotVision/main.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Vision.dir/robotVision/main.cpp.o -c /home/ubuntu/VisionObjectDetection/robotVision/main.cpp
 
-CMakeFiles/Vision.dir/main.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Vision.dir/main.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ubuntu/VisionObjectDetection/robotVision/main.cpp > CMakeFiles/Vision.dir/main.cpp.i
+CMakeFiles/Vision.dir/robotVision/main.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Vision.dir/robotVision/main.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ubuntu/VisionObjectDetection/robotVision/main.cpp > CMakeFiles/Vision.dir/robotVision/main.cpp.i
 
-CMakeFiles/Vision.dir/main.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Vision.dir/main.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ubuntu/VisionObjectDetection/robotVision/main.cpp -o CMakeFiles/Vision.dir/main.cpp.s
+CMakeFiles/Vision.dir/robotVision/main.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Vision.dir/robotVision/main.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ubuntu/VisionObjectDetection/robotVision/main.cpp -o CMakeFiles/Vision.dir/robotVision/main.cpp.s
 
-CMakeFiles/Vision.dir/main.cpp.o.requires:
+CMakeFiles/Vision.dir/robotVision/main.cpp.o.requires:
 
-.PHONY : CMakeFiles/Vision.dir/main.cpp.o.requires
+.PHONY : CMakeFiles/Vision.dir/robotVision/main.cpp.o.requires
 
-CMakeFiles/Vision.dir/main.cpp.o.provides: CMakeFiles/Vision.dir/main.cpp.o.requires
-	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/main.cpp.o.provides.build
-.PHONY : CMakeFiles/Vision.dir/main.cpp.o.provides
+CMakeFiles/Vision.dir/robotVision/main.cpp.o.provides: CMakeFiles/Vision.dir/robotVision/main.cpp.o.requires
+	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/robotVision/main.cpp.o.provides.build
+.PHONY : CMakeFiles/Vision.dir/robotVision/main.cpp.o.provides
 
-CMakeFiles/Vision.dir/main.cpp.o.provides.build: CMakeFiles/Vision.dir/main.cpp.o
+CMakeFiles/Vision.dir/robotVision/main.cpp.o.provides.build: CMakeFiles/Vision.dir/robotVision/main.cpp.o
 
 
-CMakeFiles/Vision.dir/Source/CameraNormalizer.cpp.o: CMakeFiles/Vision.dir/flags.make
-CMakeFiles/Vision.dir/Source/CameraNormalizer.cpp.o: /home/ubuntu/VisionObjectDetection/robotVision/Source/CameraNormalizer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/VisionObjectDetection/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Vision.dir/Source/CameraNormalizer.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Vision.dir/Source/CameraNormalizer.cpp.o -c /home/ubuntu/VisionObjectDetection/robotVision/Source/CameraNormalizer.cpp
+CMakeFiles/Vision.dir/robotVision/Source/CameraNormalizer.cpp.o: CMakeFiles/Vision.dir/flags.make
+CMakeFiles/Vision.dir/robotVision/Source/CameraNormalizer.cpp.o: ../robotVision/Source/CameraNormalizer.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/VisionObjectDetection/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Vision.dir/robotVision/Source/CameraNormalizer.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Vision.dir/robotVision/Source/CameraNormalizer.cpp.o -c /home/ubuntu/VisionObjectDetection/robotVision/Source/CameraNormalizer.cpp
 
-CMakeFiles/Vision.dir/Source/CameraNormalizer.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Vision.dir/Source/CameraNormalizer.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ubuntu/VisionObjectDetection/robotVision/Source/CameraNormalizer.cpp > CMakeFiles/Vision.dir/Source/CameraNormalizer.cpp.i
+CMakeFiles/Vision.dir/robotVision/Source/CameraNormalizer.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Vision.dir/robotVision/Source/CameraNormalizer.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ubuntu/VisionObjectDetection/robotVision/Source/CameraNormalizer.cpp > CMakeFiles/Vision.dir/robotVision/Source/CameraNormalizer.cpp.i
 
-CMakeFiles/Vision.dir/Source/CameraNormalizer.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Vision.dir/Source/CameraNormalizer.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ubuntu/VisionObjectDetection/robotVision/Source/CameraNormalizer.cpp -o CMakeFiles/Vision.dir/Source/CameraNormalizer.cpp.s
+CMakeFiles/Vision.dir/robotVision/Source/CameraNormalizer.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Vision.dir/robotVision/Source/CameraNormalizer.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ubuntu/VisionObjectDetection/robotVision/Source/CameraNormalizer.cpp -o CMakeFiles/Vision.dir/robotVision/Source/CameraNormalizer.cpp.s
 
-CMakeFiles/Vision.dir/Source/CameraNormalizer.cpp.o.requires:
+CMakeFiles/Vision.dir/robotVision/Source/CameraNormalizer.cpp.o.requires:
 
-.PHONY : CMakeFiles/Vision.dir/Source/CameraNormalizer.cpp.o.requires
+.PHONY : CMakeFiles/Vision.dir/robotVision/Source/CameraNormalizer.cpp.o.requires
 
-CMakeFiles/Vision.dir/Source/CameraNormalizer.cpp.o.provides: CMakeFiles/Vision.dir/Source/CameraNormalizer.cpp.o.requires
-	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/Source/CameraNormalizer.cpp.o.provides.build
-.PHONY : CMakeFiles/Vision.dir/Source/CameraNormalizer.cpp.o.provides
+CMakeFiles/Vision.dir/robotVision/Source/CameraNormalizer.cpp.o.provides: CMakeFiles/Vision.dir/robotVision/Source/CameraNormalizer.cpp.o.requires
+	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/robotVision/Source/CameraNormalizer.cpp.o.provides.build
+.PHONY : CMakeFiles/Vision.dir/robotVision/Source/CameraNormalizer.cpp.o.provides
 
-CMakeFiles/Vision.dir/Source/CameraNormalizer.cpp.o.provides.build: CMakeFiles/Vision.dir/Source/CameraNormalizer.cpp.o
+CMakeFiles/Vision.dir/robotVision/Source/CameraNormalizer.cpp.o.provides.build: CMakeFiles/Vision.dir/robotVision/Source/CameraNormalizer.cpp.o
 
 
-CMakeFiles/Vision.dir/Source/CameraFilter.cpp.o: CMakeFiles/Vision.dir/flags.make
-CMakeFiles/Vision.dir/Source/CameraFilter.cpp.o: /home/ubuntu/VisionObjectDetection/robotVision/Source/CameraFilter.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/VisionObjectDetection/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Vision.dir/Source/CameraFilter.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Vision.dir/Source/CameraFilter.cpp.o -c /home/ubuntu/VisionObjectDetection/robotVision/Source/CameraFilter.cpp
+CMakeFiles/Vision.dir/robotVision/Source/CameraFilter.cpp.o: CMakeFiles/Vision.dir/flags.make
+CMakeFiles/Vision.dir/robotVision/Source/CameraFilter.cpp.o: ../robotVision/Source/CameraFilter.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/VisionObjectDetection/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Vision.dir/robotVision/Source/CameraFilter.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Vision.dir/robotVision/Source/CameraFilter.cpp.o -c /home/ubuntu/VisionObjectDetection/robotVision/Source/CameraFilter.cpp
 
-CMakeFiles/Vision.dir/Source/CameraFilter.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Vision.dir/Source/CameraFilter.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ubuntu/VisionObjectDetection/robotVision/Source/CameraFilter.cpp > CMakeFiles/Vision.dir/Source/CameraFilter.cpp.i
+CMakeFiles/Vision.dir/robotVision/Source/CameraFilter.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Vision.dir/robotVision/Source/CameraFilter.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ubuntu/VisionObjectDetection/robotVision/Source/CameraFilter.cpp > CMakeFiles/Vision.dir/robotVision/Source/CameraFilter.cpp.i
 
-CMakeFiles/Vision.dir/Source/CameraFilter.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Vision.dir/Source/CameraFilter.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ubuntu/VisionObjectDetection/robotVision/Source/CameraFilter.cpp -o CMakeFiles/Vision.dir/Source/CameraFilter.cpp.s
+CMakeFiles/Vision.dir/robotVision/Source/CameraFilter.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Vision.dir/robotVision/Source/CameraFilter.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ubuntu/VisionObjectDetection/robotVision/Source/CameraFilter.cpp -o CMakeFiles/Vision.dir/robotVision/Source/CameraFilter.cpp.s
 
-CMakeFiles/Vision.dir/Source/CameraFilter.cpp.o.requires:
+CMakeFiles/Vision.dir/robotVision/Source/CameraFilter.cpp.o.requires:
 
-.PHONY : CMakeFiles/Vision.dir/Source/CameraFilter.cpp.o.requires
+.PHONY : CMakeFiles/Vision.dir/robotVision/Source/CameraFilter.cpp.o.requires
 
-CMakeFiles/Vision.dir/Source/CameraFilter.cpp.o.provides: CMakeFiles/Vision.dir/Source/CameraFilter.cpp.o.requires
-	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/Source/CameraFilter.cpp.o.provides.build
-.PHONY : CMakeFiles/Vision.dir/Source/CameraFilter.cpp.o.provides
+CMakeFiles/Vision.dir/robotVision/Source/CameraFilter.cpp.o.provides: CMakeFiles/Vision.dir/robotVision/Source/CameraFilter.cpp.o.requires
+	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/robotVision/Source/CameraFilter.cpp.o.provides.build
+.PHONY : CMakeFiles/Vision.dir/robotVision/Source/CameraFilter.cpp.o.provides
 
-CMakeFiles/Vision.dir/Source/CameraFilter.cpp.o.provides.build: CMakeFiles/Vision.dir/Source/CameraFilter.cpp.o
+CMakeFiles/Vision.dir/robotVision/Source/CameraFilter.cpp.o.provides.build: CMakeFiles/Vision.dir/robotVision/Source/CameraFilter.cpp.o
 
 
-CMakeFiles/Vision.dir/Source/PlaneDetector.cpp.o: CMakeFiles/Vision.dir/flags.make
-CMakeFiles/Vision.dir/Source/PlaneDetector.cpp.o: /home/ubuntu/VisionObjectDetection/robotVision/Source/PlaneDetector.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/VisionObjectDetection/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/Vision.dir/Source/PlaneDetector.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Vision.dir/Source/PlaneDetector.cpp.o -c /home/ubuntu/VisionObjectDetection/robotVision/Source/PlaneDetector.cpp
+CMakeFiles/Vision.dir/robotVision/Source/PlaneDetector.cpp.o: CMakeFiles/Vision.dir/flags.make
+CMakeFiles/Vision.dir/robotVision/Source/PlaneDetector.cpp.o: ../robotVision/Source/PlaneDetector.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/VisionObjectDetection/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/Vision.dir/robotVision/Source/PlaneDetector.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Vision.dir/robotVision/Source/PlaneDetector.cpp.o -c /home/ubuntu/VisionObjectDetection/robotVision/Source/PlaneDetector.cpp
 
-CMakeFiles/Vision.dir/Source/PlaneDetector.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Vision.dir/Source/PlaneDetector.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ubuntu/VisionObjectDetection/robotVision/Source/PlaneDetector.cpp > CMakeFiles/Vision.dir/Source/PlaneDetector.cpp.i
+CMakeFiles/Vision.dir/robotVision/Source/PlaneDetector.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Vision.dir/robotVision/Source/PlaneDetector.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ubuntu/VisionObjectDetection/robotVision/Source/PlaneDetector.cpp > CMakeFiles/Vision.dir/robotVision/Source/PlaneDetector.cpp.i
 
-CMakeFiles/Vision.dir/Source/PlaneDetector.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Vision.dir/Source/PlaneDetector.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ubuntu/VisionObjectDetection/robotVision/Source/PlaneDetector.cpp -o CMakeFiles/Vision.dir/Source/PlaneDetector.cpp.s
+CMakeFiles/Vision.dir/robotVision/Source/PlaneDetector.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Vision.dir/robotVision/Source/PlaneDetector.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ubuntu/VisionObjectDetection/robotVision/Source/PlaneDetector.cpp -o CMakeFiles/Vision.dir/robotVision/Source/PlaneDetector.cpp.s
 
-CMakeFiles/Vision.dir/Source/PlaneDetector.cpp.o.requires:
+CMakeFiles/Vision.dir/robotVision/Source/PlaneDetector.cpp.o.requires:
 
-.PHONY : CMakeFiles/Vision.dir/Source/PlaneDetector.cpp.o.requires
+.PHONY : CMakeFiles/Vision.dir/robotVision/Source/PlaneDetector.cpp.o.requires
 
-CMakeFiles/Vision.dir/Source/PlaneDetector.cpp.o.provides: CMakeFiles/Vision.dir/Source/PlaneDetector.cpp.o.requires
-	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/Source/PlaneDetector.cpp.o.provides.build
-.PHONY : CMakeFiles/Vision.dir/Source/PlaneDetector.cpp.o.provides
+CMakeFiles/Vision.dir/robotVision/Source/PlaneDetector.cpp.o.provides: CMakeFiles/Vision.dir/robotVision/Source/PlaneDetector.cpp.o.requires
+	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/robotVision/Source/PlaneDetector.cpp.o.provides.build
+.PHONY : CMakeFiles/Vision.dir/robotVision/Source/PlaneDetector.cpp.o.provides
 
-CMakeFiles/Vision.dir/Source/PlaneDetector.cpp.o.provides.build: CMakeFiles/Vision.dir/Source/PlaneDetector.cpp.o
+CMakeFiles/Vision.dir/robotVision/Source/PlaneDetector.cpp.o.provides.build: CMakeFiles/Vision.dir/robotVision/Source/PlaneDetector.cpp.o
 
 
-CMakeFiles/Vision.dir/Source/Point2D.cpp.o: CMakeFiles/Vision.dir/flags.make
-CMakeFiles/Vision.dir/Source/Point2D.cpp.o: /home/ubuntu/VisionObjectDetection/robotVision/Source/Point2D.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/VisionObjectDetection/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/Vision.dir/Source/Point2D.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Vision.dir/Source/Point2D.cpp.o -c /home/ubuntu/VisionObjectDetection/robotVision/Source/Point2D.cpp
+CMakeFiles/Vision.dir/robotVision/Source/Point2D.cpp.o: CMakeFiles/Vision.dir/flags.make
+CMakeFiles/Vision.dir/robotVision/Source/Point2D.cpp.o: ../robotVision/Source/Point2D.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/VisionObjectDetection/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/Vision.dir/robotVision/Source/Point2D.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Vision.dir/robotVision/Source/Point2D.cpp.o -c /home/ubuntu/VisionObjectDetection/robotVision/Source/Point2D.cpp
 
-CMakeFiles/Vision.dir/Source/Point2D.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Vision.dir/Source/Point2D.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ubuntu/VisionObjectDetection/robotVision/Source/Point2D.cpp > CMakeFiles/Vision.dir/Source/Point2D.cpp.i
+CMakeFiles/Vision.dir/robotVision/Source/Point2D.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Vision.dir/robotVision/Source/Point2D.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ubuntu/VisionObjectDetection/robotVision/Source/Point2D.cpp > CMakeFiles/Vision.dir/robotVision/Source/Point2D.cpp.i
 
-CMakeFiles/Vision.dir/Source/Point2D.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Vision.dir/Source/Point2D.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ubuntu/VisionObjectDetection/robotVision/Source/Point2D.cpp -o CMakeFiles/Vision.dir/Source/Point2D.cpp.s
+CMakeFiles/Vision.dir/robotVision/Source/Point2D.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Vision.dir/robotVision/Source/Point2D.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ubuntu/VisionObjectDetection/robotVision/Source/Point2D.cpp -o CMakeFiles/Vision.dir/robotVision/Source/Point2D.cpp.s
 
-CMakeFiles/Vision.dir/Source/Point2D.cpp.o.requires:
+CMakeFiles/Vision.dir/robotVision/Source/Point2D.cpp.o.requires:
 
-.PHONY : CMakeFiles/Vision.dir/Source/Point2D.cpp.o.requires
+.PHONY : CMakeFiles/Vision.dir/robotVision/Source/Point2D.cpp.o.requires
 
-CMakeFiles/Vision.dir/Source/Point2D.cpp.o.provides: CMakeFiles/Vision.dir/Source/Point2D.cpp.o.requires
-	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/Source/Point2D.cpp.o.provides.build
-.PHONY : CMakeFiles/Vision.dir/Source/Point2D.cpp.o.provides
+CMakeFiles/Vision.dir/robotVision/Source/Point2D.cpp.o.provides: CMakeFiles/Vision.dir/robotVision/Source/Point2D.cpp.o.requires
+	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/robotVision/Source/Point2D.cpp.o.provides.build
+.PHONY : CMakeFiles/Vision.dir/robotVision/Source/Point2D.cpp.o.provides
 
-CMakeFiles/Vision.dir/Source/Point2D.cpp.o.provides.build: CMakeFiles/Vision.dir/Source/Point2D.cpp.o
+CMakeFiles/Vision.dir/robotVision/Source/Point2D.cpp.o.provides.build: CMakeFiles/Vision.dir/robotVision/Source/Point2D.cpp.o
 
 
-CMakeFiles/Vision.dir/Source/Point3D.cpp.o: CMakeFiles/Vision.dir/flags.make
-CMakeFiles/Vision.dir/Source/Point3D.cpp.o: /home/ubuntu/VisionObjectDetection/robotVision/Source/Point3D.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/VisionObjectDetection/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/Vision.dir/Source/Point3D.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Vision.dir/Source/Point3D.cpp.o -c /home/ubuntu/VisionObjectDetection/robotVision/Source/Point3D.cpp
+CMakeFiles/Vision.dir/robotVision/Source/Point3D.cpp.o: CMakeFiles/Vision.dir/flags.make
+CMakeFiles/Vision.dir/robotVision/Source/Point3D.cpp.o: ../robotVision/Source/Point3D.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/VisionObjectDetection/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/Vision.dir/robotVision/Source/Point3D.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Vision.dir/robotVision/Source/Point3D.cpp.o -c /home/ubuntu/VisionObjectDetection/robotVision/Source/Point3D.cpp
 
-CMakeFiles/Vision.dir/Source/Point3D.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Vision.dir/Source/Point3D.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ubuntu/VisionObjectDetection/robotVision/Source/Point3D.cpp > CMakeFiles/Vision.dir/Source/Point3D.cpp.i
+CMakeFiles/Vision.dir/robotVision/Source/Point3D.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Vision.dir/robotVision/Source/Point3D.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ubuntu/VisionObjectDetection/robotVision/Source/Point3D.cpp > CMakeFiles/Vision.dir/robotVision/Source/Point3D.cpp.i
 
-CMakeFiles/Vision.dir/Source/Point3D.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Vision.dir/Source/Point3D.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ubuntu/VisionObjectDetection/robotVision/Source/Point3D.cpp -o CMakeFiles/Vision.dir/Source/Point3D.cpp.s
+CMakeFiles/Vision.dir/robotVision/Source/Point3D.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Vision.dir/robotVision/Source/Point3D.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ubuntu/VisionObjectDetection/robotVision/Source/Point3D.cpp -o CMakeFiles/Vision.dir/robotVision/Source/Point3D.cpp.s
 
-CMakeFiles/Vision.dir/Source/Point3D.cpp.o.requires:
+CMakeFiles/Vision.dir/robotVision/Source/Point3D.cpp.o.requires:
 
-.PHONY : CMakeFiles/Vision.dir/Source/Point3D.cpp.o.requires
+.PHONY : CMakeFiles/Vision.dir/robotVision/Source/Point3D.cpp.o.requires
 
-CMakeFiles/Vision.dir/Source/Point3D.cpp.o.provides: CMakeFiles/Vision.dir/Source/Point3D.cpp.o.requires
-	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/Source/Point3D.cpp.o.provides.build
-.PHONY : CMakeFiles/Vision.dir/Source/Point3D.cpp.o.provides
+CMakeFiles/Vision.dir/robotVision/Source/Point3D.cpp.o.provides: CMakeFiles/Vision.dir/robotVision/Source/Point3D.cpp.o.requires
+	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/robotVision/Source/Point3D.cpp.o.provides.build
+.PHONY : CMakeFiles/Vision.dir/robotVision/Source/Point3D.cpp.o.provides
 
-CMakeFiles/Vision.dir/Source/Point3D.cpp.o.provides.build: CMakeFiles/Vision.dir/Source/Point3D.cpp.o
+CMakeFiles/Vision.dir/robotVision/Source/Point3D.cpp.o.provides.build: CMakeFiles/Vision.dir/robotVision/Source/Point3D.cpp.o
 
 
-CMakeFiles/Vision.dir/Source/Line.cpp.o: CMakeFiles/Vision.dir/flags.make
-CMakeFiles/Vision.dir/Source/Line.cpp.o: /home/ubuntu/VisionObjectDetection/robotVision/Source/Line.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/VisionObjectDetection/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/Vision.dir/Source/Line.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Vision.dir/Source/Line.cpp.o -c /home/ubuntu/VisionObjectDetection/robotVision/Source/Line.cpp
+CMakeFiles/Vision.dir/robotVision/Source/Line.cpp.o: CMakeFiles/Vision.dir/flags.make
+CMakeFiles/Vision.dir/robotVision/Source/Line.cpp.o: ../robotVision/Source/Line.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/VisionObjectDetection/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/Vision.dir/robotVision/Source/Line.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Vision.dir/robotVision/Source/Line.cpp.o -c /home/ubuntu/VisionObjectDetection/robotVision/Source/Line.cpp
 
-CMakeFiles/Vision.dir/Source/Line.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Vision.dir/Source/Line.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ubuntu/VisionObjectDetection/robotVision/Source/Line.cpp > CMakeFiles/Vision.dir/Source/Line.cpp.i
+CMakeFiles/Vision.dir/robotVision/Source/Line.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Vision.dir/robotVision/Source/Line.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ubuntu/VisionObjectDetection/robotVision/Source/Line.cpp > CMakeFiles/Vision.dir/robotVision/Source/Line.cpp.i
 
-CMakeFiles/Vision.dir/Source/Line.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Vision.dir/Source/Line.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ubuntu/VisionObjectDetection/robotVision/Source/Line.cpp -o CMakeFiles/Vision.dir/Source/Line.cpp.s
+CMakeFiles/Vision.dir/robotVision/Source/Line.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Vision.dir/robotVision/Source/Line.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ubuntu/VisionObjectDetection/robotVision/Source/Line.cpp -o CMakeFiles/Vision.dir/robotVision/Source/Line.cpp.s
 
-CMakeFiles/Vision.dir/Source/Line.cpp.o.requires:
+CMakeFiles/Vision.dir/robotVision/Source/Line.cpp.o.requires:
 
-.PHONY : CMakeFiles/Vision.dir/Source/Line.cpp.o.requires
+.PHONY : CMakeFiles/Vision.dir/robotVision/Source/Line.cpp.o.requires
 
-CMakeFiles/Vision.dir/Source/Line.cpp.o.provides: CMakeFiles/Vision.dir/Source/Line.cpp.o.requires
-	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/Source/Line.cpp.o.provides.build
-.PHONY : CMakeFiles/Vision.dir/Source/Line.cpp.o.provides
+CMakeFiles/Vision.dir/robotVision/Source/Line.cpp.o.provides: CMakeFiles/Vision.dir/robotVision/Source/Line.cpp.o.requires
+	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/robotVision/Source/Line.cpp.o.provides.build
+.PHONY : CMakeFiles/Vision.dir/robotVision/Source/Line.cpp.o.provides
 
-CMakeFiles/Vision.dir/Source/Line.cpp.o.provides.build: CMakeFiles/Vision.dir/Source/Line.cpp.o
+CMakeFiles/Vision.dir/robotVision/Source/Line.cpp.o.provides.build: CMakeFiles/Vision.dir/robotVision/Source/Line.cpp.o
 
 
-CMakeFiles/Vision.dir/Source/Color.cpp.o: CMakeFiles/Vision.dir/flags.make
-CMakeFiles/Vision.dir/Source/Color.cpp.o: /home/ubuntu/VisionObjectDetection/robotVision/Source/Color.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/VisionObjectDetection/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/Vision.dir/Source/Color.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Vision.dir/Source/Color.cpp.o -c /home/ubuntu/VisionObjectDetection/robotVision/Source/Color.cpp
+CMakeFiles/Vision.dir/robotVision/Source/Color.cpp.o: CMakeFiles/Vision.dir/flags.make
+CMakeFiles/Vision.dir/robotVision/Source/Color.cpp.o: ../robotVision/Source/Color.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/VisionObjectDetection/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/Vision.dir/robotVision/Source/Color.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Vision.dir/robotVision/Source/Color.cpp.o -c /home/ubuntu/VisionObjectDetection/robotVision/Source/Color.cpp
 
-CMakeFiles/Vision.dir/Source/Color.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Vision.dir/Source/Color.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ubuntu/VisionObjectDetection/robotVision/Source/Color.cpp > CMakeFiles/Vision.dir/Source/Color.cpp.i
+CMakeFiles/Vision.dir/robotVision/Source/Color.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Vision.dir/robotVision/Source/Color.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ubuntu/VisionObjectDetection/robotVision/Source/Color.cpp > CMakeFiles/Vision.dir/robotVision/Source/Color.cpp.i
 
-CMakeFiles/Vision.dir/Source/Color.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Vision.dir/Source/Color.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ubuntu/VisionObjectDetection/robotVision/Source/Color.cpp -o CMakeFiles/Vision.dir/Source/Color.cpp.s
+CMakeFiles/Vision.dir/robotVision/Source/Color.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Vision.dir/robotVision/Source/Color.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ubuntu/VisionObjectDetection/robotVision/Source/Color.cpp -o CMakeFiles/Vision.dir/robotVision/Source/Color.cpp.s
 
-CMakeFiles/Vision.dir/Source/Color.cpp.o.requires:
+CMakeFiles/Vision.dir/robotVision/Source/Color.cpp.o.requires:
 
-.PHONY : CMakeFiles/Vision.dir/Source/Color.cpp.o.requires
+.PHONY : CMakeFiles/Vision.dir/robotVision/Source/Color.cpp.o.requires
 
-CMakeFiles/Vision.dir/Source/Color.cpp.o.provides: CMakeFiles/Vision.dir/Source/Color.cpp.o.requires
-	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/Source/Color.cpp.o.provides.build
-.PHONY : CMakeFiles/Vision.dir/Source/Color.cpp.o.provides
+CMakeFiles/Vision.dir/robotVision/Source/Color.cpp.o.provides: CMakeFiles/Vision.dir/robotVision/Source/Color.cpp.o.requires
+	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/robotVision/Source/Color.cpp.o.provides.build
+.PHONY : CMakeFiles/Vision.dir/robotVision/Source/Color.cpp.o.provides
 
-CMakeFiles/Vision.dir/Source/Color.cpp.o.provides.build: CMakeFiles/Vision.dir/Source/Color.cpp.o
+CMakeFiles/Vision.dir/robotVision/Source/Color.cpp.o.provides.build: CMakeFiles/Vision.dir/robotVision/Source/Color.cpp.o
 
 
-CMakeFiles/Vision.dir/Source/CameraOptionsTrackbarManager.cpp.o: CMakeFiles/Vision.dir/flags.make
-CMakeFiles/Vision.dir/Source/CameraOptionsTrackbarManager.cpp.o: /home/ubuntu/VisionObjectDetection/robotVision/Source/CameraOptionsTrackbarManager.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/VisionObjectDetection/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/Vision.dir/Source/CameraOptionsTrackbarManager.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Vision.dir/Source/CameraOptionsTrackbarManager.cpp.o -c /home/ubuntu/VisionObjectDetection/robotVision/Source/CameraOptionsTrackbarManager.cpp
+CMakeFiles/Vision.dir/robotVision/Source/CameraOptionsTrackbarManager.cpp.o: CMakeFiles/Vision.dir/flags.make
+CMakeFiles/Vision.dir/robotVision/Source/CameraOptionsTrackbarManager.cpp.o: ../robotVision/Source/CameraOptionsTrackbarManager.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/VisionObjectDetection/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/Vision.dir/robotVision/Source/CameraOptionsTrackbarManager.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Vision.dir/robotVision/Source/CameraOptionsTrackbarManager.cpp.o -c /home/ubuntu/VisionObjectDetection/robotVision/Source/CameraOptionsTrackbarManager.cpp
 
-CMakeFiles/Vision.dir/Source/CameraOptionsTrackbarManager.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Vision.dir/Source/CameraOptionsTrackbarManager.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ubuntu/VisionObjectDetection/robotVision/Source/CameraOptionsTrackbarManager.cpp > CMakeFiles/Vision.dir/Source/CameraOptionsTrackbarManager.cpp.i
+CMakeFiles/Vision.dir/robotVision/Source/CameraOptionsTrackbarManager.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Vision.dir/robotVision/Source/CameraOptionsTrackbarManager.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ubuntu/VisionObjectDetection/robotVision/Source/CameraOptionsTrackbarManager.cpp > CMakeFiles/Vision.dir/robotVision/Source/CameraOptionsTrackbarManager.cpp.i
 
-CMakeFiles/Vision.dir/Source/CameraOptionsTrackbarManager.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Vision.dir/Source/CameraOptionsTrackbarManager.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ubuntu/VisionObjectDetection/robotVision/Source/CameraOptionsTrackbarManager.cpp -o CMakeFiles/Vision.dir/Source/CameraOptionsTrackbarManager.cpp.s
+CMakeFiles/Vision.dir/robotVision/Source/CameraOptionsTrackbarManager.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Vision.dir/robotVision/Source/CameraOptionsTrackbarManager.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ubuntu/VisionObjectDetection/robotVision/Source/CameraOptionsTrackbarManager.cpp -o CMakeFiles/Vision.dir/robotVision/Source/CameraOptionsTrackbarManager.cpp.s
 
-CMakeFiles/Vision.dir/Source/CameraOptionsTrackbarManager.cpp.o.requires:
+CMakeFiles/Vision.dir/robotVision/Source/CameraOptionsTrackbarManager.cpp.o.requires:
 
-.PHONY : CMakeFiles/Vision.dir/Source/CameraOptionsTrackbarManager.cpp.o.requires
+.PHONY : CMakeFiles/Vision.dir/robotVision/Source/CameraOptionsTrackbarManager.cpp.o.requires
 
-CMakeFiles/Vision.dir/Source/CameraOptionsTrackbarManager.cpp.o.provides: CMakeFiles/Vision.dir/Source/CameraOptionsTrackbarManager.cpp.o.requires
-	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/Source/CameraOptionsTrackbarManager.cpp.o.provides.build
-.PHONY : CMakeFiles/Vision.dir/Source/CameraOptionsTrackbarManager.cpp.o.provides
+CMakeFiles/Vision.dir/robotVision/Source/CameraOptionsTrackbarManager.cpp.o.provides: CMakeFiles/Vision.dir/robotVision/Source/CameraOptionsTrackbarManager.cpp.o.requires
+	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/robotVision/Source/CameraOptionsTrackbarManager.cpp.o.provides.build
+.PHONY : CMakeFiles/Vision.dir/robotVision/Source/CameraOptionsTrackbarManager.cpp.o.provides
 
-CMakeFiles/Vision.dir/Source/CameraOptionsTrackbarManager.cpp.o.provides.build: CMakeFiles/Vision.dir/Source/CameraOptionsTrackbarManager.cpp.o
+CMakeFiles/Vision.dir/robotVision/Source/CameraOptionsTrackbarManager.cpp.o.provides.build: CMakeFiles/Vision.dir/robotVision/Source/CameraOptionsTrackbarManager.cpp.o
 
 
-CMakeFiles/Vision.dir/Source/Shape.cpp.o: CMakeFiles/Vision.dir/flags.make
-CMakeFiles/Vision.dir/Source/Shape.cpp.o: /home/ubuntu/VisionObjectDetection/robotVision/Source/Shape.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/VisionObjectDetection/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/Vision.dir/Source/Shape.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Vision.dir/Source/Shape.cpp.o -c /home/ubuntu/VisionObjectDetection/robotVision/Source/Shape.cpp
+CMakeFiles/Vision.dir/robotVision/Source/Shape.cpp.o: CMakeFiles/Vision.dir/flags.make
+CMakeFiles/Vision.dir/robotVision/Source/Shape.cpp.o: ../robotVision/Source/Shape.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/VisionObjectDetection/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/Vision.dir/robotVision/Source/Shape.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Vision.dir/robotVision/Source/Shape.cpp.o -c /home/ubuntu/VisionObjectDetection/robotVision/Source/Shape.cpp
 
-CMakeFiles/Vision.dir/Source/Shape.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Vision.dir/Source/Shape.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ubuntu/VisionObjectDetection/robotVision/Source/Shape.cpp > CMakeFiles/Vision.dir/Source/Shape.cpp.i
+CMakeFiles/Vision.dir/robotVision/Source/Shape.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Vision.dir/robotVision/Source/Shape.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ubuntu/VisionObjectDetection/robotVision/Source/Shape.cpp > CMakeFiles/Vision.dir/robotVision/Source/Shape.cpp.i
 
-CMakeFiles/Vision.dir/Source/Shape.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Vision.dir/Source/Shape.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ubuntu/VisionObjectDetection/robotVision/Source/Shape.cpp -o CMakeFiles/Vision.dir/Source/Shape.cpp.s
+CMakeFiles/Vision.dir/robotVision/Source/Shape.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Vision.dir/robotVision/Source/Shape.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ubuntu/VisionObjectDetection/robotVision/Source/Shape.cpp -o CMakeFiles/Vision.dir/robotVision/Source/Shape.cpp.s
 
-CMakeFiles/Vision.dir/Source/Shape.cpp.o.requires:
+CMakeFiles/Vision.dir/robotVision/Source/Shape.cpp.o.requires:
 
-.PHONY : CMakeFiles/Vision.dir/Source/Shape.cpp.o.requires
+.PHONY : CMakeFiles/Vision.dir/robotVision/Source/Shape.cpp.o.requires
 
-CMakeFiles/Vision.dir/Source/Shape.cpp.o.provides: CMakeFiles/Vision.dir/Source/Shape.cpp.o.requires
-	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/Source/Shape.cpp.o.provides.build
-.PHONY : CMakeFiles/Vision.dir/Source/Shape.cpp.o.provides
+CMakeFiles/Vision.dir/robotVision/Source/Shape.cpp.o.provides: CMakeFiles/Vision.dir/robotVision/Source/Shape.cpp.o.requires
+	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/robotVision/Source/Shape.cpp.o.provides.build
+.PHONY : CMakeFiles/Vision.dir/robotVision/Source/Shape.cpp.o.provides
 
-CMakeFiles/Vision.dir/Source/Shape.cpp.o.provides.build: CMakeFiles/Vision.dir/Source/Shape.cpp.o
+CMakeFiles/Vision.dir/robotVision/Source/Shape.cpp.o.provides.build: CMakeFiles/Vision.dir/robotVision/Source/Shape.cpp.o
 
 
-CMakeFiles/Vision.dir/Source/CornerDetector.cpp.o: CMakeFiles/Vision.dir/flags.make
-CMakeFiles/Vision.dir/Source/CornerDetector.cpp.o: /home/ubuntu/VisionObjectDetection/robotVision/Source/CornerDetector.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/VisionObjectDetection/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/Vision.dir/Source/CornerDetector.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Vision.dir/Source/CornerDetector.cpp.o -c /home/ubuntu/VisionObjectDetection/robotVision/Source/CornerDetector.cpp
+CMakeFiles/Vision.dir/robotVision/Source/CornerDetector.cpp.o: CMakeFiles/Vision.dir/flags.make
+CMakeFiles/Vision.dir/robotVision/Source/CornerDetector.cpp.o: ../robotVision/Source/CornerDetector.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/VisionObjectDetection/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/Vision.dir/robotVision/Source/CornerDetector.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Vision.dir/robotVision/Source/CornerDetector.cpp.o -c /home/ubuntu/VisionObjectDetection/robotVision/Source/CornerDetector.cpp
 
-CMakeFiles/Vision.dir/Source/CornerDetector.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Vision.dir/Source/CornerDetector.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ubuntu/VisionObjectDetection/robotVision/Source/CornerDetector.cpp > CMakeFiles/Vision.dir/Source/CornerDetector.cpp.i
+CMakeFiles/Vision.dir/robotVision/Source/CornerDetector.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Vision.dir/robotVision/Source/CornerDetector.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ubuntu/VisionObjectDetection/robotVision/Source/CornerDetector.cpp > CMakeFiles/Vision.dir/robotVision/Source/CornerDetector.cpp.i
 
-CMakeFiles/Vision.dir/Source/CornerDetector.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Vision.dir/Source/CornerDetector.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ubuntu/VisionObjectDetection/robotVision/Source/CornerDetector.cpp -o CMakeFiles/Vision.dir/Source/CornerDetector.cpp.s
+CMakeFiles/Vision.dir/robotVision/Source/CornerDetector.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Vision.dir/robotVision/Source/CornerDetector.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ubuntu/VisionObjectDetection/robotVision/Source/CornerDetector.cpp -o CMakeFiles/Vision.dir/robotVision/Source/CornerDetector.cpp.s
 
-CMakeFiles/Vision.dir/Source/CornerDetector.cpp.o.requires:
+CMakeFiles/Vision.dir/robotVision/Source/CornerDetector.cpp.o.requires:
 
-.PHONY : CMakeFiles/Vision.dir/Source/CornerDetector.cpp.o.requires
+.PHONY : CMakeFiles/Vision.dir/robotVision/Source/CornerDetector.cpp.o.requires
 
-CMakeFiles/Vision.dir/Source/CornerDetector.cpp.o.provides: CMakeFiles/Vision.dir/Source/CornerDetector.cpp.o.requires
-	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/Source/CornerDetector.cpp.o.provides.build
-.PHONY : CMakeFiles/Vision.dir/Source/CornerDetector.cpp.o.provides
+CMakeFiles/Vision.dir/robotVision/Source/CornerDetector.cpp.o.provides: CMakeFiles/Vision.dir/robotVision/Source/CornerDetector.cpp.o.requires
+	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/robotVision/Source/CornerDetector.cpp.o.provides.build
+.PHONY : CMakeFiles/Vision.dir/robotVision/Source/CornerDetector.cpp.o.provides
 
-CMakeFiles/Vision.dir/Source/CornerDetector.cpp.o.provides.build: CMakeFiles/Vision.dir/Source/CornerDetector.cpp.o
+CMakeFiles/Vision.dir/robotVision/Source/CornerDetector.cpp.o.provides.build: CMakeFiles/Vision.dir/robotVision/Source/CornerDetector.cpp.o
 
 
-CMakeFiles/Vision.dir/Source/VisitedList.cpp.o: CMakeFiles/Vision.dir/flags.make
-CMakeFiles/Vision.dir/Source/VisitedList.cpp.o: /home/ubuntu/VisionObjectDetection/robotVision/Source/VisitedList.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/VisionObjectDetection/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/Vision.dir/Source/VisitedList.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Vision.dir/Source/VisitedList.cpp.o -c /home/ubuntu/VisionObjectDetection/robotVision/Source/VisitedList.cpp
+CMakeFiles/Vision.dir/robotVision/Source/VisitedList.cpp.o: CMakeFiles/Vision.dir/flags.make
+CMakeFiles/Vision.dir/robotVision/Source/VisitedList.cpp.o: ../robotVision/Source/VisitedList.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/VisionObjectDetection/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/Vision.dir/robotVision/Source/VisitedList.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Vision.dir/robotVision/Source/VisitedList.cpp.o -c /home/ubuntu/VisionObjectDetection/robotVision/Source/VisitedList.cpp
 
-CMakeFiles/Vision.dir/Source/VisitedList.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Vision.dir/Source/VisitedList.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ubuntu/VisionObjectDetection/robotVision/Source/VisitedList.cpp > CMakeFiles/Vision.dir/Source/VisitedList.cpp.i
+CMakeFiles/Vision.dir/robotVision/Source/VisitedList.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Vision.dir/robotVision/Source/VisitedList.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ubuntu/VisionObjectDetection/robotVision/Source/VisitedList.cpp > CMakeFiles/Vision.dir/robotVision/Source/VisitedList.cpp.i
 
-CMakeFiles/Vision.dir/Source/VisitedList.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Vision.dir/Source/VisitedList.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ubuntu/VisionObjectDetection/robotVision/Source/VisitedList.cpp -o CMakeFiles/Vision.dir/Source/VisitedList.cpp.s
+CMakeFiles/Vision.dir/robotVision/Source/VisitedList.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Vision.dir/robotVision/Source/VisitedList.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ubuntu/VisionObjectDetection/robotVision/Source/VisitedList.cpp -o CMakeFiles/Vision.dir/robotVision/Source/VisitedList.cpp.s
 
-CMakeFiles/Vision.dir/Source/VisitedList.cpp.o.requires:
+CMakeFiles/Vision.dir/robotVision/Source/VisitedList.cpp.o.requires:
 
-.PHONY : CMakeFiles/Vision.dir/Source/VisitedList.cpp.o.requires
+.PHONY : CMakeFiles/Vision.dir/robotVision/Source/VisitedList.cpp.o.requires
 
-CMakeFiles/Vision.dir/Source/VisitedList.cpp.o.provides: CMakeFiles/Vision.dir/Source/VisitedList.cpp.o.requires
-	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/Source/VisitedList.cpp.o.provides.build
-.PHONY : CMakeFiles/Vision.dir/Source/VisitedList.cpp.o.provides
+CMakeFiles/Vision.dir/robotVision/Source/VisitedList.cpp.o.provides: CMakeFiles/Vision.dir/robotVision/Source/VisitedList.cpp.o.requires
+	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/robotVision/Source/VisitedList.cpp.o.provides.build
+.PHONY : CMakeFiles/Vision.dir/robotVision/Source/VisitedList.cpp.o.provides
 
-CMakeFiles/Vision.dir/Source/VisitedList.cpp.o.provides.build: CMakeFiles/Vision.dir/Source/VisitedList.cpp.o
+CMakeFiles/Vision.dir/robotVision/Source/VisitedList.cpp.o.provides.build: CMakeFiles/Vision.dir/robotVision/Source/VisitedList.cpp.o
 
 
-CMakeFiles/Vision.dir/Source/ShapeDetector.cpp.o: CMakeFiles/Vision.dir/flags.make
-CMakeFiles/Vision.dir/Source/ShapeDetector.cpp.o: /home/ubuntu/VisionObjectDetection/robotVision/Source/ShapeDetector.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/VisionObjectDetection/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/Vision.dir/Source/ShapeDetector.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Vision.dir/Source/ShapeDetector.cpp.o -c /home/ubuntu/VisionObjectDetection/robotVision/Source/ShapeDetector.cpp
+CMakeFiles/Vision.dir/robotVision/Source/ShapeDetector.cpp.o: CMakeFiles/Vision.dir/flags.make
+CMakeFiles/Vision.dir/robotVision/Source/ShapeDetector.cpp.o: ../robotVision/Source/ShapeDetector.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/VisionObjectDetection/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/Vision.dir/robotVision/Source/ShapeDetector.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Vision.dir/robotVision/Source/ShapeDetector.cpp.o -c /home/ubuntu/VisionObjectDetection/robotVision/Source/ShapeDetector.cpp
 
-CMakeFiles/Vision.dir/Source/ShapeDetector.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Vision.dir/Source/ShapeDetector.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ubuntu/VisionObjectDetection/robotVision/Source/ShapeDetector.cpp > CMakeFiles/Vision.dir/Source/ShapeDetector.cpp.i
+CMakeFiles/Vision.dir/robotVision/Source/ShapeDetector.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Vision.dir/robotVision/Source/ShapeDetector.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ubuntu/VisionObjectDetection/robotVision/Source/ShapeDetector.cpp > CMakeFiles/Vision.dir/robotVision/Source/ShapeDetector.cpp.i
 
-CMakeFiles/Vision.dir/Source/ShapeDetector.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Vision.dir/Source/ShapeDetector.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ubuntu/VisionObjectDetection/robotVision/Source/ShapeDetector.cpp -o CMakeFiles/Vision.dir/Source/ShapeDetector.cpp.s
+CMakeFiles/Vision.dir/robotVision/Source/ShapeDetector.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Vision.dir/robotVision/Source/ShapeDetector.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ubuntu/VisionObjectDetection/robotVision/Source/ShapeDetector.cpp -o CMakeFiles/Vision.dir/robotVision/Source/ShapeDetector.cpp.s
 
-CMakeFiles/Vision.dir/Source/ShapeDetector.cpp.o.requires:
+CMakeFiles/Vision.dir/robotVision/Source/ShapeDetector.cpp.o.requires:
 
-.PHONY : CMakeFiles/Vision.dir/Source/ShapeDetector.cpp.o.requires
+.PHONY : CMakeFiles/Vision.dir/robotVision/Source/ShapeDetector.cpp.o.requires
 
-CMakeFiles/Vision.dir/Source/ShapeDetector.cpp.o.provides: CMakeFiles/Vision.dir/Source/ShapeDetector.cpp.o.requires
-	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/Source/ShapeDetector.cpp.o.provides.build
-.PHONY : CMakeFiles/Vision.dir/Source/ShapeDetector.cpp.o.provides
+CMakeFiles/Vision.dir/robotVision/Source/ShapeDetector.cpp.o.provides: CMakeFiles/Vision.dir/robotVision/Source/ShapeDetector.cpp.o.requires
+	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/robotVision/Source/ShapeDetector.cpp.o.provides.build
+.PHONY : CMakeFiles/Vision.dir/robotVision/Source/ShapeDetector.cpp.o.provides
 
-CMakeFiles/Vision.dir/Source/ShapeDetector.cpp.o.provides.build: CMakeFiles/Vision.dir/Source/ShapeDetector.cpp.o
+CMakeFiles/Vision.dir/robotVision/Source/ShapeDetector.cpp.o.provides.build: CMakeFiles/Vision.dir/robotVision/Source/ShapeDetector.cpp.o
 
 
-CMakeFiles/Vision.dir/Source/ApplicationController.cpp.o: CMakeFiles/Vision.dir/flags.make
-CMakeFiles/Vision.dir/Source/ApplicationController.cpp.o: /home/ubuntu/VisionObjectDetection/robotVision/Source/ApplicationController.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/VisionObjectDetection/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/Vision.dir/Source/ApplicationController.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Vision.dir/Source/ApplicationController.cpp.o -c /home/ubuntu/VisionObjectDetection/robotVision/Source/ApplicationController.cpp
+CMakeFiles/Vision.dir/robotVision/Source/ApplicationController.cpp.o: CMakeFiles/Vision.dir/flags.make
+CMakeFiles/Vision.dir/robotVision/Source/ApplicationController.cpp.o: ../robotVision/Source/ApplicationController.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/VisionObjectDetection/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/Vision.dir/robotVision/Source/ApplicationController.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Vision.dir/robotVision/Source/ApplicationController.cpp.o -c /home/ubuntu/VisionObjectDetection/robotVision/Source/ApplicationController.cpp
 
-CMakeFiles/Vision.dir/Source/ApplicationController.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Vision.dir/Source/ApplicationController.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ubuntu/VisionObjectDetection/robotVision/Source/ApplicationController.cpp > CMakeFiles/Vision.dir/Source/ApplicationController.cpp.i
+CMakeFiles/Vision.dir/robotVision/Source/ApplicationController.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Vision.dir/robotVision/Source/ApplicationController.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ubuntu/VisionObjectDetection/robotVision/Source/ApplicationController.cpp > CMakeFiles/Vision.dir/robotVision/Source/ApplicationController.cpp.i
 
-CMakeFiles/Vision.dir/Source/ApplicationController.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Vision.dir/Source/ApplicationController.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ubuntu/VisionObjectDetection/robotVision/Source/ApplicationController.cpp -o CMakeFiles/Vision.dir/Source/ApplicationController.cpp.s
+CMakeFiles/Vision.dir/robotVision/Source/ApplicationController.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Vision.dir/robotVision/Source/ApplicationController.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ubuntu/VisionObjectDetection/robotVision/Source/ApplicationController.cpp -o CMakeFiles/Vision.dir/robotVision/Source/ApplicationController.cpp.s
 
-CMakeFiles/Vision.dir/Source/ApplicationController.cpp.o.requires:
+CMakeFiles/Vision.dir/robotVision/Source/ApplicationController.cpp.o.requires:
 
-.PHONY : CMakeFiles/Vision.dir/Source/ApplicationController.cpp.o.requires
+.PHONY : CMakeFiles/Vision.dir/robotVision/Source/ApplicationController.cpp.o.requires
 
-CMakeFiles/Vision.dir/Source/ApplicationController.cpp.o.provides: CMakeFiles/Vision.dir/Source/ApplicationController.cpp.o.requires
-	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/Source/ApplicationController.cpp.o.provides.build
-.PHONY : CMakeFiles/Vision.dir/Source/ApplicationController.cpp.o.provides
+CMakeFiles/Vision.dir/robotVision/Source/ApplicationController.cpp.o.provides: CMakeFiles/Vision.dir/robotVision/Source/ApplicationController.cpp.o.requires
+	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/robotVision/Source/ApplicationController.cpp.o.provides.build
+.PHONY : CMakeFiles/Vision.dir/robotVision/Source/ApplicationController.cpp.o.provides
 
-CMakeFiles/Vision.dir/Source/ApplicationController.cpp.o.provides.build: CMakeFiles/Vision.dir/Source/ApplicationController.cpp.o
+CMakeFiles/Vision.dir/robotVision/Source/ApplicationController.cpp.o.provides.build: CMakeFiles/Vision.dir/robotVision/Source/ApplicationController.cpp.o
+
+
+CMakeFiles/Vision.dir/robotVision/Source/NetworkCommunicator.cpp.o: CMakeFiles/Vision.dir/flags.make
+CMakeFiles/Vision.dir/robotVision/Source/NetworkCommunicator.cpp.o: ../robotVision/Source/NetworkCommunicator.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/VisionObjectDetection/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/Vision.dir/robotVision/Source/NetworkCommunicator.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Vision.dir/robotVision/Source/NetworkCommunicator.cpp.o -c /home/ubuntu/VisionObjectDetection/robotVision/Source/NetworkCommunicator.cpp
+
+CMakeFiles/Vision.dir/robotVision/Source/NetworkCommunicator.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Vision.dir/robotVision/Source/NetworkCommunicator.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ubuntu/VisionObjectDetection/robotVision/Source/NetworkCommunicator.cpp > CMakeFiles/Vision.dir/robotVision/Source/NetworkCommunicator.cpp.i
+
+CMakeFiles/Vision.dir/robotVision/Source/NetworkCommunicator.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Vision.dir/robotVision/Source/NetworkCommunicator.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ubuntu/VisionObjectDetection/robotVision/Source/NetworkCommunicator.cpp -o CMakeFiles/Vision.dir/robotVision/Source/NetworkCommunicator.cpp.s
+
+CMakeFiles/Vision.dir/robotVision/Source/NetworkCommunicator.cpp.o.requires:
+
+.PHONY : CMakeFiles/Vision.dir/robotVision/Source/NetworkCommunicator.cpp.o.requires
+
+CMakeFiles/Vision.dir/robotVision/Source/NetworkCommunicator.cpp.o.provides: CMakeFiles/Vision.dir/robotVision/Source/NetworkCommunicator.cpp.o.requires
+	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/robotVision/Source/NetworkCommunicator.cpp.o.provides.build
+.PHONY : CMakeFiles/Vision.dir/robotVision/Source/NetworkCommunicator.cpp.o.provides
+
+CMakeFiles/Vision.dir/robotVision/Source/NetworkCommunicator.cpp.o.provides.build: CMakeFiles/Vision.dir/robotVision/Source/NetworkCommunicator.cpp.o
 
 
 # Object files for target Vision
 Vision_OBJECTS = \
-"CMakeFiles/Vision.dir/main.cpp.o" \
-"CMakeFiles/Vision.dir/Source/CameraNormalizer.cpp.o" \
-"CMakeFiles/Vision.dir/Source/CameraFilter.cpp.o" \
-"CMakeFiles/Vision.dir/Source/PlaneDetector.cpp.o" \
-"CMakeFiles/Vision.dir/Source/Point2D.cpp.o" \
-"CMakeFiles/Vision.dir/Source/Point3D.cpp.o" \
-"CMakeFiles/Vision.dir/Source/Line.cpp.o" \
-"CMakeFiles/Vision.dir/Source/Color.cpp.o" \
-"CMakeFiles/Vision.dir/Source/CameraOptionsTrackbarManager.cpp.o" \
-"CMakeFiles/Vision.dir/Source/Shape.cpp.o" \
-"CMakeFiles/Vision.dir/Source/CornerDetector.cpp.o" \
-"CMakeFiles/Vision.dir/Source/VisitedList.cpp.o" \
-"CMakeFiles/Vision.dir/Source/ShapeDetector.cpp.o" \
-"CMakeFiles/Vision.dir/Source/ApplicationController.cpp.o"
+"CMakeFiles/Vision.dir/robotVision/main.cpp.o" \
+"CMakeFiles/Vision.dir/robotVision/Source/CameraNormalizer.cpp.o" \
+"CMakeFiles/Vision.dir/robotVision/Source/CameraFilter.cpp.o" \
+"CMakeFiles/Vision.dir/robotVision/Source/PlaneDetector.cpp.o" \
+"CMakeFiles/Vision.dir/robotVision/Source/Point2D.cpp.o" \
+"CMakeFiles/Vision.dir/robotVision/Source/Point3D.cpp.o" \
+"CMakeFiles/Vision.dir/robotVision/Source/Line.cpp.o" \
+"CMakeFiles/Vision.dir/robotVision/Source/Color.cpp.o" \
+"CMakeFiles/Vision.dir/robotVision/Source/CameraOptionsTrackbarManager.cpp.o" \
+"CMakeFiles/Vision.dir/robotVision/Source/Shape.cpp.o" \
+"CMakeFiles/Vision.dir/robotVision/Source/CornerDetector.cpp.o" \
+"CMakeFiles/Vision.dir/robotVision/Source/VisitedList.cpp.o" \
+"CMakeFiles/Vision.dir/robotVision/Source/ShapeDetector.cpp.o" \
+"CMakeFiles/Vision.dir/robotVision/Source/ApplicationController.cpp.o" \
+"CMakeFiles/Vision.dir/robotVision/Source/NetworkCommunicator.cpp.o"
 
 # External object files for target Vision
 Vision_EXTERNAL_OBJECTS =
 
-Vision: CMakeFiles/Vision.dir/main.cpp.o
-Vision: CMakeFiles/Vision.dir/Source/CameraNormalizer.cpp.o
-Vision: CMakeFiles/Vision.dir/Source/CameraFilter.cpp.o
-Vision: CMakeFiles/Vision.dir/Source/PlaneDetector.cpp.o
-Vision: CMakeFiles/Vision.dir/Source/Point2D.cpp.o
-Vision: CMakeFiles/Vision.dir/Source/Point3D.cpp.o
-Vision: CMakeFiles/Vision.dir/Source/Line.cpp.o
-Vision: CMakeFiles/Vision.dir/Source/Color.cpp.o
-Vision: CMakeFiles/Vision.dir/Source/CameraOptionsTrackbarManager.cpp.o
-Vision: CMakeFiles/Vision.dir/Source/Shape.cpp.o
-Vision: CMakeFiles/Vision.dir/Source/CornerDetector.cpp.o
-Vision: CMakeFiles/Vision.dir/Source/VisitedList.cpp.o
-Vision: CMakeFiles/Vision.dir/Source/ShapeDetector.cpp.o
-Vision: CMakeFiles/Vision.dir/Source/ApplicationController.cpp.o
+Vision: CMakeFiles/Vision.dir/robotVision/main.cpp.o
+Vision: CMakeFiles/Vision.dir/robotVision/Source/CameraNormalizer.cpp.o
+Vision: CMakeFiles/Vision.dir/robotVision/Source/CameraFilter.cpp.o
+Vision: CMakeFiles/Vision.dir/robotVision/Source/PlaneDetector.cpp.o
+Vision: CMakeFiles/Vision.dir/robotVision/Source/Point2D.cpp.o
+Vision: CMakeFiles/Vision.dir/robotVision/Source/Point3D.cpp.o
+Vision: CMakeFiles/Vision.dir/robotVision/Source/Line.cpp.o
+Vision: CMakeFiles/Vision.dir/robotVision/Source/Color.cpp.o
+Vision: CMakeFiles/Vision.dir/robotVision/Source/CameraOptionsTrackbarManager.cpp.o
+Vision: CMakeFiles/Vision.dir/robotVision/Source/Shape.cpp.o
+Vision: CMakeFiles/Vision.dir/robotVision/Source/CornerDetector.cpp.o
+Vision: CMakeFiles/Vision.dir/robotVision/Source/VisitedList.cpp.o
+Vision: CMakeFiles/Vision.dir/robotVision/Source/ShapeDetector.cpp.o
+Vision: CMakeFiles/Vision.dir/robotVision/Source/ApplicationController.cpp.o
+Vision: CMakeFiles/Vision.dir/robotVision/Source/NetworkCommunicator.cpp.o
 Vision: CMakeFiles/Vision.dir/build.make
 Vision: /usr/lib/libopencv_vstab.so.2.4.13
 Vision: /usr/lib/libopencv_imuvstab.so.2.4.13
@@ -452,7 +478,7 @@ Vision: /usr/lib/libopencv_imgproc.so.2.4.13
 Vision: /usr/lib/libopencv_flann.so.2.4.13
 Vision: /usr/lib/libopencv_core.so.2.4.13
 Vision: CMakeFiles/Vision.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/ubuntu/VisionObjectDetection/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Linking CXX executable Vision"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/ubuntu/VisionObjectDetection/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Linking CXX executable Vision"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Vision.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -460,20 +486,21 @@ CMakeFiles/Vision.dir/build: Vision
 
 .PHONY : CMakeFiles/Vision.dir/build
 
-CMakeFiles/Vision.dir/requires: CMakeFiles/Vision.dir/main.cpp.o.requires
-CMakeFiles/Vision.dir/requires: CMakeFiles/Vision.dir/Source/CameraNormalizer.cpp.o.requires
-CMakeFiles/Vision.dir/requires: CMakeFiles/Vision.dir/Source/CameraFilter.cpp.o.requires
-CMakeFiles/Vision.dir/requires: CMakeFiles/Vision.dir/Source/PlaneDetector.cpp.o.requires
-CMakeFiles/Vision.dir/requires: CMakeFiles/Vision.dir/Source/Point2D.cpp.o.requires
-CMakeFiles/Vision.dir/requires: CMakeFiles/Vision.dir/Source/Point3D.cpp.o.requires
-CMakeFiles/Vision.dir/requires: CMakeFiles/Vision.dir/Source/Line.cpp.o.requires
-CMakeFiles/Vision.dir/requires: CMakeFiles/Vision.dir/Source/Color.cpp.o.requires
-CMakeFiles/Vision.dir/requires: CMakeFiles/Vision.dir/Source/CameraOptionsTrackbarManager.cpp.o.requires
-CMakeFiles/Vision.dir/requires: CMakeFiles/Vision.dir/Source/Shape.cpp.o.requires
-CMakeFiles/Vision.dir/requires: CMakeFiles/Vision.dir/Source/CornerDetector.cpp.o.requires
-CMakeFiles/Vision.dir/requires: CMakeFiles/Vision.dir/Source/VisitedList.cpp.o.requires
-CMakeFiles/Vision.dir/requires: CMakeFiles/Vision.dir/Source/ShapeDetector.cpp.o.requires
-CMakeFiles/Vision.dir/requires: CMakeFiles/Vision.dir/Source/ApplicationController.cpp.o.requires
+CMakeFiles/Vision.dir/requires: CMakeFiles/Vision.dir/robotVision/main.cpp.o.requires
+CMakeFiles/Vision.dir/requires: CMakeFiles/Vision.dir/robotVision/Source/CameraNormalizer.cpp.o.requires
+CMakeFiles/Vision.dir/requires: CMakeFiles/Vision.dir/robotVision/Source/CameraFilter.cpp.o.requires
+CMakeFiles/Vision.dir/requires: CMakeFiles/Vision.dir/robotVision/Source/PlaneDetector.cpp.o.requires
+CMakeFiles/Vision.dir/requires: CMakeFiles/Vision.dir/robotVision/Source/Point2D.cpp.o.requires
+CMakeFiles/Vision.dir/requires: CMakeFiles/Vision.dir/robotVision/Source/Point3D.cpp.o.requires
+CMakeFiles/Vision.dir/requires: CMakeFiles/Vision.dir/robotVision/Source/Line.cpp.o.requires
+CMakeFiles/Vision.dir/requires: CMakeFiles/Vision.dir/robotVision/Source/Color.cpp.o.requires
+CMakeFiles/Vision.dir/requires: CMakeFiles/Vision.dir/robotVision/Source/CameraOptionsTrackbarManager.cpp.o.requires
+CMakeFiles/Vision.dir/requires: CMakeFiles/Vision.dir/robotVision/Source/Shape.cpp.o.requires
+CMakeFiles/Vision.dir/requires: CMakeFiles/Vision.dir/robotVision/Source/CornerDetector.cpp.o.requires
+CMakeFiles/Vision.dir/requires: CMakeFiles/Vision.dir/robotVision/Source/VisitedList.cpp.o.requires
+CMakeFiles/Vision.dir/requires: CMakeFiles/Vision.dir/robotVision/Source/ShapeDetector.cpp.o.requires
+CMakeFiles/Vision.dir/requires: CMakeFiles/Vision.dir/robotVision/Source/ApplicationController.cpp.o.requires
+CMakeFiles/Vision.dir/requires: CMakeFiles/Vision.dir/robotVision/Source/NetworkCommunicator.cpp.o.requires
 
 .PHONY : CMakeFiles/Vision.dir/requires
 
@@ -482,6 +509,6 @@ CMakeFiles/Vision.dir/clean:
 .PHONY : CMakeFiles/Vision.dir/clean
 
 CMakeFiles/Vision.dir/depend:
-	cd /home/ubuntu/VisionObjectDetection/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/ubuntu/VisionObjectDetection/robotVision /home/ubuntu/VisionObjectDetection/robotVision /home/ubuntu/VisionObjectDetection/build /home/ubuntu/VisionObjectDetection/build /home/ubuntu/VisionObjectDetection/build/CMakeFiles/Vision.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/ubuntu/VisionObjectDetection/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/ubuntu/VisionObjectDetection /home/ubuntu/VisionObjectDetection /home/ubuntu/VisionObjectDetection/build /home/ubuntu/VisionObjectDetection/build /home/ubuntu/VisionObjectDetection/build/CMakeFiles/Vision.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/Vision.dir/depend
 

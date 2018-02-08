@@ -12,11 +12,12 @@ int main()
 	ApplicationController controller=ApplicationController();
 	
 	// Set options.
-	controller.setShowUserInterface(true);
+	controller.setShowUserInterface(false);
 	controller.setLogInformation(true);
 
 	// Run the main loop.
 	controller.mainLoop();
 	//controller.demoStitcher();
+	//controller.demoNetworkTables();
 }
 

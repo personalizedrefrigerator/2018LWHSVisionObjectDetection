@@ -48,7 +48,7 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/ubuntu/VisionObjectDetection/robotVision
+CMAKE_SOURCE_DIR = /home/ubuntu/VisionObjectDetection
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = /home/ubuntu/VisionObjectDetection/build
@@ -123,383 +123,410 @@ Vision/fast:
 	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/build
 .PHONY : Vision/fast
 
-Source/ApplicationController.o: Source/ApplicationController.cpp.o
+robotVision/Source/ApplicationController.o: robotVision/Source/ApplicationController.cpp.o
 
-.PHONY : Source/ApplicationController.o
-
-# target to build an object file
-Source/ApplicationController.cpp.o:
-	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/Source/ApplicationController.cpp.o
-.PHONY : Source/ApplicationController.cpp.o
-
-Source/ApplicationController.i: Source/ApplicationController.cpp.i
-
-.PHONY : Source/ApplicationController.i
-
-# target to preprocess a source file
-Source/ApplicationController.cpp.i:
-	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/Source/ApplicationController.cpp.i
-.PHONY : Source/ApplicationController.cpp.i
-
-Source/ApplicationController.s: Source/ApplicationController.cpp.s
-
-.PHONY : Source/ApplicationController.s
-
-# target to generate assembly for a file
-Source/ApplicationController.cpp.s:
-	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/Source/ApplicationController.cpp.s
-.PHONY : Source/ApplicationController.cpp.s
-
-Source/CameraFilter.o: Source/CameraFilter.cpp.o
-
-.PHONY : Source/CameraFilter.o
+.PHONY : robotVision/Source/ApplicationController.o
 
 # target to build an object file
-Source/CameraFilter.cpp.o:
-	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/Source/CameraFilter.cpp.o
-.PHONY : Source/CameraFilter.cpp.o
+robotVision/Source/ApplicationController.cpp.o:
+	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/robotVision/Source/ApplicationController.cpp.o
+.PHONY : robotVision/Source/ApplicationController.cpp.o
 
-Source/CameraFilter.i: Source/CameraFilter.cpp.i
+robotVision/Source/ApplicationController.i: robotVision/Source/ApplicationController.cpp.i
 
-.PHONY : Source/CameraFilter.i
+.PHONY : robotVision/Source/ApplicationController.i
 
 # target to preprocess a source file
-Source/CameraFilter.cpp.i:
-	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/Source/CameraFilter.cpp.i
-.PHONY : Source/CameraFilter.cpp.i
+robotVision/Source/ApplicationController.cpp.i:
+	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/robotVision/Source/ApplicationController.cpp.i
+.PHONY : robotVision/Source/ApplicationController.cpp.i
 
-Source/CameraFilter.s: Source/CameraFilter.cpp.s
+robotVision/Source/ApplicationController.s: robotVision/Source/ApplicationController.cpp.s
 
-.PHONY : Source/CameraFilter.s
+.PHONY : robotVision/Source/ApplicationController.s
 
 # target to generate assembly for a file
-Source/CameraFilter.cpp.s:
-	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/Source/CameraFilter.cpp.s
-.PHONY : Source/CameraFilter.cpp.s
+robotVision/Source/ApplicationController.cpp.s:
+	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/robotVision/Source/ApplicationController.cpp.s
+.PHONY : robotVision/Source/ApplicationController.cpp.s
 
-Source/CameraNormalizer.o: Source/CameraNormalizer.cpp.o
+robotVision/Source/CameraFilter.o: robotVision/Source/CameraFilter.cpp.o
 
-.PHONY : Source/CameraNormalizer.o
+.PHONY : robotVision/Source/CameraFilter.o
 
 # target to build an object file
-Source/CameraNormalizer.cpp.o:
-	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/Source/CameraNormalizer.cpp.o
-.PHONY : Source/CameraNormalizer.cpp.o
+robotVision/Source/CameraFilter.cpp.o:
+	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/robotVision/Source/CameraFilter.cpp.o
+.PHONY : robotVision/Source/CameraFilter.cpp.o
 
-Source/CameraNormalizer.i: Source/CameraNormalizer.cpp.i
+robotVision/Source/CameraFilter.i: robotVision/Source/CameraFilter.cpp.i
 
-.PHONY : Source/CameraNormalizer.i
+.PHONY : robotVision/Source/CameraFilter.i
 
 # target to preprocess a source file
-Source/CameraNormalizer.cpp.i:
-	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/Source/CameraNormalizer.cpp.i
-.PHONY : Source/CameraNormalizer.cpp.i
+robotVision/Source/CameraFilter.cpp.i:
+	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/robotVision/Source/CameraFilter.cpp.i
+.PHONY : robotVision/Source/CameraFilter.cpp.i
 
-Source/CameraNormalizer.s: Source/CameraNormalizer.cpp.s
+robotVision/Source/CameraFilter.s: robotVision/Source/CameraFilter.cpp.s
 
-.PHONY : Source/CameraNormalizer.s
+.PHONY : robotVision/Source/CameraFilter.s
 
 # target to generate assembly for a file
-Source/CameraNormalizer.cpp.s:
-	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/Source/CameraNormalizer.cpp.s
-.PHONY : Source/CameraNormalizer.cpp.s
+robotVision/Source/CameraFilter.cpp.s:
+	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/robotVision/Source/CameraFilter.cpp.s
+.PHONY : robotVision/Source/CameraFilter.cpp.s
 
-Source/CameraOptionsTrackbarManager.o: Source/CameraOptionsTrackbarManager.cpp.o
+robotVision/Source/CameraNormalizer.o: robotVision/Source/CameraNormalizer.cpp.o
 
-.PHONY : Source/CameraOptionsTrackbarManager.o
+.PHONY : robotVision/Source/CameraNormalizer.o
 
 # target to build an object file
-Source/CameraOptionsTrackbarManager.cpp.o:
-	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/Source/CameraOptionsTrackbarManager.cpp.o
-.PHONY : Source/CameraOptionsTrackbarManager.cpp.o
+robotVision/Source/CameraNormalizer.cpp.o:
+	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/robotVision/Source/CameraNormalizer.cpp.o
+.PHONY : robotVision/Source/CameraNormalizer.cpp.o
 
-Source/CameraOptionsTrackbarManager.i: Source/CameraOptionsTrackbarManager.cpp.i
+robotVision/Source/CameraNormalizer.i: robotVision/Source/CameraNormalizer.cpp.i
 
-.PHONY : Source/CameraOptionsTrackbarManager.i
+.PHONY : robotVision/Source/CameraNormalizer.i
 
 # target to preprocess a source file
-Source/CameraOptionsTrackbarManager.cpp.i:
-	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/Source/CameraOptionsTrackbarManager.cpp.i
-.PHONY : Source/CameraOptionsTrackbarManager.cpp.i
+robotVision/Source/CameraNormalizer.cpp.i:
+	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/robotVision/Source/CameraNormalizer.cpp.i
+.PHONY : robotVision/Source/CameraNormalizer.cpp.i
 
-Source/CameraOptionsTrackbarManager.s: Source/CameraOptionsTrackbarManager.cpp.s
+robotVision/Source/CameraNormalizer.s: robotVision/Source/CameraNormalizer.cpp.s
 
-.PHONY : Source/CameraOptionsTrackbarManager.s
+.PHONY : robotVision/Source/CameraNormalizer.s
 
 # target to generate assembly for a file
-Source/CameraOptionsTrackbarManager.cpp.s:
-	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/Source/CameraOptionsTrackbarManager.cpp.s
-.PHONY : Source/CameraOptionsTrackbarManager.cpp.s
+robotVision/Source/CameraNormalizer.cpp.s:
+	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/robotVision/Source/CameraNormalizer.cpp.s
+.PHONY : robotVision/Source/CameraNormalizer.cpp.s
 
-Source/Color.o: Source/Color.cpp.o
+robotVision/Source/CameraOptionsTrackbarManager.o: robotVision/Source/CameraOptionsTrackbarManager.cpp.o
 
-.PHONY : Source/Color.o
+.PHONY : robotVision/Source/CameraOptionsTrackbarManager.o
 
 # target to build an object file
-Source/Color.cpp.o:
-	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/Source/Color.cpp.o
-.PHONY : Source/Color.cpp.o
+robotVision/Source/CameraOptionsTrackbarManager.cpp.o:
+	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/robotVision/Source/CameraOptionsTrackbarManager.cpp.o
+.PHONY : robotVision/Source/CameraOptionsTrackbarManager.cpp.o
 
-Source/Color.i: Source/Color.cpp.i
+robotVision/Source/CameraOptionsTrackbarManager.i: robotVision/Source/CameraOptionsTrackbarManager.cpp.i
 
-.PHONY : Source/Color.i
+.PHONY : robotVision/Source/CameraOptionsTrackbarManager.i
 
 # target to preprocess a source file
-Source/Color.cpp.i:
-	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/Source/Color.cpp.i
-.PHONY : Source/Color.cpp.i
+robotVision/Source/CameraOptionsTrackbarManager.cpp.i:
+	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/robotVision/Source/CameraOptionsTrackbarManager.cpp.i
+.PHONY : robotVision/Source/CameraOptionsTrackbarManager.cpp.i
 
-Source/Color.s: Source/Color.cpp.s
+robotVision/Source/CameraOptionsTrackbarManager.s: robotVision/Source/CameraOptionsTrackbarManager.cpp.s
 
-.PHONY : Source/Color.s
+.PHONY : robotVision/Source/CameraOptionsTrackbarManager.s
 
 # target to generate assembly for a file
-Source/Color.cpp.s:
-	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/Source/Color.cpp.s
-.PHONY : Source/Color.cpp.s
+robotVision/Source/CameraOptionsTrackbarManager.cpp.s:
+	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/robotVision/Source/CameraOptionsTrackbarManager.cpp.s
+.PHONY : robotVision/Source/CameraOptionsTrackbarManager.cpp.s
 
-Source/CornerDetector.o: Source/CornerDetector.cpp.o
+robotVision/Source/Color.o: robotVision/Source/Color.cpp.o
 
-.PHONY : Source/CornerDetector.o
+.PHONY : robotVision/Source/Color.o
 
 # target to build an object file
-Source/CornerDetector.cpp.o:
-	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/Source/CornerDetector.cpp.o
-.PHONY : Source/CornerDetector.cpp.o
+robotVision/Source/Color.cpp.o:
+	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/robotVision/Source/Color.cpp.o
+.PHONY : robotVision/Source/Color.cpp.o
 
-Source/CornerDetector.i: Source/CornerDetector.cpp.i
+robotVision/Source/Color.i: robotVision/Source/Color.cpp.i
 
-.PHONY : Source/CornerDetector.i
+.PHONY : robotVision/Source/Color.i
 
 # target to preprocess a source file
-Source/CornerDetector.cpp.i:
-	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/Source/CornerDetector.cpp.i
-.PHONY : Source/CornerDetector.cpp.i
+robotVision/Source/Color.cpp.i:
+	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/robotVision/Source/Color.cpp.i
+.PHONY : robotVision/Source/Color.cpp.i
 
-Source/CornerDetector.s: Source/CornerDetector.cpp.s
+robotVision/Source/Color.s: robotVision/Source/Color.cpp.s
 
-.PHONY : Source/CornerDetector.s
+.PHONY : robotVision/Source/Color.s
 
 # target to generate assembly for a file
-Source/CornerDetector.cpp.s:
-	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/Source/CornerDetector.cpp.s
-.PHONY : Source/CornerDetector.cpp.s
+robotVision/Source/Color.cpp.s:
+	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/robotVision/Source/Color.cpp.s
+.PHONY : robotVision/Source/Color.cpp.s
 
-Source/Line.o: Source/Line.cpp.o
+robotVision/Source/CornerDetector.o: robotVision/Source/CornerDetector.cpp.o
 
-.PHONY : Source/Line.o
+.PHONY : robotVision/Source/CornerDetector.o
 
 # target to build an object file
-Source/Line.cpp.o:
-	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/Source/Line.cpp.o
-.PHONY : Source/Line.cpp.o
+robotVision/Source/CornerDetector.cpp.o:
+	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/robotVision/Source/CornerDetector.cpp.o
+.PHONY : robotVision/Source/CornerDetector.cpp.o
 
-Source/Line.i: Source/Line.cpp.i
+robotVision/Source/CornerDetector.i: robotVision/Source/CornerDetector.cpp.i
 
-.PHONY : Source/Line.i
+.PHONY : robotVision/Source/CornerDetector.i
 
 # target to preprocess a source file
-Source/Line.cpp.i:
-	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/Source/Line.cpp.i
-.PHONY : Source/Line.cpp.i
+robotVision/Source/CornerDetector.cpp.i:
+	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/robotVision/Source/CornerDetector.cpp.i
+.PHONY : robotVision/Source/CornerDetector.cpp.i
 
-Source/Line.s: Source/Line.cpp.s
+robotVision/Source/CornerDetector.s: robotVision/Source/CornerDetector.cpp.s
 
-.PHONY : Source/Line.s
+.PHONY : robotVision/Source/CornerDetector.s
 
 # target to generate assembly for a file
-Source/Line.cpp.s:
-	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/Source/Line.cpp.s
-.PHONY : Source/Line.cpp.s
+robotVision/Source/CornerDetector.cpp.s:
+	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/robotVision/Source/CornerDetector.cpp.s
+.PHONY : robotVision/Source/CornerDetector.cpp.s
 
-Source/PlaneDetector.o: Source/PlaneDetector.cpp.o
+robotVision/Source/Line.o: robotVision/Source/Line.cpp.o
 
-.PHONY : Source/PlaneDetector.o
+.PHONY : robotVision/Source/Line.o
 
 # target to build an object file
-Source/PlaneDetector.cpp.o:
-	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/Source/PlaneDetector.cpp.o
-.PHONY : Source/PlaneDetector.cpp.o
+robotVision/Source/Line.cpp.o:
+	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/robotVision/Source/Line.cpp.o
+.PHONY : robotVision/Source/Line.cpp.o
 
-Source/PlaneDetector.i: Source/PlaneDetector.cpp.i
+robotVision/Source/Line.i: robotVision/Source/Line.cpp.i
 
-.PHONY : Source/PlaneDetector.i
+.PHONY : robotVision/Source/Line.i
 
 # target to preprocess a source file
-Source/PlaneDetector.cpp.i:
-	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/Source/PlaneDetector.cpp.i
-.PHONY : Source/PlaneDetector.cpp.i
+robotVision/Source/Line.cpp.i:
+	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/robotVision/Source/Line.cpp.i
+.PHONY : robotVision/Source/Line.cpp.i
 
-Source/PlaneDetector.s: Source/PlaneDetector.cpp.s
+robotVision/Source/Line.s: robotVision/Source/Line.cpp.s
 
-.PHONY : Source/PlaneDetector.s
+.PHONY : robotVision/Source/Line.s
 
 # target to generate assembly for a file
-Source/PlaneDetector.cpp.s:
-	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/Source/PlaneDetector.cpp.s
-.PHONY : Source/PlaneDetector.cpp.s
+robotVision/Source/Line.cpp.s:
+	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/robotVision/Source/Line.cpp.s
+.PHONY : robotVision/Source/Line.cpp.s
 
-Source/Point2D.o: Source/Point2D.cpp.o
+robotVision/Source/NetworkCommunicator.o: robotVision/Source/NetworkCommunicator.cpp.o
 
-.PHONY : Source/Point2D.o
+.PHONY : robotVision/Source/NetworkCommunicator.o
 
 # target to build an object file
-Source/Point2D.cpp.o:
-	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/Source/Point2D.cpp.o
-.PHONY : Source/Point2D.cpp.o
+robotVision/Source/NetworkCommunicator.cpp.o:
+	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/robotVision/Source/NetworkCommunicator.cpp.o
+.PHONY : robotVision/Source/NetworkCommunicator.cpp.o
 
-Source/Point2D.i: Source/Point2D.cpp.i
+robotVision/Source/NetworkCommunicator.i: robotVision/Source/NetworkCommunicator.cpp.i
 
-.PHONY : Source/Point2D.i
+.PHONY : robotVision/Source/NetworkCommunicator.i
 
 # target to preprocess a source file
-Source/Point2D.cpp.i:
-	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/Source/Point2D.cpp.i
-.PHONY : Source/Point2D.cpp.i
+robotVision/Source/NetworkCommunicator.cpp.i:
+	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/robotVision/Source/NetworkCommunicator.cpp.i
+.PHONY : robotVision/Source/NetworkCommunicator.cpp.i
 
-Source/Point2D.s: Source/Point2D.cpp.s
+robotVision/Source/NetworkCommunicator.s: robotVision/Source/NetworkCommunicator.cpp.s
 
-.PHONY : Source/Point2D.s
+.PHONY : robotVision/Source/NetworkCommunicator.s
 
 # target to generate assembly for a file
-Source/Point2D.cpp.s:
-	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/Source/Point2D.cpp.s
-.PHONY : Source/Point2D.cpp.s
+robotVision/Source/NetworkCommunicator.cpp.s:
+	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/robotVision/Source/NetworkCommunicator.cpp.s
+.PHONY : robotVision/Source/NetworkCommunicator.cpp.s
 
-Source/Point3D.o: Source/Point3D.cpp.o
+robotVision/Source/PlaneDetector.o: robotVision/Source/PlaneDetector.cpp.o
 
-.PHONY : Source/Point3D.o
+.PHONY : robotVision/Source/PlaneDetector.o
 
 # target to build an object file
-Source/Point3D.cpp.o:
-	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/Source/Point3D.cpp.o
-.PHONY : Source/Point3D.cpp.o
+robotVision/Source/PlaneDetector.cpp.o:
+	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/robotVision/Source/PlaneDetector.cpp.o
+.PHONY : robotVision/Source/PlaneDetector.cpp.o
 
-Source/Point3D.i: Source/Point3D.cpp.i
+robotVision/Source/PlaneDetector.i: robotVision/Source/PlaneDetector.cpp.i
 
-.PHONY : Source/Point3D.i
+.PHONY : robotVision/Source/PlaneDetector.i
 
 # target to preprocess a source file
-Source/Point3D.cpp.i:
-	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/Source/Point3D.cpp.i
-.PHONY : Source/Point3D.cpp.i
+robotVision/Source/PlaneDetector.cpp.i:
+	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/robotVision/Source/PlaneDetector.cpp.i
+.PHONY : robotVision/Source/PlaneDetector.cpp.i
 
-Source/Point3D.s: Source/Point3D.cpp.s
+robotVision/Source/PlaneDetector.s: robotVision/Source/PlaneDetector.cpp.s
 
-.PHONY : Source/Point3D.s
+.PHONY : robotVision/Source/PlaneDetector.s
 
 # target to generate assembly for a file
-Source/Point3D.cpp.s:
-	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/Source/Point3D.cpp.s
-.PHONY : Source/Point3D.cpp.s
+robotVision/Source/PlaneDetector.cpp.s:
+	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/robotVision/Source/PlaneDetector.cpp.s
+.PHONY : robotVision/Source/PlaneDetector.cpp.s
 
-Source/Shape.o: Source/Shape.cpp.o
+robotVision/Source/Point2D.o: robotVision/Source/Point2D.cpp.o
 
-.PHONY : Source/Shape.o
+.PHONY : robotVision/Source/Point2D.o
 
 # target to build an object file
-Source/Shape.cpp.o:
-	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/Source/Shape.cpp.o
-.PHONY : Source/Shape.cpp.o
+robotVision/Source/Point2D.cpp.o:
+	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/robotVision/Source/Point2D.cpp.o
+.PHONY : robotVision/Source/Point2D.cpp.o
 
-Source/Shape.i: Source/Shape.cpp.i
+robotVision/Source/Point2D.i: robotVision/Source/Point2D.cpp.i
 
-.PHONY : Source/Shape.i
+.PHONY : robotVision/Source/Point2D.i
 
 # target to preprocess a source file
-Source/Shape.cpp.i:
-	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/Source/Shape.cpp.i
-.PHONY : Source/Shape.cpp.i
+robotVision/Source/Point2D.cpp.i:
+	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/robotVision/Source/Point2D.cpp.i
+.PHONY : robotVision/Source/Point2D.cpp.i
 
-Source/Shape.s: Source/Shape.cpp.s
+robotVision/Source/Point2D.s: robotVision/Source/Point2D.cpp.s
 
-.PHONY : Source/Shape.s
+.PHONY : robotVision/Source/Point2D.s
 
 # target to generate assembly for a file
-Source/Shape.cpp.s:
-	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/Source/Shape.cpp.s
-.PHONY : Source/Shape.cpp.s
+robotVision/Source/Point2D.cpp.s:
+	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/robotVision/Source/Point2D.cpp.s
+.PHONY : robotVision/Source/Point2D.cpp.s
 
-Source/ShapeDetector.o: Source/ShapeDetector.cpp.o
+robotVision/Source/Point3D.o: robotVision/Source/Point3D.cpp.o
 
-.PHONY : Source/ShapeDetector.o
+.PHONY : robotVision/Source/Point3D.o
 
 # target to build an object file
-Source/ShapeDetector.cpp.o:
-	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/Source/ShapeDetector.cpp.o
-.PHONY : Source/ShapeDetector.cpp.o
+robotVision/Source/Point3D.cpp.o:
+	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/robotVision/Source/Point3D.cpp.o
+.PHONY : robotVision/Source/Point3D.cpp.o
 
-Source/ShapeDetector.i: Source/ShapeDetector.cpp.i
+robotVision/Source/Point3D.i: robotVision/Source/Point3D.cpp.i
 
-.PHONY : Source/ShapeDetector.i
+.PHONY : robotVision/Source/Point3D.i
 
 # target to preprocess a source file
-Source/ShapeDetector.cpp.i:
-	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/Source/ShapeDetector.cpp.i
-.PHONY : Source/ShapeDetector.cpp.i
+robotVision/Source/Point3D.cpp.i:
+	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/robotVision/Source/Point3D.cpp.i
+.PHONY : robotVision/Source/Point3D.cpp.i
 
-Source/ShapeDetector.s: Source/ShapeDetector.cpp.s
+robotVision/Source/Point3D.s: robotVision/Source/Point3D.cpp.s
 
-.PHONY : Source/ShapeDetector.s
+.PHONY : robotVision/Source/Point3D.s
 
 # target to generate assembly for a file
-Source/ShapeDetector.cpp.s:
-	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/Source/ShapeDetector.cpp.s
-.PHONY : Source/ShapeDetector.cpp.s
+robotVision/Source/Point3D.cpp.s:
+	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/robotVision/Source/Point3D.cpp.s
+.PHONY : robotVision/Source/Point3D.cpp.s
 
-Source/VisitedList.o: Source/VisitedList.cpp.o
+robotVision/Source/Shape.o: robotVision/Source/Shape.cpp.o
 
-.PHONY : Source/VisitedList.o
+.PHONY : robotVision/Source/Shape.o
 
 # target to build an object file
-Source/VisitedList.cpp.o:
-	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/Source/VisitedList.cpp.o
-.PHONY : Source/VisitedList.cpp.o
+robotVision/Source/Shape.cpp.o:
+	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/robotVision/Source/Shape.cpp.o
+.PHONY : robotVision/Source/Shape.cpp.o
 
-Source/VisitedList.i: Source/VisitedList.cpp.i
+robotVision/Source/Shape.i: robotVision/Source/Shape.cpp.i
 
-.PHONY : Source/VisitedList.i
+.PHONY : robotVision/Source/Shape.i
 
 # target to preprocess a source file
-Source/VisitedList.cpp.i:
-	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/Source/VisitedList.cpp.i
-.PHONY : Source/VisitedList.cpp.i
+robotVision/Source/Shape.cpp.i:
+	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/robotVision/Source/Shape.cpp.i
+.PHONY : robotVision/Source/Shape.cpp.i
 
-Source/VisitedList.s: Source/VisitedList.cpp.s
+robotVision/Source/Shape.s: robotVision/Source/Shape.cpp.s
 
-.PHONY : Source/VisitedList.s
+.PHONY : robotVision/Source/Shape.s
 
 # target to generate assembly for a file
-Source/VisitedList.cpp.s:
-	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/Source/VisitedList.cpp.s
-.PHONY : Source/VisitedList.cpp.s
+robotVision/Source/Shape.cpp.s:
+	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/robotVision/Source/Shape.cpp.s
+.PHONY : robotVision/Source/Shape.cpp.s
 
-main.o: main.cpp.o
+robotVision/Source/ShapeDetector.o: robotVision/Source/ShapeDetector.cpp.o
 
-.PHONY : main.o
+.PHONY : robotVision/Source/ShapeDetector.o
 
 # target to build an object file
-main.cpp.o:
-	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/main.cpp.o
-.PHONY : main.cpp.o
+robotVision/Source/ShapeDetector.cpp.o:
+	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/robotVision/Source/ShapeDetector.cpp.o
+.PHONY : robotVision/Source/ShapeDetector.cpp.o
 
-main.i: main.cpp.i
+robotVision/Source/ShapeDetector.i: robotVision/Source/ShapeDetector.cpp.i
 
-.PHONY : main.i
+.PHONY : robotVision/Source/ShapeDetector.i
 
 # target to preprocess a source file
-main.cpp.i:
-	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/main.cpp.i
-.PHONY : main.cpp.i
+robotVision/Source/ShapeDetector.cpp.i:
+	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/robotVision/Source/ShapeDetector.cpp.i
+.PHONY : robotVision/Source/ShapeDetector.cpp.i
 
-main.s: main.cpp.s
+robotVision/Source/ShapeDetector.s: robotVision/Source/ShapeDetector.cpp.s
 
-.PHONY : main.s
+.PHONY : robotVision/Source/ShapeDetector.s
 
 # target to generate assembly for a file
-main.cpp.s:
-	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/main.cpp.s
-.PHONY : main.cpp.s
+robotVision/Source/ShapeDetector.cpp.s:
+	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/robotVision/Source/ShapeDetector.cpp.s
+.PHONY : robotVision/Source/ShapeDetector.cpp.s
+
+robotVision/Source/VisitedList.o: robotVision/Source/VisitedList.cpp.o
+
+.PHONY : robotVision/Source/VisitedList.o
+
+# target to build an object file
+robotVision/Source/VisitedList.cpp.o:
+	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/robotVision/Source/VisitedList.cpp.o
+.PHONY : robotVision/Source/VisitedList.cpp.o
+
+robotVision/Source/VisitedList.i: robotVision/Source/VisitedList.cpp.i
+
+.PHONY : robotVision/Source/VisitedList.i
+
+# target to preprocess a source file
+robotVision/Source/VisitedList.cpp.i:
+	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/robotVision/Source/VisitedList.cpp.i
+.PHONY : robotVision/Source/VisitedList.cpp.i
+
+robotVision/Source/VisitedList.s: robotVision/Source/VisitedList.cpp.s
+
+.PHONY : robotVision/Source/VisitedList.s
+
+# target to generate assembly for a file
+robotVision/Source/VisitedList.cpp.s:
+	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/robotVision/Source/VisitedList.cpp.s
+.PHONY : robotVision/Source/VisitedList.cpp.s
+
+robotVision/main.o: robotVision/main.cpp.o
+
+.PHONY : robotVision/main.o
+
+# target to build an object file
+robotVision/main.cpp.o:
+	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/robotVision/main.cpp.o
+.PHONY : robotVision/main.cpp.o
+
+robotVision/main.i: robotVision/main.cpp.i
+
+.PHONY : robotVision/main.i
+
+# target to preprocess a source file
+robotVision/main.cpp.i:
+	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/robotVision/main.cpp.i
+.PHONY : robotVision/main.cpp.i
+
+robotVision/main.s: robotVision/main.cpp.s
+
+.PHONY : robotVision/main.s
+
+# target to generate assembly for a file
+robotVision/main.cpp.s:
+	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/robotVision/main.cpp.s
+.PHONY : robotVision/main.cpp.s
 
 # Help Target
 help:
@@ -510,48 +537,51 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... Vision"
-	@echo "... Source/ApplicationController.o"
-	@echo "... Source/ApplicationController.i"
-	@echo "... Source/ApplicationController.s"
-	@echo "... Source/CameraFilter.o"
-	@echo "... Source/CameraFilter.i"
-	@echo "... Source/CameraFilter.s"
-	@echo "... Source/CameraNormalizer.o"
-	@echo "... Source/CameraNormalizer.i"
-	@echo "... Source/CameraNormalizer.s"
-	@echo "... Source/CameraOptionsTrackbarManager.o"
-	@echo "... Source/CameraOptionsTrackbarManager.i"
-	@echo "... Source/CameraOptionsTrackbarManager.s"
-	@echo "... Source/Color.o"
-	@echo "... Source/Color.i"
-	@echo "... Source/Color.s"
-	@echo "... Source/CornerDetector.o"
-	@echo "... Source/CornerDetector.i"
-	@echo "... Source/CornerDetector.s"
-	@echo "... Source/Line.o"
-	@echo "... Source/Line.i"
-	@echo "... Source/Line.s"
-	@echo "... Source/PlaneDetector.o"
-	@echo "... Source/PlaneDetector.i"
-	@echo "... Source/PlaneDetector.s"
-	@echo "... Source/Point2D.o"
-	@echo "... Source/Point2D.i"
-	@echo "... Source/Point2D.s"
-	@echo "... Source/Point3D.o"
-	@echo "... Source/Point3D.i"
-	@echo "... Source/Point3D.s"
-	@echo "... Source/Shape.o"
-	@echo "... Source/Shape.i"
-	@echo "... Source/Shape.s"
-	@echo "... Source/ShapeDetector.o"
-	@echo "... Source/ShapeDetector.i"
-	@echo "... Source/ShapeDetector.s"
-	@echo "... Source/VisitedList.o"
-	@echo "... Source/VisitedList.i"
-	@echo "... Source/VisitedList.s"
-	@echo "... main.o"
-	@echo "... main.i"
-	@echo "... main.s"
+	@echo "... robotVision/Source/ApplicationController.o"
+	@echo "... robotVision/Source/ApplicationController.i"
+	@echo "... robotVision/Source/ApplicationController.s"
+	@echo "... robotVision/Source/CameraFilter.o"
+	@echo "... robotVision/Source/CameraFilter.i"
+	@echo "... robotVision/Source/CameraFilter.s"
+	@echo "... robotVision/Source/CameraNormalizer.o"
+	@echo "... robotVision/Source/CameraNormalizer.i"
+	@echo "... robotVision/Source/CameraNormalizer.s"
+	@echo "... robotVision/Source/CameraOptionsTrackbarManager.o"
+	@echo "... robotVision/Source/CameraOptionsTrackbarManager.i"
+	@echo "... robotVision/Source/CameraOptionsTrackbarManager.s"
+	@echo "... robotVision/Source/Color.o"
+	@echo "... robotVision/Source/Color.i"
+	@echo "... robotVision/Source/Color.s"
+	@echo "... robotVision/Source/CornerDetector.o"
+	@echo "... robotVision/Source/CornerDetector.i"
+	@echo "... robotVision/Source/CornerDetector.s"
+	@echo "... robotVision/Source/Line.o"
+	@echo "... robotVision/Source/Line.i"
+	@echo "... robotVision/Source/Line.s"
+	@echo "... robotVision/Source/NetworkCommunicator.o"
+	@echo "... robotVision/Source/NetworkCommunicator.i"
+	@echo "... robotVision/Source/NetworkCommunicator.s"
+	@echo "... robotVision/Source/PlaneDetector.o"
+	@echo "... robotVision/Source/PlaneDetector.i"
+	@echo "... robotVision/Source/PlaneDetector.s"
+	@echo "... robotVision/Source/Point2D.o"
+	@echo "... robotVision/Source/Point2D.i"
+	@echo "... robotVision/Source/Point2D.s"
+	@echo "... robotVision/Source/Point3D.o"
+	@echo "... robotVision/Source/Point3D.i"
+	@echo "... robotVision/Source/Point3D.s"
+	@echo "... robotVision/Source/Shape.o"
+	@echo "... robotVision/Source/Shape.i"
+	@echo "... robotVision/Source/Shape.s"
+	@echo "... robotVision/Source/ShapeDetector.o"
+	@echo "... robotVision/Source/ShapeDetector.i"
+	@echo "... robotVision/Source/ShapeDetector.s"
+	@echo "... robotVision/Source/VisitedList.o"
+	@echo "... robotVision/Source/VisitedList.i"
+	@echo "... robotVision/Source/VisitedList.s"
+	@echo "... robotVision/main.o"
+	@echo "... robotVision/main.i"
+	@echo "... robotVision/main.s"
 .PHONY : help
 
 

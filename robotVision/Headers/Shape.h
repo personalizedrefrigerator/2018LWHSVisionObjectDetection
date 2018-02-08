@@ -42,6 +42,8 @@ class Shape
 	Point2D getCenter(); // Get the center point.
 	Point2D getFirstPoint(); // Get the first point.
 	Color getAverageColor(); // Get the average color.
+	double getXAngle();
+	double getYAngle();
 
 	bool isOnScreen(Point2D point); // Get whether a point is on the screen.
 

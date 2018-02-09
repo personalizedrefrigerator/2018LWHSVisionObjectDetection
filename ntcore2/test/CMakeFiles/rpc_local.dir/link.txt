@@ -1,1 +1,0 @@
-/usr/bin/c++    -fPIC -std=c++1y -Wformat=2 -Wall -Wextra -Werror -pedantic -Wno-unused-parameter   CMakeFiles/rpc_local.dir/rpc_local.cpp.o  -o rpc_local -rdynamic ../libntcore.so.1.0.0 -lpthread ../libwpiutil.a -Wl,-rpath,/home/ubuntu/Documents/ntcore 

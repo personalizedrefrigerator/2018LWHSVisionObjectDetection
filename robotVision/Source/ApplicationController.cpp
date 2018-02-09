@@ -161,12 +161,15 @@ void ApplicationController::mainLoop()
 	// Open a camera.
 	cv::VideoCapture video;
 	video.open(cameraNumber);
+	
+	video.set(CV_CAP_PROP_FRAME_WIDTH, 320);
+	video.set(CV_CAP_PROP_FRAME_HEIGHT, 240);
 
 	// Create a variable to store the current frame.
 	cv::Mat currentFrame;
 
 	// Write to the current frame.
-	video >> currentFrame;
+	//video >> currentFrame;
 	
 	// If showing UI,
 	if(showUI)
@@ -222,7 +225,7 @@ void ApplicationController::mainLoop()
 
 	Shape mainShape;
 
-	mainShape.setCenterLocation(Point2D(100, 100));
+	mainShape.setCenterLocation(Point2D(50, 50));
 
 	mainShape.setScreenZ(filter.getNormalizer().getFocalLengthX()); // Set an estimate for the Z position of the screen from the camera.
 
@@ -230,13 +233,20 @@ void ApplicationController::mainLoop()
 
 	bool foundShape=false;
 
+	cv::Mat captureData, displayData;
+
 	// Enter the main loop.
 	do
 	{
 		//logOutput("Starting loop.\n");
 
 		// Load the current image seen by the camera into the current frame.
-		video >> currentFrame;
+		video >> captureData;
+		
+		// Resize the input.
+		cv::resize(captureData, currentFrame, cv::Size(300, 400));
+		
+		
 		filter.setData(currentFrame);
 
 
@@ -278,6 +288,7 @@ void ApplicationController::mainLoop()
 		//detector.detectShapes();
 		if(!detector.findTargetAndUpdate(mainShape, rating))
 		{
+			std::cout << "Rechecking...\n";
 			//logOutput("Was false.\n");
 			detector.detectAllShapes();
 
@@ -323,7 +334,9 @@ void ApplicationController::mainLoop()
 		// If showing UI,
 		if(showUI)
 		{
-			cv::imshow("Camera View", currentFrame);
+			cv::resize(currentFrame, displayData, cv::Size(400, 400));
+			
+			cv::imshow("Camera View", displayData);
 		}
 
 

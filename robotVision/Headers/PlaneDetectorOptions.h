@@ -8,5 +8,5 @@ struct PlaneDetectorOptions
 	double averageChangeThreshold=48.0;
 	double significantPointAccuracy=3.0;
 
-	unsigned int startingPixels=30;
+	unsigned int startingPixels=25;
 };

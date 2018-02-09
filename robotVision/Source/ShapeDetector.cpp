@@ -59,7 +59,7 @@ void ShapeDetector::detectAllShapes()
 // Find possible other shapes, based on a given. Add these to the list of found shapes.
 void ShapeDetector::findProbableShapes()
 {
-
+	clearFoundShapes();
 	// Create a variable to store the number of shapes to compare with.
 	unsigned int numberOfComparisonShapes = comparisonShapes.size();
 
@@ -76,6 +76,7 @@ void ShapeDetector::findProbableShapes()
 	// Create variables to store information related to the shape from the last frame.
 	Point2D firstPointOfLastShape,
 		centerOfLastShape;
+	
 	
 	for(indexInShapesToComapreWith = 0; indexInShapesToComapreWith < numberOfComparisonShapes; indexInShapesToComapreWith++)
 	{
@@ -123,6 +124,7 @@ bool ShapeDetector::findTargetAndUpdate(Shape &result, double worstMatch)
 		findProbableShapes();
 	}
 	
+	numberOfShapes=foundShapes.size();
 
 	double rating=0.0;
 
@@ -157,8 +159,10 @@ bool ShapeDetector::findTargetAndUpdate(Shape &result, double worstMatch)
 
 			rating = currentComparisonShape->getMatchForShape(*currentComparisonShape);
 
+			//std::cout << "Rating " << rating << "\n";
+
 			// If this rating is the best so far, note this.
-			if(rating >= greatestRating)
+			if(rating > greatestRating)
 			{
 				greatestRating=rating;
 				indexOfGreatestRating=shapeIndex;
@@ -166,11 +170,11 @@ bool ShapeDetector::findTargetAndUpdate(Shape &result, double worstMatch)
 			}
 		}
 	}
-
-	double difference=greatestRating-worstMatch;
+	//std::cout << "Shapes found: "<<numberOfShapes << "\n";
+	//std::cout << "Greatest " << greatestRating << "\n";
 
 	// If the greatest rating was good enough,
-	if(difference >= 0)
+	if(greatestRating >= worstMatch)
 	{
 		result.fromOther(foundShapes.at(indexOfGreatestRating)); // Copy from the best rated.
 		return true;

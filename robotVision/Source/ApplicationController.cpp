@@ -215,7 +215,7 @@ void ApplicationController::mainLoop()
 	
 	if(!showUI)
 	{
-		networkCommunicator=new NetworkCommunicator("10.58.27.2", "visionTable");
+		networkCommunicator=new NetworkCommunicator("10.58.27.2", "Team5827VisionTable");
 	}
 
 	// Create a variable to store the last key.
@@ -243,11 +243,14 @@ void ApplicationController::mainLoop()
 		// Load the current image seen by the camera into the current frame.
 		video >> captureData;
 		
+		
+		
+		filter.setData(captureData);
+		filter.runAllFilters();	
+		
+		
 		// Resize the input.
 		cv::resize(captureData, currentFrame, cv::Size(300, 400));
-		
-		
-		filter.setData(currentFrame);
 
 
 		detector.setImage(currentFrame);
@@ -261,16 +264,11 @@ void ApplicationController::mainLoop()
 			options.colorChangeThreshold=(double)colorChangeThreshold;
 			options.averageChangeThreshold=(double)averageChangeThreshold;
 
-			
-			filter.configureCornerDetection((double)(cornerK/100000.0), cornersToFind+1, minCornerDistance+1, cornerBlockSize+1, (bool)cornerHarris);
-
-			filter.setPlaneDetectorOptions(options);
 			detector.setPlaneDetectorOptions(options);
 
 			// Configure the corner detection for the main shape's corner detector. A 0.1 quality.
 			mainShape.getCornerDetector().setOptions((double)(cornerK/100000.0), cornersToFind+1, minCornerDistance+1, cornerBlockSize+1, (bool)cornerHarris, 0.01);
-		}
-		filter.runAllFilters();		
+		}	
 
 	
 		

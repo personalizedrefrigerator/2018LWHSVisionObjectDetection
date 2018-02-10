@@ -24,9 +24,6 @@ class CameraFilter
 	void normalize();
 	void erodeAndDilate();
 	void erodeAndDilate(cv::Mat image, unsigned int recursions);
-	void cornerHarris();
-	void detectCorners();
-	void detectLineSegments();
 	void showPlane();
 	void tier(int multiplier);
 	

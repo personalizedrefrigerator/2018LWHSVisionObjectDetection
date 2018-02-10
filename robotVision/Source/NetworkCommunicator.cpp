@@ -1,6 +1,12 @@
 #include "NetworkCommunicator.h"
 
+// Include the configuration information header.
+#include "CMakeConfigurationInformation.h"
+
 #ifdef USE_WPILIB
+
+#include "ntcore.h"
+#include "networktables/NetworkTable.h"
 
 // Construct a new network communicator.
 NetworkCommunicator::NetworkCommunicator(std::string serverIP, std::string tableName)

@@ -12,7 +12,7 @@ int main()
 	ApplicationController controller=ApplicationController();
 	
 	// Set options.
-	controller.setShowUserInterface(true);
+	controller.setShowUserInterface(false);
 	controller.setLogInformation(true);
 
 	// Run the main loop.

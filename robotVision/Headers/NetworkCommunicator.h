@@ -1,14 +1,20 @@
 #pragma once
 
-// Include network tables libraries.
-#include "ntcore.h"
-#include "networktables/NetworkTable.h"
+// Include the configuration information header.
+#include "CMakeConfigurationInformation.h"
 
 // Include the string libarary.
 #include <string>
 
 // Standard shared pointer library.
 #include <memory>
+
+// If using WPILib,
+#ifdef USE_WPILIB
+
+// Include network tables libraries.
+#include "ntcore.h"
+#include "networktables/NetworkTable.h"
 
 // A class to communicate information from this vision program over the network.
 //Henry Heino
@@ -50,3 +56,22 @@ T NetworkCommunicator::getValue(std::string key)
 	// TODO: Replace this c style cast with a static_cast<T>.
 	return (T)(mainTable->GetNumber(key, defaultValue));
 }
+#else
+
+class NetworkCommunicator
+{
+	public:
+	static const int defaultValue=0;
+	
+	NetworkCommunicator(std::string serverIP, std::string tableName) {};
+	
+	// Dummy functions.
+	
+	template <typename T>
+	void updateValue(std::string key, T value){};
+	
+	template <typename T>
+	T getValue(std::string key){ return (T)(0.0); };
+};
+
+#endif // End the using wpilib if.

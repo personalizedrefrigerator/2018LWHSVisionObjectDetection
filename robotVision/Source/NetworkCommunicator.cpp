@@ -1,5 +1,6 @@
 #include "NetworkCommunicator.h"
 
+#ifdef USE_WPILIB
 
 // Construct a new network communicator.
 NetworkCommunicator::NetworkCommunicator(std::string serverIP, std::string tableName)
@@ -16,3 +17,5 @@ NetworkCommunicator::NetworkCommunicator(std::string serverIP, std::string table
 }
 
 // See NetworkCommunicator.h for templated functions.
+
+#endif

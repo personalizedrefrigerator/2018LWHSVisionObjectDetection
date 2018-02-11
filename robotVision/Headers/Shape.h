@@ -56,11 +56,13 @@ class Shape
 	void fromOther(Shape & other); // Create the current shape from another.
 
 	void setCornerDetector(CornerDetector & cornerDetector); // Set the object used to detect corners.
+	void setShapeComparisonOptions(ShapeComparisonOptions newOptions); // Set the options for comparing this to another shape.
+	
+	
 	CornerDetector & getCornerDetector(); // Get the object used to detect corners.
 
 	double getMatchForShape(Shape & other); // Get how well the other shape seems to match this shape.
 	ShapeComparisonOptions& getShapeComparisonOptions(); // Get options for comparing this and another shape.
-	void setShapeComparisonOptions(ShapeComparisonOptions newOptions); // Set the options for comparing this to another shape.
 
 	private:
 	std::vector<Point2D> edges;

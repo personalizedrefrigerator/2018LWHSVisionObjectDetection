@@ -226,7 +226,7 @@ Color recallSerializedColor(std::string input)
 		if(currentCharacter == 'c')
 		{
 			// Convert the current part to an integer, add put it in the result.
-			result[resultIndex]=atoi(currentPart);
+			result[resultIndex]=atoi(currentPart.c_str());
 			
 			// Increment the result index.
 			resultIndex++;
@@ -297,6 +297,59 @@ std::string serializePoint2DVector(std::vector<Point2D> input)
 	
 	// Return the string version of the result.
 	return result.str();
+}
+
+// Serialize shape comparison options, converting it to a machine-readable string.
+std::string serializeShapeComparisonOptions(ShapeComparisonOptions options)
+{
+	// Create a stringstream to accumulate output.
+	std::stringstream result;
+	
+	// Add the parts of the comparison options to the result.
+	result << options.colorDeltaMultiplier << 'n';
+	result << options.sizeDeltaMultiplier << 'n';
+	result << options.centerPointDeltaMultiplier << 'n';
+	result << options.sizePortion << 'n';
+	result << options.colorPortion << 'n';
+	result << options.centerDeltaPortion;
+	
+	// Return the string version of the result.
+	return result.str();
+}
+
+// Recall a serialized version of the comparison options.
+ShapeComparisonOptions recallSerializedShapeComparisonOptions(std::string input)
+{
+	// Split the input based on the letter 'n.'
+	std::vector<string> partsOfInput = split(input, 'n');
+	
+	// Create a variable to store the result.
+	ShapeComparisonOptions result;
+	
+	// So long as the split vector is at least the correct length.
+	if(partsOfInput.size() >= 6)
+	{
+		// Convert all values to doubles.
+		std::vector<double> doubleParts;
+		
+		// Create a variable to store the current index in the array of parts of the input, traverse it.
+		unsigned int currentIndex=0;
+		for(currentIndex=0; currentIndex < partsOfInput.size(); currentIndex++)
+		{
+			doubleParts.at(currentIndex) = atof(partsOfInput.at(currentIndex).c_str());
+		}
+		
+		// Move the double and integer versions of the values to the result.
+		result.colorDeltaMultiplier = doubleParts.at(0);
+		result.sizeDeltaMultiplier = doubleParts.at(1);
+		result.centerPointDeltaMultiplier = doubleParts.at(2);
+		result.sizePortion = doubleParts.at(3);
+		result.colorPortion = doubleParts.at(4);
+		result.centerDeltaPortion = doubleParts.at(5);
+	}
+	
+	// Return the result.
+	return result;
 }
 
 // Get the number of occurences of a character in a string.
@@ -420,4 +473,10 @@ std::vector<std::string> split(std::string input, char splitCharacter)
 			currentPart+=currentCharacter;
 		}
 	}
+	
+	// Add the current part to the result.
+	result.push_back(currentPart);
+	
+	// Return the result.
+	return result;
 }

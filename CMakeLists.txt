@@ -38,7 +38,7 @@ include_directories(robotVision/Headers)
 include_directories(build/CMakeGeneratedHeaders)
 
 # Create variables to store the source files stored in the root directory.
-set(SOURCE_NAMES "CameraNormalizer.cpp;CameraFilter.cpp;PlaneDetector.cpp;Point2D.cpp;Point3D.cpp;Line.cpp;Color.cpp;CameraOptionsTrackbarManager.cpp;Shape.cpp;CornerDetector.cpp;VisitedList.cpp;ShapeDetector.cpp;ApplicationController.cpp;NetworkCommunicator.cpp;ShapeList.cpp;VisionApplication.cpp")
+set(SOURCE_NAMES "CameraNormalizer.cpp;CameraFilter.cpp;PlaneDetector.cpp;Point2D.cpp;Point3D.cpp;Line.cpp;Color.cpp;CameraOptionsTrackbarManager.cpp;Shape.cpp;CornerDetector.cpp;VisitedList.cpp;ShapeDetector.cpp;ApplicationController.cpp;NetworkCommunicator.cpp;ShapeList.cpp;VisionApplication.cpp;Serializer.cpp;ShapeLoader.cpp;NetworkVisionOutput.cpp;GenericVisionOutput.cpp")
 
 # For all sources, add them to a list, with this as the starting directory.
 set(SOURCE_DIR "robotVision/Source")

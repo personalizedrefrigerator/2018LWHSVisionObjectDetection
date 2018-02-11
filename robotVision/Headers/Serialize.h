@@ -11,6 +11,7 @@
 // Include libraries from this project.
 #include "Point2D.h"
 #include "Color.h"
+#include "ShapeComparisonOptions.h"
 
 namespace Serialize
 {
@@ -37,6 +38,10 @@ namespace Serialize
 	// Serialize and recall vectors of Point2Ds.
 	std::string serializePoint2DVector(std::vector<Point2D> input);
 	std::vector<Point2D> recallSerializedVectorOfPoint2Ds(std::string input);
+	
+	// Serialize and recall shape comparison options.
+	std::string serializeShapeComparisonOptions(ShapeComparisonOptions options);
+	ShapeComparisonOptions recallSerializedShapeComparisonOptions(std::string input);
 	
 	// Other methods relating to strings.
 	std::vector<std::string> split(std::string input, char splitCharacter); // Split a string into parts, separated by the splitCharacter.

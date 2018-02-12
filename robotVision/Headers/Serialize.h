@@ -16,7 +16,7 @@
 namespace Serialize
 {
 	// Store and recall pairs of real numbers.
-	std::string std::string serializeRealPair(double x, double y);
+	std::string serializeRealPair(double x, double y);
 	Point2D recallSerializedRealPair(std::string input);
 	
 	// Serialize and recall OpenCV sizes.

@@ -1,10 +1,14 @@
 #include "ShapeDetector.h"
 
+#include <iostream>
 
 // Constructor.
 ShapeDetector::ShapeDetector()
 {
 	foundShapes.clear();
+	
+	// Create the comparison shape list.
+	comparisonShapes=new ShapeList();
 }
 
 // Detect all shapes possible.
@@ -26,11 +30,11 @@ void ShapeDetector::detectAllShapes()
 
 	Point2D currentPoint;
 
-	unsigned int deltaX=image.cols/10;
-	unsigned int deltaY=image.rows/5;
+	unsigned int deltaX=image.cols/20;
+	unsigned int deltaY=image.rows/20;
 	
 	// For every pixel,
-	for(x=0; x<image.cols; x+=deltaX)
+	for(x=deltaX; x<image.cols; x+=deltaX)
 	{
 		for(y=x/deltaX; y<image.rows; y+=deltaY)
 		{
@@ -40,10 +44,10 @@ void ShapeDetector::detectAllShapes()
 			// If the pixel hasn't been visited.
 			if(!visited.getVisited(currentPoint))
 			{
-				Shape currentShape;
+				Shape * currentShape=new Shape();
 				detector.detectPoints2D(currentPoint);
-				detector.outputToShape(currentShape);
-				currentShape.calculateCenterAndOkScreenSize();
+				detector.outputToShape(*currentShape);
+				currentShape->calculateCenterAndOkScreenSize();
 
 				// Add the current shape to those found.
 				foundShapes.push_back(currentShape);
@@ -61,7 +65,7 @@ void ShapeDetector::findProbableShapes()
 {
 	clearFoundShapes();
 	// Create a variable to store the number of shapes to compare with.
-	unsigned int numberOfComparisonShapes = comparisonShapes.size();
+	unsigned int numberOfComparisonShapes = comparisonShapes->size();
 
 	// Create a variable to store the index in the shapes to compare with.
 	unsigned int indexInShapesToComapreWith = 0;
@@ -81,7 +85,7 @@ void ShapeDetector::findProbableShapes()
 	for(indexInShapesToComapreWith = 0; indexInShapesToComapreWith < numberOfComparisonShapes; indexInShapesToComapreWith++)
 	{
 		// Get the shape at the index to compare with.
-		currentLastframeShape = &comparisonShapes.at(indexInShapesToComapreWith);
+		currentLastframeShape = comparisonShapes->at(indexInShapesToComapreWith);
 
 		// Find points related to that shape
 		// Find a shape. A NEW shape.
@@ -145,21 +149,19 @@ bool ShapeDetector::findTargetAndUpdate(Shape &result, double worstMatch)
 	unsigned int indexOfGreatestComparisonShape=0;
 	
 	// Create a variable to store the number of shapes to compare with.
-	unsigned int numberOfComparisonShapes=comparisonShapes.size();
+	unsigned int numberOfComparisonShapes=comparisonShapes->size();
 
 	// For every shape found by the shape detector.
 	for(unsigned int shapeIndex = 0; shapeIndex<numberOfShapes; shapeIndex++)
 	{
-		currentComparisonShape = &foundShapes.at(shapeIndex);
+		currentDetectorShape = foundShapes.at(shapeIndex);
 		
 		// For every shape in those to compare the found shape with.
 		for(indexInComparisonShapes = 0; indexInComparisonShapes < numberOfComparisonShapes; indexInComparisonShapes++)
 		{
-			currentComparisonShape = &comparisonShapes.at(indexInComparisonShapes);
+			currentComparisonShape = comparisonShapes->at(indexInComparisonShapes);
 
-			rating = currentComparisonShape->getMatchForShape(*currentComparisonShape);
-
-			//std::cout << "Rating " << rating << "\n";
+			rating = currentComparisonShape->getMatchForShape(*currentDetectorShape);
 
 			// If this rating is the best so far, note this.
 			if(rating > greatestRating)
@@ -176,7 +178,7 @@ bool ShapeDetector::findTargetAndUpdate(Shape &result, double worstMatch)
 	// If the greatest rating was good enough,
 	if(greatestRating >= worstMatch)
 	{
-		result.fromOther(foundShapes.at(indexOfGreatestRating)); // Copy from the best rated.
+		result.fromOther(*foundShapes.at(indexOfGreatestRating)); // Copy from the best rated.
 		return true;
 	}
 
@@ -184,22 +186,41 @@ bool ShapeDetector::findTargetAndUpdate(Shape &result, double worstMatch)
 	return false;
 }
 
-// Set the shapes to compare with.
-void ShapeDetector::setComparisonShapes(std::vector<Shape> shapesToUse)
+// Set the comparison shape list. The client is now responsable for memory managment of this.
+void ShapeDetector::setComparisonShapes(ShapeList * newComparisonShapeList)
 {
-	comparisonShapes=shapesToUse;
+	// If managing comparisonShapes,
+	if(responsableForComparisonShapes)
+	{
+		std::cout << "\n FREE comparisonShapes.";
+		delete comparisonShapes;
+		std::cout << " DONE.";
+	}
+	
+	// Note that the client is now responsable for managing the comparison shapes.
+	responsableForComparisonShapes=true;
+	
+	// Re-assign the pointer.
+	comparisonShapes=newComparisonShapeList;
 }
 
 // Add a shape to compare with.
 void ShapeDetector::addComparisonShape(Shape newShape)
 {
-	comparisonShapes.push_back(newShape);
+	comparisonShapes->push_back(newShape);
+}
+
+// Add a pointer to a shape to compare with (DANGER this shape WILL be deleted when
+//this object is deleted).
+void ShapeDetector::addComparisonShape(Shape * shape)
+{
+	comparisonShapes->push_back(shape);
 }
 
 // Clear the shapes to compare with.
 void ShapeDetector::clearComparisonShapes()
 {
-	comparisonShapes.clear();
+	comparisonShapes->clear();
 }
 
 // Set the image.
@@ -218,4 +239,28 @@ void ShapeDetector::setPlaneDetectorOptions(PlaneDetectorOptions options)
 void ShapeDetector::clearFoundShapes()
 {
 	foundShapes.clear();
+}
+
+// Get the found shapes list.
+ShapeList& ShapeDetector::getFoundShapes()
+{
+	return foundShapes;
+}
+
+// Get the comparison shapes list.
+ShapeList& ShapeDetector::getComparisonShapes()
+{
+	return *comparisonShapes;
+}
+
+// Free memory.
+ShapeDetector::~ShapeDetector()
+{
+	// If managing comparisonShapes,
+	if(responsableForComparisonShapes)
+	{
+		std::cout << "\n FREE comparisonShapes (in deconstructor).";
+		delete comparisonShapes;
+		std::cout << " DONE.";
+	}
 }

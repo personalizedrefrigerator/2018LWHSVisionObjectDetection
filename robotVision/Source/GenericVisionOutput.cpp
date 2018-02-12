@@ -1,14 +1,14 @@
 #include "GenericVisionOutput.h"
 
 // Construct
-GenericVision::GenericVision()
+GenericVisionOutput::GenericVisionOutput()
 {
 	// Initialize fields to reasonable values.
 	currentXRotation=0;
 	currentYRotation=0;
 	currentPixelSize=0;
-	currentAverageColor=0;
-	currentCenterLocation=0;
+	currentAverageColor=Color(0);
+	currentCenterLocation=Point2D(0,0);
 }
 
 // Set the x rotation found.
@@ -38,7 +38,7 @@ void GenericVisionOutput::setAverageColor(Color averageColor)
 // Set the found center location.
 void GenericVisionOutput::setCenterLocation(Point2D centerLocation)
 {
-	currentCemterLocation=centerLocation;
+	currentCenterLocation=centerLocation;
 }
 
 // Get the x rotation found.
@@ -68,12 +68,12 @@ Color GenericVisionOutput::getAverageColor()
 // Get the current center location.
 Point2D GenericVisionOutput::getCenterLocation()
 {
-	return currentCenerLocation;
+	return currentCenterLocation;
 }
 
 
 // Copy to another vision output.
-void GenericVisionOutput::outputToOther(VisionOutput& other)
+void GenericVisionOutput::copyToOther(VisionOutput& other)
 {
 	other.setXRotation(currentXRotation);
 	other.setYRotation(currentYRotation);

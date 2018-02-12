@@ -22,7 +22,7 @@ void ShapeLoader::setShape(Shape * shapeToUse)
 }
 
 // Load the shape. True on success.
-bool load()
+bool ShapeLoader::load()
 {
 	// If the shape wasn't set, or the file name wasn't set, exit.
 	if(!shapeSet || !fileNameSet)
@@ -31,7 +31,7 @@ bool load()
 	}	
 	
 	// Make a file input stream.
-	std::ifstream fileInputStream
+	std::ifstream fileInputStream;
 	
 	// Open it from the current file name.
 	fileInputStream.open(fileName);
@@ -43,21 +43,21 @@ bool load()
 		std::string colorString, centerString, comparisonOptionsString, edgesString, contentsString;
 	
 		// Read these from the lines of the file.
-		std::getLine(fileInputStream, colorString);
-		std::getLine(fileInputStream, centerString);
-		std::getLine(fileInputStream, comparisonOptionsString);
-		std::getLine(fileInputStream, edgesString);
-		std::getLine(fileInputStream, contentsString);
+		std::getline(fileInputStream, colorString);
+		std::getline(fileInputStream, centerString);
+		std::getline(fileInputStream, comparisonOptionsString);
+		std::getline(fileInputStream, edgesString);
+		std::getline(fileInputStream, contentsString);
 	
 		// Close the stream.
 		fileInputStream.close();
 		
 		// Parse the serialized options.
-		Color averageColor = recallSerializedColor(colorString);
-		Point2D center = recallSerializedPoint2D(centerString);
-		ShapeComparisonOptions comparisonOptions = recallSerializedShapeComparisonOptions(comparisonOptionsString);
-		std::vector<Point2D> edges = recallSerializedVectorOfPoint2Ds(edgesString);
-		std::vector<Point2D> contents = recallSerializedVectorOfPoint2Ds(contentsString);
+		Color averageColor = Serialize::recallSerializedColor(colorString);
+		Point2D center = Serialize::recallSerializedPoint2D(centerString);
+		ShapeComparisonOptions comparisonOptions = Serialize::recallSerializedShapeComparisonOptions(comparisonOptionsString);
+		std::vector<Point2D> edges = Serialize::recallSerializedVectorOfPoint2Ds(edgesString);
+		std::vector<Point2D> contents = Serialize::recallSerializedVectorOfPoint2Ds(contentsString);
 		
 		// Set values of the current shape based on these options.
 		currentShape->setCenterLocation(center);
@@ -77,7 +77,7 @@ bool load()
 }
 
 // Save the shape.
-void save()
+bool ShapeLoader::save()
 {
 	// If the shape wasn't set, or the file name wasn't set, exit.
 	if(!shapeSet || !fileNameSet)
@@ -92,20 +92,21 @@ void save()
 	fileOutput.open(fileName);
 	
 	// Put the average color into the output.
-	fileOutput << serializeColor(currentShape->getAverageColor()) << '\n';
+	fileOutput << Serialize::serializeColor(currentShape->getAverageColor()) << '\n';
 	
 	// Put the center location into the file output.
-	fileOutput << serializePoint2D(currentShape->getCenter()) << '\n';
+	fileOutput << Serialize::serializePoint2D(currentShape->getCenter()) << '\n';
 	
 	// Put the shape comparison options into the vector.
-	fileOutput << serializeShapeComparisonOptions(currentShape->getShapeComparisonOptions()) << '\n';
+	fileOutput << Serialize::serializeShapeComparisonOptions(currentShape->getShapeComparisonOptions()) << '\n';
 	
 	// Put the edges into the file.
-	fileOutput << serializePoint2DVector(currentShape->getEdges()) << '\n';
+	fileOutput << Serialize::serializePoint2DVector(currentShape->getEdges()) << '\n';
 	
 	// Put the contents into the vector.
-	fileOutput << serializePoint2DVector(currentShape->getContents()) << '\n';
+	fileOutput << Serialize::serializePoint2DVector(currentShape->getContents()) << '\n';
 	
 	// Close the output stream.
 	fileOutput.close();
+	return true;
 }

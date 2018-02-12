@@ -6,6 +6,7 @@
 // Libraries from this project.
 #include "VisionOutput.h"
 #include "NetworkCommunicator.h"
+#include "GenericVisionOutput.h"
 
 // Standard libraries.
 #include <string>
@@ -19,7 +20,7 @@ class NetworkVisionOutput : public VisionOutput
 	void setPixelSize(double pixelSize);
 	void setAverageColor(Color averageColor);
 	void setCenterLocation(Point2D centerLocation);
-	void outputToOther(VisionOutput& other);
+	void copyToOther(VisionOutput& other);
 	~NetworkVisionOutput();
 	
 	private:

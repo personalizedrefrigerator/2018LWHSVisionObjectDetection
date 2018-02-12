@@ -12,7 +12,7 @@ class VisionOutput
 	virtual void setXRotation(double xRotation) = 0;
 	virtual void setYRotation(double yRotation) = 0;
 	virtual void setPixelSize(double pixelSize) = 0;
-	virtual void setAverageColor(Color averageColor);
+	virtual void setAverageColor(Color averageColor) = 0;
 	virtual void setCenterLocation(Point2D centerLocation) = 0;
 	virtual void copyToOther(VisionOutput& other) = 0;
-}
+};

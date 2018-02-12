@@ -227,6 +227,12 @@ void Shape::drawSelf(cv::Mat outputImage, unsigned int colorsPerPixel)
 	}
 }
 
+// Draw a representation of the comparison of the shape to another,
+void Shape::drawComparisonDebugOutput(cv::Mat outputImage, Shape & other)
+{
+	// TODO: Implement.
+}
+
 // Draw a representation of the shape, including the center point.
 void Shape::drawDebugOutput(cv::Mat outputImage)
 {
@@ -314,6 +320,15 @@ void Shape::calculateCornersCV()
 	corners=cornerDetector.detectCorners(outputImage);
 }
 
+// Run the comparison function, for comparing the current shape to another.
+double Shape::comparisonFunction(double input)
+{
+	// The result is a transformed sigmoid function.
+	double result=1/(pow(E, -E + input)+1);
+	
+	return result;
+}
+
 // Get how well the shape matches another.
 double Shape::getMatchForShape(Shape &other)
 {
@@ -335,9 +350,9 @@ double Shape::getMatchForShape(Shape &other)
 	sizeDifference*=sizeDifference;
 
 	// Average the results of the sigmoid function on the distance to the center, the size difference, and the average color difference.
-	result+=comparisonOptions.sizePortion/(pow(E, -E + distanceSquaredToCenter*comparisonOptions.sizeDeltaMultiplier)+1);
-	result+=comparisonOptions.colorPortion/(pow(E, -E + averageColorDifference*comparisonOptions.colorDeltaMultiplier)+1);
-	result+=comparisonOptions.centerDeltaPortion/(pow(E, -E + sizeDifference*comparisonOptions.centerPointDeltaMultiplier)+1);
+	result+=comparisonOptions.sizePortion * comparisonFunction(distanceSquaredToCenter*comparisonOptions.sizeDeltaMultiplier);
+	result+=comparisonOptions.colorPortion * comparisonFunction(averageColorDifference*comparisonOptions.colorDeltaMultiplier);
+	result+=comparisonOptions.centerDeltaPortion * comparisonFunction(sizeDifference*comparisonOptions.centerPointDeltaMultiplier);
 
 	return result;
 }

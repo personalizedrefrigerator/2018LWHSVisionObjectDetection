@@ -5,11 +5,13 @@
 
 // Libraries from this project.
 #include "VisionOutput.h"
+#include "Color.h"
+#include "Point2D.h"
 
 // Standard libraries.
 #include <string>
 
-class NetworkVisionOutput : public VisionOutput
+class GenericVisionOutput : public VisionOutput
 {
 	public:
 	GenericVisionOutput();
@@ -23,8 +25,10 @@ class NetworkVisionOutput : public VisionOutput
 	double getPixelSize();
 	Color getAverageColor();
 	Point2D getCenterLocation();
-	void outputToOther(VisionOutput& other);
+	virtual void copyToOther(VisionOutput& other);
 	
 	private:
-	double currentXRotation, currentYRotation, currentPixelSize, currentAverageColor, currentCenterLocation;
+	double currentXRotation, currentYRotation, currentPixelSize;
+	Color currentAverageColor=Color(0,0,0);
+	Point2D currentCenterLocation;
 };

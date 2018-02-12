@@ -32,6 +32,7 @@ class Shape
 	void calculateCornersCV(); // Find the corners of the shape, using OpenCV.
 	
 	void drawSelf(cv::Mat outputImage, unsigned int colorsPerPixel); // Draw a version of the shape, for corner detection, etc.
+	void drawComparisonDebugOutput(cv::Mat outputImage, Shape & other); // Draw debug output for the comparison of this shape to another.
 	void drawDebugOutput(cv::Mat outputImage); // Draw output, for debugging purposes.
 	
 	void setScreenZ(double screenZ); // Set the z position of the screen (focal length, given by OpenCV). TODO: Allow focal length to be accessed from the camera normalizer.
@@ -42,8 +43,8 @@ class Shape
 	Point2D getCenter(); // Get the center point.
 	Point2D getFirstPoint(); // Get the first point.
 	Color getAverageColor(); // Get the average color.
-	double getXAngle();
-	double getYAngle();
+	double getXAngle(); // Get the angle to the shape's center from the center of the screen, accross the x-axis. Set screen z first.
+	double getYAngle(); // Get the angle to the shape's center from the screen's center, accross the y-axis. Set screen z first.
 
 	bool isOnScreen(Point2D point); // Get whether a point is on the screen.
 
@@ -65,6 +66,8 @@ class Shape
 	ShapeComparisonOptions& getShapeComparisonOptions(); // Get options for comparing this and another shape.
 
 	private:
+	double comparisonFunction(double input); // Run the comparison function, with input as its input.
+	
 	std::vector<Point2D> edges;
 	std::vector<Point2D> contents;
 	std::vector<Point2D> corners;

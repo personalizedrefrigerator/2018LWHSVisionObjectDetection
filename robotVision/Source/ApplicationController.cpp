@@ -13,8 +13,9 @@
 
 // Headers from this program.
 #include "CameraFilter.h"
-#include "ShapeDetector.h"
+#include "VisionApplication.h"
 #include "CameraOptionsTrackbarManager.h"
+#include "NetworkVisionOutput.h"
 
 // Include the network communication class.
 #include "NetworkCommunicator.h"
@@ -69,7 +70,7 @@ void ApplicationController::logOutput(std::string output)
 {
 	if(logInfo)
 	{
-		(*outputStream) << output;
+		(*outputStream) << "\n" << output;
 	}
 }
 
@@ -150,26 +151,14 @@ void ApplicationController::mainLoop()
 	// Create a filter.
 	CameraFilter filter=CameraFilter(cameraNumber);
 	
-	logOutput("Attempting to access camera ");
+	logOutput("Attempting to access camera...");
 
-	std::stringstream cameraNumberString;
-	cameraNumberString << cameraNumber;
-
-	logOutput(cameraNumberString.str());
-	logOutput("\n");
-
-	// Open a camera.
+	// Open the camera.
 	cv::VideoCapture video;
 	video.open(cameraNumber);
-	
-	video.set(CV_CAP_PROP_FRAME_WIDTH, 320);
-	video.set(CV_CAP_PROP_FRAME_HEIGHT, 240);
 
 	// Create a variable to store the current frame.
 	cv::Mat currentFrame;
-
-	// Write to the current frame.
-	//video >> currentFrame;
 	
 	// If showing UI,
 	if(showUI)
@@ -181,18 +170,20 @@ void ApplicationController::mainLoop()
 	// Create a trackbar manager.
 	CameraOptionsTrackbarManager trackbarManager=CameraOptionsTrackbarManager();
 
+	logOutput("Done! Creating plane detector options.");
+
 	// Create a variable to store information from the trackbars.
 	PlaneDetectorOptions options=PlaneDetectorOptions();
-	
+	logOutput("Done!");
 
 	int colorChangeThreshold=(int)options.colorChangeThreshold; 
 	int averageChangeThreshold=(int)options.averageChangeThreshold;
 	int minRating=21;
-	int cornerK=4000,
+	/*int cornerK=4000,
 		cornersToFind=4,
 		minCornerDistance=4,
 		cornerBlockSize=10,
-		cornerHarris=0;
+		cornerHarris=0;*/
 	
 	// If a UI should be shown,
 	if(showUI)
@@ -203,60 +194,66 @@ void ApplicationController::mainLoop()
 		trackbarManager.addTrackbar(std::string("Color Change Threshold"), 256, &colorChangeThreshold);
 		trackbarManager.addTrackbar(std::string("Average Value Change Threshold"), 256, &averageChangeThreshold);
 		trackbarManager.addTrackbar(std::string("Minimum rating."), 100, &minRating);
-		trackbarManager.addTrackbar(std::string("Corner K."), 16000, &cornerK);
+		/*trackbarManager.addTrackbar(std::string("Corner K."), 16000, &cornerK);
 		trackbarManager.addTrackbar(std::string("Corners to find."), 20, &cornersToFind);
 		trackbarManager.addTrackbar(std::string("Minimum corner distance."), 160, &minCornerDistance);
 		trackbarManager.addTrackbar(std::string("Corner block size."), 20, &cornerBlockSize);
-		trackbarManager.addTrackbar(std::string("Corner harris?"), 1, &cornerHarris);
+		trackbarManager.addTrackbar(std::string("Corner harris?"), 1, &cornerHarris);*/
 	}
 
+	logOutput("Creating network output.");
 
-	NetworkCommunicator * networkCommunicator; // Create a variable to store the network communicator to be used to communicate with the other parts of the robot.
+	NetworkVisionOutput visionAppOutput("10.58.27.2", "testTable"); // Create a variable to store the output of the vision application. TODO: GET RID OF STATIC IPs.
+
+	logOutput("Done! Creating app parameters.");
+
+	VisionInputParameters visionAppParameters; // Create a variable to store parameters for the vision app.
 	
-	if(!showUI)
+	logOutput("Done! Creating the app.");
+	
+	// Create the vision application.
+	VisionApplication mainApp;
+	
+	logOutput("Done! Telling information.");
+	
+	// If showing UI, put the app into debug mode.
+	if(showUI)
 	{
-		networkCommunicator=new NetworkCommunicator("10.58.27.2", "Team5827VisionTable");
+		mainApp.setShowDebugOutput(true);
 	}
+	
+	logOutput("1");
 
 	// Create a variable to store the last key.
 	char lastKey='\0';
 
-	ShapeDetector detector=ShapeDetector();
 
-	Shape mainShape;
+	// Set the z distances to the screen accross the x and y axes.
+	visionAppParameters.focalLengthX=filter.getNormalizer().getFocalLengthX();
+	visionAppParameters.focalLengthY=filter.getNormalizer().getFocalLengthY();
 
-	mainShape.setCenterLocation(Point2D(50, 50));
+	logOutput("2");
 
-	mainShape.setScreenZ(filter.getNormalizer().getFocalLengthX()); // Set an estimate for the Z position of the screen from the camera.
-
-	double rating=-1.0;
-
-	bool foundShape=false;
-
+	// Images directly captured, and the image to directly write to the display.
 	cv::Mat captureData, displayData;
+
+	logOutput("Done! Entering mainloop.");
 
 	// Enter the main loop.
 	do
 	{
-		//logOutput("Starting loop.\n");
-
 		// Load the current image seen by the camera into the current frame.
 		video >> captureData;
 		
 		
-		
+		// Give the image filter the data.
 		filter.setData(captureData);
-		filter.runAllFilters();	
+		filter.runAllFilters();	// Run its filters, including an image correction, an erosion, and a dilation.
 		
 		
-		// Resize the input.
+		// Resize the input to a reasonable size.
 		cv::resize(captureData, currentFrame, cv::Size(300, 400));
 
-
-		detector.setImage(currentFrame);
-
-
-		//logOutput("Image set.\n");
 
 		// If showing UI,
 		if(showUI)
@@ -264,85 +261,27 @@ void ApplicationController::mainLoop()
 			options.colorChangeThreshold=(double)colorChangeThreshold;
 			options.averageChangeThreshold=(double)averageChangeThreshold;
 
-			detector.setPlaneDetectorOptions(options);
-
-			// Configure the corner detection for the main shape's corner detector. A 0.1 quality.
-			mainShape.getCornerDetector().setOptions((double)(cornerK/100000.0), cornersToFind+1, minCornerDistance+1, cornerBlockSize+1, (bool)cornerHarris, 0.01);
-		}	
-
-	
-		
-		//logOutput("Clearing found...\n");
-		detector.clearFoundShapes();
-		//logOutput("Done!\n");
-
-		foundShape=true;
-
-		//logOutput("Finding shapes.\n");
-
-		detector.clearComparisonShapes();
-		detector.addComparisonShape(mainShape);
-
-		//detector.detectShapes();
-		if(!detector.findTargetAndUpdate(mainShape, rating))
-		{
-			std::cout << "Rechecking...\n";
-			//logOutput("Was false.\n");
-			detector.detectAllShapes();
-
-			//logOutput("Done detecting shapes.\n");
-
-			foundShape=detector.findTargetAndUpdate(mainShape, rating);
-			//logOutput("Updated!\n");
-		}
-
-		if(foundShape)
-		{
-			//std::cout << "Starting...\n";
-			mainShape.calculateCenterAndOkScreenSize();
-			//std::cout << "Ending...\n";
-
-
-
-			mainShape.calculateCornersCV();
-
-			//std::cout << "Done calculating corners.\n";
-
-			mainShape.drawDebugOutput(currentFrame);
+			visionAppParameters.surfaceDetectionOptions=options;
 			
-			// If no UI,
-			if(!showUI)
-			{
-				networkCommunicator->updateValue<double>("RotationDelta", mainShape.getXAngle());
-				networkCommunicator->updateValue<double>("Size", mainShape.getContentSize());
-			}
+			visionAppParameters.worstMatchRating=minRating/100.0;
 
-			//std::cout << "Done drwawing debug output.\n";
-
+			//mainShape.getCornerDetector().setOptions((double)(cornerK/100000.0), cornersToFind+1, minCornerDistance+1, cornerBlockSize+1, (bool)cornerHarris, 0.01);
 		}
-		
-		// If looking for rotation, give the rotation.
-		
 
-		// Set the rating to the minimum.
-		rating=minRating/100.0;
+		// Run the vision application.
+		mainApp.runFrame(currentFrame, visionAppOutput, visionAppParameters);
 
-		//std::cout << "Imshow.\n";
-		
 		// If showing UI,
 		if(showUI)
 		{
+			// Resize the image output to fit on the screen.
 			cv::resize(currentFrame, displayData, cv::Size(400, 400));
 			
+			// Show this image.
 			cv::imshow("Camera View", displayData);
-		}
-
-
-		//std::cout << "Done.\n";
 		
-		// Wait at least 1 ms for a key.
-		if(showUI)
-		{
+			// Wait at least 1 ms for a key.
+		
 			lastKey = cv::waitKey(1);
 		}
 	} // Stop when 'q' is pressed.

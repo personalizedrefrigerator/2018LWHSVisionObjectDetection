@@ -2,12 +2,11 @@
 
 // Include standard libraries.
 #include <sstream>
-#include <unistd> // atoi, etc.
+#include <cstdlib> // atoi, etc.
 
-using namespace Serialize;
 
 // Serialize a pair of doubles.
-std::string serializeRealPair(double x, double y)
+std::string Serialize::serializeRealPair(double x, double y)
 {
 	// Create a stream to store the output.
 	std::stringstream output;
@@ -19,7 +18,7 @@ std::string serializeRealPair(double x, double y)
 }
 
 // Convert a string to a pair (a point 2D, with x and y parts).
-Point2D recallSerializedRealPair(std::string input)
+Point2D Serialize::recallSerializedRealPair(std::string input)
 {
 	// Create a variable to store the current character.
 	char currentCharacter;
@@ -53,14 +52,14 @@ Point2D recallSerializedRealPair(std::string input)
 }
 
 // Serialize a size, converting it to a string.
-std::string serializeSize(cv::Size input)
+std::string Serialize::serializeSize(cv::Size input)
 {
 	// Serialize the size as a pair.
-	return serializeRealPair(input.x, input.y);
+	return serializeRealPair(input.width, input.height);
 }
 
 // Convert a string to a size.
-cv::Size recallSerializedSize(std::string input)
+cv::Size Serialize::recallSerializedSize(std::string input)
 {
 	Point2D size=recallSerializedRealPair(input);
 	
@@ -68,7 +67,7 @@ cv::Size recallSerializedSize(std::string input)
 }
 
 // Convert a matrix of doubles to a string.
-std::string serializeMatrix(cv::Mat input)
+std::string Serialize::serializeMatrix(cv::Mat input)
 {
 	// Create variables to be used while traversing the input.
 	int x, y;
@@ -98,7 +97,7 @@ std::string serializeMatrix(cv::Mat input)
 }
 
 // Read a matrix of doubles from a string.
-cv::Mat recallSerializedMatrix(std::string input)
+cv::Mat Serialize::recallSerializedMatrix(std::string input)
 {
 	// Make a variable to store the current character.
 	char currentCharacter;
@@ -185,7 +184,7 @@ cv::Mat recallSerializedMatrix(std::string input)
 }
 
 // Convert a provided color to a string.
-std::string serializeColor(Color input)
+std::string Serialize::serializeColor(Color input)
 {
 	// Create a stringstream to accumulate the result.
 	std::stringstream result;
@@ -198,7 +197,7 @@ std::string serializeColor(Color input)
 }
 
 // Recall a color from a string.
-Color recallSerializedColor(std::string input)
+Color Serialize::recallSerializedColor(std::string input)
 {
 	// Create a variable to store the current part.
 	std::string currentPart="";
@@ -210,7 +209,7 @@ Color recallSerializedColor(std::string input)
 	unsigned int red, green, blue;
 	
 	// Create a variable to store the resultant color parts.
-	int[3] result=new int[3];
+	int * result=new int[3];
 	
 	// Create variables to store indices.
 	unsigned int resultIndex=0;
@@ -254,21 +253,21 @@ Color recallSerializedColor(std::string input)
 }
 
 // Convert a Point2D to a string.
-std::string serializePoint2D(Point2D point)
+std::string Serialize::serializePoint2D(Point2D point)
 {
 	// Return the point, serialized as a real pair.
 	return serializeRealPair(point.x, point.y);
 }
 
 // Convert a string (containing a serialized Point2D) to a Point2D.
-Point2D recallSerializedPoint2D(std::string input)
+Point2D Serialize::recallSerializedPoint2D(std::string input)
 {
 	// Unserialize as a pair of doubles.
 	return recallSerializedRealPair(input);
 }
 
 // Serialize a vector of Point2Ds.
-std::string serializePoint2DVector(std::vector<Point2D> input)
+std::string Serialize::serializePoint2DVector(std::vector<Point2D> input)
 {
 	// Create a variable to store the index in the vector.
 	unsigned int index = 0;
@@ -300,7 +299,7 @@ std::string serializePoint2DVector(std::vector<Point2D> input)
 }
 
 // Serialize shape comparison options, converting it to a machine-readable string.
-std::string serializeShapeComparisonOptions(ShapeComparisonOptions options)
+std::string Serialize::serializeShapeComparisonOptions(ShapeComparisonOptions options)
 {
 	// Create a stringstream to accumulate output.
 	std::stringstream result;
@@ -318,10 +317,10 @@ std::string serializeShapeComparisonOptions(ShapeComparisonOptions options)
 }
 
 // Recall a serialized version of the comparison options.
-ShapeComparisonOptions recallSerializedShapeComparisonOptions(std::string input)
+ShapeComparisonOptions Serialize::recallSerializedShapeComparisonOptions(std::string input)
 {
 	// Split the input based on the letter 'n.'
-	std::vector<string> partsOfInput = split(input, 'n');
+	std::vector<std::string> partsOfInput = split(input, 'n');
 	
 	// Create a variable to store the result.
 	ShapeComparisonOptions result;
@@ -353,7 +352,7 @@ ShapeComparisonOptions recallSerializedShapeComparisonOptions(std::string input)
 }
 
 // Get the number of occurences of a character in a string.
-unsigned int getOccurencesOfCharacter(std::string input, char characterToFind)
+unsigned int Serialize::getOccurencesOfCharacter(std::string input, char characterToFind)
 {
 	// Create a variable to store the current index in the input.
 	unsigned int indexInInput=0;
@@ -383,7 +382,7 @@ unsigned int getOccurencesOfCharacter(std::string input, char characterToFind)
 }
 
 // Recall a serialized vector of Point2Ds.
-std::vector<Point2D> recallSerializedVectorOfPoint2Ds(std::string input)
+std::vector<Point2D> Serialize::recallSerializedVectorOfPoint2Ds(std::string input)
 {
 	// Create a variable to store the current index in the input.
 	unsigned int indexInInput=0;
@@ -434,7 +433,7 @@ std::vector<Point2D> recallSerializedVectorOfPoint2Ds(std::string input)
 }
 
 // Split a string.
-std::vector<std::string> split(std::string input, char splitCharacter)
+std::vector<std::string> Serialize::split(std::string input, char splitCharacter)
 {
 	// Find the number of the split character in the result.
 	unsigned int countOfSplitCharacter = getOccurencesOfCharacter(input, splitCharacter);

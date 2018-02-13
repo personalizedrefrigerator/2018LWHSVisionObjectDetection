@@ -2,4 +2,4 @@
 
 // Create a CMake define. This will be #defined to either true or false in
 //the CMakeConfigurationInformation.h file.
-/* #undef USE_WPILIB */
+#define USE_WPILIB

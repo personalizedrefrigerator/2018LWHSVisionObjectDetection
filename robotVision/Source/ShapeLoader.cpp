@@ -3,6 +3,9 @@
 // Include the serialization namespace for its functions.
 #include "Serialize.h"
 
+// Include file access librries.
+#include <fstream>
+
 // Set the file name to be used for loading and saving files.
 void ShapeLoader::setFileName(std::string newFileName)
 {

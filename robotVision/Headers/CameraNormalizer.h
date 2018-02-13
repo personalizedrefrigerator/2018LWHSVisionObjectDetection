@@ -26,6 +26,7 @@ class CameraNormalizer
 	
 	double getFocalLengthX(); // Get the X portion of the focal length stored in the camera matrix.
 	double getFocalLengthY(); // Get the Y component of the focal length stored in the camera matrix.
+	void setImageSize(cv::Size newSize); // Set the image size to expect. This is used in calibration.
 
 	bool setConfigurationURLBasedOnCameraNumber(); // Returns whether the name changed.
 	
@@ -35,6 +36,7 @@ class CameraNormalizer
 	cv::Mat distortionCoefficents; // Coeffiecents for calibration (radial and tangental).
 					// Used for cv::undistort.
 	unsigned int cameraNumber=0; // If not specified, assume the 0th camera (/dev/video0).
+	cv::Size imageSize=cv::Size(300, 300); // The image size to expect for calibration.
 
 	// Serialize a matrix.
 	std::string serializeMatrix(cv::Mat input); // TODO: Move this to a different class.

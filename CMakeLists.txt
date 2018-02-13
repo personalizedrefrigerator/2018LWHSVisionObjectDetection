@@ -13,7 +13,7 @@ project(Vision)
 set(CMAKE_CXX_STANDARD 11)
 
 # Set whether WPILib should be used.
-option(USE_WPILIB "Use the WPILib library?" OFF)
+option(USE_WPILIB "Use the WPILib library?" ON)
 
 # Tell OpenCV which file to use to store information about the program.
 configure_file("robotVision/Headers/CMakeConfigurationInformation.h.in"

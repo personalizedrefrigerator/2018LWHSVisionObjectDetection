@@ -74,6 +74,12 @@ void ApplicationController::logOutput(std::string output)
 	}
 }
 
+// Set the window size to use.
+void ApplicationController::setImageSize(cv::Size newSize)
+{
+	imageSize=newSize;
+}
+
 // Demo the network tables.
 void ApplicationController::demoNetworkTables()
 {
@@ -150,6 +156,7 @@ void ApplicationController::mainLoop()
 
 	// Create a filter.
 	CameraFilter filter=CameraFilter(cameraNumber);
+	filter.setImageSize(imageSize);
 	
 	logOutput("Attempting to access camera...");
 
@@ -245,15 +252,14 @@ void ApplicationController::mainLoop()
 		// Load the current image seen by the camera into the current frame.
 		video >> captureData;
 		
-		
-		// Give the image filter the data.
-		filter.setData(captureData);
-		filter.runAllFilters();	// Run its filters, including an image correction, an erosion, and a dilation.
-		
-		
 		// Resize the input to a reasonable size.
-		cv::resize(captureData, currentFrame, cv::Size(300, 400));
-
+		//cv::resize(captureData, currentFrame, imageSize);
+		currentFrame=captureData;
+	
+	
+		// Give the image filter the data.
+		filter.setData(currentFrame);
+		filter.runAllFilters();	// Run its filters, including an image correction, an erosion, and a dilation.
 
 		// If showing UI,
 		if(showUI)
@@ -275,7 +281,7 @@ void ApplicationController::mainLoop()
 		if(showUI)
 		{
 			// Resize the image output to fit on the screen.
-			cv::resize(currentFrame, displayData, cv::Size(400, 400));
+			cv::resize(currentFrame, displayData, imageSize);
 			
 			// Show this image.
 			cv::imshow("Camera View", displayData);

@@ -33,7 +33,9 @@ void NetworkVisionOutput::setPixelSize(double pixelSize)
 void NetworkVisionOutput::setAverageColor(Color averageColor)
 {
 	cachedValues.setAverageColor(averageColor);
-	communicator->updateValue("averageColor", averageColor);
+	communicator->updateValue("averageColorRed", averageColor.getR());
+	communicator->updateValue("averageColorGreen", averageColor.getG());
+	communicator->updateValue("averageColorBlue", averageColor.getB());
 }
 
 // Set the found center location.

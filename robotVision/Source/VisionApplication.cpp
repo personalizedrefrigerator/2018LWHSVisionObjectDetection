@@ -10,53 +10,63 @@ VisionApplication::VisionApplication()
 	
 	// Set the detector's comparison shapes to those loaded.
 	detector.setComparisonShapes(&shapesToCompare);
+	tracker.setComparisonShapes(&foundShapes);
 	
 	// Tell the tracker's found shapes list that it isn't responsable for its memory.
-	detector.getFoundShapes().setHandlingMemoryManagment(false);
+	//detector.getFoundShapes().setHandlingMemoryManagment(false);
+	tracker.getComparisonShapes().setHandlingMemoryManagment(false);
 	
-	// Add a shape for tracking purposes to the found shapes.
-	foundShapes.add(new Shape());
+	// Add the tracking shape to the found shapes.
+	//foundShapes.add(currentShape);
 }
 
 // Run opperations on a single frame.
 void VisionApplication::runFrame(cv::Mat inputImage, VisionOutput & visionOutput, VisionInputParameters & options)
 {
+	// Give the detectors the image.
+	tracker.setImage(inputImage);
+	detector.setImage(inputImage);
+
 	// Set surface detection options,
 	tracker.setPlaneDetectorOptions(options.surfaceDetectionOptions);
 	detector.setPlaneDetectorOptions(options.surfaceDetectionOptions);
-
-	tracker.clearComparisonShapes();
+	
 
 	if(!trackingObjects)
 	{
-		findShapes(inputImage);
+		tracker.setComparisonShapes(&shapesToCompare); // Set the tracker's list of comparison shapes to those  loaded.
+		
+		tracker.detectAllShapes(); // Detect all shapes.
 		
 		// If there are shapes to track,
-		if(detector.getFoundShapes().size() > 0)
+		if(tracker.getFoundShapes().size() > 0)
 		{
-			Shape copyOf=*detector.getFoundShapes().at(0);
-			tracker.addComparisonShape(copyOf);
 			trackingObjects=true;
 		}
 	}
 	else
 	{
-		Shape copyOf=*tracker.getFoundShapes().at(0);
+		tracker.setComparisonShapes(&foundShapes);
+		tracker.clearComparisonShapes();
+		
+		
+		Shape copyOf = *currentShape;
 		tracker.addComparisonShape(copyOf);
+		
+		// Find probable shapes based on this.
+		tracker.findProbableShapes();
 	}
 	
 	// So long as now tracking objects, and there are objects to track,
-	if(trackingObjects && tracker.getComparisonShapes().size() > 0)
+	if(tracker.getFoundShapes().size() > 0)
 	{
-		Shape * currentShape=new Shape();
-		
 		bool success=tracker.findTargetAndUpdate(*currentShape, options.worstMatchRating);
 		
 		trackingObjects=success;
+		
 		// If a success,
 		if(success)
 		{
-			
 			// Give the shape needed information. TODO: Make use of focalY.
 			currentShape->setScreenZ(options.focalLengthX);
 		
@@ -78,7 +88,20 @@ void VisionApplication::runFrame(cv::Mat inputImage, VisionOutput & visionOutput
 			visionOutput.setPixelSize(currentShape->getContentSize());
 			visionOutput.setAverageColor(currentShape->getAverageColor());
 			visionOutput.setCenterLocation(currentShape->getCenter());
+			
+			//Color averageColor=currentShape->getAverageColor();
+			
+			//unsigned int averageRedAndGreen=(averageColor.getR() + averageColor.getG())/2;
+			
+			// Set the tracking shape's color to bright yellow.
+			currentShape->setAverageColor(Color(255, 255,0));
 		}
+	}
+	else
+	{
+		// Otherwise, 
+		//we are not tracking an object.
+		trackingObjects=false;
 	}
 }
 
@@ -104,14 +127,16 @@ void VisionApplication::setShowDebugOutput(bool isDebugging)
 // Load the comparison shapes to be used.
 bool VisionApplication::loadDefaultShapes()
 {
+	shapesToCompare.clear();
+
 	// Make a yellow, empty shape, that finds others completely based on color.
 	Shape * cubeShape=new Shape();
 	cubeShape->setAverageColor(Color(255, 255, 0));
 	
 	// Set its comparison options.
 	ShapeComparisonOptions& options=cubeShape->getShapeComparisonOptions();
-	options.sizePortion=0;
-	options.colorPortion=1.0;
+	options.sizePortion=0.0;
+	options.colorPortion=1.00;
 	options.centerDeltaPortion=0.0;
 
 	// Add the shape to the list of shapes to compare with.

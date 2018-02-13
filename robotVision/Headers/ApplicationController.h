@@ -3,6 +3,9 @@
 // Streams.
 #include <iostream>
 
+// Include opencv libraries.
+#include<opencv2/opencv.hpp>
+
 // A clas to run and control the application.
 //Henry Heino
 
@@ -15,6 +18,7 @@ class ApplicationController
 	void setLogInformation(bool logInfo); // Set whether to log information to the console.
 	void setOutputStream(std::ostream * newOutput); // Set the output stream.
 	void logOutput(std::string output); // Log text to the output stream.
+	void setImageSize(cv::Size newSize);
 
 	void mainLoop(); // The main program loop.
 	void demoStitcher(); // Demo the image stitcher.
@@ -28,6 +32,8 @@ class ApplicationController
 	unsigned int cameraNumber=0; // The camera number to use.
 	bool cameraNumberSet=false; // Whether the client has set the camera number.
 	bool logInfo=false; // Whether output should be logged.
+	
+	cv::Size imageSize=cv::Size(400,400);
 
 	// The stream to log output to.
 	std::ostream * outputStream=&(std::cout);

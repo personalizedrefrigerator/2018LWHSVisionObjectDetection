@@ -22,6 +22,7 @@ std::vector<Point2D> CornerDetector::detectCorners(cv::Mat inputImage)
 	
 	cv::Point2f currentPoint;
 	
+	
 	unsigned int cornersIndex;
 	for(cornersIndex=0; cornersIndex<cornersFound.size(); cornersIndex++)
 	{

@@ -30,13 +30,13 @@ void ShapeDetector::detectAllShapes()
 
 	Point2D currentPoint;
 
-	unsigned int deltaX=image.cols/20;
-	unsigned int deltaY=image.rows/20;
+	unsigned int deltaX=image.cols/10;
+	unsigned int deltaY=image.rows/10;
 	
 	// For every pixel,
-	for(x=deltaX; x<image.cols; x+=deltaX)
+	for(x=0; x<image.cols; x+=deltaX)
 	{
-		for(y=x/deltaX; y<image.rows; y+=deltaY)
+		for(y=x % 5; y<image.rows; y+=deltaY)
 		{
 			currentPoint.x=x;
 			currentPoint.y=y;
@@ -64,6 +64,7 @@ void ShapeDetector::detectAllShapes()
 void ShapeDetector::findProbableShapes()
 {
 	clearFoundShapes();
+	
 	// Create a variable to store the number of shapes to compare with.
 	unsigned int numberOfComparisonShapes = comparisonShapes->size();
 
@@ -81,19 +82,21 @@ void ShapeDetector::findProbableShapes()
 	Point2D firstPointOfLastShape,
 		centerOfLastShape;
 	
-	
 	for(indexInShapesToComapreWith = 0; indexInShapesToComapreWith < numberOfComparisonShapes; indexInShapesToComapreWith++)
 	{
 		// Get the shape at the index to compare with.
 		currentLastframeShape = comparisonShapes->at(indexInShapesToComapreWith);
 
+
 		// Find points related to that shape
 		// Find a shape. A NEW shape.
 		Shape currentShape1, currentShape2;
 
+
 		// Get points on the shape, to be used to find possible other shapes.
 		firstPointOfLastShape = currentLastframeShape->getFirstPoint();
 		centerOfLastShape = currentLastframeShape->getCenter();
+
 
 		// Detect from the center.
 		detector.detectPoints2D(centerOfLastShape);
@@ -164,7 +167,7 @@ bool ShapeDetector::findTargetAndUpdate(Shape &result, double worstMatch)
 			rating = currentComparisonShape->getMatchForShape(*currentDetectorShape);
 
 			// If this rating is the best so far, note this.
-			if(rating > greatestRating)
+			if(rating > greatestRating && currentDetectorShape->getContentSize() > 0)
 			{
 				greatestRating=rating;
 				indexOfGreatestRating=shapeIndex;
@@ -198,7 +201,7 @@ void ShapeDetector::setComparisonShapes(ShapeList * newComparisonShapeList)
 	}
 	
 	// Note that the client is now responsable for managing the comparison shapes.
-	responsableForComparisonShapes=true;
+	responsableForComparisonShapes=false;
 	
 	// Re-assign the pointer.
 	comparisonShapes=newComparisonShapeList;

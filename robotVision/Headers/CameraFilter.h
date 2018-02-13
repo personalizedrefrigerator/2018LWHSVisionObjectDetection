@@ -39,12 +39,16 @@ class CameraFilter
 	void setData(cv::Mat); // cv::Mat does not store the matrix data, but a pointer/refrence to it! This does not copy the entire image.
 	cv::Mat getData();
 
+	void setImageSize(cv::Size size); // Set the image size to expect as input.
+
 	CameraFilter(unsigned int cameraNumber);
 
 	void configureCornerDetection(double k, int cornersToFind, int minCornerDistance, int cornerBlockSize, bool useCornerHarris); 
 
 	private:
 	cv::Mat data;
+	
+	cv::Size imageSize=cv::Size(300,300);
 	
 	bool stitcherMade=true;
 	cv::Stitcher stitcher=cv::Stitcher::createDefault();

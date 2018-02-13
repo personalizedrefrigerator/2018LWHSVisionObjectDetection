@@ -11,6 +11,7 @@ CameraFilter::CameraFilter(unsigned int cameraNumber)//cv::Mat startingData, uns
 	//data=startingData;
 	std::cout << "Loading camera filter...\n";
 	normalizer.setCameraNumber(cameraNumber);
+	normalizer.setImageSize(imageSize);
 	std::cout << "Attemptint to load data...\n";
 	bool couldLoadData=normalizer.loadData();
 	
@@ -30,6 +31,12 @@ void CameraFilter::setData(cv::Mat data)
 {
 	this->data=data;
 	planeDetector.setImage(data);
+}
+
+// Set the size of the image to expect.
+void CameraFilter::setImageSize(cv::Size size)
+{
+	imageSize=size;
 }
 
 // Correct errors in the camera.

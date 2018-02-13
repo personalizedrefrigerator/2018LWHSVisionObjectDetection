@@ -271,6 +271,8 @@ void Shape::drawDebugOutput(cv::Mat outputImage)
 		outputText << "ANGLE: " <<  angleX*180/PI << ", " << angleY*180/PI;
 		// Font 2.
 		putText(outputImage, outputText.str(), cv::Point(center.x-50, center.y), 2, 0.35, cv::Scalar(0,0,255, 200));
+		
+		
 	}
 
 	// If there is a first point,

@@ -32,6 +32,8 @@ class VisionApplication
 	bool showDebugOutput=false; // Whether the input image to runFrame should be modified, for debugging.
 	bool trackingObjects=false;
 	
+	Shape * currentShape=new Shape();
+	
 	ShapeList foundShapes; // The list of shapes found by the application.
 	ShapeList shapesToCompare;
 	

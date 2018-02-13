@@ -9,4 +9,7 @@ struct PlaneDetectorOptions
 	double significantPointAccuracy=3.0;
 
 	unsigned int startingPixels=25;
+	
+	int pixelDeltaX=3,
+	    pixelDeltaY=2;
 };

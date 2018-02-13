@@ -19,6 +19,12 @@ void CameraNormalizer::setCameraNumber(unsigned int cameraNumber)
 	this->cameraNumber=cameraNumber;
 }
 
+// Set the image size to expect.
+void CameraNormalizer::setImageSize(cv::Size size)
+{
+	imageSize=size;
+}
+
 // Calibrate.
 void CameraNormalizer::calibrate()
 {
@@ -48,6 +54,9 @@ void CameraNormalizer::calibrate(bool useUI)
 		
 		// Create a variable to store the current frame.
 		cv::Mat currentFrame;
+		
+		// Create a variable to store the current image from the camera and a varible to store the image to be directly written to the camera.
+		cv::Mat currentCaptureData, displayImage;
 
 		// Create a variable to store the grayscale version of the current frame.
 		cv::Mat grayscaleCurrentFrame;
@@ -67,7 +76,11 @@ void CameraNormalizer::calibrate(bool useUI)
 		while(lastKey != 'q')
 		{
 			// Pipe the video frame into the current frame.
-			video >> currentFrame;
+			video >> currentCaptureData;
+			
+			// Resize the capture data and move it to the current frame.
+			//cv::resize(currentCaptureData, currentFrame, imageSize);
+			currentFrame=currentCaptureData;
 			
 			// Turn the current frame into a grayscale version of its-self.			
 			cv::cvtColor(currentFrame, 
@@ -103,13 +116,17 @@ void CameraNormalizer::calibrate(bool useUI)
 				}
 			}
 			
+			// Resize the current frame to the captured size, and store in the display image.
+			cv::resize(currentFrame, displayImage, cv::Size(currentCaptureData.cols, currentCaptureData.rows));
+			
+			
 			std::stringstream outputText;
 			outputText << "Q to quit. A for next picture. ";
 			outputText << allCornersFound.size() << " chessboards found and used.";
-			putText(currentFrame, outputText.str(), cv::Point(50, 50), 1, 1.0, cv::Scalar(255,0,0));
+			putText(displayImage, outputText.str(), cv::Point(50, 50), 1, 1.0, cv::Scalar(255,0,0));
 			
 			// Display the image.
-			cv::imshow(calibrationWindowName, currentFrame);
+			cv::imshow(calibrationWindowName, displayImage);
 
 			// Wait 10 ms for a key to be pressed.
 			lastKey=cv::waitKey(10);
@@ -133,7 +150,7 @@ void CameraNormalizer::calibrate(bool useUI)
 		actualCornerLocations.push_back(std::vector<cv::Point3f>());
 
 		// The size of the squares. TODO: Change this.
-		float squareLength=20.0f;
+		float squareLength=80.0f;
 
 		// Add the corners to the array.
 		for(int y=0; y<cornerSize.height; y++)

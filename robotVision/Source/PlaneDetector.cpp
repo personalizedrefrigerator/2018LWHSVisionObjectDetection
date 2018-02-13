@@ -68,7 +68,6 @@ void PlaneDetector::detectPoints2D(Point2D startPoint)
 	Color currentColor=Color(0, 0, 0);
 
 	unsigned int fringeSize=1;
-
 	// Add points to the plane.
 	do
 	{
@@ -85,9 +84,9 @@ void PlaneDetector::detectPoints2D(Point2D startPoint)
 		mainColor=Color(totalR/times, totalG/times, totalB/times);
 
 		//std::cout << "START" << fringe.size() << "\n";
-		for(x=-1; x<=1; x++)
+		for(x=-deltaX; x<=deltaX; x+=deltaX)
 		{
-			for(y=-1; y<=1; y++)
+			for(y=-deltaY; y<=deltaY; y+=deltaY)
 			{
 				if(x == 0 && y == 0)
 				{
@@ -422,6 +421,18 @@ void PlaneDetector::setStartingPixels(unsigned int newStartingPixels)
 	startingPixels=newStartingPixels;
 }
 
+// Set the number of pixels to change each search.
+void PlaneDetector::setDeltaX(int newDeltaX)
+{
+	deltaX=newDeltaX;
+}
+
+// Set the number of pixels in the y direction to change each search.
+void PlaneDetector::setDeltaY(int newDeltaY)
+{
+	deltaY=newDeltaY;
+}
+
 // Set options based on a PlaneDetectorOptions object.
 void PlaneDetector::setOptions(PlaneDetectorOptions options)
 {
@@ -429,6 +440,8 @@ void PlaneDetector::setOptions(PlaneDetectorOptions options)
 	setAverageChangeThreshold(options.averageChangeThreshold);
 	setSignificantPointAccuracy(options.significantPointAccuracy);
 	setStartingPixels(options.startingPixels);
+	setDeltaX(options.pixelDeltaX);
+	setDeltaX(options.pixelDeltaY);
 }
 
 // Output the data found to a shape.

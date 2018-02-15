@@ -7,6 +7,8 @@ Color::Color(unsigned char r, unsigned char g, unsigned char b)
 	this->r=r;
 	this->b=b;
 	this->g=g;
+	
+	innerVector.setValues(static_cast<double>(r), static_cast<double>(g), static_cast<double>(b));
 }
 
 Color::Color(unsigned char gray)
@@ -34,6 +36,23 @@ int Color::getColor()
 	}
 }
 
+// Get the color's angle.
+double Color::getColorAngle()
+{
+	return innerVector.getAngle();
+}
+
+// Get the color's "shadow" angle.
+double Color::getColorShadowAngle()
+{
+	return innerVector.getShadowAngle();
+}
+
+// Changing the given vector does not affect the color.
+Vector3D& Color::getVector()
+{
+	return innerVector;
+}
 
 // Get red, green, and blue components of the color.
 unsigned char Color::getR()

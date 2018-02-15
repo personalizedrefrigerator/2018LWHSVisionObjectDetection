@@ -20,7 +20,12 @@ class Color
 	int getColor();	
 	enum {RED, GREEN, YELLOW, BLUE, GRAY, WHITE, BLACK};
 	
+	double getColorAngle(); // Get the angle the red, green, and blue components of a 3D vector make.
+	double getColorShadowAngle();
+	
 	bool getColorIsLight();
+	
+	Vector3D& getVector(); // Changing the vector does not change the color.
 	
 	// Define access to r, g, and b when needed.
 	unsigned char getGray();
@@ -32,6 +37,8 @@ class Color
 	unsigned char g;
 	unsigned char b;
 	unsigned char gray;
+	
+	Vector3D innerVector=Vector3D(0,0,0);
 
 	unsigned char brightThreshold=200;
 	bool isLight;

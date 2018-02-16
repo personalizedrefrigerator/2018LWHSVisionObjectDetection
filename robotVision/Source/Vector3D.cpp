@@ -98,7 +98,7 @@ void Vector3D::setValuesFromLengthAndAngles(double magnitude, double theta, doub
 	shadowAngleCalculated=true;
 	magnitudeCalculated=true;
 
-	shadowLength=l*cos(theta);
+	shadowLength=magnitude*cos(theta);
 	x=cos(shadowTheta)*shadowLength;
 	y=sin(shadowTheta)*shadowLength;
 	z=sin(theta)*magnitude;

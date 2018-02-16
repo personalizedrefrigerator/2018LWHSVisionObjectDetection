@@ -32,7 +32,14 @@ class VisionApplication
 	bool showDebugOutput=false; // Whether the input image to runFrame should be modified, for debugging.
 	bool trackingObjects=false;
 	
+	bool definedPreviousCorners=false;
+	
 	Shape * currentShape=new Shape();
+	Shape trackingShape;
+	
+	Point2D previousCenter;
+	
+	std::vector<Point2D> previousCorners;
 	
 	ShapeList foundShapes; // The list of shapes found by the application.
 	ShapeList shapesToCompare;

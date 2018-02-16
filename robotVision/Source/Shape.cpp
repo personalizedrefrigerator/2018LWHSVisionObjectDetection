@@ -204,7 +204,7 @@ void Shape::drawSelf(cv::Mat outputImage, unsigned int colorsPerPixel)
 
 		for(colorIndex=0; colorIndex<colorsPerPixel; colorIndex++)
 		{
-			outputImage.at<unsigned char>(currentPoint.y, currentPoint.x*colorsPerPixel+colorIndex)=205-colorIndex*50;
+			outputImage.at<unsigned char>(currentPoint.y, currentPoint.x*colorsPerPixel+colorIndex)=colorIndex*50;
 		}
 	}
 	
@@ -222,7 +222,7 @@ void Shape::drawSelf(cv::Mat outputImage, unsigned int colorsPerPixel)
 		// For the blue, green, and red components of the color.
 		for(colorIndex=0; colorIndex<colorsPerPixel; colorIndex++)
 		{
-			outputImage.at<unsigned char>(currentPoint.y, currentPoint.x*colorsPerPixel+colorIndex)=(abs(sin(pointIndex))*256);
+			outputImage.at<unsigned char>(currentPoint.y, currentPoint.x*colorsPerPixel+colorIndex)=200;
 		}
 	}
 }
@@ -250,8 +250,12 @@ void Shape::drawDebugOutput(cv::Mat outputImage)
 	{
 		currentCorner=corners.at(cornerIndex);
 
+		std::stringstream numberToS;
+		numberToS << cornerIndex;
+
 		// Draw a circle at the current point, cv::Scalar stores the color. 8 is the line type. 2 is the line width.
 		cv::circle(outputImage, cv::Point(currentCorner.x, currentCorner.y), 5, cv::Scalar(0, 255, 100, 200), 2, 8, 0); // 8 is line type.
+		putText(outputImage, numberToS.str(), cv::Point(currentCorner.x, currentCorner.y), 2, 0.5, cv::Scalar(0,0,0, 255));
 	}
 
 	// Draw a circle at the center.
@@ -266,9 +270,10 @@ void Shape::drawDebugOutput(cv::Mat outputImage)
 		
 		// Draw text indicating the size and angle.
 		std::stringstream outputText;
-		outputText << "Size: ";
-		outputText << contents.size() << ". ";
-		outputText << "ANGLE: " <<  angleX*180/PI << ", " << angleY*180/PI;
+		//outputText << "Size: ";
+		//outputText << contents.size() << ". ";
+		//outputText << "ANGLE: " <<  angleX*180/PI << ", " << angleY*180/PI;
+		outputText << (int)averageColor.getR() << "," << (int)averageColor.getG() << ", " << (int)averageColor.getB();
 		// Font 2.
 		putText(outputImage, outputText.str(), cv::Point(center.x-50, center.y), 2, 0.35, cv::Scalar(0,0,255, 200));
 		
@@ -289,6 +294,47 @@ void Shape::drawDebugOutput(cv::Mat outputImage)
 		}
 	}
 }
+
+void Shape::compareAndFilterCorners(const std::vector<Point2D>& previousCorners, Point2D otherCenter)
+{
+	Point2D currentCorner;
+	Point2D currentOtherCorner;
+	
+	double maxDistance=otherCenter.getDistance(center)*3;
+	
+	std::vector<Point2D> newCorners;
+	
+	int i;
+	
+	// For every corner.
+	for(i=0; i < corners.size() && i < previousCorners.size(); i++)
+	{
+		currentCorner=corners.at(i);
+		currentOtherCorner=previousCorners.at(i);
+		
+		if(currentCorner.getDistance(currentOtherCorner) < maxDistance)
+		{
+			newCorners.push_back(currentCorner);
+		}
+	}
+	
+	corners=newCorners;
+}
+
+// Output the corners to a given vector. Run findcorners first.
+void Shape::getCorners(std::vector<Point2D>& outputVector)
+{
+	// Resize the output to the length of the corner vector.
+	outputVector.resize(corners.size());
+	
+	// For every corner.
+	for(int i=0; i < corners.size(); i++)
+	{
+		// Add the corner to the output.
+		outputVector.push_back(corners.at(i));
+	}
+}
+
 
 // Get the first point on the shape.
 Point2D Shape::getFirstPoint()

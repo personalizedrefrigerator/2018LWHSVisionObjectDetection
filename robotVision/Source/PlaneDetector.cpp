@@ -67,6 +67,8 @@ void PlaneDetector::detectPoints2D(Point2D startPoint)
 
 	Color currentColor=Color(0, 0, 0);
 
+	deltaX=1; deltaY=1;
+
 	unsigned int fringeSize=1;
 	// Add points to the plane.
 	do
@@ -101,7 +103,7 @@ void PlaneDetector::detectPoints2D(Point2D startPoint)
 					setVisited(considering, true);
 					//std::cout << isOnImage(considering) << "\n";
 					//TODO: Make color change take direction into account.
-					if(isOnImage(considering) && (getColorAt(current)-getColorAt(considering) <= colorChangeThreshold && getColorAt(current)-mainColor <= averageChangeThreshold || times < startingPixels))
+					if(isOnImage(considering) && getColorAt(current).getColorAngle()*180/PI > 5 && getColorAt(current).getColorAngle()*180/PI < 29 && getColorAt(current).getR() > getColorAt(current).getB()+50 && !(getColorAt(current).getG() > getColorAt(current).getR()+50) && getColorAt(current).getG() > getColorAt(current).getB()+50 && (getColorAt(current)-getColorAt(considering) <= colorChangeThreshold && getColorAt(current)-mainColor <= averageChangeThreshold || times < startingPixels))
 					{
 						fringe.push_front(considering);
 						fringeSize++;

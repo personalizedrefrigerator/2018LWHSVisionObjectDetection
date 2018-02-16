@@ -16,6 +16,7 @@
 #include "VisionApplication.h"
 #include "CameraOptionsTrackbarManager.h"
 #include "NetworkVisionOutput.h"
+#include "Vector3D.h"
 
 // Include the network communication class.
 #include "NetworkCommunicator.h"
@@ -110,7 +111,7 @@ void ApplicationController::demoStitcher()
 	cv::Mat currentFrame;
 	
 	// Create variables to store the results from the individual cameras.
-	cv::Mat image1, image2;
+	cv::Mat image1, image2, image3, image4;
 	
 	// If showing UI,
 	if(showUI)
@@ -131,7 +132,10 @@ void ApplicationController::demoStitcher()
 		video1 >> image1;
 		video2 >> image2;
 		
-		currentFrame=filter1.stitchTwo(image1, image2);
+		cv::resize(image1, image3, cv::Size(300,300));
+		cv::resize(image2, image4, cv::Size(300,300));
+		
+		currentFrame=filter1.stitchTwo(image3, image4);
 		
 		// If showing UI,
 		if(showUI && currentFrame.rows > 0 && currentFrame.cols > 0)
@@ -148,6 +152,9 @@ void ApplicationController::demoStitcher()
 // Run the main application loop. TODO: Allow this to be better changed from outside the class.
 void ApplicationController::mainLoop()
 {
+	Vector3D a=(Color(255,100,1)).getVector();
+	std::cout << a.getShadowAngle() << "\n";
+
 	// If the camera number has not been explicitly set,
 	if(!cameraNumberSet)
 	{
@@ -253,8 +260,8 @@ void ApplicationController::mainLoop()
 		video >> captureData;
 		
 		// Resize the input to a reasonable size.
-		//cv::resize(captureData, currentFrame, imageSize);
-		currentFrame=captureData;
+		cv::resize(captureData, currentFrame, cv::Size(200,200));
+		//currentFrame=captureData;
 	
 	
 		// Give the image filter the data.

@@ -29,7 +29,7 @@ class ApplicationController
 
 	private:
 	bool showUI=true; // Whether to show UI.
-	unsigned int cameraNumber=0; // The camera number to use.
+	unsigned int cameraNumber=1; // The camera number to use.
 	bool cameraNumberSet=false; // Whether the client has set the camera number.
 	bool logInfo=false; // Whether output should be logged.
 	

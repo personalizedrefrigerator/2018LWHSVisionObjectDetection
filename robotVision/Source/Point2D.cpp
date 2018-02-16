@@ -32,6 +32,13 @@ double Point2D::getComponent(char componentName)
 	}
 }
 
+// Get the distance to another.
+double Point2D::getDistance(Point2D& other)
+{
+	double deltaX=(other.x-x), deltaY=(other.y-y);
+	return sqrt(deltaX*deltaX + deltaY*deltaY);
+}
+
 // Manipulate and get visited.
 void Point2D::setVisited(bool setTo)
 {

@@ -37,12 +37,6 @@ void VisionApplication::runFrame(cv::Mat inputImage, VisionOutput & visionOutput
 		tracker.setComparisonShapes(&shapesToCompare); // Set the tracker's list of comparison shapes to those  loaded.
 		
 		tracker.detectAllShapes(); // Detect all shapes.
-		
-		// If there are shapes to track,
-		if(tracker.getFoundShapes().size() > 0)
-		{
-			trackingObjects=true;
-		}
 	}
 	else
 	{
@@ -60,12 +54,26 @@ void VisionApplication::runFrame(cv::Mat inputImage, VisionOutput & visionOutput
 	// So long as now tracking objects, and there are objects to track,
 	if(tracker.getFoundShapes().size() > 0)
 	{
+		
 		bool success=tracker.findTargetAndUpdate(*currentShape, options.worstMatchRating);
+		
+		
+		if(!trackingObjects)
+		{
+			trackingShape=tracker.getLastComparedComparisonShape();
+		}
+		
+		
+		
+		if(currentShape->getContentSize() < 100)
+		{
+			success=false;
+		}
 		
 		trackingObjects=success;
 		
 		// If a success,
-		if(success)
+		if(trackingObjects)
 		{
 			// Give the shape needed information. TODO: Make use of focalY.
 			currentShape->setScreenZ(options.focalLengthX);
@@ -75,6 +83,20 @@ void VisionApplication::runFrame(cv::Mat inputImage, VisionOutput & visionOutput
 			currentShape->calculateAngle(inputImage.cols, inputImage.rows);
 			currentShape->calculateCornersCV();
 			
+			std::vector<Point2D> previousCornersToUse=previousCorners;
+			
+			// Get the corners.
+			definedPreviousCorners=true;
+			previousCorners.clear();
+			currentShape->getCorners(previousCorners); // Store the previous corners.
+			
+			if(definedPreviousCorners)
+			{
+				//currentShape->compareAndFilterCorners(previousCornersToUse, previousCenter); // Filter corners that changed distance.
+				//currentShape->filterCornersToFurthest(4); // Get only the 4 corners furthest from the center.
+				
+			}
+			previousCenter=currentShape->getCenter();
 			
 			// Give debugging output.
 			if(showDebugOutput)
@@ -94,7 +116,9 @@ void VisionApplication::runFrame(cv::Mat inputImage, VisionOutput & visionOutput
 			//unsigned int averageRedAndGreen=(averageColor.getR() + averageColor.getG())/2;
 			
 			// Set the tracking shape's color to bright yellow.
-			currentShape->setAverageColor(Color(255, 255,0));
+			currentShape->setAverageColor(trackingShape.getAverageColor());
+			
+			
 		}
 	}
 	else
@@ -138,9 +162,19 @@ bool VisionApplication::loadDefaultShapes()
 	options.sizePortion=0.0;
 	options.colorPortion=1.00;
 	options.centerDeltaPortion=0.0;
+	
+	// Make another cube-like shape
+	Shape * cubeShape2=new Shape();
+	cubeShape2->setAverageColor(Color(200, 200, 0));
+	
+	// Set its comparison options.
+	ShapeComparisonOptions& options2=cubeShape2->getShapeComparisonOptions();
+	options2.sizePortion=0.0;
+	options2.colorPortion=1.00;
+	options2.centerDeltaPortion=0.0;
 
 	// Add the shape to the list of shapes to compare with.
-	shapesToCompare.push_back(cubeShape);
+	shapesToCompare.push_back(cubeShape2);
 
 	// Return true on success.
 	return true;

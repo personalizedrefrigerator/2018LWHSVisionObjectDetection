@@ -26,6 +26,7 @@ class ShapeDetector
 	void clearComparisonShapes(); // Clear shapes to compare with.
 
 	void clearFoundShapes(); // Clear the found shapes.
+	Shape& getLastComparedComparisonShape(); // Get the comparison shape the most recently updated shape was compared to.
 	
 	ShapeList& getFoundShapes(); // Get the shapes found.
 	ShapeList& getComparisonShapes(); // Get the comparison shapes.
@@ -39,6 +40,7 @@ class ShapeDetector
 	ShapeList foundShapes; // The shapes found by the detector.
 	ShapeList * comparisonShapes; // The shapes to search for.
 	bool responsableForComparisonShapes=true;
+	Shape * mostRecentComparisonShape;
 	
 	VisitedList visited; // The list of points visited.
 	PlaneDetector detector; // The shape detector.

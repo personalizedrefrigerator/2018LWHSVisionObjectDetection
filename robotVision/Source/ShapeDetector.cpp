@@ -30,8 +30,8 @@ void ShapeDetector::detectAllShapes()
 
 	Point2D currentPoint;
 
-	unsigned int deltaX=image.cols/10;
-	unsigned int deltaY=image.rows/10;
+	unsigned int deltaX=image.cols/4;
+	unsigned int deltaY=image.rows/4;
 	
 	// For every pixel,
 	for(x=0; x<image.cols; x+=deltaX)
@@ -181,6 +181,7 @@ bool ShapeDetector::findTargetAndUpdate(Shape &result, double worstMatch)
 	// If the greatest rating was good enough,
 	if(greatestRating >= worstMatch)
 	{
+		mostRecentComparisonShape=comparisonShapes->at(indexOfGreatestComparisonShape);
 		result.fromOther(*foundShapes.at(indexOfGreatestRating)); // Copy from the best rated.
 		return true;
 	}
@@ -254,6 +255,12 @@ ShapeList& ShapeDetector::getFoundShapes()
 ShapeList& ShapeDetector::getComparisonShapes()
 {
 	return *comparisonShapes;
+}
+
+// Return the shape most recently compared to another and matched.
+Shape& ShapeDetector::getLastComparedComparisonShape()
+{
+	return *mostRecentComparisonShape;
 }
 
 // Free memory.

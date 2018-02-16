@@ -1,5 +1,8 @@
 #pragma once
 #include "Point.h"
+
+#include <math.h>
+
 // A class storing a simple point, and opperations related to this.
 // Henry Heino
 
@@ -21,6 +24,7 @@ class Point2D : public Point
 
 	void setVisited(bool setTo);
 	bool getVisited();
+	virtual double getDistance(Point2D& other);
 	private:
 	bool visited=false;
 };

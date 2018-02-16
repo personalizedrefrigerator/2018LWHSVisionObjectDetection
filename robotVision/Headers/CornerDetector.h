@@ -16,6 +16,6 @@ class CornerDetector
 	
 	private:
 	double cornerK=0.04, quality=0.01;
-	int cornersToFind=4, minCornerDistance=4, cornerBlockSize=9;
+	int cornersToFind=4, minCornerDistance=10, cornerBlockSize=9;
 	bool useCornerHarris=false;
 };

@@ -45,6 +45,9 @@ class Shape
 	Color getAverageColor(); // Get the average color.
 	double getXAngle(); // Get the angle to the shape's center from the center of the screen, accross the x-axis. Set screen z first.
 	double getYAngle(); // Get the angle to the shape's center from the screen's center, accross the y-axis. Set screen z first.
+	void getCorners(std::vector<Point2D>& outputVector); // Output corners to outputVector.
+	void compareAndFilterCorners(const std::vector<Point2D>& previousCorners, Point2D otherCenter); // Compare the current corners to the previous, filtering those that barely match.
+
 
 	bool isOnScreen(Point2D point); // Get whether a point is on the screen.
 

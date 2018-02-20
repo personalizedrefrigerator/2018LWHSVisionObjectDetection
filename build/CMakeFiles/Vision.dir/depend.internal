@@ -78,6 +78,10 @@ CMakeFiles/Vision.dir/robotVision/Source/Line.cpp.o
  ../robotVision/Headers/Point.h
  ../robotVision/Headers/Point2D.h
  /home/ubuntu/VisionObjectDetection/robotVision/Source/Line.cpp
+CMakeFiles/Vision.dir/robotVision/Source/ListHelper.cpp.o
+ ../robotVision/Headers/ListHelper.h
+ ../robotVision/Headers/ObjectSortingContainer.h
+ /home/ubuntu/VisionObjectDetection/robotVision/Source/ListHelper.cpp
 CMakeFiles/Vision.dir/robotVision/Source/NetworkCommunicator.cpp.o
  ../robotVision/Headers/NetworkCommunicator.h
  /home/ubuntu/VisionObjectDetection/robotVision/Source/NetworkCommunicator.cpp
@@ -93,6 +97,9 @@ CMakeFiles/Vision.dir/robotVision/Source/NetworkVisionOutput.cpp.o
  ../robotVision/Headers/VisionOutput.h
  /home/ubuntu/VisionObjectDetection/robotVision/Source/NetworkVisionOutput.cpp
  CMakeGeneratedHeaders/CMakeConfigurationInformation.h
+CMakeFiles/Vision.dir/robotVision/Source/ObjectSortingContainer.cpp.o
+ ../robotVision/Headers/ObjectSortingContainer.h
+ /home/ubuntu/VisionObjectDetection/robotVision/Source/ObjectSortingContainer.cpp
 CMakeFiles/Vision.dir/robotVision/Source/PlaneDetector.cpp.o
  ../robotVision/Headers/Color.h
  ../robotVision/Headers/CornerDetector.h
@@ -126,11 +133,14 @@ CMakeFiles/Vision.dir/robotVision/Source/Serialize.cpp.o
 CMakeFiles/Vision.dir/robotVision/Source/Shape.cpp.o
  ../robotVision/Headers/Color.h
  ../robotVision/Headers/CornerDetector.h
+ ../robotVision/Headers/ListHelper.h
+ ../robotVision/Headers/ObjectSortingContainer.h
  ../robotVision/Headers/Point.h
  ../robotVision/Headers/Point2D.h
  ../robotVision/Headers/Shape.h
  ../robotVision/Headers/ShapeComparisonOptions.h
  ../robotVision/Headers/Vector3D.h
+ ../robotVision/Headers/VisitedList.h
  /home/ubuntu/VisionObjectDetection/robotVision/Source/Shape.cpp
 CMakeFiles/Vision.dir/robotVision/Source/ShapeDetector.cpp.o
  ../robotVision/Headers/Color.h

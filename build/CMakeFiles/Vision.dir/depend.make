@@ -78,6 +78,10 @@ CMakeFiles/Vision.dir/robotVision/Source/Line.cpp.o: ../robotVision/Headers/Poin
 CMakeFiles/Vision.dir/robotVision/Source/Line.cpp.o: ../robotVision/Headers/Point2D.h
 CMakeFiles/Vision.dir/robotVision/Source/Line.cpp.o: ../robotVision/Source/Line.cpp
 
+CMakeFiles/Vision.dir/robotVision/Source/ListHelper.cpp.o: ../robotVision/Headers/ListHelper.h
+CMakeFiles/Vision.dir/robotVision/Source/ListHelper.cpp.o: ../robotVision/Headers/ObjectSortingContainer.h
+CMakeFiles/Vision.dir/robotVision/Source/ListHelper.cpp.o: ../robotVision/Source/ListHelper.cpp
+
 CMakeFiles/Vision.dir/robotVision/Source/NetworkCommunicator.cpp.o: ../robotVision/Headers/NetworkCommunicator.h
 CMakeFiles/Vision.dir/robotVision/Source/NetworkCommunicator.cpp.o: ../robotVision/Source/NetworkCommunicator.cpp
 CMakeFiles/Vision.dir/robotVision/Source/NetworkCommunicator.cpp.o: CMakeGeneratedHeaders/CMakeConfigurationInformation.h
@@ -92,6 +96,9 @@ CMakeFiles/Vision.dir/robotVision/Source/NetworkVisionOutput.cpp.o: ../robotVisi
 CMakeFiles/Vision.dir/robotVision/Source/NetworkVisionOutput.cpp.o: ../robotVision/Headers/VisionOutput.h
 CMakeFiles/Vision.dir/robotVision/Source/NetworkVisionOutput.cpp.o: ../robotVision/Source/NetworkVisionOutput.cpp
 CMakeFiles/Vision.dir/robotVision/Source/NetworkVisionOutput.cpp.o: CMakeGeneratedHeaders/CMakeConfigurationInformation.h
+
+CMakeFiles/Vision.dir/robotVision/Source/ObjectSortingContainer.cpp.o: ../robotVision/Headers/ObjectSortingContainer.h
+CMakeFiles/Vision.dir/robotVision/Source/ObjectSortingContainer.cpp.o: ../robotVision/Source/ObjectSortingContainer.cpp
 
 CMakeFiles/Vision.dir/robotVision/Source/PlaneDetector.cpp.o: ../robotVision/Headers/Color.h
 CMakeFiles/Vision.dir/robotVision/Source/PlaneDetector.cpp.o: ../robotVision/Headers/CornerDetector.h
@@ -125,11 +132,14 @@ CMakeFiles/Vision.dir/robotVision/Source/Serialize.cpp.o: ../robotVision/Source/
 
 CMakeFiles/Vision.dir/robotVision/Source/Shape.cpp.o: ../robotVision/Headers/Color.h
 CMakeFiles/Vision.dir/robotVision/Source/Shape.cpp.o: ../robotVision/Headers/CornerDetector.h
+CMakeFiles/Vision.dir/robotVision/Source/Shape.cpp.o: ../robotVision/Headers/ListHelper.h
+CMakeFiles/Vision.dir/robotVision/Source/Shape.cpp.o: ../robotVision/Headers/ObjectSortingContainer.h
 CMakeFiles/Vision.dir/robotVision/Source/Shape.cpp.o: ../robotVision/Headers/Point.h
 CMakeFiles/Vision.dir/robotVision/Source/Shape.cpp.o: ../robotVision/Headers/Point2D.h
 CMakeFiles/Vision.dir/robotVision/Source/Shape.cpp.o: ../robotVision/Headers/Shape.h
 CMakeFiles/Vision.dir/robotVision/Source/Shape.cpp.o: ../robotVision/Headers/ShapeComparisonOptions.h
 CMakeFiles/Vision.dir/robotVision/Source/Shape.cpp.o: ../robotVision/Headers/Vector3D.h
+CMakeFiles/Vision.dir/robotVision/Source/Shape.cpp.o: ../robotVision/Headers/VisitedList.h
 CMakeFiles/Vision.dir/robotVision/Source/Shape.cpp.o: ../robotVision/Source/Shape.cpp
 
 CMakeFiles/Vision.dir/robotVision/Source/ShapeDetector.cpp.o: ../robotVision/Headers/Color.h

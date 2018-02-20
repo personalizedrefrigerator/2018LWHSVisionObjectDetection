@@ -159,6 +159,52 @@ void CameraFilter::configureCornerDetection(double k, int cornersToFind, int min
 	this->useCornerHarris=useCornerHarris;
 }
 
+// Run an HSL (HSV) filter on the data.
+void CameraFilter::hslFilter(unsigned short minH, unsigned short maxH, bool filterHue, unsigned short minS, unsigned short maxS, bool filterSaturation, unsigned int minL, unsigned int maxL, bool filterLuminance)
+{
+	// Create an image to put the HSV data in.
+	cv::Mat hsvImage;
+	
+	
+	// Change the color-space.
+	cv::cvtColor(data, hsvImage, cv::COLOR_BGR2HSV);
+	
+	unsigned short currentH, currentS, currentV;
+	
+	// For every pixel.
+	unsigned int x, y;
+	unsigned char * ptr;
+	for(y=0; y < data.rows; y++)
+	{
+		ptr=hsvImage.ptr<unsigned char>(y);
+		for(x=0; x < data.cols; x++)
+		{
+			// Find the hue, saturation, ...
+			currentH = ptr[x*3];
+			currentS = ptr[x*3 + 1];
+			currentV = ptr[x*3 + 2];
+			
+			// Operate on them.
+			if((minH > currentH || maxH < currentH) && filterHue
+				|| filterSaturation && (minS > currentS || maxS < currentS)
+				|| filterLuminance && (minL > currentV || maxL < currentV))
+			{
+				currentH = 0;
+				currentS = 0;
+				currentV = 0;
+			}
+			
+			// Update the values.
+			ptr[x*3]     = currentH;
+			ptr[x*3 + 1] = currentS;
+			ptr[x*3 + 2] = currentV;
+		}
+	}
+	
+	// Change the colorspace back.
+	cv::cvtColor(hsvImage, data, cv::COLOR_HSV2BGR);
+}
+
 // Set the plane detector options.
 void CameraFilter::setPlaneDetectorOptions(PlaneDetectorOptions options)
 {

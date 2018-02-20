@@ -38,6 +38,8 @@ class CameraFilter
 
 	void setData(cv::Mat); // cv::Mat does not store the matrix data, but a pointer/refrence to it! This does not copy the entire image.
 	cv::Mat getData();
+	
+	void hslFilter(unsigned short minH, unsigned short maxH, bool filterHue, unsigned short minS, unsigned short maxS, bool filterSaturation, unsigned int minL, unsigned int maxL, bool filterLuminance); // Filter the image in the HSL colorspace.
 
 	void setImageSize(cv::Size size); // Set the image size to expect as input.
 

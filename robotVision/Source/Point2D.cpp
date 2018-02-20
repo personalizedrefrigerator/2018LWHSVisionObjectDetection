@@ -39,6 +39,13 @@ double Point2D::getDistance(Point2D& other)
 	return sqrt(deltaX*deltaX + deltaY*deltaY);
 }
 
+// Get the distance-squared to another.
+double Point2D::getDistanceSquared(Point2D& other)
+{
+	double deltaX=(other.x-x), deltaY=(other.y-y);
+	return deltaX*deltaX + deltaY*deltaY;
+}
+
 // Manipulate and get visited.
 void Point2D::setVisited(bool setTo)
 {

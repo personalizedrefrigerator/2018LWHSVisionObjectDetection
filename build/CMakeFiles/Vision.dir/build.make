@@ -585,6 +585,54 @@ CMakeFiles/Vision.dir/robotVision/Source/Vector3D.cpp.o.provides: CMakeFiles/Vis
 CMakeFiles/Vision.dir/robotVision/Source/Vector3D.cpp.o.provides.build: CMakeFiles/Vision.dir/robotVision/Source/Vector3D.cpp.o
 
 
+CMakeFiles/Vision.dir/robotVision/Source/ListHelper.cpp.o: CMakeFiles/Vision.dir/flags.make
+CMakeFiles/Vision.dir/robotVision/Source/ListHelper.cpp.o: ../robotVision/Source/ListHelper.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/VisionObjectDetection/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building CXX object CMakeFiles/Vision.dir/robotVision/Source/ListHelper.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Vision.dir/robotVision/Source/ListHelper.cpp.o -c /home/ubuntu/VisionObjectDetection/robotVision/Source/ListHelper.cpp
+
+CMakeFiles/Vision.dir/robotVision/Source/ListHelper.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Vision.dir/robotVision/Source/ListHelper.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ubuntu/VisionObjectDetection/robotVision/Source/ListHelper.cpp > CMakeFiles/Vision.dir/robotVision/Source/ListHelper.cpp.i
+
+CMakeFiles/Vision.dir/robotVision/Source/ListHelper.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Vision.dir/robotVision/Source/ListHelper.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ubuntu/VisionObjectDetection/robotVision/Source/ListHelper.cpp -o CMakeFiles/Vision.dir/robotVision/Source/ListHelper.cpp.s
+
+CMakeFiles/Vision.dir/robotVision/Source/ListHelper.cpp.o.requires:
+
+.PHONY : CMakeFiles/Vision.dir/robotVision/Source/ListHelper.cpp.o.requires
+
+CMakeFiles/Vision.dir/robotVision/Source/ListHelper.cpp.o.provides: CMakeFiles/Vision.dir/robotVision/Source/ListHelper.cpp.o.requires
+	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/robotVision/Source/ListHelper.cpp.o.provides.build
+.PHONY : CMakeFiles/Vision.dir/robotVision/Source/ListHelper.cpp.o.provides
+
+CMakeFiles/Vision.dir/robotVision/Source/ListHelper.cpp.o.provides.build: CMakeFiles/Vision.dir/robotVision/Source/ListHelper.cpp.o
+
+
+CMakeFiles/Vision.dir/robotVision/Source/ObjectSortingContainer.cpp.o: CMakeFiles/Vision.dir/flags.make
+CMakeFiles/Vision.dir/robotVision/Source/ObjectSortingContainer.cpp.o: ../robotVision/Source/ObjectSortingContainer.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/VisionObjectDetection/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building CXX object CMakeFiles/Vision.dir/robotVision/Source/ObjectSortingContainer.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Vision.dir/robotVision/Source/ObjectSortingContainer.cpp.o -c /home/ubuntu/VisionObjectDetection/robotVision/Source/ObjectSortingContainer.cpp
+
+CMakeFiles/Vision.dir/robotVision/Source/ObjectSortingContainer.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Vision.dir/robotVision/Source/ObjectSortingContainer.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ubuntu/VisionObjectDetection/robotVision/Source/ObjectSortingContainer.cpp > CMakeFiles/Vision.dir/robotVision/Source/ObjectSortingContainer.cpp.i
+
+CMakeFiles/Vision.dir/robotVision/Source/ObjectSortingContainer.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Vision.dir/robotVision/Source/ObjectSortingContainer.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ubuntu/VisionObjectDetection/robotVision/Source/ObjectSortingContainer.cpp -o CMakeFiles/Vision.dir/robotVision/Source/ObjectSortingContainer.cpp.s
+
+CMakeFiles/Vision.dir/robotVision/Source/ObjectSortingContainer.cpp.o.requires:
+
+.PHONY : CMakeFiles/Vision.dir/robotVision/Source/ObjectSortingContainer.cpp.o.requires
+
+CMakeFiles/Vision.dir/robotVision/Source/ObjectSortingContainer.cpp.o.provides: CMakeFiles/Vision.dir/robotVision/Source/ObjectSortingContainer.cpp.o.requires
+	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/robotVision/Source/ObjectSortingContainer.cpp.o.provides.build
+.PHONY : CMakeFiles/Vision.dir/robotVision/Source/ObjectSortingContainer.cpp.o.provides
+
+CMakeFiles/Vision.dir/robotVision/Source/ObjectSortingContainer.cpp.o.provides.build: CMakeFiles/Vision.dir/robotVision/Source/ObjectSortingContainer.cpp.o
+
+
 # Object files for target Vision
 Vision_OBJECTS = \
 "CMakeFiles/Vision.dir/robotVision/main.cpp.o" \
@@ -608,7 +656,9 @@ Vision_OBJECTS = \
 "CMakeFiles/Vision.dir/robotVision/Source/ShapeLoader.cpp.o" \
 "CMakeFiles/Vision.dir/robotVision/Source/NetworkVisionOutput.cpp.o" \
 "CMakeFiles/Vision.dir/robotVision/Source/GenericVisionOutput.cpp.o" \
-"CMakeFiles/Vision.dir/robotVision/Source/Vector3D.cpp.o"
+"CMakeFiles/Vision.dir/robotVision/Source/Vector3D.cpp.o" \
+"CMakeFiles/Vision.dir/robotVision/Source/ListHelper.cpp.o" \
+"CMakeFiles/Vision.dir/robotVision/Source/ObjectSortingContainer.cpp.o"
 
 # External object files for target Vision
 Vision_EXTERNAL_OBJECTS =
@@ -635,6 +685,8 @@ Vision: CMakeFiles/Vision.dir/robotVision/Source/ShapeLoader.cpp.o
 Vision: CMakeFiles/Vision.dir/robotVision/Source/NetworkVisionOutput.cpp.o
 Vision: CMakeFiles/Vision.dir/robotVision/Source/GenericVisionOutput.cpp.o
 Vision: CMakeFiles/Vision.dir/robotVision/Source/Vector3D.cpp.o
+Vision: CMakeFiles/Vision.dir/robotVision/Source/ListHelper.cpp.o
+Vision: CMakeFiles/Vision.dir/robotVision/Source/ObjectSortingContainer.cpp.o
 Vision: CMakeFiles/Vision.dir/build.make
 Vision: /usr/lib/libopencv_vstab.so.2.4.13
 Vision: /usr/lib/libopencv_imuvstab.so.2.4.13
@@ -660,7 +712,7 @@ Vision: /usr/lib/libopencv_imgproc.so.2.4.13
 Vision: /usr/lib/libopencv_flann.so.2.4.13
 Vision: /usr/lib/libopencv_core.so.2.4.13
 Vision: CMakeFiles/Vision.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/ubuntu/VisionObjectDetection/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Linking CXX executable Vision"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/ubuntu/VisionObjectDetection/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Linking CXX executable Vision"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Vision.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -690,6 +742,8 @@ CMakeFiles/Vision.dir/requires: CMakeFiles/Vision.dir/robotVision/Source/ShapeLo
 CMakeFiles/Vision.dir/requires: CMakeFiles/Vision.dir/robotVision/Source/NetworkVisionOutput.cpp.o.requires
 CMakeFiles/Vision.dir/requires: CMakeFiles/Vision.dir/robotVision/Source/GenericVisionOutput.cpp.o.requires
 CMakeFiles/Vision.dir/requires: CMakeFiles/Vision.dir/robotVision/Source/Vector3D.cpp.o.requires
+CMakeFiles/Vision.dir/requires: CMakeFiles/Vision.dir/robotVision/Source/ListHelper.cpp.o.requires
+CMakeFiles/Vision.dir/requires: CMakeFiles/Vision.dir/robotVision/Source/ObjectSortingContainer.cpp.o.requires
 
 .PHONY : CMakeFiles/Vision.dir/requires
 

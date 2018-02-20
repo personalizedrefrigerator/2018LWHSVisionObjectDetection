@@ -1,5 +1,8 @@
 // Include the necessary libraries.
 #include "Shape.h"
+#include "VisitedList.h"
+#include "ListHelper.h"
+#include "ObjectSortingContainer.h"
 
 #include <math.h>
 
@@ -84,91 +87,261 @@ void Shape::calculateCenterAndOkScreenSize()
 	}
 }
 
-// Calculate the shape's corners. TODO: Finish this.
-void Shape::calculateCorners()
+// Calculate the shape's corners, wioth a minimum distance between the corners of minDistanceSquared. Accuracy is the number of times a corner must be seen to be considered a corner. TODO: Test this.
+void Shape::calculateCorners(double minDistanceSquared, unsigned int accuracy)
 {
 	// Be sure that the edges are sorte so the points touch each other. 
 
 	// Clear the corners array.
 	corners.clear();
 
-	// Clear the distanceSquaredToEdges array.
-	distanceSquaredToEdges.clear();
-
-
-	// Calculate the distance-squareds from the center.
 	
 	// Create a variable to store the current point.
 	Point2D currentPoint;
 
-	// Create a variable to store the current distance.
-	unsigned int currentDistanceSquared;
-
-	// Create a variable to store the delta x and y between the current point and another.
-	int deltaX, deltaY;
-
-	// Create a variable to store the number of edge points for which the slope has been increasing or decreasing.
-	unsigned int edgePointsWithSameIncreasing=0;
-
-	// Create variables to store whether the distance-squared was increasing the last time,
-	//and whether it is the 1st time through the loop.
-	bool lastWasIncreasing, firstTime=true, secondTime=true;
+	// Create a variable to store the current angle.
+	double theta=0.0;
 	
-	// Create a variable to store the last distance-squared.
-	unsigned int lastDistanceSquared, lastDistanceDifference;
+	// Create a variable storing how much to increment theta with every jump.
+	double deltaTheta=0.1;
 	
-	// Keep track of the number of points 
-
-	// For every point on the edge.
-	for(int pointIndex=0; pointIndex < this->edges.size(); pointIndex++)
+	// Create variables for the slope and intercepts of the lines.
+	double b, m; // y=mx+b form.
+	
+	// Create a variable to store the current index in points.
+	unsigned int currentPointIndex;
+	
+	// Create a variable to store the number of points to loop through - so edges.size() isn't repeatedly called.
+	unsigned int numberOfPoints = edges.size();
+	
+	// Create variables to store the projected x and y parts of the position.
+	double projectedX, projectedY;
+	
+	// Create a variable to store the smallest x or y and a variable to store the greatest.
+	double smallestX=0.0;
+	double greatest=0.0;
+	bool smallestXFound=false;
+	bool greatestFound=false;
+	
+	// Create variables to store the index of the greatest and smallest points.
+	unsigned int greatestIndex, smallestIndex;
+	
+	// Create variables to store the point at the greatest and smallest comparison value.
+	Point2D pointAtSmallest, pointAtGreatest;
+	
+	// Create a variable to store the current comparison factor.
+	double currentComparisonFactor=0.0;
+	
+	// Create a visited list. 
+	std::vector<unsigned short> visited;
+	
+	visited.resize(numberOfPoints, 0);
+	
+	// For every angle,
+	for(theta = 0.1; theta <= 2*PI; theta+=deltaTheta)
 	{
-		// Store the current point.
-		currentPoint=this->edges.at(pointIndex);
-
-		// Find the delta X and delta Y between the current point and the center.
-		deltaX=currentPoint.x-center.x;
-		deltaY=currentPoint.y-center.y;
+		// Set m to tan(theta) because tan(theta) = o / a = rise / run of the slope triangle with an angle theta.
+		m = tan(theta);
 		
-		// Find the distance squared between the current point and the center.
-		currentDistanceSquared=deltaX*deltaX + deltaY*deltaY;
-
-		// Add this distance to an array of distance-squareds.
-		distanceSquaredToEdges.push_back(currentDistanceSquared);
-
-		// If the first time through the loop,
-		if(firstTime)
+		// Find b from y=m(x-xS)+yS form, where m is tan(theta). xS is the center's x position. yS is the center's y position.
+		b = -center.x*m + center.y;
+		
+		smallestXFound=false;
+		greatestFound=false;
+		
+		// Project all points onto the line.
+		for(currentPointIndex = 0; currentPointIndex < numberOfPoints; currentPointIndex++)
 		{
-			// It will no longer be the first time through the loop.
-			firstTime=false;
-		}
-		else
-		{ // Otherwise,
-
-			unsigned int difference=currentDistanceSquared-lastDistanceSquared;
-			/*if(difference >= 0)
-			{
-				lastWasIncreasing = true;
-			}*/
+			// Store the current point.
+			currentPoint = edges.at(currentPointIndex);
 			
-			if(!secondTime)
+			// Find the projected x and y.
+			projectedX = (m*currentPoint.y + b*m - currentPoint.x) / (m*m + 1); // Found by setting y2 = (-1/m)(x+xS)+yS equal to y=mx+b and solving.
+			projectedY = m*projectedX + b; // Substitute projectedX into y=mx+b.
+			
+			// Set the comparison factor to the x value.
+			currentComparisonFactor = projectedX;
+			
+			// If the smallest, note this.
+			if(currentComparisonFactor <= smallestX || !smallestXFound)
 			{
-				// If the positivity is different between
-				//the current and last distance,
-				if(difference < 0 ^ lastDistanceDifference < 0)
-				{
-					
-				}
+				// The smallest has been found.
+				smallestXFound=true;
+				
+				// Update the smallest.
+				smallestX=currentComparisonFactor;
+				
+				// Update the point at the smallest.
+				pointAtSmallest=currentPoint;
+				
+				// Update the index.
+				smallestIndex=currentPointIndex;
 			}
 			
-			secondTime=false;
-
-			// Store the last difference.
-			lastDistanceDifference=difference;
+			// If the greatest, note this.
+			if(currentComparisonFactor >= greatest || !greatestFound)
+			{
+				// The smallest has been found.
+				greatestFound=true;
+				
+				// Update the smallest.
+				greatest=currentComparisonFactor;
+				
+				// Update the point at the smallest.
+				pointAtGreatest=currentPoint;
+				
+				// Update the index.
+				greatestIndex=currentPointIndex;
+			}
 		}
-
-		// Update the last distance-squared.
-		lastDistanceSquared=currentDistanceSquared;
+		
+		// So long as seen a given number of times before,
+		if(visited.at(smallestIndex) == accuracy)
+		{
+			// Add the point at the smallest and the point at the greatest to the corners.
+			corners.push_back(pointAtSmallest);
+		}
+		
+		// So long as seen a given number of times before,
+		if(visited.at(greatestIndex) == accuracy)
+		{
+			// Add the point at the smallest and the point at the greatest to the corners.
+			corners.push_back(pointAtGreatest);
+		}
+		
+		// Note that all were visited another time.
+		visited.at(smallestIndex)++;
+		visited.at(greatestIndex)++;
 	}
+	
+	// Create a variable to store the number of corners.
+	unsigned int numberOfCorners=corners.size();
+	
+	// Create a list to store the points to be removed.
+	std::vector<bool> toRemove;
+	toRemove.resize(numberOfCorners, false);
+	
+	Point2D currentCorner, otherCorner;
+	
+	unsigned int currentIndex, otherIndex;
+	
+	// Create a variable to store the distance between the current and another point.
+	double distanceSquared;
+	
+	// Create a variable to store the number of corners to remove.
+	unsigned int cornersToRemove=0;
+	
+	// Create variables to store the distances to the center.
+	double currentDistanceSquaredToCenter=0, otherDistanceSquaredToCenter=0;
+	
+	// For every corner.
+	for(currentIndex = 0; currentIndex < numberOfCorners; currentIndex++)
+	{
+		// So long as this corner isn't to be removed,
+		if(!toRemove.at(currentIndex))
+		{
+			// Store the current corner.
+			currentCorner=corners.at(currentIndex);
+			
+			// Find its distance to the center.
+			currentDistanceSquaredToCenter=currentCorner.getDistanceSquared(center);
+		
+			// For every other corner,
+			for(otherIndex=0; otherIndex < numberOfCorners; otherIndex++)
+			{
+				// So long as the corner isn't to be removed.
+				if(!toRemove.at(otherIndex) && otherIndex != currentIndex)
+				{
+					// Store the other corner.
+					otherCorner=corners.at(otherIndex);
+					
+					// Find the other's distance-squared to the center.
+					otherDistanceSquaredToCenter=otherCorner.getDistanceSquared(center);
+					
+					// Calculate the distance squared.
+					distanceSquared=otherCorner.getDistanceSquared(currentCorner);
+					
+					// If the distance is less than the min distance,
+					if(distanceSquared < minDistanceSquared)
+					{
+						// If the current if further from the center than the other.
+						if(currentDistanceSquaredToCenter > otherDistanceSquaredToCenter)
+						{
+							// Set the corner to be removed.
+							toRemove.at(otherIndex) = true;
+							cornersToRemove++;
+						}
+						else // Otherwise, set the current to be removed and break.
+						{
+							toRemove.at(currentIndex) = true;
+							cornersToRemove++;
+							
+							// This corner will be removed! No need to continue comparing it to others.
+							break;
+						}
+					}
+				}
+			}
+		}
+	}
+	
+	// Remove the corners that were to be removed.
+	
+	std::vector<Point2D> newCorners;
+	newCorners.reserve(numberOfCorners-cornersToRemove);
+	
+	// For all corners,
+	for(currentIndex = 0; currentIndex < numberOfCorners; currentIndex++)
+	{
+		// If not to be removed,
+		//add it to the result.
+		if(!toRemove.at(currentIndex))
+		{
+			newCorners.push_back(corners.at(currentIndex));
+		}
+	}
+	
+	
+	// Set the corners to the new corners.
+	corners=newCorners;
+}
+
+// Trim the total number of corners down to a specific amount.
+void Shape::trimCorners(unsigned int numberOfNewCorners)
+{
+	// Create a list to store the sorted corners
+	std::vector< ObjectSortingContainer<Point2D> > newCornersList;
+	
+	// Resize the list.
+	newCornersList.reserve(corners.size());
+	
+	// Create a variable to store the current point's distance to the center.
+	double distanceToCenter;
+	
+	// Pack the corners into the list.
+	for(unsigned int index=0; index < corners.size(); index++)
+	{
+		Point2D& currentCorner=corners.at(index);
+		
+		distanceToCenter=center.getDistanceSquared(currentCorner);
+		
+		newCornersList.push_back(ObjectSortingContainer<Point2D>(distanceToCenter, &corners.at(index)));
+	}
+	
+	// Sort the corners, greatest distance to smallest distance.
+	ListHelper::mergeSort<Point2D>(newCornersList, false);
+	
+	std::vector<Point2D> newCorners;
+	newCorners.resize(numberOfNewCorners);
+	
+	// Unpack the corners from the sorted list.
+	for(unsigned int index=0; index<numberOfNewCorners; index++)
+	{
+		newCorners.at(index)=*newCornersList.at(index).baseObject;
+	}
+	
+	// Update corners.
+	corners=newCorners;
 }
 
 // Calculate the angle to the center of the shape.

@@ -339,6 +339,33 @@ robotVision/Source/Line.cpp.s:
 	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/robotVision/Source/Line.cpp.s
 .PHONY : robotVision/Source/Line.cpp.s
 
+robotVision/Source/ListHelper.o: robotVision/Source/ListHelper.cpp.o
+
+.PHONY : robotVision/Source/ListHelper.o
+
+# target to build an object file
+robotVision/Source/ListHelper.cpp.o:
+	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/robotVision/Source/ListHelper.cpp.o
+.PHONY : robotVision/Source/ListHelper.cpp.o
+
+robotVision/Source/ListHelper.i: robotVision/Source/ListHelper.cpp.i
+
+.PHONY : robotVision/Source/ListHelper.i
+
+# target to preprocess a source file
+robotVision/Source/ListHelper.cpp.i:
+	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/robotVision/Source/ListHelper.cpp.i
+.PHONY : robotVision/Source/ListHelper.cpp.i
+
+robotVision/Source/ListHelper.s: robotVision/Source/ListHelper.cpp.s
+
+.PHONY : robotVision/Source/ListHelper.s
+
+# target to generate assembly for a file
+robotVision/Source/ListHelper.cpp.s:
+	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/robotVision/Source/ListHelper.cpp.s
+.PHONY : robotVision/Source/ListHelper.cpp.s
+
 robotVision/Source/NetworkCommunicator.o: robotVision/Source/NetworkCommunicator.cpp.o
 
 .PHONY : robotVision/Source/NetworkCommunicator.o
@@ -392,6 +419,33 @@ robotVision/Source/NetworkVisionOutput.s: robotVision/Source/NetworkVisionOutput
 robotVision/Source/NetworkVisionOutput.cpp.s:
 	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/robotVision/Source/NetworkVisionOutput.cpp.s
 .PHONY : robotVision/Source/NetworkVisionOutput.cpp.s
+
+robotVision/Source/ObjectSortingContainer.o: robotVision/Source/ObjectSortingContainer.cpp.o
+
+.PHONY : robotVision/Source/ObjectSortingContainer.o
+
+# target to build an object file
+robotVision/Source/ObjectSortingContainer.cpp.o:
+	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/robotVision/Source/ObjectSortingContainer.cpp.o
+.PHONY : robotVision/Source/ObjectSortingContainer.cpp.o
+
+robotVision/Source/ObjectSortingContainer.i: robotVision/Source/ObjectSortingContainer.cpp.i
+
+.PHONY : robotVision/Source/ObjectSortingContainer.i
+
+# target to preprocess a source file
+robotVision/Source/ObjectSortingContainer.cpp.i:
+	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/robotVision/Source/ObjectSortingContainer.cpp.i
+.PHONY : robotVision/Source/ObjectSortingContainer.cpp.i
+
+robotVision/Source/ObjectSortingContainer.s: robotVision/Source/ObjectSortingContainer.cpp.s
+
+.PHONY : robotVision/Source/ObjectSortingContainer.s
+
+# target to generate assembly for a file
+robotVision/Source/ObjectSortingContainer.cpp.s:
+	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/robotVision/Source/ObjectSortingContainer.cpp.s
+.PHONY : robotVision/Source/ObjectSortingContainer.cpp.s
 
 robotVision/Source/PlaneDetector.o: robotVision/Source/PlaneDetector.cpp.o
 
@@ -750,12 +804,18 @@ help:
 	@echo "... robotVision/Source/Line.o"
 	@echo "... robotVision/Source/Line.i"
 	@echo "... robotVision/Source/Line.s"
+	@echo "... robotVision/Source/ListHelper.o"
+	@echo "... robotVision/Source/ListHelper.i"
+	@echo "... robotVision/Source/ListHelper.s"
 	@echo "... robotVision/Source/NetworkCommunicator.o"
 	@echo "... robotVision/Source/NetworkCommunicator.i"
 	@echo "... robotVision/Source/NetworkCommunicator.s"
 	@echo "... robotVision/Source/NetworkVisionOutput.o"
 	@echo "... robotVision/Source/NetworkVisionOutput.i"
 	@echo "... robotVision/Source/NetworkVisionOutput.s"
+	@echo "... robotVision/Source/ObjectSortingContainer.o"
+	@echo "... robotVision/Source/ObjectSortingContainer.i"
+	@echo "... robotVision/Source/ObjectSortingContainer.s"
 	@echo "... robotVision/Source/PlaneDetector.o"
 	@echo "... robotVision/Source/PlaneDetector.i"
 	@echo "... robotVision/Source/PlaneDetector.s"

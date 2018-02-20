@@ -12,6 +12,19 @@ VisitedList::VisitedList()
 	listLength=0;
 }
 
+// Set the 2D size.
+void VisitedList::setSize(unsigned int length)
+{
+	if(length != listLength)
+	{
+		// Set the new list length.
+		listLength=length;
+		
+		// Resize the visited.
+		visited.resize(listLength, false);
+	}
+}
+
 // Set the list's size.
 void VisitedList::setSize(unsigned int newWidth, unsigned int newHeight)
 {
@@ -39,6 +52,16 @@ void VisitedList::setVisited(Point2D point, bool visited)
 	}
 }
 
+// Set whether a point at a given index mwas bvisited.
+void VisitedList::setVisited(unsigned int index, bool setTo)
+{
+	// So long as in the list,
+	if(index >= 0 && index < listLength)
+	{
+		this->visited.at(index)=setTo;
+	}
+}
+
 // Get whether a point was visited. Moved from PlaneDetector.cpp.
 bool VisitedList::getVisited(Point2D point)
 {
@@ -49,6 +72,17 @@ bool VisitedList::getVisited(Point2D point)
 		return visited.at(index);
 	}
 
+	return true;
+}
+
+// Get whether an index was visited.
+bool VisitedList::getVisited(unsigned int at)
+{
+	if(at >= 0 && at < listLength)
+	{
+		return visited.at(at);
+	}
+	
 	return true;
 }
 

@@ -192,7 +192,7 @@ void ApplicationController::mainLoop()
 
 	int colorChangeThreshold=(int)options.colorChangeThreshold; 
 	int averageChangeThreshold=(int)options.averageChangeThreshold;
-	int minRating=21;
+	int minRating=21, minH=20, maxH=35, minS=93, maxS=232, minV=0, maxV=256;
 	/*int cornerK=4000,
 		cornersToFind=4,
 		minCornerDistance=4,
@@ -208,6 +208,12 @@ void ApplicationController::mainLoop()
 		trackbarManager.addTrackbar(std::string("Color Change Threshold"), 256, &colorChangeThreshold);
 		trackbarManager.addTrackbar(std::string("Average Value Change Threshold"), 256, &averageChangeThreshold);
 		trackbarManager.addTrackbar(std::string("Minimum rating."), 100, &minRating);
+		trackbarManager.addTrackbar(std::string("minH"), 256, &minH);
+		trackbarManager.addTrackbar(std::string("maxH"), 256, &maxH);
+		trackbarManager.addTrackbar(std::string("minS"), 256, &minS);
+		trackbarManager.addTrackbar(std::string("maxS"), 256, &maxS);
+		trackbarManager.addTrackbar(std::string("minV"), 256, &minV);
+		trackbarManager.addTrackbar(std::string("maxV"), 256, &maxV);
 		/*trackbarManager.addTrackbar(std::string("Corner K."), 16000, &cornerK);
 		trackbarManager.addTrackbar(std::string("Corners to find."), 20, &cornersToFind);
 		trackbarManager.addTrackbar(std::string("Minimum corner distance."), 160, &minCornerDistance);
@@ -266,7 +272,11 @@ void ApplicationController::mainLoop()
 	
 		// Give the image filter the data.
 		filter.setData(currentFrame);
+		
+		filter.hslFilter(minH, maxH, true, minS, maxS, true, minV, maxV, true);
+		
 		filter.runAllFilters();	// Run its filters, including an image correction, an erosion, and a dilation.
+
 
 		// If showing UI,
 		if(showUI)

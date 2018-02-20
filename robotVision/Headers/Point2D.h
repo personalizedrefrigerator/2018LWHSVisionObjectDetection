@@ -24,7 +24,9 @@ class Point2D : public Point
 
 	void setVisited(bool setTo);
 	bool getVisited();
+	
 	virtual double getDistance(Point2D& other);
+	double getDistanceSquared(Point2D& other);
 	private:
 	bool visited=false;
 };

@@ -4,7 +4,7 @@
 
 struct PlaneDetectorOptions
 {
-	double colorChangeThreshold=15;
+	double colorChangeThreshold=25;
 	double averageChangeThreshold=48.0;
 	double significantPointAccuracy=3.0;
 

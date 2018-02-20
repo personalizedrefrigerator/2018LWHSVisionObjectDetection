@@ -28,8 +28,9 @@ class Shape
 	// Calculate the corners and center point.
 	void calculateCenterAndOkScreenSize();
 	void calculateAngle(unsigned int screenWidth, unsigned int screenHeight); // Calculate the angle to the center of the shape.
-	void calculateCorners(); // TODO: Finish implementing later.
+	void calculateCorners(double minDistanceSquared, unsigned int accuracy); // Find the shape's corners, without using OpenCV.
 	void calculateCornersCV(); // Find the corners of the shape, using OpenCV.
+	void trimCorners(unsigned int newCorners); // Trim the number of corners on the shape to a new amount (i.e., keep the furthest 4).
 	
 	void drawSelf(cv::Mat outputImage, unsigned int colorsPerPixel); // Draw a version of the shape, for corner detection, etc.
 	void drawComparisonDebugOutput(cv::Mat outputImage, Shape & other); // Draw debug output for the comparison of this shape to another.

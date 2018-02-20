@@ -81,7 +81,8 @@ void VisionApplication::runFrame(cv::Mat inputImage, VisionOutput & visionOutput
 			// Calculate shape properties.
 			currentShape->calculateCenterAndOkScreenSize();
 			currentShape->calculateAngle(inputImage.cols, inputImage.rows);
-			currentShape->calculateCornersCV();
+			currentShape->calculateCorners(256, 4);
+			currentShape->trimCorners(4);
 			
 			std::vector<Point2D> previousCornersToUse=previousCorners;
 			

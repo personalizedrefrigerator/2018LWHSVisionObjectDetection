@@ -266,8 +266,8 @@ void ApplicationController::mainLoop()
 		video >> captureData;
 		
 		// Resize the input to a reasonable size.
-		cv::resize(captureData, currentFrame, cv::Size(200,200));
-		//currentFrame=captureData;
+		//cv::resize(captureData, currentFrame, cv::Size(200,200));
+		currentFrame=captureData;
 	
 	
 		// Give the image filter the data.

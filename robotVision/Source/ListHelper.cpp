@@ -1,104 +1,59 @@
 #include "ListHelper.h"
 
-// Merge-sort a list.
-template <typename templateType>
-void ListHelper::mergeSort(std::vector< ObjectSortingContainer<templateType> >& input, bool leastToGreatest)
-{
-	unsigned int subListSize=2;
-	std::vector< std::vector< ObjectSortingContainer<templateType> > > subVectors;
-	subVectors.resize(input.size()/2);
-	
-	unsigned int index;
-	
-	for(unsigned int index = 0; index < input.size(); index+=2)
-	{
-		std::vector< ObjectSortingContainer<templateType> > current;
-		current.resize(2);
-		
-		current.at(0) = input.at(index);
-		
-		if(index+1 < input.size())
-		{
-			current.at(1) = input.at(index+1);
-			
-			// Swap the two if necessary.
-			if(current.at(0) > current.at(1) && leastToGreatest || current.at(0) < current.at(1) && !leastToGreatest)
-			{
-				 ObjectSortingContainer<templateType>  cachedValue=current.at(0);
-				
-				current.at(0)=current.at(1);
-				
-				current.at(1)=cachedValue;
-			}
-		}
-	}
-	
-	while(subVectors.size() > 1)
-	{
-	
-		std::vector< std::vector< ObjectSortingContainer<templateType> > > newSubVectors;
-		
-		// For every two sub-lists,
-		for(index = 0; index < subVectors.size(); index+=2)
-		{
-			std::vector< ObjectSortingContainer<templateType> >& current=subVectors.at(index);
-			
-			// If there is a next,
-			if(index+1 < subVectors.size())
-			{
-				std::vector< ObjectSortingContainer<templateType> >& next=subVectors.at(index+1);
-				
-				// Merge the current and the next.
-				newSubVectors.push_back(mergeTwoSorted< ObjectSortingContainer<templateType> >(current, next, leastToGreatest));
-			}
-			else
-			{
-				newSubVectors.push_back(current);
-			}
-		}
-		
-		subVectors=newSubVectors;
-	}
-	
-	// Re-assign the input to the only remaining subvector.
-	input=subVectors.at(0);
-}
+// Include standard input/output.
+#include <iostream>
 
-// Merge two already sorted lists.
-template <typename templateType>
-std::vector< ObjectSortingContainer<templateType> > ListHelper::mergeTwoSorted(std::vector< ObjectSortingContainer<templateType> >& first, std::vector< ObjectSortingContainer<templateType> >& second, bool leastToGreatest)
-{
-	std::vector< ObjectSortingContainer<templateType> > result;
+#include <math.h>
 
-	 ObjectSortingContainer<templateType>  leftElement, rightElement;
+#include <cstdlib>
+
+#include <vector>
+
+// Test the sorting function.
+void ListHelper::testSort()
+{
+	std::cout << "\nStarting merge sort test.";
 	
-	unsigned int leftListSize=first.size(), rightListSize=second.size();
+	std::vector< ObjectSortingContainer<double> > list;
 	
-	unsigned int leftIndex=0, rightIndex=0;
-	
-	while(leftIndex < leftListSize || rightIndex < rightListSize)
+	for(double i = 0; i < 5; i++)
 	{
-		if(leftIndex < leftListSize)
-		{
-			leftElement=first[leftIndex];
-		}
-		
-		if(rightIndex < rightListSize)
-		{
-			rightElement=second[rightIndex];
-		}
-		
-		if((leftElement < rightElement && leastToGreatest) || (leftElement > rightElement && !leastToGreatest) || rightIndex >= rightListSize)
-		{
-			result.push_back(leftElement);
-			leftIndex++;
-		}
-		else
-		{
-			result.push_back(rightElement);
-			rightIndex++;
-		}
+		list.push_back(ObjectSortingContainer<double>((rand() % 10000)));
 	}
 	
-	return result;
+	
+	
+	std::cout << "\nList: ";
+	for(unsigned int index = 0; index < list.size(); index++)
+	{
+		std::cout << list.at(index).getValue() << ", ";
+	}
+	
+	mergeSort(list, true);
+	
+	std::cout << "\nList: ";
+	for(unsigned int index = 0; index < list.size(); index++)
+	{
+		std::cout << list.at(index).getValue() << ", ";
+	}
+	
+	std::cout << "\n======\nMerge two.";
+	
+	list.clear();
+	
+	std::vector< ObjectSortingContainer<double> > list2;
+	
+	for(double i = 0; i < 5; i++)
+	{
+		list.push_back(ObjectSortingContainer<double>((rand() % 10000)));
+		list2.push_back(ObjectSortingContainer<double>((rand() % 10000)));
+	}
+	
+	list = mergeTwoSorted(list, list2, true);
+	
+	std::cout << "\nList: ";
+	for(unsigned int index = 0; index < list.size(); index++)
+	{
+		std::cout << list.at(index).getValue() << ", ";
+	}
 }

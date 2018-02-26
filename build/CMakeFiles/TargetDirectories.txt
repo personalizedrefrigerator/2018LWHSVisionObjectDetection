@@ -1,3 +1,3 @@
-/home/ubuntu/VisionObjectDetection/build/CMakeFiles/edit_cache.dir
-/home/ubuntu/VisionObjectDetection/build/CMakeFiles/rebuild_cache.dir
-/home/ubuntu/VisionObjectDetection/build/CMakeFiles/Vision.dir
+/home/killdozer/Documents/Programming/VisionObjectDetection/build/CMakeFiles/rebuild_cache.dir
+/home/killdozer/Documents/Programming/VisionObjectDetection/build/CMakeFiles/Vision.dir
+/home/killdozer/Documents/Programming/VisionObjectDetection/build/CMakeFiles/edit_cache.dir

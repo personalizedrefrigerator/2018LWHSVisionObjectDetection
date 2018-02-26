@@ -78,7 +78,7 @@ class PlaneDetector
 
 	unsigned int startingPixels=30;
 	
-	int deltaX=5, deltaY=5;
+	int deltaX=6, deltaY=2;
 
 	// An array storing whether any given pixel has been visited.
 	VisitedList visited;

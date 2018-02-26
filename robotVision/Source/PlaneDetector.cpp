@@ -67,7 +67,6 @@ void PlaneDetector::detectPoints2D(Point2D startPoint)
 
 	Color currentColor=Color(0, 0, 0);
 
-	deltaX=1; deltaY=1;
 
 	unsigned int fringeSize=1;
 	// Add points to the plane.

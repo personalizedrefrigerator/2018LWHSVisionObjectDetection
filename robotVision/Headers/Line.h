@@ -21,6 +21,10 @@ class Line
 	// Get the line at a specified point.
 	int getAt(char dimension1, char dimension2, int location);
 	bool getDefinedAt(char dimension, int location);
+	
+	// Get versions of the individual points.
+	const Point& getPoint1();
+	const Point& getPoint2();
  
 	~Line();
 };

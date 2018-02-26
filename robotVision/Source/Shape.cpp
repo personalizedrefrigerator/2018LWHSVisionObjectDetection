@@ -9,6 +9,12 @@
 #define E 2.718281828
 #define PI 3.1415926535897932384626433
 
+// Construct the shape from another shape.
+Shape::Shape(Shape & other)
+{
+	fromOther(other);
+}
+
 // Construct the shape, taking the edges and contents.
 Shape::Shape(std::vector<Point2D> edges, std::vector<Point2D> contents)
 {
@@ -88,7 +94,7 @@ void Shape::calculateCenterAndOkScreenSize()
 }
 
 // Calculate the shape's corners, wioth a minimum distance between the corners of minDistanceSquared. Accuracy is the number of times a corner must be seen to be considered a corner. TODO: Test this.
-void Shape::calculateCorners(double minDistanceSquared, unsigned int accuracy)
+void Shape::calculateCorners(double minDistanceSquared, unsigned int accuracy, double changeInAngle)
 {
 	// Be sure that the edges are sorte so the points touch each other. 
 
@@ -103,7 +109,7 @@ void Shape::calculateCorners(double minDistanceSquared, unsigned int accuracy)
 	double theta=0.0;
 	
 	// Create a variable storing how much to increment theta with every jump.
-	double deltaTheta=0.1;
+	double deltaTheta=changeInAngle;
 	
 	// Create variables for the slope and intercepts of the lines.
 	double b, m; // y=mx+b form.
@@ -309,39 +315,42 @@ void Shape::calculateCorners(double minDistanceSquared, unsigned int accuracy)
 // Trim the total number of corners down to a specific amount.
 void Shape::trimCorners(unsigned int numberOfNewCorners)
 {
-	// Create a list to store the sorted corners
-	std::vector< ObjectSortingContainer<Point2D> > newCornersList;
-	
-	// Resize the list.
-	newCornersList.reserve(corners.size());
-	
-	// Create a variable to store the current point's distance to the center.
-	double distanceToCenter;
-	
-	// Pack the corners into the list.
-	for(unsigned int index=0; index < corners.size(); index++)
+	if(corners.size() > numberOfNewCorners)
 	{
-		Point2D& currentCorner=corners.at(index);
+		// Create a list to store the sorted corners
+		std::vector< ObjectSortingContainer<Point2D> > newCornersList;
 		
-		distanceToCenter=center.getDistanceSquared(currentCorner);
+		// Resize the list.
+		newCornersList.reserve(corners.size());
 		
-		newCornersList.push_back(ObjectSortingContainer<Point2D>(distanceToCenter, &corners.at(index)));
+		// Create a variable to store the current point's distance to the center.
+		double distanceToCenter;
+		
+		// Pack the corners into the list.
+		for(unsigned int index=0; index < corners.size(); index++)
+		{
+			Point2D& currentCorner=corners.at(index);
+			
+			distanceToCenter=center.getDistanceSquared(currentCorner);
+			
+			newCornersList.push_back(ObjectSortingContainer<Point2D>(distanceToCenter, &corners.at(index)));
+		}
+		
+		// Sort the corners, greatest distance to smallest distance.
+		ListHelper::mergeSort<Point2D>(newCornersList, false);
+		
+		std::vector<Point2D> newCorners;
+		newCorners.reserve(numberOfNewCorners);
+		
+		// Unpack the corners from the sorted list.
+		for(unsigned int index=0; index<numberOfNewCorners && index<newCornersList.size(); index++)
+		{
+			newCorners.push_back(*newCornersList.at(index).baseObject);
+		}
+		
+		// Update corners.
+		corners=newCorners;
 	}
-	
-	// Sort the corners, greatest distance to smallest distance.
-	ListHelper::mergeSort<Point2D>(newCornersList, false);
-	
-	std::vector<Point2D> newCorners;
-	newCorners.resize(numberOfNewCorners);
-	
-	// Unpack the corners from the sorted list.
-	for(unsigned int index=0; index<numberOfNewCorners; index++)
-	{
-		newCorners.at(index)=*newCornersList.at(index).baseObject;
-	}
-	
-	// Update corners.
-	corners=newCorners;
 }
 
 // Calculate the angle to the center of the shape.
@@ -445,7 +454,7 @@ void Shape::drawDebugOutput(cv::Mat outputImage)
 		std::stringstream outputText;
 		//outputText << "Size: ";
 		//outputText << contents.size() << ". ";
-		//outputText << "ANGLE: " <<  angleX*180/PI << ", " << angleY*180/PI;
+		outputText << "(" <<  angleX*180/PI << ", " << angleY*180/PI << ")";
 		outputText << (int)averageColor.getR() << "," << (int)averageColor.getG() << ", " << (int)averageColor.getB();
 		// Font 2.
 		putText(outputImage, outputText.str(), cv::Point(center.x-50, center.y), 2, 0.35, cv::Scalar(0,0,255, 200));
@@ -635,6 +644,12 @@ CornerDetector & Shape::getCornerDetector()
 unsigned int Shape::getContentSize()
 {
 	return contents.size();
+}
+
+// Get the area of the shape's edges.
+unsigned int Shape::getEdgesSize()
+{
+	return edges.size();
 }
 
 // Get the shape's x rotation.

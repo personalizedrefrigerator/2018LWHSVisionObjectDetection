@@ -23,12 +23,13 @@ class Shape
 	public:
 	Shape();
 	Shape(std::vector<Point2D> edges, std::vector<Point2D> contents);
+	Shape(Shape & other);
 	~Shape();
 	
 	// Calculate the corners and center point.
 	void calculateCenterAndOkScreenSize();
 	void calculateAngle(unsigned int screenWidth, unsigned int screenHeight); // Calculate the angle to the center of the shape.
-	void calculateCorners(double minDistanceSquared, unsigned int accuracy); // Find the shape's corners, without using OpenCV.
+	void calculateCorners(double minDistanceSquared, unsigned int accuracy, double changeInAngle); // Find the shape's corners, without using OpenCV.
 	void calculateCornersCV(); // Find the corners of the shape, using OpenCV.
 	void trimCorners(unsigned int newCorners); // Trim the number of corners on the shape to a new amount (i.e., keep the furthest 4).
 	
@@ -41,6 +42,7 @@ class Shape
 	std::vector<Point2D> getEdges(); // Get the shape's edges.
 	std::vector<Point2D> getContents(); // Get the shape's contents.
 	unsigned int getContentSize(); // Get the shape's area.
+	unsigned int getEdgesSize(); // Get the size of the edge points.
 	Point2D getCenter(); // Get the center point.
 	Point2D getFirstPoint(); // Get the first point.
 	Color getAverageColor(); // Get the average color.

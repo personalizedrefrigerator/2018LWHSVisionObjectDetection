@@ -108,6 +108,17 @@ bool Line::getDefinedAt(char dimension, int location)
 	return hasSlopeInDimension;
 }
 
+// Get the end points.
+const Point & Line::getPoint1()
+{
+	return *point1;
+}
+
+const Point & Line::getPoint2()
+{
+	return *point2;
+}
+
 // Deconstruct.
 Line::~Line()
 {

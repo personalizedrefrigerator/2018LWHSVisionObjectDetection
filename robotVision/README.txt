@@ -1,10 +1,8 @@
 This program was created for the 2018 build season, for the Lake Washington High School FRC Robotics team.
 
-To compile this on Linux, from the build directory, run:
-cmake ../ -DCMAKE_BUILD_TYPE=Release
+To compile this on Linux, see comments in CMakeLists.txt.
 
-This program currently looks for the shape at the center of the screen, and its corners.
-Next, the program should be able to successfully find the angle and distance to a given shape and its corners. The angle to a given corner, where l is the length from the center of the screen, and Sz is the screen's z position relative to the camera, is tan-1(l/Sz).
+This program looks for bright yellow objects and finds their corners. It communicates this found data through network tables. TODO: Change this to sockets. The angle to a shape is found and communicated by the program, but, though the distance can be found, it is untested (see the Box class) and may be in units of "pixels" instead of realistic units such as millimeters or centimeters. TODO: Find and track the largest yellow shape, NOT the brightest - this information is easily accessable, though it may be difficult to do it neatly without a major refactoring. This code might override the comparison method in the Shape class, possibly put in the Box class or a subclass of this.
 
 
 Network table and WPILib resources:

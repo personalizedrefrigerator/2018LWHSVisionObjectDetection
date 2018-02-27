@@ -55,7 +55,7 @@ void CameraFilter::erodeAndDilate(cv::Mat dataToUse, unsigned int recursions)
 	cv::dilate(dataToUse, dataToUse, erodeDilateElement,
 			cv::Point(-1, -1),  recursions); // An anchor of nowhere and 1 iteration.
 	cv::erode(dataToUse, dataToUse, erodeDilateElement,
-			cv::Point(-1, -1), recursions); // An anchor of nowhere and 1 iteration.
+			cv::Point(-1, -1), recursions*2); // An anchor of nowhere and 1 iteration.
 }
 
 void CameraFilter::erodeAndDilate()

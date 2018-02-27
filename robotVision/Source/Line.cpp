@@ -15,6 +15,8 @@ Line::Line(Point * point1, Point * point2)
 	// Update the points.
 	this->point1=point1;
 	this->point2=point2;
+	
+	defined = true;
 }
 
 Line::Line()
@@ -22,6 +24,13 @@ Line::Line()
 	// Assign pointers.
 	this->point1=new Point2D(0, 0);
 	this->point2=new Point2D(0, 0);
+}
+
+Line::Line(const Line& other)
+{
+	// Copy points.
+	*this->point1 = *other.point1;
+	*this->point2 = *other.point2;
 }
 
 // Get the slope from a to b.
@@ -77,6 +86,9 @@ void Line::setPoints(Point * newPoint1, Point * newPoint2)
 	// Update the points.
 	this->point1=newPoint1;
 	this->point2=newPoint2;
+	
+	// The line is now defined.
+	defined = true;
 }
 
 // Get the line's output at a specific point.
@@ -98,6 +110,11 @@ int Line::getAt(char dimension1, char dimension2, int location)
 // Get whether the line has slope at a specific location.
 bool Line::getDefinedAt(char dimension, int location)
 {
+	if(!defined)
+	{
+		return defined;
+	}
+
 	bool hasSlopeInDimension=hasSlope(dimension);
 
 	if(!hasSlopeInDimension)
@@ -106,6 +123,12 @@ bool Line::getDefinedAt(char dimension, int location)
 	}
 
 	return hasSlopeInDimension;
+}
+
+// Get whether the line is defined at all.
+bool Line::getDefined()
+{
+	return defined;
 }
 
 // Get the end points.

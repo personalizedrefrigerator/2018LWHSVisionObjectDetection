@@ -353,6 +353,16 @@ void Shape::trimCorners(unsigned int numberOfNewCorners)
 	}
 }
 
+// Calculate points significant to the shape, the corners by default.
+void Shape::calculateSignificantPoints()
+{
+	// Find a (normally) reasonable search area.
+	double searchArea=screenWidth*16.0/200;
+	
+	// Only one corner is permitted in this search area. Corners must be detected 4 times.
+	calculateCorners(searchArea*searchArea, 4, 0.1);
+}
+
 // Calculate the angle to the center of the shape.
 void Shape::calculateAngle(unsigned int screenWidth, unsigned int screenHeight)
 {

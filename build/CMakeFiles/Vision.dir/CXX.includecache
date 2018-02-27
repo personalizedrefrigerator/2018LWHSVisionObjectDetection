@@ -12,6 +12,16 @@ iostream
 opencv2/opencv.hpp
 -
 
+../robotVision/Headers/Box.h
+Shape.h
+../robotVision/Headers/Shape.h
+Line.h
+../robotVision/Headers/Line.h
+Point3D.h
+../robotVision/Headers/Point3D.h
+Point2D.h
+../robotVision/Headers/Point2D.h
+
 ../robotVision/Headers/CameraFilter.h
 opencv2/opencv.hpp
 -
@@ -253,6 +263,16 @@ Vector3D.h
 /home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/Source/Vector3D.h
 NetworkCommunicator.h
 /home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/Source/NetworkCommunicator.h
+
+/home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/Source/Box.cpp
+Box.h
+/home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/Source/Box.h
+ObjectSortingContainer.h
+/home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/Source/ObjectSortingContainer.h
+ListHelper.h
+/home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/Source/ListHelper.h
+math.h
+-
 
 /home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/Source/CameraFilter.cpp
 CameraFilter.h

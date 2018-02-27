@@ -9,10 +9,14 @@ class Line
 	private:
 	Point * point1=nullptr;
 	Point * point2=nullptr;
+	bool defined = false;
 
 	public:
 	Line();
 	Line(Point * point1, Point * point2);
+	Line(const Line& other);
+	
+	
 	double getSlope(char dimension, char dimensionAcross); // Get the slope of the line, across a given dimension.
 	void setPoints(Point * point1, Point * point2);
 	double getAngle2D();
@@ -21,6 +25,9 @@ class Line
 	// Get the line at a specified point.
 	int getAt(char dimension1, char dimension2, int location);
 	bool getDefinedAt(char dimension, int location);
+	
+	// Get whether the line is defined at all.
+	bool getDefined();
 	
 	// Get versions of the individual points.
 	const Point& getPoint1();

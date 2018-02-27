@@ -15,8 +15,22 @@ Point2D::Point2D(const Point2D& makeFrom)
 	this->y=makeFrom.y;
 }
 
+Point2D::Point2D(const Point& makeFrom)
+{
+	x = makeFrom.getComponent('x');
+	y = makeFrom.getComponent('y');
+}
+
+Point2D& Point2D::operator=(const Point2D& other)
+{
+	x = other.x;
+	y = other.y;
+	
+	return *this;
+}
+
 // Get a component of the point.
-double Point2D::getComponent(char componentName)
+double Point2D::getComponent(char componentName) const
 {
 	switch(componentName)
 	{
@@ -30,6 +44,18 @@ double Point2D::getComponent(char componentName)
 		default:
 			return 0; // Return 0. The point has no components in greater than 3 dimensions.
 	}
+}
+
+// Comparison methods.
+bool Point2D::operator==(const Point2D& other)
+{
+	// Return whether the x and y components are roughly equal.
+	return (int)(other.x*comparisonFactor) == (int)(x*comparisonFactor) && (int)(other.y*comparisonFactor) == (int)(y*comparisonFactor);
+}
+
+bool Point2D::operator!=(const Point2D& other)
+{
+	return !(operator==(other));
 }
 
 // Get the distance to another.
@@ -52,7 +78,7 @@ void Point2D::setVisited(bool setTo)
 	this->visited=setTo;
 }
 
-bool Point2D::getVisited()
+bool Point2D::getVisited() const
 {
 	return visited;
 }

@@ -150,6 +150,33 @@ robotVision/Source/ApplicationController.cpp.s:
 	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/robotVision/Source/ApplicationController.cpp.s
 .PHONY : robotVision/Source/ApplicationController.cpp.s
 
+robotVision/Source/Box.o: robotVision/Source/Box.cpp.o
+
+.PHONY : robotVision/Source/Box.o
+
+# target to build an object file
+robotVision/Source/Box.cpp.o:
+	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/robotVision/Source/Box.cpp.o
+.PHONY : robotVision/Source/Box.cpp.o
+
+robotVision/Source/Box.i: robotVision/Source/Box.cpp.i
+
+.PHONY : robotVision/Source/Box.i
+
+# target to preprocess a source file
+robotVision/Source/Box.cpp.i:
+	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/robotVision/Source/Box.cpp.i
+.PHONY : robotVision/Source/Box.cpp.i
+
+robotVision/Source/Box.s: robotVision/Source/Box.cpp.s
+
+.PHONY : robotVision/Source/Box.s
+
+# target to generate assembly for a file
+robotVision/Source/Box.cpp.s:
+	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/robotVision/Source/Box.cpp.s
+.PHONY : robotVision/Source/Box.cpp.s
+
 robotVision/Source/CameraFilter.o: robotVision/Source/CameraFilter.cpp.o
 
 .PHONY : robotVision/Source/CameraFilter.o
@@ -783,6 +810,9 @@ help:
 	@echo "... robotVision/Source/ApplicationController.o"
 	@echo "... robotVision/Source/ApplicationController.i"
 	@echo "... robotVision/Source/ApplicationController.s"
+	@echo "... robotVision/Source/Box.o"
+	@echo "... robotVision/Source/Box.i"
+	@echo "... robotVision/Source/Box.s"
 	@echo "... robotVision/Source/CameraFilter.o"
 	@echo "... robotVision/Source/CameraFilter.i"
 	@echo "... robotVision/Source/CameraFilter.s"

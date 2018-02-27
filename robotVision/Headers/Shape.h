@@ -20,6 +20,7 @@
 
 class Shape
 {
+	friend class Box;
 	public:
 	Shape();
 	Shape(std::vector<Point2D> edges, std::vector<Point2D> contents);
@@ -31,13 +32,14 @@ class Shape
 	void calculateAngle(unsigned int screenWidth, unsigned int screenHeight); // Calculate the angle to the center of the shape.
 	void calculateCorners(double minDistanceSquared, unsigned int accuracy, double changeInAngle); // Find the shape's corners, without using OpenCV.
 	void calculateCornersCV(); // Find the corners of the shape, using OpenCV.
+	virtual void calculateSignificantPoints();
 	void trimCorners(unsigned int newCorners); // Trim the number of corners on the shape to a new amount (i.e., keep the furthest 4).
 	
 	void drawSelf(cv::Mat outputImage, unsigned int colorsPerPixel); // Draw a version of the shape, for corner detection, etc.
 	void drawComparisonDebugOutput(cv::Mat outputImage, Shape & other); // Draw debug output for the comparison of this shape to another.
 	void drawDebugOutput(cv::Mat outputImage); // Draw output, for debugging purposes.
 	
-	void setScreenZ(double screenZ); // Set the z position of the screen (focal length, given by OpenCV). TODO: Allow focal length to be accessed from the camera normalizer.
+	void setScreenZ(double screenZ); // Set the z position of the screen (focal length, given by OpenCV).
 
 	std::vector<Point2D> getEdges(); // Get the shape's edges.
 	std::vector<Point2D> getContents(); // Get the shape's contents.
@@ -68,8 +70,11 @@ class Shape
 	
 	CornerDetector & getCornerDetector(); // Get the object used to detect corners.
 
-	double getMatchForShape(Shape & other); // Get how well the other shape seems to match this shape.
+	virtual double getMatchForShape(Shape & other); // Get how well the other shape seems to match this shape.
 	ShapeComparisonOptions& getShapeComparisonOptions(); // Get options for comparing this and another shape.
+
+	protected:
+	std::vector<Point2D>& getCornersRefrence() { return corners; }; // Get a refrence to the list of corners.
 
 	private:
 	double comparisonFunction(double input); // Run the comparison function, with input as its input.

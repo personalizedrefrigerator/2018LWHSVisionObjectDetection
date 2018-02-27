@@ -82,8 +82,7 @@ void VisionApplication::runFrame(cv::Mat inputImage, VisionOutput & visionOutput
 			currentShape->calculateCenterAndOkScreenSize();
 			currentShape->calculateAngle(inputImage.cols, inputImage.rows);
 			
-			double searchArea=inputImage.cols*16.0/200;
-			currentShape->calculateCorners(searchArea*searchArea, 4, 0.1);
+			currentShape->calculateSignificantPoints(); // Tell the current shape to calculate its significant points.
 			currentShape->trimCorners(4);
 			
 			std::vector<Point2D> previousCornersToUse=previousCorners;
@@ -118,7 +117,7 @@ void VisionApplication::runFrame(cv::Mat inputImage, VisionOutput & visionOutput
 			
 			//unsigned int averageRedAndGreen=(averageColor.getR() + averageColor.getG())/2;
 			
-			// Set the tracking shape's color to bright yellow.
+			// Set the tracking shape's color to that of the tracking shape.
 			currentShape->setAverageColor(trackingShape.getAverageColor());
 			
 			
@@ -173,7 +172,7 @@ bool VisionApplication::loadDefaultShapes()
 	// Set its comparison options.
 	ShapeComparisonOptions& options2=cubeShape2->getShapeComparisonOptions();
 	options2.sizePortion=0.0;
-	options2.colorPortion=1.00;
+	options2.colorPortion=1.0;
 	options2.centerDeltaPortion=0.0;
 
 	// Add the shape to the list of shapes to compare with.

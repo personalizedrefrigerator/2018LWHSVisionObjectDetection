@@ -15,7 +15,7 @@ namespace ListHelper
 	void mergeSort(std::vector< ObjectSortingContainer<templateType> >& input, bool leastToGreatest); // Merge-sort the input.
 	
 	template <typename templateType>
-	std::vector< ObjectSortingContainer<templateType> > mergeTwoSorted(std::vector< ObjectSortingContainer<templateType> >& first, std::vector< ObjectSortingContainer<templateType> >& second, bool leastToGreatest); // Merge two sorted lists.
+	std::vector< ObjectSortingContainer<templateType> > mergeTwoSorted(const std::vector< ObjectSortingContainer<templateType> >& first, const std::vector< ObjectSortingContainer<templateType> >& second, bool leastToGreatest); // Merge two sorted lists.
 	
 	void testSort();
 };

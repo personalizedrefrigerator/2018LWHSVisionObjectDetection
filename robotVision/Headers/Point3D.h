@@ -13,7 +13,11 @@ class Point3D : public Point
 	double z;
 
 	Point3D(double x, double y, double z);
+	Point3D(const Point3D& other);
+	Point3D();
+	
+	Point3D& operator=(const Point3D& other); // Assign.
 
 	// Get the component of the vector on the specified dimension.
-	double getComponent(char componentName);
+	double getComponent(char componentName) const;
 };

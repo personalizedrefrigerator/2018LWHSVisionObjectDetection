@@ -11,8 +11,33 @@ Point3D::Point3D(double x, double y, double z)
 	this->z=z;
 }
 
+Point3D::Point3D()
+{
+	x=0;
+	y=0;
+	z=0;
+}
+
+// Construct from another Point3D.
+Point3D::Point3D(const Point3D& other)
+{
+	x=other.x;
+	y=other.y;
+	z=other.z;
+}
+
+// Assign this point to another.
+Point3D& Point3D::operator=(const Point3D& other)
+{
+	x=other.x;
+	y=other.y;
+	z=other.z;
+	
+	return *this;
+}
+
 // Get a component of the point.
-double Point3D::getComponent(char componentName)
+double Point3D::getComponent(char componentName) const
 {
 	switch(componentName)
 	{

@@ -1,10 +1,12 @@
 #pragma once
 
-// A class for getting information about, speciffically, a box projected into 2D space.
+// A class for getting information about, speciffically, a box projected into 2D space. This should have only 4 detected corners.
 
 // Include libararies from this project.
 #include "Shape.h"
 #include "Line.h"
+#include "Point3D.h"
+#include "Point2D.h"
 
 // A box. Takes a list of corners.
 class Box : public Shape
@@ -18,11 +20,25 @@ class Box : public Shape
 	
 	Line getVerticalSide(bool side); // Get one of the vertical sides of the box. False is left, true is right.
 	
+	virtual void calculateSignificantPoints();
+	
 	double getDistance(); // Get the distance to the box.
 	
+	// Run these methods before attempting calculations.
 	void setScreenZ(double screenZ); // Set the screen's Z position.
-	void setCameraPitch(double angle); // Set the camera's forward rotation.
+	void setScreenSize(double width, double height);
+	void setWorldHeight(double height); // Set the box's world height.
+	void convertUnits(double objectDistanceFromScreen, double actualHeight, double registeredHeight); // Convert inernally used units.
+	void setCameraPitch(double angle); // Set the camera's forward rotation (in radians).
+	void findCameraPosition();
 	
 	private:
 	double cameraAngle=0.0;
-}
+	double worldHeight=1.0;
+	double screenZ=20.0;
+	double screenWidth=0,
+		screenHeight=0;
+	double conversionFactor = 1;
+	double boxAngleToPlane = 0;
+	Point3D cameraPosition;
+};

@@ -223,7 +223,7 @@ void ApplicationController::mainLoop()
 
 	logOutput("Creating network output.");
 
-	NetworkVisionOutput visionAppOutput("10.58.27.2", "testTable"); // Create a variable to store the output of the vision application. TODO: GET RID OF STATIC IPs.
+	NetworkVisionOutput visionAppOutput("10.58.27.2", "visionTable"); // Create a variable to store the output of the vision application. TODO: GET RID OF STATIC IPs.
 
 	logOutput("Done! Creating app parameters.");
 

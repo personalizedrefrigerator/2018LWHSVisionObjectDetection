@@ -1,4 +1,3 @@
-
 #pragma once
 
 // A class to keep track of visited pixels on an image.
@@ -22,13 +21,13 @@ class VisitedList
 	void setVisited(unsigned int index, bool setTo);
 	bool getVisited(Point2D point); // Get whether a pixel has been visited.
 	bool getVisited(unsigned int index); // Get whether an index has been visited.
-	void clear(); // Clear the list of visited pixels.
+	void clearVisited(); // Clear the list of visited pixels.
 
 	std::vector<bool>& getVisited(); // Get the array of visited locations.
 
 	void addVisitedItemsFromOther(VisitedList &other); // Add all visited locations from the other visited list.
 
-	private:
+	p:
 	std::vector<bool> visited;
 	unsigned int width=0, height=0, listLength;
 };

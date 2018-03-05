@@ -17,10 +17,10 @@
 #define PI 3.1415926535897932384626433
 
 // Set the plane detector's image.
-void PlaneDetector::setImage(cv::Mat image)
+/*void PlaneDetector::setImage(cv::Mat image)
 {
 	this->image=image;
-}
+}*/
 
 // Overloaded version of detectPoints2D(Point2D).
 void PlaneDetector::detectPoints2D()
@@ -273,7 +273,7 @@ void PlaneDetector::showPlaneRegion(cv::Mat image)
 		cv::circle(image, cv::Point(point.x, point.y), 5, cv::Scalar(0, 255, 100, 200), 2, 8, 0); // 8 is line type.
 	}
 }
-
+/*
 // Note that a point was visited.
 void PlaneDetector::setVisited(Point2D point, bool isVisited)
 {
@@ -329,7 +329,7 @@ Color PlaneDetector::getColorAt(int x, int y)
 Color PlaneDetector::getColorAt(Point2D point)
 {
 	return getColorAt(point.x, point.y);
-}
+}*/
 
 // Find the average slope of an edge. Return the number of points on the edge.
 unsigned int PlaneDetector::getSlopeOfEdge(Line &output, unsigned int startIndex, unsigned int numberOfPointsToConsider)

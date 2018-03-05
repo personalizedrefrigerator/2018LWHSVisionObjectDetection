@@ -363,16 +363,27 @@ void Shape::calculateSignificantPoints()
 	calculateCorners(searchArea*searchArea, 4, 0.1);
 }
 
+// Geth the x-direction angle to a point.
+double Shape::getXAngleToPoint(double pointX)
+{
+	double x = pointX - screenWidth / 2;
+
+	return atan(x / screenZ);
+}
+
+double Shape::getYAngleToPoint(double pointY)
+{
+	double y = pointY - screenHeight / 2;
+
+	return atan(y / screenZ);
+}
+
 // Calculate the angle to the center of the shape.
 void Shape::calculateAngle(unsigned int screenWidth, unsigned int screenHeight)
 {
-	// Find the x and y parts of the position.
-	double x=center.x-screenWidth/2;
-	double y=center.y-screenHeight/2;
-	
 	// Compute the x and y parts of the angle.
-	angleX=atan(x/screenZ);
-	angleY=atan(y/screenZ);
+	angleX=getXAngleToPoint(center.x);
+	angleY=getYAngleToPoint(center.y);
 }
 
 // Draw the shape.
@@ -541,6 +552,11 @@ Point2D Shape::getFirstPoint()
 	}
 }
 
+double Shape::getScreenArea()
+{
+	return screenWidth * screenHeight;
+}
+
 // Get whether a point could be on the screen.
 bool Shape::isOnScreen(Point2D point)
 {
@@ -702,6 +718,13 @@ void Shape::setScreenZ(double screenZ)
 {
 	this->screenZ=screenZ;
 }
+
+// Set the screen dimensions.
+void Shape::setScreenSize(double width, double height)
+{
+	screenWidth = width;
+	screenHeight = height;
+};
 
 // Set the corner detector.
 void Shape::setCornerDetector(CornerDetector &cornerDetector)

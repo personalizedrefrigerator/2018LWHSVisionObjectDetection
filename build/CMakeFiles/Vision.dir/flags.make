@@ -6,5 +6,5 @@ CXX_FLAGS = -O3 -DNDEBUG   -std=gnu++11
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/Headers -I/home/killdozer/Documents/Programming/VisionObjectDetection/build/CMakeGeneratedHeaders -isystem /usr/local/include -isystem /usr/local/include/opencv 
+CXX_INCLUDES = -I/home/bob/VisionObjectDetection/robotVision/Headers -I/home/bob/VisionObjectDetection/build/CMakeGeneratedHeaders -isystem /usr/local/include -isystem /usr/local/include/opencv 
 

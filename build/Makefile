@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/killdozer/Documents/Programming/VisionObjectDetection
+CMAKE_SOURCE_DIR = /home/bob/VisionObjectDetection
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/killdozer/Documents/Programming/VisionObjectDetection/build
+CMAKE_BINARY_DIR = /home/bob/VisionObjectDetection/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -69,8 +69,8 @@ rebuild_cache/fast: rebuild_cache
 
 # Special rule for the target edit_cache
 edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
+	/usr/bin/cmake-gui -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/killdozer/Documents/Programming/VisionObjectDetection/build/CMakeFiles /home/killdozer/Documents/Programming/VisionObjectDetection/build/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/bob/VisionObjectDetection/build/CMakeFiles /home/bob/VisionObjectDetection/build/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/killdozer/Documents/Programming/VisionObjectDetection/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/bob/VisionObjectDetection/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -312,6 +312,33 @@ robotVision/Source/CornerDetector.cpp.s:
 	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/robotVision/Source/CornerDetector.cpp.s
 .PHONY : robotVision/Source/CornerDetector.cpp.s
 
+robotVision/Source/Detector.o: robotVision/Source/Detector.cpp.o
+
+.PHONY : robotVision/Source/Detector.o
+
+# target to build an object file
+robotVision/Source/Detector.cpp.o:
+	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/robotVision/Source/Detector.cpp.o
+.PHONY : robotVision/Source/Detector.cpp.o
+
+robotVision/Source/Detector.i: robotVision/Source/Detector.cpp.i
+
+.PHONY : robotVision/Source/Detector.i
+
+# target to preprocess a source file
+robotVision/Source/Detector.cpp.i:
+	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/robotVision/Source/Detector.cpp.i
+.PHONY : robotVision/Source/Detector.cpp.i
+
+robotVision/Source/Detector.s: robotVision/Source/Detector.cpp.s
+
+.PHONY : robotVision/Source/Detector.s
+
+# target to generate assembly for a file
+robotVision/Source/Detector.cpp.s:
+	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/robotVision/Source/Detector.cpp.s
+.PHONY : robotVision/Source/Detector.cpp.s
+
 robotVision/Source/GenericVisionOutput.o: robotVision/Source/GenericVisionOutput.cpp.o
 
 .PHONY : robotVision/Source/GenericVisionOutput.o
@@ -338,6 +365,33 @@ robotVision/Source/GenericVisionOutput.s: robotVision/Source/GenericVisionOutput
 robotVision/Source/GenericVisionOutput.cpp.s:
 	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/robotVision/Source/GenericVisionOutput.cpp.s
 .PHONY : robotVision/Source/GenericVisionOutput.cpp.s
+
+robotVision/Source/LightedLine.o: robotVision/Source/LightedLine.cpp.o
+
+.PHONY : robotVision/Source/LightedLine.o
+
+# target to build an object file
+robotVision/Source/LightedLine.cpp.o:
+	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/robotVision/Source/LightedLine.cpp.o
+.PHONY : robotVision/Source/LightedLine.cpp.o
+
+robotVision/Source/LightedLine.i: robotVision/Source/LightedLine.cpp.i
+
+.PHONY : robotVision/Source/LightedLine.i
+
+# target to preprocess a source file
+robotVision/Source/LightedLine.cpp.i:
+	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/robotVision/Source/LightedLine.cpp.i
+.PHONY : robotVision/Source/LightedLine.cpp.i
+
+robotVision/Source/LightedLine.s: robotVision/Source/LightedLine.cpp.s
+
+.PHONY : robotVision/Source/LightedLine.s
+
+# target to generate assembly for a file
+robotVision/Source/LightedLine.cpp.s:
+	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/robotVision/Source/LightedLine.cpp.s
+.PHONY : robotVision/Source/LightedLine.cpp.s
 
 robotVision/Source/Line.o: robotVision/Source/Line.cpp.o
 
@@ -392,6 +446,33 @@ robotVision/Source/ListHelper.s: robotVision/Source/ListHelper.cpp.s
 robotVision/Source/ListHelper.cpp.s:
 	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/robotVision/Source/ListHelper.cpp.s
 .PHONY : robotVision/Source/ListHelper.cpp.s
+
+robotVision/Source/MathHelper.o: robotVision/Source/MathHelper.cpp.o
+
+.PHONY : robotVision/Source/MathHelper.o
+
+# target to build an object file
+robotVision/Source/MathHelper.cpp.o:
+	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/robotVision/Source/MathHelper.cpp.o
+.PHONY : robotVision/Source/MathHelper.cpp.o
+
+robotVision/Source/MathHelper.i: robotVision/Source/MathHelper.cpp.i
+
+.PHONY : robotVision/Source/MathHelper.i
+
+# target to preprocess a source file
+robotVision/Source/MathHelper.cpp.i:
+	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/robotVision/Source/MathHelper.cpp.i
+.PHONY : robotVision/Source/MathHelper.cpp.i
+
+robotVision/Source/MathHelper.s: robotVision/Source/MathHelper.cpp.s
+
+.PHONY : robotVision/Source/MathHelper.s
+
+# target to generate assembly for a file
+robotVision/Source/MathHelper.cpp.s:
+	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/robotVision/Source/MathHelper.cpp.s
+.PHONY : robotVision/Source/MathHelper.cpp.s
 
 robotVision/Source/NetworkCommunicator.o: robotVision/Source/NetworkCommunicator.cpp.o
 
@@ -554,6 +635,33 @@ robotVision/Source/Point3D.s: robotVision/Source/Point3D.cpp.s
 robotVision/Source/Point3D.cpp.s:
 	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/robotVision/Source/Point3D.cpp.s
 .PHONY : robotVision/Source/Point3D.cpp.s
+
+robotVision/Source/PowerCube.o: robotVision/Source/PowerCube.cpp.o
+
+.PHONY : robotVision/Source/PowerCube.o
+
+# target to build an object file
+robotVision/Source/PowerCube.cpp.o:
+	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/robotVision/Source/PowerCube.cpp.o
+.PHONY : robotVision/Source/PowerCube.cpp.o
+
+robotVision/Source/PowerCube.i: robotVision/Source/PowerCube.cpp.i
+
+.PHONY : robotVision/Source/PowerCube.i
+
+# target to preprocess a source file
+robotVision/Source/PowerCube.cpp.i:
+	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/robotVision/Source/PowerCube.cpp.i
+.PHONY : robotVision/Source/PowerCube.cpp.i
+
+robotVision/Source/PowerCube.s: robotVision/Source/PowerCube.cpp.s
+
+.PHONY : robotVision/Source/PowerCube.s
+
+# target to generate assembly for a file
+robotVision/Source/PowerCube.cpp.s:
+	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/robotVision/Source/PowerCube.cpp.s
+.PHONY : robotVision/Source/PowerCube.cpp.s
 
 robotVision/Source/Serialize.o: robotVision/Source/Serialize.cpp.o
 
@@ -828,15 +936,24 @@ help:
 	@echo "... robotVision/Source/CornerDetector.o"
 	@echo "... robotVision/Source/CornerDetector.i"
 	@echo "... robotVision/Source/CornerDetector.s"
+	@echo "... robotVision/Source/Detector.o"
+	@echo "... robotVision/Source/Detector.i"
+	@echo "... robotVision/Source/Detector.s"
 	@echo "... robotVision/Source/GenericVisionOutput.o"
 	@echo "... robotVision/Source/GenericVisionOutput.i"
 	@echo "... robotVision/Source/GenericVisionOutput.s"
+	@echo "... robotVision/Source/LightedLine.o"
+	@echo "... robotVision/Source/LightedLine.i"
+	@echo "... robotVision/Source/LightedLine.s"
 	@echo "... robotVision/Source/Line.o"
 	@echo "... robotVision/Source/Line.i"
 	@echo "... robotVision/Source/Line.s"
 	@echo "... robotVision/Source/ListHelper.o"
 	@echo "... robotVision/Source/ListHelper.i"
 	@echo "... robotVision/Source/ListHelper.s"
+	@echo "... robotVision/Source/MathHelper.o"
+	@echo "... robotVision/Source/MathHelper.i"
+	@echo "... robotVision/Source/MathHelper.s"
 	@echo "... robotVision/Source/NetworkCommunicator.o"
 	@echo "... robotVision/Source/NetworkCommunicator.i"
 	@echo "... robotVision/Source/NetworkCommunicator.s"
@@ -855,6 +972,9 @@ help:
 	@echo "... robotVision/Source/Point3D.o"
 	@echo "... robotVision/Source/Point3D.i"
 	@echo "... robotVision/Source/Point3D.s"
+	@echo "... robotVision/Source/PowerCube.o"
+	@echo "... robotVision/Source/PowerCube.i"
+	@echo "... robotVision/Source/PowerCube.s"
 	@echo "... robotVision/Source/Serialize.o"
 	@echo "... robotVision/Source/Serialize.i"
 	@echo "... robotVision/Source/Serialize.s"

@@ -30,8 +30,8 @@ void ShapeDetector::detectAllShapes()
 
 	Point2D currentPoint;
 
-	unsigned int deltaX=image.cols/4;
-	unsigned int deltaY=image.rows/4;
+	unsigned int deltaX=image.cols/10;
+	unsigned int deltaY=image.rows/7;
 	
 	// For every pixel,
 	for(x=0; x<image.cols; x+=deltaX)
@@ -47,7 +47,9 @@ void ShapeDetector::detectAllShapes()
 				Shape * currentShape=new Shape();
 				detector.detectPoints2D(currentPoint);
 				detector.outputToShape(*currentShape);
+				
 				currentShape->calculateCenterAndOkScreenSize();
+				//currentShape->setScreenSize(image.cols, image.rows);
 
 				// Add the current shape to those found.
 				foundShapes.push_back(currentShape);
@@ -87,6 +89,7 @@ void ShapeDetector::findProbableShapes()
 		// Get the shape at the index to compare with.
 		currentLastframeShape = comparisonShapes->at(indexInShapesToComapreWith);
 
+		currentLastframeShape->setScreenSize(image.cols, image.rows); // Set its known screen size.
 
 		// Find points related to that shape
 		// Find a shape. A NEW shape.
@@ -167,7 +170,7 @@ bool ShapeDetector::findTargetAndUpdate(Shape &result, double worstMatch)
 			rating = currentComparisonShape->getMatchForShape(*currentDetectorShape);
 
 			// If this rating is the best so far, note this.
-			if(rating > greatestRating && currentDetectorShape->getContentSize() > 0)
+			if(rating >= greatestRating && currentDetectorShape->getContentSize() > 0)
 			{
 				greatestRating=rating;
 				indexOfGreatestRating=shapeIndex;

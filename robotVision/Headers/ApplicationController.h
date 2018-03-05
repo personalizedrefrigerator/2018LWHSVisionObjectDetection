@@ -33,7 +33,7 @@ class ApplicationController
 	bool cameraNumberSet=false; // Whether the client has set the camera number.
 	bool logInfo=false; // Whether output should be logged.
 	
-	cv::Size imageSize=cv::Size(400,400);
+	cv::Size imageSize=cv::Size(600,600);
 
 	// The stream to log output to.
 	std::ostream * outputStream=&(std::cout);

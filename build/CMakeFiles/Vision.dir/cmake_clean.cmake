@@ -24,6 +24,10 @@ file(REMOVE_RECURSE
   "CMakeFiles/Vision.dir/robotVision/Source/ListHelper.cpp.o"
   "CMakeFiles/Vision.dir/robotVision/Source/ObjectSortingContainer.cpp.o"
   "CMakeFiles/Vision.dir/robotVision/Source/Box.cpp.o"
+  "CMakeFiles/Vision.dir/robotVision/Source/PowerCube.cpp.o"
+  "CMakeFiles/Vision.dir/robotVision/Source/LightedLine.cpp.o"
+  "CMakeFiles/Vision.dir/robotVision/Source/MathHelper.cpp.o"
+  "CMakeFiles/Vision.dir/robotVision/Source/Detector.cpp.o"
   "Vision.pdb"
   "Vision"
 )

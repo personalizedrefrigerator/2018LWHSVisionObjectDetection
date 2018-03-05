@@ -1,5 +1,7 @@
 #include "VisionApplication.h"
 
+#include "PowerCube.h"
+
 VisionApplication::VisionApplication()
 {
 	// Clear the detector's list of comparison shapes.
@@ -142,6 +144,7 @@ void VisionApplication::findShapes(cv::Mat image)
 	
 	// Set whether we are tracking shapes to whether the detector has found any.
 	trackingObjects=detector.getFoundShapes().size() > 0;
+
 }
 
 // Set whether the debug output of the program should be drawn to the image, etc.
@@ -156,27 +159,10 @@ bool VisionApplication::loadDefaultShapes()
 	shapesToCompare.clear();
 
 	// Make a yellow, empty shape, that finds others completely based on color.
-	Shape * cubeShape=new Shape();
-	cubeShape->setAverageColor(Color(255, 255, 0));
+	Shape * cubeShape=new PowerCube();
 	
-	// Set its comparison options.
-	ShapeComparisonOptions& options=cubeShape->getShapeComparisonOptions();
-	options.sizePortion=0.0;
-	options.colorPortion=1.00;
-	options.centerDeltaPortion=0.0;
-	
-	// Make another cube-like shape
-	Shape * cubeShape2=new Shape();
-	cubeShape2->setAverageColor(Color(200, 200, 0));
-	
-	// Set its comparison options.
-	ShapeComparisonOptions& options2=cubeShape2->getShapeComparisonOptions();
-	options2.sizePortion=0.0;
-	options2.colorPortion=1.0;
-	options2.centerDeltaPortion=0.0;
-
 	// Add the shape to the list of shapes to compare with.
-	shapesToCompare.push_back(cubeShape2);
+	shapesToCompare.push_back(cubeShape);
 
 	// Return true on success.
 	return true;

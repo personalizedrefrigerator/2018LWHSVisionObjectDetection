@@ -21,6 +21,8 @@ Point3D.h
 ../robotVision/Headers/Point3D.h
 Point2D.h
 ../robotVision/Headers/Point2D.h
+opencv2/opencv.hpp
+-
 
 ../robotVision/Headers/CameraFilter.h
 opencv2/opencv.hpp
@@ -68,6 +70,16 @@ Point2D.h
 vector
 -
 
+../robotVision/Headers/Detector.h
+Color.h
+../robotVision/Headers/Color.h
+Point2D.h
+../robotVision/Headers/Point2D.h
+VisitedList.h
+../robotVision/Headers/VisitedList.h
+opencv2/opencv.hpp
+-
+
 ../robotVision/Headers/GenericVisionOutput.h
 VisionOutput.h
 ../robotVision/Headers/VisionOutput.h
@@ -77,6 +89,10 @@ Point2D.h
 ../robotVision/Headers/Point2D.h
 string
 -
+
+../robotVision/Headers/LightedLine.h
+Shape.h
+../robotVision/Headers/Shape.h
 
 ../robotVision/Headers/Line.h
 Point.h
@@ -97,6 +113,8 @@ iostream
 -
 sstream
 -
+
+../robotVision/Headers/MathHelper.h
 
 ../robotVision/Headers/NetworkCommunicator.h
 CMakeConfigurationInformation.h
@@ -137,6 +155,8 @@ Shape.h
 ../robotVision/Headers/Shape.h
 VisitedList.h
 ../robotVision/Headers/VisitedList.h
+Detector.h
+../robotVision/Headers/Detector.h
 PlaneDetectorOptions.h
 ../robotVision/Headers/PlaneDetectorOptions.h
 
@@ -153,6 +173,10 @@ math.h
 ../robotVision/Headers/Point3D.h
 Point.h
 ../robotVision/Headers/Point.h
+
+../robotVision/Headers/PowerCube.h
+Box.h
+../robotVision/Headers/Box.h
 
 ../robotVision/Headers/Serialize.h
 string
@@ -238,9 +262,9 @@ Point2D.h
 vector
 -
 
-/home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/Source/ApplicationController.cpp
+/home/bob/VisionObjectDetection/robotVision/Source/ApplicationController.cpp
 ApplicationController.h
-/home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/Source/ApplicationController.h
+/home/bob/VisionObjectDetection/robotVision/Source/ApplicationController.h
 iostream
 -
 sstream
@@ -252,81 +276,91 @@ opencv2/opencv.hpp
 opencv2/imgproc.hpp
 -
 CameraFilter.h
-/home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/Source/CameraFilter.h
+/home/bob/VisionObjectDetection/robotVision/Source/CameraFilter.h
 VisionApplication.h
-/home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/Source/VisionApplication.h
+/home/bob/VisionObjectDetection/robotVision/Source/VisionApplication.h
 CameraOptionsTrackbarManager.h
-/home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/Source/CameraOptionsTrackbarManager.h
+/home/bob/VisionObjectDetection/robotVision/Source/CameraOptionsTrackbarManager.h
 NetworkVisionOutput.h
-/home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/Source/NetworkVisionOutput.h
+/home/bob/VisionObjectDetection/robotVision/Source/NetworkVisionOutput.h
 Vector3D.h
-/home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/Source/Vector3D.h
+/home/bob/VisionObjectDetection/robotVision/Source/Vector3D.h
 NetworkCommunicator.h
-/home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/Source/NetworkCommunicator.h
+/home/bob/VisionObjectDetection/robotVision/Source/NetworkCommunicator.h
 
-/home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/Source/Box.cpp
+/home/bob/VisionObjectDetection/robotVision/Source/Box.cpp
 Box.h
-/home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/Source/Box.h
+/home/bob/VisionObjectDetection/robotVision/Source/Box.h
 ObjectSortingContainer.h
-/home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/Source/ObjectSortingContainer.h
+/home/bob/VisionObjectDetection/robotVision/Source/ObjectSortingContainer.h
 ListHelper.h
-/home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/Source/ListHelper.h
+/home/bob/VisionObjectDetection/robotVision/Source/ListHelper.h
+MathHelper.h
+/home/bob/VisionObjectDetection/robotVision/Source/MathHelper.h
 math.h
 -
 
-/home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/Source/CameraFilter.cpp
+/home/bob/VisionObjectDetection/robotVision/Source/CameraFilter.cpp
 CameraFilter.h
-/home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/Source/CameraFilter.h
+/home/bob/VisionObjectDetection/robotVision/Source/CameraFilter.h
 PlaneDetectorOptions.h
-/home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/Source/PlaneDetectorOptions.h
+/home/bob/VisionObjectDetection/robotVision/Source/PlaneDetectorOptions.h
 vector
 -
 opencv2/stitching.hpp
 -
 
-/home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/Source/CameraNormalizer.cpp
+/home/bob/VisionObjectDetection/robotVision/Source/CameraNormalizer.cpp
 CameraNormalizer.h
-/home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/Source/CameraNormalizer.h
+/home/bob/VisionObjectDetection/robotVision/Source/CameraNormalizer.h
 opencv2/opencv.hpp
 -
 opencv2/imgproc.hpp
 -
 Serialize.h
-/home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/Source/Serialize.h
+/home/bob/VisionObjectDetection/robotVision/Source/Serialize.h
 fstream
 -
 sstream
 -
 
-/home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/Source/CameraOptionsTrackbarManager.cpp
+/home/bob/VisionObjectDetection/robotVision/Source/CameraOptionsTrackbarManager.cpp
 CameraOptionsTrackbarManager.h
-/home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/Source/CameraOptionsTrackbarManager.h
+/home/bob/VisionObjectDetection/robotVision/Source/CameraOptionsTrackbarManager.h
 
-/home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/Source/Color.cpp
+/home/bob/VisionObjectDetection/robotVision/Source/Color.cpp
 Color.h
-/home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/Source/Color.h
+/home/bob/VisionObjectDetection/robotVision/Source/Color.h
 math.h
 -
 
-/home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/Source/CornerDetector.cpp
+/home/bob/VisionObjectDetection/robotVision/Source/CornerDetector.cpp
 CornerDetector.h
-/home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/Source/CornerDetector.h
+/home/bob/VisionObjectDetection/robotVision/Source/CornerDetector.h
 
-/home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/Source/GenericVisionOutput.cpp
+/home/bob/VisionObjectDetection/robotVision/Source/Detector.cpp
+Detector.h
+/home/bob/VisionObjectDetection/robotVision/Source/Detector.h
+
+/home/bob/VisionObjectDetection/robotVision/Source/GenericVisionOutput.cpp
 GenericVisionOutput.h
-/home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/Source/GenericVisionOutput.h
+/home/bob/VisionObjectDetection/robotVision/Source/GenericVisionOutput.h
 
-/home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/Source/Line.cpp
+/home/bob/VisionObjectDetection/robotVision/Source/LightedLine.cpp
+LightedLine.h
+/home/bob/VisionObjectDetection/robotVision/Source/LightedLine.h
+
+/home/bob/VisionObjectDetection/robotVision/Source/Line.cpp
 Point.h
-/home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/Source/Point.h
+/home/bob/VisionObjectDetection/robotVision/Source/Point.h
 Line.h
-/home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/Source/Line.h
+/home/bob/VisionObjectDetection/robotVision/Source/Line.h
 math.h
 -
 
-/home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/Source/ListHelper.cpp
+/home/bob/VisionObjectDetection/robotVision/Source/ListHelper.cpp
 ListHelper.h
-/home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/Source/ListHelper.h
+/home/bob/VisionObjectDetection/robotVision/Source/ListHelper.h
 iostream
 -
 math.h
@@ -336,27 +370,33 @@ cstdlib
 vector
 -
 
-/home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/Source/NetworkCommunicator.cpp
+/home/bob/VisionObjectDetection/robotVision/Source/MathHelper.cpp
+MathHelper.h
+/home/bob/VisionObjectDetection/robotVision/Source/MathHelper.h
+math.h
+-
+
+/home/bob/VisionObjectDetection/robotVision/Source/NetworkCommunicator.cpp
 NetworkCommunicator.h
-/home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/Source/NetworkCommunicator.h
+/home/bob/VisionObjectDetection/robotVision/Source/NetworkCommunicator.h
 CMakeConfigurationInformation.h
-/home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/Source/CMakeConfigurationInformation.h
+/home/bob/VisionObjectDetection/robotVision/Source/CMakeConfigurationInformation.h
 ntcore.h
-/home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/Source/ntcore.h
+/home/bob/VisionObjectDetection/robotVision/Source/ntcore.h
 networktables/NetworkTable.h
-/home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/Source/networktables/NetworkTable.h
+/home/bob/VisionObjectDetection/robotVision/Source/networktables/NetworkTable.h
 
-/home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/Source/NetworkVisionOutput.cpp
+/home/bob/VisionObjectDetection/robotVision/Source/NetworkVisionOutput.cpp
 NetworkVisionOutput.h
-/home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/Source/NetworkVisionOutput.h
+/home/bob/VisionObjectDetection/robotVision/Source/NetworkVisionOutput.h
 
-/home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/Source/ObjectSortingContainer.cpp
+/home/bob/VisionObjectDetection/robotVision/Source/ObjectSortingContainer.cpp
 ObjectSortingContainer.h
-/home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/Source/ObjectSortingContainer.h
+/home/bob/VisionObjectDetection/robotVision/Source/ObjectSortingContainer.h
 
-/home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/Source/PlaneDetector.cpp
+/home/bob/VisionObjectDetection/robotVision/Source/PlaneDetector.cpp
 PlaneDetector.h
-/home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/Source/PlaneDetector.h
+/home/bob/VisionObjectDetection/robotVision/Source/PlaneDetector.h
 opencv2/opencv.hpp
 -
 queue
@@ -364,81 +404,89 @@ queue
 cstdlib
 -
 Point3D.h
-/home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/Source/Point3D.h
+/home/bob/VisionObjectDetection/robotVision/Source/Point3D.h
 Point2D.h
-/home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/Source/Point2D.h
+/home/bob/VisionObjectDetection/robotVision/Source/Point2D.h
 Color.h
-/home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/Source/Color.h
+/home/bob/VisionObjectDetection/robotVision/Source/Color.h
 math.h
 -
 
-/home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/Source/Point2D.cpp
+/home/bob/VisionObjectDetection/robotVision/Source/Point2D.cpp
 Point2D.h
-/home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/Source/Point2D.h
+/home/bob/VisionObjectDetection/robotVision/Source/Point2D.h
 
-/home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/Source/Point3D.cpp
+/home/bob/VisionObjectDetection/robotVision/Source/Point3D.cpp
 Point3D.h
-/home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/Source/Point3D.h
+/home/bob/VisionObjectDetection/robotVision/Source/Point3D.h
 
-/home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/Source/Serialize.cpp
+/home/bob/VisionObjectDetection/robotVision/Source/PowerCube.cpp
+PowerCube.h
+/home/bob/VisionObjectDetection/robotVision/Source/PowerCube.h
+Color.h
+/home/bob/VisionObjectDetection/robotVision/Source/Color.h
+
+/home/bob/VisionObjectDetection/robotVision/Source/Serialize.cpp
 Serialize.h
-/home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/Source/Serialize.h
+/home/bob/VisionObjectDetection/robotVision/Source/Serialize.h
 sstream
 -
 cstdlib
 -
 
-/home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/Source/Shape.cpp
+/home/bob/VisionObjectDetection/robotVision/Source/Shape.cpp
 Shape.h
-/home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/Source/Shape.h
+/home/bob/VisionObjectDetection/robotVision/Source/Shape.h
 VisitedList.h
-/home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/Source/VisitedList.h
+/home/bob/VisionObjectDetection/robotVision/Source/VisitedList.h
 ListHelper.h
-/home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/Source/ListHelper.h
+/home/bob/VisionObjectDetection/robotVision/Source/ListHelper.h
 ObjectSortingContainer.h
-/home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/Source/ObjectSortingContainer.h
+/home/bob/VisionObjectDetection/robotVision/Source/ObjectSortingContainer.h
 math.h
 -
 
-/home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/Source/ShapeDetector.cpp
+/home/bob/VisionObjectDetection/robotVision/Source/ShapeDetector.cpp
 ShapeDetector.h
-/home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/Source/ShapeDetector.h
+/home/bob/VisionObjectDetection/robotVision/Source/ShapeDetector.h
 iostream
 -
 
-/home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/Source/ShapeList.cpp
+/home/bob/VisionObjectDetection/robotVision/Source/ShapeList.cpp
 ShapeList.h
-/home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/Source/ShapeList.h
+/home/bob/VisionObjectDetection/robotVision/Source/ShapeList.h
 iostream
 -
 
-/home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/Source/ShapeLoader.cpp
+/home/bob/VisionObjectDetection/robotVision/Source/ShapeLoader.cpp
 ShapeLoader.h
-/home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/Source/ShapeLoader.h
+/home/bob/VisionObjectDetection/robotVision/Source/ShapeLoader.h
 Serialize.h
-/home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/Source/Serialize.h
+/home/bob/VisionObjectDetection/robotVision/Source/Serialize.h
 fstream
 -
 
-/home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/Source/Vector3D.cpp
+/home/bob/VisionObjectDetection/robotVision/Source/Vector3D.cpp
 Vector3D.h
-/home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/Source/Vector3D.h
+/home/bob/VisionObjectDetection/robotVision/Source/Vector3D.h
 math.h
 -
 
-/home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/Source/VisionApplication.cpp
+/home/bob/VisionObjectDetection/robotVision/Source/VisionApplication.cpp
 VisionApplication.h
-/home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/Source/VisionApplication.h
+/home/bob/VisionObjectDetection/robotVision/Source/VisionApplication.h
+PowerCube.h
+/home/bob/VisionObjectDetection/robotVision/Source/PowerCube.h
 
-/home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/Source/VisitedList.cpp
+/home/bob/VisionObjectDetection/robotVision/Source/VisitedList.cpp
 VisitedList.h
-/home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/Source/VisitedList.h
+/home/bob/VisionObjectDetection/robotVision/Source/VisitedList.h
 
-/home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/main.cpp
+/home/bob/VisionObjectDetection/robotVision/main.cpp
 ApplicationController.h
-/home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/ApplicationController.h
+/home/bob/VisionObjectDetection/robotVision/ApplicationController.h
 ListHelper.h
-/home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/ListHelper.h
+/home/bob/VisionObjectDetection/robotVision/ListHelper.h
 
 /usr/local/include/opencv/cxcore.h
 opencv2/core/core_c.h
@@ -477,10 +525,6 @@ opencv2/core/mat.hpp
 /usr/local/include/opencv2/opencv2/core/mat.hpp
 opencv2/core/persistence.hpp
 /usr/local/include/opencv2/opencv2/core/persistence.hpp
-opencv2/opencv.hpp
-/usr/local/include/opencv2/opencv2/opencv.hpp
-opencv2/xfeatures2d.hpp
-/usr/local/include/opencv2/opencv2/xfeatures2d.hpp
 opencv2/core/operations.hpp
 /usr/local/include/opencv2/opencv2/core/operations.hpp
 opencv2/core/cvstd.inl.hpp
@@ -529,6 +573,8 @@ opencv2/core.hpp
 /usr/local/include/opencv2/core/opencv2/core.hpp
 opencv2/core/cuda_types.hpp
 /usr/local/include/opencv2/core/opencv2/core/cuda_types.hpp
+opencv2/opencv.hpp
+-
 opencv2/core/cuda.inl.hpp
 /usr/local/include/opencv2/core/opencv2/core/cuda.inl.hpp
 
@@ -604,6 +650,10 @@ cv_cpu_dispatch.h
 intrin.h
 -
 array
+-
+cstdint
+-
+stdint.h
 -
 
 /usr/local/include/opencv2/core/cvstd.hpp
@@ -775,6 +825,42 @@ opencv2/core/core_c.h
 /usr/local/include/opencv2/core/vsx_utils.hpp
 opencv2/core/cvdef.h
 /usr/local/include/opencv2/core/opencv2/core/cvdef.h
+assert.h
+-
+
+/usr/local/include/opencv2/dnn.hpp
+opencv2/dnn/dnn.hpp
+-
+
+/usr/local/include/opencv2/dnn/dict.hpp
+opencv2/core.hpp
+-
+map
+-
+ostream
+-
+opencv2/dnn/dnn.hpp
+-
+
+/usr/local/include/opencv2/dnn/dnn.hpp
+vector
+-
+opencv2/core.hpp
+-
+opencv2/dnn/dict.hpp
+-
+opencv2/dnn/layer.hpp
+-
+opencv2/dnn/dnn.inl.hpp
+-
+
+/usr/local/include/opencv2/dnn/dnn.inl.hpp
+opencv2/dnn.hpp
+-
+
+/usr/local/include/opencv2/dnn/layer.hpp
+opencv2/dnn.hpp
+-
 
 /usr/local/include/opencv2/features2d.hpp
 opencv2/opencv_modules.hpp
@@ -1233,8 +1319,6 @@ opencv2/videoio/videoio_c.h
 /usr/local/include/opencv2/imgcodecs.hpp
 opencv2/core.hpp
 /usr/local/include/opencv2/opencv2/core.hpp
-opencv2/opencv.hpp
--
 
 /usr/local/include/opencv2/imgcodecs/imgcodecs_c.h
 opencv2/core/core_c.h
@@ -1327,6 +1411,8 @@ opencv2/calib3d.hpp
 /usr/local/include/opencv2/opencv2/calib3d.hpp
 opencv2/features2d.hpp
 /usr/local/include/opencv2/opencv2/features2d.hpp
+opencv2/dnn.hpp
+/usr/local/include/opencv2/opencv2/dnn.hpp
 opencv2/flann.hpp
 /usr/local/include/opencv2/opencv2/flann.hpp
 opencv2/highgui.hpp

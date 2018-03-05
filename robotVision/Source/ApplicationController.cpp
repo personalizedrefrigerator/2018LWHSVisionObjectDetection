@@ -192,7 +192,7 @@ void ApplicationController::mainLoop()
 
 	int colorChangeThreshold=(int)options.colorChangeThreshold; 
 	int averageChangeThreshold=(int)options.averageChangeThreshold;
-	int minRating=21, minH=20, maxH=35, minS=93, maxS=232, minV=0, maxV=256;
+	int minRating=21, minH=20, maxH=35, minS=93, maxS=256, minV=0, maxV=256;
 	/*int cornerK=4000,
 		cornersToFind=4,
 		minCornerDistance=4,

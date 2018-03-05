@@ -12,17 +12,18 @@
 #include "Line.h"
 #include "Shape.h"
 #include "VisitedList.h"
+#include "Detector.h"
 
 #include "PlaneDetectorOptions.h"
 
 // Detect a plane and points on it. This class is slowly being removed. DO NOT ADD TO IT.
 //Henry Heino
 
-class PlaneDetector
+class PlaneDetector : public Detector
 {
 	public:
 	PlaneDetector() {};
-	void setImage(cv::Mat image);
+	//void setImage(cv::Mat image);
 	void detectPoints2D(Point2D startPosition);
 	void detectPoints2D();
 	void detectSignificantPoints();
@@ -30,18 +31,18 @@ class PlaneDetector
 	void setFocalLengths(double fX, double fY);// TODO:Implement
 
 	// Manipulate whether a pixel is considered "visited."
-	void setVisited(Point2D point, bool setTo);
-	bool getVisited(Point2D point);
-	VisitedList& getVisitedList();
-	void clearVisited();
+	//void setVisited(Point2D point, bool setTo);
+	//bool getVisited(Point2D point);
+	//VisitedList& getVisitedList();
+	//void clearVisited();
 
 	unsigned int getSlopeOfEdge(Line &output, unsigned int startIndex, unsigned int numberToConsider); // Returns the points on the line.
 	bool getIsFullEdge(unsigned int start, unsigned int stop, unsigned int maxJump);
 
-	Color getColorAt(int x, int y);
-	Color getColorAt(Point2D point);
-	bool isOnImage(int x, int y);
-	bool isOnImage(Point2D point);
+	//Color getColorAt(int x, int y);
+	//Color getColorAt(Point2D point);
+	//bool isOnImage(int x, int y);
+	//bool isOnImage(Point2D point);
 
 	std::vector<Point3D> getSignificantPoints();	// TODO: Implement
 	
@@ -67,7 +68,7 @@ class PlaneDetector
 
 	Color averageColor=Color(0,0,0);
 
-	cv::Mat image;
+	//cv::Mat image;
 
 	// Initialize focal lengths.
 	double fX=10.0, fY=10.0;
@@ -81,6 +82,6 @@ class PlaneDetector
 	int deltaX=6, deltaY=2;
 
 	// An array storing whether any given pixel has been visited.
-	VisitedList visited;
-	unsigned int visitedLength=0;
+	//VisitedList visited;
+	//unsigned int visitedLength=0;
 };

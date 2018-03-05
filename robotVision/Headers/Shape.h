@@ -26,7 +26,7 @@ class Shape
 	Shape(std::vector<Point2D> edges, std::vector<Point2D> contents);
 	Shape(Shape & other);
 	~Shape();
-	
+
 	// Calculate the corners and center point.
 	void calculateCenterAndOkScreenSize();
 	void calculateAngle(unsigned int screenWidth, unsigned int screenHeight); // Calculate the angle to the center of the shape.
@@ -34,12 +34,13 @@ class Shape
 	void calculateCornersCV(); // Find the corners of the shape, using OpenCV.
 	virtual void calculateSignificantPoints();
 	void trimCorners(unsigned int newCorners); // Trim the number of corners on the shape to a new amount (i.e., keep the furthest 4).
-	
+
 	void drawSelf(cv::Mat outputImage, unsigned int colorsPerPixel); // Draw a version of the shape, for corner detection, etc.
 	void drawComparisonDebugOutput(cv::Mat outputImage, Shape & other); // Draw debug output for the comparison of this shape to another.
-	void drawDebugOutput(cv::Mat outputImage); // Draw output, for debugging purposes.
-	
+	virtual void drawDebugOutput(cv::Mat outputImage); // Draw output, for debugging purposes.
+
 	void setScreenZ(double screenZ); // Set the z position of the screen (focal length, given by OpenCV).
+	void setScreenSize(double width, double height); // Set the size of the screen.
 
 	std::vector<Point2D> getEdges(); // Get the shape's edges.
 	std::vector<Point2D> getContents(); // Get the shape's contents.
@@ -48,8 +49,11 @@ class Shape
 	Point2D getCenter(); // Get the center point.
 	Point2D getFirstPoint(); // Get the first point.
 	Color getAverageColor(); // Get the average color.
+	double getScreenArea(); // Get the estimated number of pixels on the screen.
 	double getXAngle(); // Get the angle to the shape's center from the center of the screen, accross the x-axis. Set screen z first.
 	double getYAngle(); // Get the angle to the shape's center from the screen's center, accross the y-axis. Set screen z first.
+	double getXAngleToPoint(double point); // Get the x angle to a point.
+	double getYAngleToPoint(double point); // Get the y angle to a given point.
 	void getCorners(std::vector<Point2D>& outputVector); // Output corners to outputVector.
 	void compareAndFilterCorners(const std::vector<Point2D>& previousCorners, Point2D otherCenter); // Compare the current corners to the previous, filtering those that barely match.
 
@@ -66,8 +70,8 @@ class Shape
 
 	void setCornerDetector(CornerDetector & cornerDetector); // Set the object used to detect corners.
 	void setShapeComparisonOptions(ShapeComparisonOptions newOptions); // Set the options for comparing this to another shape.
-	
-	
+
+
 	CornerDetector & getCornerDetector(); // Get the object used to detect corners.
 
 	virtual double getMatchForShape(Shape & other); // Get how well the other shape seems to match this shape.
@@ -78,7 +82,7 @@ class Shape
 
 	private:
 	double comparisonFunction(double input); // Run the comparison function, with input as its input.
-	
+
 	std::vector<Point2D> edges;
 	std::vector<Point2D> contents;
 	std::vector<Point2D> corners;
@@ -89,21 +93,21 @@ class Shape
 
 	// The shape's average color.
 	Color averageColor=Color(0,0,0);
-	
+
 	// The angle to the center of the shape.
 	double angleX, angleY;
-	
+
 	// The Z position of the screen. Assume 20 units.
 	double screenZ=20.0;
-	
+
 	// Information involving the screen.
 	unsigned int screenWidth=0, screenHeight=0;
 
 	std::vector<unsigned int> distanceSquaredToEdges; // The distance squareds to each edge-point.
-	
+
 	// The detector to be used to detect corners.
 	CornerDetector cornerDetector=CornerDetector();
-	
+
 	// The options for comparing this and another shape.
 	ShapeComparisonOptions comparisonOptions;
 };

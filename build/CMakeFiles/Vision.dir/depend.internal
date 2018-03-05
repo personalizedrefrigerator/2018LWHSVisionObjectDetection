@@ -8,6 +8,7 @@ CMakeFiles/Vision.dir/robotVision/Source/ApplicationController.cpp.o
  ../robotVision/Headers/CameraOptionsTrackbarManager.h
  ../robotVision/Headers/Color.h
  ../robotVision/Headers/CornerDetector.h
+ ../robotVision/Headers/Detector.h
  ../robotVision/Headers/GenericVisionOutput.h
  ../robotVision/Headers/Line.h
  ../robotVision/Headers/NetworkCommunicator.h
@@ -26,7 +27,7 @@ CMakeFiles/Vision.dir/robotVision/Source/ApplicationController.cpp.o
  ../robotVision/Headers/VisionInputParameters.h
  ../robotVision/Headers/VisionOutput.h
  ../robotVision/Headers/VisitedList.h
- /home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/Source/ApplicationController.cpp
+ /home/bob/VisionObjectDetection/robotVision/Source/ApplicationController.cpp
  /usr/local/include/opencv/cxcore.h
  /usr/local/include/opencv2/calib3d.hpp
  /usr/local/include/opencv2/calib3d/calib3d_c.h
@@ -61,6 +62,11 @@ CMakeFiles/Vision.dir/robotVision/Source/ApplicationController.cpp.o
  /usr/local/include/opencv2/core/utility.hpp
  /usr/local/include/opencv2/core/version.hpp
  /usr/local/include/opencv2/core/vsx_utils.hpp
+ /usr/local/include/opencv2/dnn.hpp
+ /usr/local/include/opencv2/dnn/dict.hpp
+ /usr/local/include/opencv2/dnn/dnn.hpp
+ /usr/local/include/opencv2/dnn/dnn.inl.hpp
+ /usr/local/include/opencv2/dnn/layer.hpp
  /usr/local/include/opencv2/features2d.hpp
  /usr/local/include/opencv2/flann.hpp
  /usr/local/include/opencv2/flann/all_indices.h
@@ -158,6 +164,7 @@ CMakeFiles/Vision.dir/robotVision/Source/Box.cpp.o
  ../robotVision/Headers/Line.h
  ../robotVision/Headers/ListHelper.h
  ../robotVision/Headers/ListHelperImplementation.tcc
+ ../robotVision/Headers/MathHelper.h
  ../robotVision/Headers/ObjectSortingContainer.h
  ../robotVision/Headers/Point.h
  ../robotVision/Headers/Point2D.h
@@ -165,7 +172,7 @@ CMakeFiles/Vision.dir/robotVision/Source/Box.cpp.o
  ../robotVision/Headers/Shape.h
  ../robotVision/Headers/ShapeComparisonOptions.h
  ../robotVision/Headers/Vector3D.h
- /home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/Source/Box.cpp
+ /home/bob/VisionObjectDetection/robotVision/Source/Box.cpp
  /usr/local/include/opencv/cxcore.h
  /usr/local/include/opencv2/calib3d.hpp
  /usr/local/include/opencv2/calib3d/calib3d_c.h
@@ -200,6 +207,11 @@ CMakeFiles/Vision.dir/robotVision/Source/Box.cpp.o
  /usr/local/include/opencv2/core/utility.hpp
  /usr/local/include/opencv2/core/version.hpp
  /usr/local/include/opencv2/core/vsx_utils.hpp
+ /usr/local/include/opencv2/dnn.hpp
+ /usr/local/include/opencv2/dnn/dict.hpp
+ /usr/local/include/opencv2/dnn/dnn.hpp
+ /usr/local/include/opencv2/dnn/dnn.inl.hpp
+ /usr/local/include/opencv2/dnn/layer.hpp
  /usr/local/include/opencv2/features2d.hpp
  /usr/local/include/opencv2/flann.hpp
  /usr/local/include/opencv2/flann/all_indices.h
@@ -294,6 +306,7 @@ CMakeFiles/Vision.dir/robotVision/Source/CameraFilter.cpp.o
  ../robotVision/Headers/CameraNormalizer.h
  ../robotVision/Headers/Color.h
  ../robotVision/Headers/CornerDetector.h
+ ../robotVision/Headers/Detector.h
  ../robotVision/Headers/Line.h
  ../robotVision/Headers/PlaneDetector.h
  ../robotVision/Headers/PlaneDetectorOptions.h
@@ -304,7 +317,7 @@ CMakeFiles/Vision.dir/robotVision/Source/CameraFilter.cpp.o
  ../robotVision/Headers/ShapeComparisonOptions.h
  ../robotVision/Headers/Vector3D.h
  ../robotVision/Headers/VisitedList.h
- /home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/Source/CameraFilter.cpp
+ /home/bob/VisionObjectDetection/robotVision/Source/CameraFilter.cpp
  /usr/local/include/opencv/cxcore.h
  /usr/local/include/opencv2/calib3d.hpp
  /usr/local/include/opencv2/calib3d/calib3d_c.h
@@ -339,6 +352,11 @@ CMakeFiles/Vision.dir/robotVision/Source/CameraFilter.cpp.o
  /usr/local/include/opencv2/core/utility.hpp
  /usr/local/include/opencv2/core/version.hpp
  /usr/local/include/opencv2/core/vsx_utils.hpp
+ /usr/local/include/opencv2/dnn.hpp
+ /usr/local/include/opencv2/dnn/dict.hpp
+ /usr/local/include/opencv2/dnn/dnn.hpp
+ /usr/local/include/opencv2/dnn/dnn.inl.hpp
+ /usr/local/include/opencv2/dnn/layer.hpp
  /usr/local/include/opencv2/features2d.hpp
  /usr/local/include/opencv2/flann.hpp
  /usr/local/include/opencv2/flann/all_indices.h
@@ -436,7 +454,7 @@ CMakeFiles/Vision.dir/robotVision/Source/CameraNormalizer.cpp.o
  ../robotVision/Headers/Serialize.h
  ../robotVision/Headers/ShapeComparisonOptions.h
  ../robotVision/Headers/Vector3D.h
- /home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/Source/CameraNormalizer.cpp
+ /home/bob/VisionObjectDetection/robotVision/Source/CameraNormalizer.cpp
  /usr/local/include/opencv/cxcore.h
  /usr/local/include/opencv2/calib3d.hpp
  /usr/local/include/opencv2/calib3d/calib3d_c.h
@@ -471,6 +489,11 @@ CMakeFiles/Vision.dir/robotVision/Source/CameraNormalizer.cpp.o
  /usr/local/include/opencv2/core/utility.hpp
  /usr/local/include/opencv2/core/version.hpp
  /usr/local/include/opencv2/core/vsx_utils.hpp
+ /usr/local/include/opencv2/dnn.hpp
+ /usr/local/include/opencv2/dnn/dict.hpp
+ /usr/local/include/opencv2/dnn/dnn.hpp
+ /usr/local/include/opencv2/dnn/dnn.inl.hpp
+ /usr/local/include/opencv2/dnn/layer.hpp
  /usr/local/include/opencv2/features2d.hpp
  /usr/local/include/opencv2/flann.hpp
  /usr/local/include/opencv2/flann/all_indices.h
@@ -562,7 +585,7 @@ CMakeFiles/Vision.dir/robotVision/Source/CameraNormalizer.cpp.o
  /usr/local/include/opencv2/videostab/wobble_suppression.hpp
 CMakeFiles/Vision.dir/robotVision/Source/CameraOptionsTrackbarManager.cpp.o
  ../robotVision/Headers/CameraOptionsTrackbarManager.h
- /home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/Source/CameraOptionsTrackbarManager.cpp
+ /home/bob/VisionObjectDetection/robotVision/Source/CameraOptionsTrackbarManager.cpp
  /usr/local/include/opencv/cxcore.h
  /usr/local/include/opencv2/calib3d.hpp
  /usr/local/include/opencv2/calib3d/calib3d_c.h
@@ -597,6 +620,11 @@ CMakeFiles/Vision.dir/robotVision/Source/CameraOptionsTrackbarManager.cpp.o
  /usr/local/include/opencv2/core/utility.hpp
  /usr/local/include/opencv2/core/version.hpp
  /usr/local/include/opencv2/core/vsx_utils.hpp
+ /usr/local/include/opencv2/dnn.hpp
+ /usr/local/include/opencv2/dnn/dict.hpp
+ /usr/local/include/opencv2/dnn/dnn.hpp
+ /usr/local/include/opencv2/dnn/dnn.inl.hpp
+ /usr/local/include/opencv2/dnn/layer.hpp
  /usr/local/include/opencv2/features2d.hpp
  /usr/local/include/opencv2/flann.hpp
  /usr/local/include/opencv2/flann/all_indices.h
@@ -689,12 +717,12 @@ CMakeFiles/Vision.dir/robotVision/Source/CameraOptionsTrackbarManager.cpp.o
 CMakeFiles/Vision.dir/robotVision/Source/Color.cpp.o
  ../robotVision/Headers/Color.h
  ../robotVision/Headers/Vector3D.h
- /home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/Source/Color.cpp
+ /home/bob/VisionObjectDetection/robotVision/Source/Color.cpp
 CMakeFiles/Vision.dir/robotVision/Source/CornerDetector.cpp.o
  ../robotVision/Headers/CornerDetector.h
  ../robotVision/Headers/Point.h
  ../robotVision/Headers/Point2D.h
- /home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/Source/CornerDetector.cpp
+ /home/bob/VisionObjectDetection/robotVision/Source/CornerDetector.cpp
  /usr/local/include/opencv/cxcore.h
  /usr/local/include/opencv2/calib3d.hpp
  /usr/local/include/opencv2/calib3d/calib3d_c.h
@@ -729,6 +757,147 @@ CMakeFiles/Vision.dir/robotVision/Source/CornerDetector.cpp.o
  /usr/local/include/opencv2/core/utility.hpp
  /usr/local/include/opencv2/core/version.hpp
  /usr/local/include/opencv2/core/vsx_utils.hpp
+ /usr/local/include/opencv2/dnn.hpp
+ /usr/local/include/opencv2/dnn/dict.hpp
+ /usr/local/include/opencv2/dnn/dnn.hpp
+ /usr/local/include/opencv2/dnn/dnn.inl.hpp
+ /usr/local/include/opencv2/dnn/layer.hpp
+ /usr/local/include/opencv2/features2d.hpp
+ /usr/local/include/opencv2/flann.hpp
+ /usr/local/include/opencv2/flann/all_indices.h
+ /usr/local/include/opencv2/flann/allocator.h
+ /usr/local/include/opencv2/flann/any.h
+ /usr/local/include/opencv2/flann/autotuned_index.h
+ /usr/local/include/opencv2/flann/composite_index.h
+ /usr/local/include/opencv2/flann/config.h
+ /usr/local/include/opencv2/flann/defines.h
+ /usr/local/include/opencv2/flann/dist.h
+ /usr/local/include/opencv2/flann/dynamic_bitset.h
+ /usr/local/include/opencv2/flann/flann_base.hpp
+ /usr/local/include/opencv2/flann/general.h
+ /usr/local/include/opencv2/flann/ground_truth.h
+ /usr/local/include/opencv2/flann/heap.h
+ /usr/local/include/opencv2/flann/hierarchical_clustering_index.h
+ /usr/local/include/opencv2/flann/index_testing.h
+ /usr/local/include/opencv2/flann/kdtree_index.h
+ /usr/local/include/opencv2/flann/kdtree_single_index.h
+ /usr/local/include/opencv2/flann/kmeans_index.h
+ /usr/local/include/opencv2/flann/linear_index.h
+ /usr/local/include/opencv2/flann/logger.h
+ /usr/local/include/opencv2/flann/lsh_index.h
+ /usr/local/include/opencv2/flann/lsh_table.h
+ /usr/local/include/opencv2/flann/matrix.h
+ /usr/local/include/opencv2/flann/miniflann.hpp
+ /usr/local/include/opencv2/flann/nn_index.h
+ /usr/local/include/opencv2/flann/params.h
+ /usr/local/include/opencv2/flann/random.h
+ /usr/local/include/opencv2/flann/result_set.h
+ /usr/local/include/opencv2/flann/sampling.h
+ /usr/local/include/opencv2/flann/saving.h
+ /usr/local/include/opencv2/flann/timer.h
+ /usr/local/include/opencv2/highgui.hpp
+ /usr/local/include/opencv2/highgui/highgui_c.h
+ /usr/local/include/opencv2/imgcodecs.hpp
+ /usr/local/include/opencv2/imgcodecs/imgcodecs_c.h
+ /usr/local/include/opencv2/imgproc.hpp
+ /usr/local/include/opencv2/imgproc/imgproc_c.h
+ /usr/local/include/opencv2/imgproc/types_c.h
+ /usr/local/include/opencv2/ml.hpp
+ /usr/local/include/opencv2/ml/ml.inl.hpp
+ /usr/local/include/opencv2/objdetect.hpp
+ /usr/local/include/opencv2/objdetect/detection_based_tracker.hpp
+ /usr/local/include/opencv2/objdetect/objdetect_c.h
+ /usr/local/include/opencv2/opencv.hpp
+ /usr/local/include/opencv2/opencv_modules.hpp
+ /usr/local/include/opencv2/photo.hpp
+ /usr/local/include/opencv2/photo/photo_c.h
+ /usr/local/include/opencv2/shape.hpp
+ /usr/local/include/opencv2/shape/emdL1.hpp
+ /usr/local/include/opencv2/shape/hist_cost.hpp
+ /usr/local/include/opencv2/shape/shape_distance.hpp
+ /usr/local/include/opencv2/shape/shape_transformer.hpp
+ /usr/local/include/opencv2/stitching.hpp
+ /usr/local/include/opencv2/stitching/detail/blenders.hpp
+ /usr/local/include/opencv2/stitching/detail/camera.hpp
+ /usr/local/include/opencv2/stitching/detail/exposure_compensate.hpp
+ /usr/local/include/opencv2/stitching/detail/matchers.hpp
+ /usr/local/include/opencv2/stitching/detail/motion_estimators.hpp
+ /usr/local/include/opencv2/stitching/detail/seam_finders.hpp
+ /usr/local/include/opencv2/stitching/detail/util.hpp
+ /usr/local/include/opencv2/stitching/detail/util_inl.hpp
+ /usr/local/include/opencv2/stitching/detail/warpers.hpp
+ /usr/local/include/opencv2/stitching/detail/warpers_inl.hpp
+ /usr/local/include/opencv2/stitching/warpers.hpp
+ /usr/local/include/opencv2/superres.hpp
+ /usr/local/include/opencv2/superres/optical_flow.hpp
+ /usr/local/include/opencv2/video.hpp
+ /usr/local/include/opencv2/video/background_segm.hpp
+ /usr/local/include/opencv2/video/tracking.hpp
+ /usr/local/include/opencv2/video/tracking_c.h
+ /usr/local/include/opencv2/videoio.hpp
+ /usr/local/include/opencv2/videoio/videoio_c.h
+ /usr/local/include/opencv2/videostab.hpp
+ /usr/local/include/opencv2/videostab/deblurring.hpp
+ /usr/local/include/opencv2/videostab/fast_marching.hpp
+ /usr/local/include/opencv2/videostab/fast_marching_inl.hpp
+ /usr/local/include/opencv2/videostab/frame_source.hpp
+ /usr/local/include/opencv2/videostab/global_motion.hpp
+ /usr/local/include/opencv2/videostab/inpainting.hpp
+ /usr/local/include/opencv2/videostab/log.hpp
+ /usr/local/include/opencv2/videostab/motion_core.hpp
+ /usr/local/include/opencv2/videostab/motion_stabilizing.hpp
+ /usr/local/include/opencv2/videostab/optical_flow.hpp
+ /usr/local/include/opencv2/videostab/outlier_rejection.hpp
+ /usr/local/include/opencv2/videostab/ring_buffer.hpp
+ /usr/local/include/opencv2/videostab/stabilizer.hpp
+ /usr/local/include/opencv2/videostab/wobble_suppression.hpp
+CMakeFiles/Vision.dir/robotVision/Source/Detector.cpp.o
+ ../robotVision/Headers/Color.h
+ ../robotVision/Headers/Detector.h
+ ../robotVision/Headers/Point.h
+ ../robotVision/Headers/Point2D.h
+ ../robotVision/Headers/Vector3D.h
+ ../robotVision/Headers/VisitedList.h
+ /home/bob/VisionObjectDetection/robotVision/Source/Detector.cpp
+ /usr/local/include/opencv/cxcore.h
+ /usr/local/include/opencv2/calib3d.hpp
+ /usr/local/include/opencv2/calib3d/calib3d_c.h
+ /usr/local/include/opencv2/core.hpp
+ /usr/local/include/opencv2/core/affine.hpp
+ /usr/local/include/opencv2/core/base.hpp
+ /usr/local/include/opencv2/core/bufferpool.hpp
+ /usr/local/include/opencv2/core/core_c.h
+ /usr/local/include/opencv2/core/cuda.hpp
+ /usr/local/include/opencv2/core/cuda.inl.hpp
+ /usr/local/include/opencv2/core/cuda_types.hpp
+ /usr/local/include/opencv2/core/cv_cpu_dispatch.h
+ /usr/local/include/opencv2/core/cv_cpu_helper.h
+ /usr/local/include/opencv2/core/cvdef.h
+ /usr/local/include/opencv2/core/cvstd.hpp
+ /usr/local/include/opencv2/core/cvstd.inl.hpp
+ /usr/local/include/opencv2/core/fast_math.hpp
+ /usr/local/include/opencv2/core/hal/interface.h
+ /usr/local/include/opencv2/core/mat.hpp
+ /usr/local/include/opencv2/core/mat.inl.hpp
+ /usr/local/include/opencv2/core/matx.hpp
+ /usr/local/include/opencv2/core/neon_utils.hpp
+ /usr/local/include/opencv2/core/operations.hpp
+ /usr/local/include/opencv2/core/optim.hpp
+ /usr/local/include/opencv2/core/ovx.hpp
+ /usr/local/include/opencv2/core/persistence.hpp
+ /usr/local/include/opencv2/core/ptr.inl.hpp
+ /usr/local/include/opencv2/core/saturate.hpp
+ /usr/local/include/opencv2/core/traits.hpp
+ /usr/local/include/opencv2/core/types.hpp
+ /usr/local/include/opencv2/core/types_c.h
+ /usr/local/include/opencv2/core/utility.hpp
+ /usr/local/include/opencv2/core/version.hpp
+ /usr/local/include/opencv2/core/vsx_utils.hpp
+ /usr/local/include/opencv2/dnn.hpp
+ /usr/local/include/opencv2/dnn/dict.hpp
+ /usr/local/include/opencv2/dnn/dnn.hpp
+ /usr/local/include/opencv2/dnn/dnn.inl.hpp
+ /usr/local/include/opencv2/dnn/layer.hpp
  /usr/local/include/opencv2/features2d.hpp
  /usr/local/include/opencv2/flann.hpp
  /usr/local/include/opencv2/flann/all_indices.h
@@ -825,49 +994,17 @@ CMakeFiles/Vision.dir/robotVision/Source/GenericVisionOutput.cpp.o
  ../robotVision/Headers/Point2D.h
  ../robotVision/Headers/Vector3D.h
  ../robotVision/Headers/VisionOutput.h
- /home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/Source/GenericVisionOutput.cpp
-CMakeFiles/Vision.dir/robotVision/Source/Line.cpp.o
- ../robotVision/Headers/Line.h
- ../robotVision/Headers/Point.h
- ../robotVision/Headers/Point2D.h
- /home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/Source/Line.cpp
-CMakeFiles/Vision.dir/robotVision/Source/ListHelper.cpp.o
- ../robotVision/Headers/ListHelper.h
- ../robotVision/Headers/ListHelperImplementation.tcc
- ../robotVision/Headers/ObjectSortingContainer.h
- /home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/Source/ListHelper.cpp
-CMakeFiles/Vision.dir/robotVision/Source/NetworkCommunicator.cpp.o
- ../robotVision/Headers/NetworkCommunicator.h
- /home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/Source/NetworkCommunicator.cpp
- CMakeGeneratedHeaders/CMakeConfigurationInformation.h
-CMakeFiles/Vision.dir/robotVision/Source/NetworkVisionOutput.cpp.o
- ../robotVision/Headers/Color.h
- ../robotVision/Headers/GenericVisionOutput.h
- ../robotVision/Headers/NetworkCommunicator.h
- ../robotVision/Headers/NetworkVisionOutput.h
- ../robotVision/Headers/Point.h
- ../robotVision/Headers/Point2D.h
- ../robotVision/Headers/Vector3D.h
- ../robotVision/Headers/VisionOutput.h
- /home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/Source/NetworkVisionOutput.cpp
- CMakeGeneratedHeaders/CMakeConfigurationInformation.h
-CMakeFiles/Vision.dir/robotVision/Source/ObjectSortingContainer.cpp.o
- ../robotVision/Headers/ObjectSortingContainer.h
- /home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/Source/ObjectSortingContainer.cpp
-CMakeFiles/Vision.dir/robotVision/Source/PlaneDetector.cpp.o
+ /home/bob/VisionObjectDetection/robotVision/Source/GenericVisionOutput.cpp
+CMakeFiles/Vision.dir/robotVision/Source/LightedLine.cpp.o
  ../robotVision/Headers/Color.h
  ../robotVision/Headers/CornerDetector.h
- ../robotVision/Headers/Line.h
- ../robotVision/Headers/PlaneDetector.h
- ../robotVision/Headers/PlaneDetectorOptions.h
+ ../robotVision/Headers/LightedLine.h
  ../robotVision/Headers/Point.h
  ../robotVision/Headers/Point2D.h
- ../robotVision/Headers/Point3D.h
  ../robotVision/Headers/Shape.h
  ../robotVision/Headers/ShapeComparisonOptions.h
  ../robotVision/Headers/Vector3D.h
- ../robotVision/Headers/VisitedList.h
- /home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/Source/PlaneDetector.cpp
+ /home/bob/VisionObjectDetection/robotVision/Source/LightedLine.cpp
  /usr/local/include/opencv/cxcore.h
  /usr/local/include/opencv2/calib3d.hpp
  /usr/local/include/opencv2/calib3d/calib3d_c.h
@@ -902,6 +1039,185 @@ CMakeFiles/Vision.dir/robotVision/Source/PlaneDetector.cpp.o
  /usr/local/include/opencv2/core/utility.hpp
  /usr/local/include/opencv2/core/version.hpp
  /usr/local/include/opencv2/core/vsx_utils.hpp
+ /usr/local/include/opencv2/dnn.hpp
+ /usr/local/include/opencv2/dnn/dict.hpp
+ /usr/local/include/opencv2/dnn/dnn.hpp
+ /usr/local/include/opencv2/dnn/dnn.inl.hpp
+ /usr/local/include/opencv2/dnn/layer.hpp
+ /usr/local/include/opencv2/features2d.hpp
+ /usr/local/include/opencv2/flann.hpp
+ /usr/local/include/opencv2/flann/all_indices.h
+ /usr/local/include/opencv2/flann/allocator.h
+ /usr/local/include/opencv2/flann/any.h
+ /usr/local/include/opencv2/flann/autotuned_index.h
+ /usr/local/include/opencv2/flann/composite_index.h
+ /usr/local/include/opencv2/flann/config.h
+ /usr/local/include/opencv2/flann/defines.h
+ /usr/local/include/opencv2/flann/dist.h
+ /usr/local/include/opencv2/flann/dynamic_bitset.h
+ /usr/local/include/opencv2/flann/flann_base.hpp
+ /usr/local/include/opencv2/flann/general.h
+ /usr/local/include/opencv2/flann/ground_truth.h
+ /usr/local/include/opencv2/flann/heap.h
+ /usr/local/include/opencv2/flann/hierarchical_clustering_index.h
+ /usr/local/include/opencv2/flann/index_testing.h
+ /usr/local/include/opencv2/flann/kdtree_index.h
+ /usr/local/include/opencv2/flann/kdtree_single_index.h
+ /usr/local/include/opencv2/flann/kmeans_index.h
+ /usr/local/include/opencv2/flann/linear_index.h
+ /usr/local/include/opencv2/flann/logger.h
+ /usr/local/include/opencv2/flann/lsh_index.h
+ /usr/local/include/opencv2/flann/lsh_table.h
+ /usr/local/include/opencv2/flann/matrix.h
+ /usr/local/include/opencv2/flann/miniflann.hpp
+ /usr/local/include/opencv2/flann/nn_index.h
+ /usr/local/include/opencv2/flann/params.h
+ /usr/local/include/opencv2/flann/random.h
+ /usr/local/include/opencv2/flann/result_set.h
+ /usr/local/include/opencv2/flann/sampling.h
+ /usr/local/include/opencv2/flann/saving.h
+ /usr/local/include/opencv2/flann/timer.h
+ /usr/local/include/opencv2/highgui.hpp
+ /usr/local/include/opencv2/highgui/highgui_c.h
+ /usr/local/include/opencv2/imgcodecs.hpp
+ /usr/local/include/opencv2/imgcodecs/imgcodecs_c.h
+ /usr/local/include/opencv2/imgproc.hpp
+ /usr/local/include/opencv2/imgproc/imgproc_c.h
+ /usr/local/include/opencv2/imgproc/types_c.h
+ /usr/local/include/opencv2/ml.hpp
+ /usr/local/include/opencv2/ml/ml.inl.hpp
+ /usr/local/include/opencv2/objdetect.hpp
+ /usr/local/include/opencv2/objdetect/detection_based_tracker.hpp
+ /usr/local/include/opencv2/objdetect/objdetect_c.h
+ /usr/local/include/opencv2/opencv.hpp
+ /usr/local/include/opencv2/opencv_modules.hpp
+ /usr/local/include/opencv2/photo.hpp
+ /usr/local/include/opencv2/photo/photo_c.h
+ /usr/local/include/opencv2/shape.hpp
+ /usr/local/include/opencv2/shape/emdL1.hpp
+ /usr/local/include/opencv2/shape/hist_cost.hpp
+ /usr/local/include/opencv2/shape/shape_distance.hpp
+ /usr/local/include/opencv2/shape/shape_transformer.hpp
+ /usr/local/include/opencv2/stitching.hpp
+ /usr/local/include/opencv2/stitching/detail/blenders.hpp
+ /usr/local/include/opencv2/stitching/detail/camera.hpp
+ /usr/local/include/opencv2/stitching/detail/exposure_compensate.hpp
+ /usr/local/include/opencv2/stitching/detail/matchers.hpp
+ /usr/local/include/opencv2/stitching/detail/motion_estimators.hpp
+ /usr/local/include/opencv2/stitching/detail/seam_finders.hpp
+ /usr/local/include/opencv2/stitching/detail/util.hpp
+ /usr/local/include/opencv2/stitching/detail/util_inl.hpp
+ /usr/local/include/opencv2/stitching/detail/warpers.hpp
+ /usr/local/include/opencv2/stitching/detail/warpers_inl.hpp
+ /usr/local/include/opencv2/stitching/warpers.hpp
+ /usr/local/include/opencv2/superres.hpp
+ /usr/local/include/opencv2/superres/optical_flow.hpp
+ /usr/local/include/opencv2/video.hpp
+ /usr/local/include/opencv2/video/background_segm.hpp
+ /usr/local/include/opencv2/video/tracking.hpp
+ /usr/local/include/opencv2/video/tracking_c.h
+ /usr/local/include/opencv2/videoio.hpp
+ /usr/local/include/opencv2/videoio/videoio_c.h
+ /usr/local/include/opencv2/videostab.hpp
+ /usr/local/include/opencv2/videostab/deblurring.hpp
+ /usr/local/include/opencv2/videostab/fast_marching.hpp
+ /usr/local/include/opencv2/videostab/fast_marching_inl.hpp
+ /usr/local/include/opencv2/videostab/frame_source.hpp
+ /usr/local/include/opencv2/videostab/global_motion.hpp
+ /usr/local/include/opencv2/videostab/inpainting.hpp
+ /usr/local/include/opencv2/videostab/log.hpp
+ /usr/local/include/opencv2/videostab/motion_core.hpp
+ /usr/local/include/opencv2/videostab/motion_stabilizing.hpp
+ /usr/local/include/opencv2/videostab/optical_flow.hpp
+ /usr/local/include/opencv2/videostab/outlier_rejection.hpp
+ /usr/local/include/opencv2/videostab/ring_buffer.hpp
+ /usr/local/include/opencv2/videostab/stabilizer.hpp
+ /usr/local/include/opencv2/videostab/wobble_suppression.hpp
+CMakeFiles/Vision.dir/robotVision/Source/Line.cpp.o
+ ../robotVision/Headers/Line.h
+ ../robotVision/Headers/Point.h
+ ../robotVision/Headers/Point2D.h
+ /home/bob/VisionObjectDetection/robotVision/Source/Line.cpp
+CMakeFiles/Vision.dir/robotVision/Source/ListHelper.cpp.o
+ ../robotVision/Headers/ListHelper.h
+ ../robotVision/Headers/ListHelperImplementation.tcc
+ ../robotVision/Headers/ObjectSortingContainer.h
+ /home/bob/VisionObjectDetection/robotVision/Source/ListHelper.cpp
+CMakeFiles/Vision.dir/robotVision/Source/MathHelper.cpp.o
+ ../robotVision/Headers/MathHelper.h
+ /home/bob/VisionObjectDetection/robotVision/Source/MathHelper.cpp
+CMakeFiles/Vision.dir/robotVision/Source/NetworkCommunicator.cpp.o
+ ../robotVision/Headers/NetworkCommunicator.h
+ /home/bob/VisionObjectDetection/robotVision/Source/NetworkCommunicator.cpp
+ CMakeGeneratedHeaders/CMakeConfigurationInformation.h
+CMakeFiles/Vision.dir/robotVision/Source/NetworkVisionOutput.cpp.o
+ ../robotVision/Headers/Color.h
+ ../robotVision/Headers/GenericVisionOutput.h
+ ../robotVision/Headers/NetworkCommunicator.h
+ ../robotVision/Headers/NetworkVisionOutput.h
+ ../robotVision/Headers/Point.h
+ ../robotVision/Headers/Point2D.h
+ ../robotVision/Headers/Vector3D.h
+ ../robotVision/Headers/VisionOutput.h
+ /home/bob/VisionObjectDetection/robotVision/Source/NetworkVisionOutput.cpp
+ CMakeGeneratedHeaders/CMakeConfigurationInformation.h
+CMakeFiles/Vision.dir/robotVision/Source/ObjectSortingContainer.cpp.o
+ ../robotVision/Headers/ObjectSortingContainer.h
+ /home/bob/VisionObjectDetection/robotVision/Source/ObjectSortingContainer.cpp
+CMakeFiles/Vision.dir/robotVision/Source/PlaneDetector.cpp.o
+ ../robotVision/Headers/Color.h
+ ../robotVision/Headers/CornerDetector.h
+ ../robotVision/Headers/Detector.h
+ ../robotVision/Headers/Line.h
+ ../robotVision/Headers/PlaneDetector.h
+ ../robotVision/Headers/PlaneDetectorOptions.h
+ ../robotVision/Headers/Point.h
+ ../robotVision/Headers/Point2D.h
+ ../robotVision/Headers/Point3D.h
+ ../robotVision/Headers/Shape.h
+ ../robotVision/Headers/ShapeComparisonOptions.h
+ ../robotVision/Headers/Vector3D.h
+ ../robotVision/Headers/VisitedList.h
+ /home/bob/VisionObjectDetection/robotVision/Source/PlaneDetector.cpp
+ /usr/local/include/opencv/cxcore.h
+ /usr/local/include/opencv2/calib3d.hpp
+ /usr/local/include/opencv2/calib3d/calib3d_c.h
+ /usr/local/include/opencv2/core.hpp
+ /usr/local/include/opencv2/core/affine.hpp
+ /usr/local/include/opencv2/core/base.hpp
+ /usr/local/include/opencv2/core/bufferpool.hpp
+ /usr/local/include/opencv2/core/core_c.h
+ /usr/local/include/opencv2/core/cuda.hpp
+ /usr/local/include/opencv2/core/cuda.inl.hpp
+ /usr/local/include/opencv2/core/cuda_types.hpp
+ /usr/local/include/opencv2/core/cv_cpu_dispatch.h
+ /usr/local/include/opencv2/core/cv_cpu_helper.h
+ /usr/local/include/opencv2/core/cvdef.h
+ /usr/local/include/opencv2/core/cvstd.hpp
+ /usr/local/include/opencv2/core/cvstd.inl.hpp
+ /usr/local/include/opencv2/core/fast_math.hpp
+ /usr/local/include/opencv2/core/hal/interface.h
+ /usr/local/include/opencv2/core/mat.hpp
+ /usr/local/include/opencv2/core/mat.inl.hpp
+ /usr/local/include/opencv2/core/matx.hpp
+ /usr/local/include/opencv2/core/neon_utils.hpp
+ /usr/local/include/opencv2/core/operations.hpp
+ /usr/local/include/opencv2/core/optim.hpp
+ /usr/local/include/opencv2/core/ovx.hpp
+ /usr/local/include/opencv2/core/persistence.hpp
+ /usr/local/include/opencv2/core/ptr.inl.hpp
+ /usr/local/include/opencv2/core/saturate.hpp
+ /usr/local/include/opencv2/core/traits.hpp
+ /usr/local/include/opencv2/core/types.hpp
+ /usr/local/include/opencv2/core/types_c.h
+ /usr/local/include/opencv2/core/utility.hpp
+ /usr/local/include/opencv2/core/version.hpp
+ /usr/local/include/opencv2/core/vsx_utils.hpp
+ /usr/local/include/opencv2/dnn.hpp
+ /usr/local/include/opencv2/dnn/dict.hpp
+ /usr/local/include/opencv2/dnn/dnn.hpp
+ /usr/local/include/opencv2/dnn/dnn.inl.hpp
+ /usr/local/include/opencv2/dnn/layer.hpp
  /usr/local/include/opencv2/features2d.hpp
  /usr/local/include/opencv2/flann.hpp
  /usr/local/include/opencv2/flann/all_indices.h
@@ -994,19 +1310,24 @@ CMakeFiles/Vision.dir/robotVision/Source/PlaneDetector.cpp.o
 CMakeFiles/Vision.dir/robotVision/Source/Point2D.cpp.o
  ../robotVision/Headers/Point.h
  ../robotVision/Headers/Point2D.h
- /home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/Source/Point2D.cpp
+ /home/bob/VisionObjectDetection/robotVision/Source/Point2D.cpp
 CMakeFiles/Vision.dir/robotVision/Source/Point3D.cpp.o
  ../robotVision/Headers/Point.h
  ../robotVision/Headers/Point3D.h
- /home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/Source/Point3D.cpp
-CMakeFiles/Vision.dir/robotVision/Source/Serialize.cpp.o
+ /home/bob/VisionObjectDetection/robotVision/Source/Point3D.cpp
+CMakeFiles/Vision.dir/robotVision/Source/PowerCube.cpp.o
+ ../robotVision/Headers/Box.h
  ../robotVision/Headers/Color.h
+ ../robotVision/Headers/CornerDetector.h
+ ../robotVision/Headers/Line.h
  ../robotVision/Headers/Point.h
  ../robotVision/Headers/Point2D.h
- ../robotVision/Headers/Serialize.h
+ ../robotVision/Headers/Point3D.h
+ ../robotVision/Headers/PowerCube.h
+ ../robotVision/Headers/Shape.h
  ../robotVision/Headers/ShapeComparisonOptions.h
  ../robotVision/Headers/Vector3D.h
- /home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/Source/Serialize.cpp
+ /home/bob/VisionObjectDetection/robotVision/Source/PowerCube.cpp
  /usr/local/include/opencv/cxcore.h
  /usr/local/include/opencv2/calib3d.hpp
  /usr/local/include/opencv2/calib3d/calib3d_c.h
@@ -1041,6 +1362,147 @@ CMakeFiles/Vision.dir/robotVision/Source/Serialize.cpp.o
  /usr/local/include/opencv2/core/utility.hpp
  /usr/local/include/opencv2/core/version.hpp
  /usr/local/include/opencv2/core/vsx_utils.hpp
+ /usr/local/include/opencv2/dnn.hpp
+ /usr/local/include/opencv2/dnn/dict.hpp
+ /usr/local/include/opencv2/dnn/dnn.hpp
+ /usr/local/include/opencv2/dnn/dnn.inl.hpp
+ /usr/local/include/opencv2/dnn/layer.hpp
+ /usr/local/include/opencv2/features2d.hpp
+ /usr/local/include/opencv2/flann.hpp
+ /usr/local/include/opencv2/flann/all_indices.h
+ /usr/local/include/opencv2/flann/allocator.h
+ /usr/local/include/opencv2/flann/any.h
+ /usr/local/include/opencv2/flann/autotuned_index.h
+ /usr/local/include/opencv2/flann/composite_index.h
+ /usr/local/include/opencv2/flann/config.h
+ /usr/local/include/opencv2/flann/defines.h
+ /usr/local/include/opencv2/flann/dist.h
+ /usr/local/include/opencv2/flann/dynamic_bitset.h
+ /usr/local/include/opencv2/flann/flann_base.hpp
+ /usr/local/include/opencv2/flann/general.h
+ /usr/local/include/opencv2/flann/ground_truth.h
+ /usr/local/include/opencv2/flann/heap.h
+ /usr/local/include/opencv2/flann/hierarchical_clustering_index.h
+ /usr/local/include/opencv2/flann/index_testing.h
+ /usr/local/include/opencv2/flann/kdtree_index.h
+ /usr/local/include/opencv2/flann/kdtree_single_index.h
+ /usr/local/include/opencv2/flann/kmeans_index.h
+ /usr/local/include/opencv2/flann/linear_index.h
+ /usr/local/include/opencv2/flann/logger.h
+ /usr/local/include/opencv2/flann/lsh_index.h
+ /usr/local/include/opencv2/flann/lsh_table.h
+ /usr/local/include/opencv2/flann/matrix.h
+ /usr/local/include/opencv2/flann/miniflann.hpp
+ /usr/local/include/opencv2/flann/nn_index.h
+ /usr/local/include/opencv2/flann/params.h
+ /usr/local/include/opencv2/flann/random.h
+ /usr/local/include/opencv2/flann/result_set.h
+ /usr/local/include/opencv2/flann/sampling.h
+ /usr/local/include/opencv2/flann/saving.h
+ /usr/local/include/opencv2/flann/timer.h
+ /usr/local/include/opencv2/highgui.hpp
+ /usr/local/include/opencv2/highgui/highgui_c.h
+ /usr/local/include/opencv2/imgcodecs.hpp
+ /usr/local/include/opencv2/imgcodecs/imgcodecs_c.h
+ /usr/local/include/opencv2/imgproc.hpp
+ /usr/local/include/opencv2/imgproc/imgproc_c.h
+ /usr/local/include/opencv2/imgproc/types_c.h
+ /usr/local/include/opencv2/ml.hpp
+ /usr/local/include/opencv2/ml/ml.inl.hpp
+ /usr/local/include/opencv2/objdetect.hpp
+ /usr/local/include/opencv2/objdetect/detection_based_tracker.hpp
+ /usr/local/include/opencv2/objdetect/objdetect_c.h
+ /usr/local/include/opencv2/opencv.hpp
+ /usr/local/include/opencv2/opencv_modules.hpp
+ /usr/local/include/opencv2/photo.hpp
+ /usr/local/include/opencv2/photo/photo_c.h
+ /usr/local/include/opencv2/shape.hpp
+ /usr/local/include/opencv2/shape/emdL1.hpp
+ /usr/local/include/opencv2/shape/hist_cost.hpp
+ /usr/local/include/opencv2/shape/shape_distance.hpp
+ /usr/local/include/opencv2/shape/shape_transformer.hpp
+ /usr/local/include/opencv2/stitching.hpp
+ /usr/local/include/opencv2/stitching/detail/blenders.hpp
+ /usr/local/include/opencv2/stitching/detail/camera.hpp
+ /usr/local/include/opencv2/stitching/detail/exposure_compensate.hpp
+ /usr/local/include/opencv2/stitching/detail/matchers.hpp
+ /usr/local/include/opencv2/stitching/detail/motion_estimators.hpp
+ /usr/local/include/opencv2/stitching/detail/seam_finders.hpp
+ /usr/local/include/opencv2/stitching/detail/util.hpp
+ /usr/local/include/opencv2/stitching/detail/util_inl.hpp
+ /usr/local/include/opencv2/stitching/detail/warpers.hpp
+ /usr/local/include/opencv2/stitching/detail/warpers_inl.hpp
+ /usr/local/include/opencv2/stitching/warpers.hpp
+ /usr/local/include/opencv2/superres.hpp
+ /usr/local/include/opencv2/superres/optical_flow.hpp
+ /usr/local/include/opencv2/video.hpp
+ /usr/local/include/opencv2/video/background_segm.hpp
+ /usr/local/include/opencv2/video/tracking.hpp
+ /usr/local/include/opencv2/video/tracking_c.h
+ /usr/local/include/opencv2/videoio.hpp
+ /usr/local/include/opencv2/videoio/videoio_c.h
+ /usr/local/include/opencv2/videostab.hpp
+ /usr/local/include/opencv2/videostab/deblurring.hpp
+ /usr/local/include/opencv2/videostab/fast_marching.hpp
+ /usr/local/include/opencv2/videostab/fast_marching_inl.hpp
+ /usr/local/include/opencv2/videostab/frame_source.hpp
+ /usr/local/include/opencv2/videostab/global_motion.hpp
+ /usr/local/include/opencv2/videostab/inpainting.hpp
+ /usr/local/include/opencv2/videostab/log.hpp
+ /usr/local/include/opencv2/videostab/motion_core.hpp
+ /usr/local/include/opencv2/videostab/motion_stabilizing.hpp
+ /usr/local/include/opencv2/videostab/optical_flow.hpp
+ /usr/local/include/opencv2/videostab/outlier_rejection.hpp
+ /usr/local/include/opencv2/videostab/ring_buffer.hpp
+ /usr/local/include/opencv2/videostab/stabilizer.hpp
+ /usr/local/include/opencv2/videostab/wobble_suppression.hpp
+CMakeFiles/Vision.dir/robotVision/Source/Serialize.cpp.o
+ ../robotVision/Headers/Color.h
+ ../robotVision/Headers/Point.h
+ ../robotVision/Headers/Point2D.h
+ ../robotVision/Headers/Serialize.h
+ ../robotVision/Headers/ShapeComparisonOptions.h
+ ../robotVision/Headers/Vector3D.h
+ /home/bob/VisionObjectDetection/robotVision/Source/Serialize.cpp
+ /usr/local/include/opencv/cxcore.h
+ /usr/local/include/opencv2/calib3d.hpp
+ /usr/local/include/opencv2/calib3d/calib3d_c.h
+ /usr/local/include/opencv2/core.hpp
+ /usr/local/include/opencv2/core/affine.hpp
+ /usr/local/include/opencv2/core/base.hpp
+ /usr/local/include/opencv2/core/bufferpool.hpp
+ /usr/local/include/opencv2/core/core_c.h
+ /usr/local/include/opencv2/core/cuda.hpp
+ /usr/local/include/opencv2/core/cuda.inl.hpp
+ /usr/local/include/opencv2/core/cuda_types.hpp
+ /usr/local/include/opencv2/core/cv_cpu_dispatch.h
+ /usr/local/include/opencv2/core/cv_cpu_helper.h
+ /usr/local/include/opencv2/core/cvdef.h
+ /usr/local/include/opencv2/core/cvstd.hpp
+ /usr/local/include/opencv2/core/cvstd.inl.hpp
+ /usr/local/include/opencv2/core/fast_math.hpp
+ /usr/local/include/opencv2/core/hal/interface.h
+ /usr/local/include/opencv2/core/mat.hpp
+ /usr/local/include/opencv2/core/mat.inl.hpp
+ /usr/local/include/opencv2/core/matx.hpp
+ /usr/local/include/opencv2/core/neon_utils.hpp
+ /usr/local/include/opencv2/core/operations.hpp
+ /usr/local/include/opencv2/core/optim.hpp
+ /usr/local/include/opencv2/core/ovx.hpp
+ /usr/local/include/opencv2/core/persistence.hpp
+ /usr/local/include/opencv2/core/ptr.inl.hpp
+ /usr/local/include/opencv2/core/saturate.hpp
+ /usr/local/include/opencv2/core/traits.hpp
+ /usr/local/include/opencv2/core/types.hpp
+ /usr/local/include/opencv2/core/types_c.h
+ /usr/local/include/opencv2/core/utility.hpp
+ /usr/local/include/opencv2/core/version.hpp
+ /usr/local/include/opencv2/core/vsx_utils.hpp
+ /usr/local/include/opencv2/dnn.hpp
+ /usr/local/include/opencv2/dnn/dict.hpp
+ /usr/local/include/opencv2/dnn/dnn.hpp
+ /usr/local/include/opencv2/dnn/dnn.inl.hpp
+ /usr/local/include/opencv2/dnn/layer.hpp
  /usr/local/include/opencv2/features2d.hpp
  /usr/local/include/opencv2/flann.hpp
  /usr/local/include/opencv2/flann/all_indices.h
@@ -1142,7 +1604,7 @@ CMakeFiles/Vision.dir/robotVision/Source/Shape.cpp.o
  ../robotVision/Headers/ShapeComparisonOptions.h
  ../robotVision/Headers/Vector3D.h
  ../robotVision/Headers/VisitedList.h
- /home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/Source/Shape.cpp
+ /home/bob/VisionObjectDetection/robotVision/Source/Shape.cpp
  /usr/local/include/opencv/cxcore.h
  /usr/local/include/opencv2/calib3d.hpp
  /usr/local/include/opencv2/calib3d/calib3d_c.h
@@ -1177,6 +1639,11 @@ CMakeFiles/Vision.dir/robotVision/Source/Shape.cpp.o
  /usr/local/include/opencv2/core/utility.hpp
  /usr/local/include/opencv2/core/version.hpp
  /usr/local/include/opencv2/core/vsx_utils.hpp
+ /usr/local/include/opencv2/dnn.hpp
+ /usr/local/include/opencv2/dnn/dict.hpp
+ /usr/local/include/opencv2/dnn/dnn.hpp
+ /usr/local/include/opencv2/dnn/dnn.inl.hpp
+ /usr/local/include/opencv2/dnn/layer.hpp
  /usr/local/include/opencv2/features2d.hpp
  /usr/local/include/opencv2/flann.hpp
  /usr/local/include/opencv2/flann/all_indices.h
@@ -1269,6 +1736,7 @@ CMakeFiles/Vision.dir/robotVision/Source/Shape.cpp.o
 CMakeFiles/Vision.dir/robotVision/Source/ShapeDetector.cpp.o
  ../robotVision/Headers/Color.h
  ../robotVision/Headers/CornerDetector.h
+ ../robotVision/Headers/Detector.h
  ../robotVision/Headers/Line.h
  ../robotVision/Headers/PlaneDetector.h
  ../robotVision/Headers/PlaneDetectorOptions.h
@@ -1281,7 +1749,7 @@ CMakeFiles/Vision.dir/robotVision/Source/ShapeDetector.cpp.o
  ../robotVision/Headers/ShapeList.h
  ../robotVision/Headers/Vector3D.h
  ../robotVision/Headers/VisitedList.h
- /home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/Source/ShapeDetector.cpp
+ /home/bob/VisionObjectDetection/robotVision/Source/ShapeDetector.cpp
  /usr/local/include/opencv/cxcore.h
  /usr/local/include/opencv2/calib3d.hpp
  /usr/local/include/opencv2/calib3d/calib3d_c.h
@@ -1316,6 +1784,11 @@ CMakeFiles/Vision.dir/robotVision/Source/ShapeDetector.cpp.o
  /usr/local/include/opencv2/core/utility.hpp
  /usr/local/include/opencv2/core/version.hpp
  /usr/local/include/opencv2/core/vsx_utils.hpp
+ /usr/local/include/opencv2/dnn.hpp
+ /usr/local/include/opencv2/dnn/dict.hpp
+ /usr/local/include/opencv2/dnn/dnn.hpp
+ /usr/local/include/opencv2/dnn/dnn.inl.hpp
+ /usr/local/include/opencv2/dnn/layer.hpp
  /usr/local/include/opencv2/features2d.hpp
  /usr/local/include/opencv2/flann.hpp
  /usr/local/include/opencv2/flann/all_indices.h
@@ -1414,7 +1887,7 @@ CMakeFiles/Vision.dir/robotVision/Source/ShapeList.cpp.o
  ../robotVision/Headers/ShapeComparisonOptions.h
  ../robotVision/Headers/ShapeList.h
  ../robotVision/Headers/Vector3D.h
- /home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/Source/ShapeList.cpp
+ /home/bob/VisionObjectDetection/robotVision/Source/ShapeList.cpp
  /usr/local/include/opencv/cxcore.h
  /usr/local/include/opencv2/calib3d.hpp
  /usr/local/include/opencv2/calib3d/calib3d_c.h
@@ -1449,6 +1922,11 @@ CMakeFiles/Vision.dir/robotVision/Source/ShapeList.cpp.o
  /usr/local/include/opencv2/core/utility.hpp
  /usr/local/include/opencv2/core/version.hpp
  /usr/local/include/opencv2/core/vsx_utils.hpp
+ /usr/local/include/opencv2/dnn.hpp
+ /usr/local/include/opencv2/dnn/dict.hpp
+ /usr/local/include/opencv2/dnn/dnn.hpp
+ /usr/local/include/opencv2/dnn/dnn.inl.hpp
+ /usr/local/include/opencv2/dnn/layer.hpp
  /usr/local/include/opencv2/features2d.hpp
  /usr/local/include/opencv2/flann.hpp
  /usr/local/include/opencv2/flann/all_indices.h
@@ -1548,7 +2026,7 @@ CMakeFiles/Vision.dir/robotVision/Source/ShapeLoader.cpp.o
  ../robotVision/Headers/ShapeComparisonOptions.h
  ../robotVision/Headers/ShapeLoader.h
  ../robotVision/Headers/Vector3D.h
- /home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/Source/ShapeLoader.cpp
+ /home/bob/VisionObjectDetection/robotVision/Source/ShapeLoader.cpp
  /usr/local/include/opencv/cxcore.h
  /usr/local/include/opencv2/calib3d.hpp
  /usr/local/include/opencv2/calib3d/calib3d_c.h
@@ -1583,6 +2061,11 @@ CMakeFiles/Vision.dir/robotVision/Source/ShapeLoader.cpp.o
  /usr/local/include/opencv2/core/utility.hpp
  /usr/local/include/opencv2/core/version.hpp
  /usr/local/include/opencv2/core/vsx_utils.hpp
+ /usr/local/include/opencv2/dnn.hpp
+ /usr/local/include/opencv2/dnn/dict.hpp
+ /usr/local/include/opencv2/dnn/dnn.hpp
+ /usr/local/include/opencv2/dnn/dnn.inl.hpp
+ /usr/local/include/opencv2/dnn/layer.hpp
  /usr/local/include/opencv2/features2d.hpp
  /usr/local/include/opencv2/flann.hpp
  /usr/local/include/opencv2/flann/all_indices.h
@@ -1674,16 +2157,19 @@ CMakeFiles/Vision.dir/robotVision/Source/ShapeLoader.cpp.o
  /usr/local/include/opencv2/videostab/wobble_suppression.hpp
 CMakeFiles/Vision.dir/robotVision/Source/Vector3D.cpp.o
  ../robotVision/Headers/Vector3D.h
- /home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/Source/Vector3D.cpp
+ /home/bob/VisionObjectDetection/robotVision/Source/Vector3D.cpp
 CMakeFiles/Vision.dir/robotVision/Source/VisionApplication.cpp.o
+ ../robotVision/Headers/Box.h
  ../robotVision/Headers/Color.h
  ../robotVision/Headers/CornerDetector.h
+ ../robotVision/Headers/Detector.h
  ../robotVision/Headers/Line.h
  ../robotVision/Headers/PlaneDetector.h
  ../robotVision/Headers/PlaneDetectorOptions.h
  ../robotVision/Headers/Point.h
  ../robotVision/Headers/Point2D.h
  ../robotVision/Headers/Point3D.h
+ ../robotVision/Headers/PowerCube.h
  ../robotVision/Headers/Shape.h
  ../robotVision/Headers/ShapeComparisonOptions.h
  ../robotVision/Headers/ShapeDetector.h
@@ -1693,7 +2179,7 @@ CMakeFiles/Vision.dir/robotVision/Source/VisionApplication.cpp.o
  ../robotVision/Headers/VisionInputParameters.h
  ../robotVision/Headers/VisionOutput.h
  ../robotVision/Headers/VisitedList.h
- /home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/Source/VisionApplication.cpp
+ /home/bob/VisionObjectDetection/robotVision/Source/VisionApplication.cpp
  /usr/local/include/opencv/cxcore.h
  /usr/local/include/opencv2/calib3d.hpp
  /usr/local/include/opencv2/calib3d/calib3d_c.h
@@ -1728,6 +2214,11 @@ CMakeFiles/Vision.dir/robotVision/Source/VisionApplication.cpp.o
  /usr/local/include/opencv2/core/utility.hpp
  /usr/local/include/opencv2/core/version.hpp
  /usr/local/include/opencv2/core/vsx_utils.hpp
+ /usr/local/include/opencv2/dnn.hpp
+ /usr/local/include/opencv2/dnn/dict.hpp
+ /usr/local/include/opencv2/dnn/dnn.hpp
+ /usr/local/include/opencv2/dnn/dnn.inl.hpp
+ /usr/local/include/opencv2/dnn/layer.hpp
  /usr/local/include/opencv2/features2d.hpp
  /usr/local/include/opencv2/flann.hpp
  /usr/local/include/opencv2/flann/all_indices.h
@@ -1821,13 +2312,13 @@ CMakeFiles/Vision.dir/robotVision/Source/VisitedList.cpp.o
  ../robotVision/Headers/Point.h
  ../robotVision/Headers/Point2D.h
  ../robotVision/Headers/VisitedList.h
- /home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/Source/VisitedList.cpp
+ /home/bob/VisionObjectDetection/robotVision/Source/VisitedList.cpp
 CMakeFiles/Vision.dir/robotVision/main.cpp.o
  ../robotVision/Headers/ApplicationController.h
  ../robotVision/Headers/ListHelper.h
  ../robotVision/Headers/ListHelperImplementation.tcc
  ../robotVision/Headers/ObjectSortingContainer.h
- /home/killdozer/Documents/Programming/VisionObjectDetection/robotVision/main.cpp
+ /home/bob/VisionObjectDetection/robotVision/main.cpp
  /usr/local/include/opencv/cxcore.h
  /usr/local/include/opencv2/calib3d.hpp
  /usr/local/include/opencv2/calib3d/calib3d_c.h
@@ -1862,6 +2353,11 @@ CMakeFiles/Vision.dir/robotVision/main.cpp.o
  /usr/local/include/opencv2/core/utility.hpp
  /usr/local/include/opencv2/core/version.hpp
  /usr/local/include/opencv2/core/vsx_utils.hpp
+ /usr/local/include/opencv2/dnn.hpp
+ /usr/local/include/opencv2/dnn/dict.hpp
+ /usr/local/include/opencv2/dnn/dnn.hpp
+ /usr/local/include/opencv2/dnn/dnn.inl.hpp
+ /usr/local/include/opencv2/dnn/layer.hpp
  /usr/local/include/opencv2/features2d.hpp
  /usr/local/include/opencv2/flann.hpp
  /usr/local/include/opencv2/flann/all_indices.h

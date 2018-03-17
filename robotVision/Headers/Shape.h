@@ -50,8 +50,12 @@ class Shape
 	Point2D getFirstPoint(); // Get the first point.
 	Color getAverageColor(); // Get the average color.
 	double getScreenArea(); // Get the estimated number of pixels on the screen.
+	double getScreenZ(); // Get the z position of the screen relative to the camera.
+	double getScreenWidth(); // Get the set width of the screen.
+	double getScreenHeight(); // Get the set height of the screen.
 	double getXAngle(); // Get the angle to the shape's center from the center of the screen, accross the x-axis. Set screen z first.
 	double getYAngle(); // Get the angle to the shape's center from the screen's center, accross the y-axis. Set screen z first.
+	std::vector<Point2D> getCornersCopy(); // Get a copy of the corners array.
 	double getXAngleToPoint(double point); // Get the x angle to a point.
 	double getYAngleToPoint(double point); // Get the y angle to a given point.
 	void getCorners(std::vector<Point2D>& outputVector); // Output corners to outputVector.
@@ -86,6 +90,7 @@ class Shape
 	std::vector<Point2D> edges;
 	std::vector<Point2D> contents;
 	std::vector<Point2D> corners;
+	
 	bool cornersFound=false; // Store whether the corners have been searched for.
 
 	// The center center of the shape.

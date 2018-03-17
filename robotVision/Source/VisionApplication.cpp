@@ -102,10 +102,23 @@ void VisionApplication::runFrame(cv::Mat inputImage, VisionOutput & visionOutput
 			}
 			previousCenter=currentShape->getCenter();
 			
+			Shape & currentShapeRefrence = *currentShape;
+			
+			// Create a box from the current shape.
+			Box * boxShape = new Box();
+			boxShape->fromOther(currentShapeRefrence);
+			boxShape->setScreenSize(inputImage.cols, inputImage.rows);
+			boxShape->findCameraPosition();
+			
+			// TODO Update these values.
+			boxShape->setWorldHeight(5.0);
+			boxShape->setCameraPitch(0.0);
+			boxShape->convertUnits(20, 10, 350);
+			
 			// Give debugging output.
 			if(showDebugOutput)
 			{
-				currentShape->drawDebugOutput(inputImage);
+				boxShape->drawDebugOutput(inputImage);
 			}
 			
 			// Give other output.
@@ -115,6 +128,9 @@ void VisionApplication::runFrame(cv::Mat inputImage, VisionOutput & visionOutput
 			visionOutput.setAverageColor(currentShape->getAverageColor());
 			visionOutput.setCenterLocation(currentShape->getCenter());
 			
+			// Output the screenZ to the visionOutput.
+			visionOutput.setDistance(boxShape->getDistance());
+			
 			//Color averageColor=currentShape->getAverageColor();
 			
 			//unsigned int averageRedAndGreen=(averageColor.getR() + averageColor.getG())/2;
@@ -122,7 +138,8 @@ void VisionApplication::runFrame(cv::Mat inputImage, VisionOutput & visionOutput
 			// Set the tracking shape's color to that of the tracking shape.
 			currentShape->setAverageColor(trackingShape.getAverageColor());
 			
-			
+			// Free memory.
+			delete boxShape;
 		}
 	}
 	else

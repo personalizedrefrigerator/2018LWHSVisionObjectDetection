@@ -46,6 +46,13 @@ void NetworkVisionOutput::setCenterLocation(Point2D centerLocation)
 	communicator->updateValue("centerScreenY", centerLocation.y);
 }
 
+// Set the found distance.
+void NetworkVisionOutput::setDistance(double distance)
+{
+	cachedValues.setDistance(distance);
+	communicator->updateValue("distance", distance);
+}
+
 // Copy to another vision output.
 void NetworkVisionOutput::copyToOther(VisionOutput& other)
 {

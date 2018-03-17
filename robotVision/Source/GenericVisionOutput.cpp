@@ -41,6 +41,12 @@ void GenericVisionOutput::setCenterLocation(Point2D centerLocation)
 	currentCenterLocation=centerLocation;
 }
 
+// Set the distance to the object.
+void GenericVisionOutput::setDistance(double distance)
+{
+	currentDistance = distance;
+}
+
 // Get the x rotation found.
 double GenericVisionOutput::getXRotation()
 {
@@ -57,6 +63,12 @@ double GenericVisionOutput::getYRotation()
 double GenericVisionOutput::getPixelSize()
 {
 	return currentPixelSize;
+}
+
+// Get the current distance to the object.
+double GenericVisionOutput::getDistance()
+{
+	return currentDistance;
 }
 
 // Get the current average color.
@@ -80,4 +92,5 @@ void GenericVisionOutput::copyToOther(VisionOutput& other)
 	other.setPixelSize(currentPixelSize);
 	other.setAverageColor(currentAverageColor);
 	other.setCenterLocation(currentCenterLocation);
+	other.setDistance(currentDistance);
 }

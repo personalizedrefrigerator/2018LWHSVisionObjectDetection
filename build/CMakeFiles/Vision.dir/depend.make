@@ -997,12 +997,14 @@ CMakeFiles/Vision.dir/robotVision/Source/GenericVisionOutput.cpp.o: ../robotVisi
 
 CMakeFiles/Vision.dir/robotVision/Source/LightedLine.cpp.o: ../robotVision/Headers/Color.h
 CMakeFiles/Vision.dir/robotVision/Source/LightedLine.cpp.o: ../robotVision/Headers/CornerDetector.h
+CMakeFiles/Vision.dir/robotVision/Source/LightedLine.cpp.o: ../robotVision/Headers/Detector.h
 CMakeFiles/Vision.dir/robotVision/Source/LightedLine.cpp.o: ../robotVision/Headers/LightedLine.h
 CMakeFiles/Vision.dir/robotVision/Source/LightedLine.cpp.o: ../robotVision/Headers/Point.h
 CMakeFiles/Vision.dir/robotVision/Source/LightedLine.cpp.o: ../robotVision/Headers/Point2D.h
 CMakeFiles/Vision.dir/robotVision/Source/LightedLine.cpp.o: ../robotVision/Headers/Shape.h
 CMakeFiles/Vision.dir/robotVision/Source/LightedLine.cpp.o: ../robotVision/Headers/ShapeComparisonOptions.h
 CMakeFiles/Vision.dir/robotVision/Source/LightedLine.cpp.o: ../robotVision/Headers/Vector3D.h
+CMakeFiles/Vision.dir/robotVision/Source/LightedLine.cpp.o: ../robotVision/Headers/VisitedList.h
 CMakeFiles/Vision.dir/robotVision/Source/LightedLine.cpp.o: ../robotVision/Source/LightedLine.cpp
 CMakeFiles/Vision.dir/robotVision/Source/LightedLine.cpp.o: /usr/local/include/opencv/cxcore.h
 CMakeFiles/Vision.dir/robotVision/Source/LightedLine.cpp.o: /usr/local/include/opencv2/calib3d.hpp

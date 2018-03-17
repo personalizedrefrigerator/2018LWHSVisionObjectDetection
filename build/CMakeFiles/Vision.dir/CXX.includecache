@@ -93,6 +93,12 @@ string
 ../robotVision/Headers/LightedLine.h
 Shape.h
 ../robotVision/Headers/Shape.h
+Point2D.h
+../robotVision/Headers/Point2D.h
+Shape.h
+../robotVision/Headers/Shape.h
+Detector.h
+../robotVision/Headers/Detector.h
 
 ../robotVision/Headers/Line.h
 Point.h
@@ -297,6 +303,10 @@ ListHelper.h
 /home/bob/VisionObjectDetection/robotVision/Source/ListHelper.h
 MathHelper.h
 /home/bob/VisionObjectDetection/robotVision/Source/MathHelper.h
+sstream
+-
+iostream
+-
 math.h
 -
 

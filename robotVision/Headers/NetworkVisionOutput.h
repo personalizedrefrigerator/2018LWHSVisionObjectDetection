@@ -20,6 +20,7 @@ class NetworkVisionOutput : public VisionOutput
 	void setPixelSize(double pixelSize);
 	void setAverageColor(Color averageColor);
 	void setCenterLocation(Point2D centerLocation);
+	void setDistance(double distance);
 	void copyToOther(VisionOutput& other);
 	~NetworkVisionOutput();
 	

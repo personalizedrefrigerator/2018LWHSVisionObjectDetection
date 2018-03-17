@@ -360,7 +360,7 @@ void Shape::calculateSignificantPoints()
 	double searchArea=screenWidth*16.0/200;
 	
 	// Only one corner is permitted in this search area. Corners must be detected 4 times.
-	calculateCorners(searchArea*searchArea, 4, 0.1);
+	calculateCorners(searchArea*searchArea, 4, 0.075);
 }
 
 // Geth the x-direction angle to a point.
@@ -527,14 +527,17 @@ void Shape::compareAndFilterCorners(const std::vector<Point2D>& previousCorners,
 // Output the corners to a given vector. Run findcorners first.
 void Shape::getCorners(std::vector<Point2D>& outputVector)
 {
+	// Clear the output vector.
+	outputVector.clear();
+	
 	// Resize the output to the length of the corner vector.
 	outputVector.resize(corners.size());
 	
 	// For every corner.
-	for(int i=0; i < corners.size(); i++)
+	for(unsigned int i=0; i < corners.size(); i++)
 	{
 		// Add the corner to the output.
-		outputVector.push_back(corners.at(i));
+		outputVector.at(i) = (corners.at(i));
 	}
 }
 
@@ -556,6 +559,25 @@ double Shape::getScreenArea()
 {
 	return screenWidth * screenHeight;
 }
+
+// Get the z position of the screen.
+double Shape::getScreenZ()
+{
+	return screenZ;
+}
+
+// Get the screen's width.
+double Shape::getScreenWidth()
+{
+	return screenWidth;
+}
+
+// Get the screen's height.
+double Shape::getScreenHeight()
+{
+	return screenHeight;
+}
+
 
 // Get whether a point could be on the screen.
 bool Shape::isOnScreen(Point2D point)
@@ -619,9 +641,13 @@ void Shape::fromOther(Shape & other)
 	setAverageColor(other.getAverageColor());
 	setEdges(other.getEdges());
 	setContents(other.getContents());
+	corners = other.getCornersCopy();
 	setCenterLocation(other.getCenter());
 	
 	setShapeComparisonOptions(other.getShapeComparisonOptions());
+	
+	setScreenSize(other.getScreenWidth(), other.getScreenHeight());
+	setScreenZ(other.getScreenZ());
 }
 
 // Get the options used to compare this shape to another.
@@ -646,6 +672,12 @@ std::vector<Point2D> Shape::getEdges()
 std::vector<Point2D> Shape::getContents()
 {
 	return contents;
+}
+
+// Get the shape's corners.
+std::vector<Point2D> Shape::getCornersCopy()
+{
+	return corners;
 }
 
 // Get the center point.

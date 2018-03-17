@@ -17,11 +17,13 @@ class Box : public Shape
 	public:
 	// Define constructors.
 	Box(Shape & startingShape) : Shape(startingShape) {}; // Define the box based on a Shape object.
+	Box(Shape * startingShape) { fromOther(*startingShape); }; // Define the box based on a Shape object.
+	Box(Box & other) { fromOther(other); };
 	Box(double cameraPitch, Shape & startingShape) : Shape(startingShape), cameraAngle(cameraPitch) {}; // Define the box based on the camera's pitch and the starting shape.
 	Box(double cameraPitch) : cameraAngle(cameraPitch) {}; // Define the box based on just the camera's angle.
 	Box() {}; // Define the box with no arguments.
 	
-	Line getVerticalSide(bool side); // Get one of the vertical sides of the box. False is left, true is right.
+	std::vector<Point2D> getVerticalSide(bool side); // Get one of the vertical sides of the box. False is left, true is right. The returned vector's length is gaurenteed to be 2.
 	
 	virtual void calculateSignificantPoints();
 	virtual void drawDebugOutput(cv::Mat outputImage); // Draw a representation of the shape to the given image, for debugging purposes.

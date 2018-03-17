@@ -14,5 +14,6 @@ class VisionOutput
 	virtual void setPixelSize(double pixelSize) = 0;
 	virtual void setAverageColor(Color averageColor) = 0;
 	virtual void setCenterLocation(Point2D centerLocation) = 0;
+	virtual void setDistance(double distance) = 0;
 	virtual void copyToOther(VisionOutput& other) = 0;
 };

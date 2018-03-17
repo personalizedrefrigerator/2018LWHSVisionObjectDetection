@@ -6,8 +6,23 @@ LightedLine::LightedLine()
 	
 }
 
-// Detect the line.
-void LightedLine::detect()
+// Detect the line, starting at a point, thought to be a part of the line.
+void LightedLine::detectPoints2D(Point2D startingPoint)
+{
+	// 
+}
+
+void LightedLine::detectPoints2D()
+{
+
+}
+
+void LightedLine::calculateSignificantPoints()
+{
+
+}
+
+bool LightedLine::getFound()
 {
 	
 }

@@ -24,6 +24,7 @@ namespace MathHelper
 			solution2 = (-b - squareRootResult)/denominator;
 			
 			// Note that the result is defined.
+			defined = true;
 		}
 		
 		// Compile the solutions into a result.

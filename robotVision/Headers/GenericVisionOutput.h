@@ -20,15 +20,17 @@ class GenericVisionOutput : public VisionOutput
 	void setPixelSize(double pixelSize);
 	void setAverageColor(Color averageColor);
 	void setCenterLocation(Point2D centerLocation);
+	void setDistance(double distance);
 	double getXRotation();
 	double getYRotation();
 	double getPixelSize();
+	double getDistance();
 	Color getAverageColor();
 	Point2D getCenterLocation();
 	virtual void copyToOther(VisionOutput& other);
 	
 	private:
-	double currentXRotation, currentYRotation, currentPixelSize;
+	double currentXRotation, currentYRotation, currentPixelSize, currentDistance;
 	Color currentAverageColor=Color(0,0,0);
 	Point2D currentCenterLocation;
 };

@@ -1,7 +1,7 @@
 #pragma once
 
 // A class to store information about general shapes.
-//Henry Heino January 22.
+//January 22.
 
 // Include necessary standard libraries.
 #include <vector>

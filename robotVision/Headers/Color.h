@@ -3,7 +3,7 @@
 // Include Vector3D.
 #include "Vector3D.h"
 
-//Henry Heino, a class for storing and abstracting colors.
+//A class for storing and abstracting colors.
 
 class Color
 {

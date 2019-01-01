@@ -1,6 +1,5 @@
 #pragma once
 // Filter input from a camera.
-//Henry Heino
 
 // Include opencv libraries.
 #include<opencv2/opencv.hpp>

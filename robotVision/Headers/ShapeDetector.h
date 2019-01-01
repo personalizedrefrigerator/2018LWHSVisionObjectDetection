@@ -1,6 +1,6 @@
 #pragma once
 
-// Henry Heino. A class for detecting shapes, dealing with object tracking, etc.
+// A class for detecting shapes, dealing with object tracking, etc.
 
 // Include classes part of this project.
 #include "Shape.h"

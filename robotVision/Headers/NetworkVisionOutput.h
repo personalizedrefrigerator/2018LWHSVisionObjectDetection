@@ -1,7 +1,6 @@
 #pragma once
 
 // A class to output the results of the vision application over the network.
-//Henry Heino
 
 // Libraries from this project.
 #include "VisionOutput.h"

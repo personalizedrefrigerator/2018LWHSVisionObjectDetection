@@ -17,7 +17,6 @@
 #include "PlaneDetectorOptions.h"
 
 // Detect a plane and points on it. This class is slowly being removed. DO NOT ADD TO IT.
-//Henry Heino
 
 class PlaneDetector : public Detector
 {

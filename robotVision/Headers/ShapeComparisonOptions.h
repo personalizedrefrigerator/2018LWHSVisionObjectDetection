@@ -1,9 +1,7 @@
 #pragma once
 
 // A structure to store options for the Shape class, 
-//for comparing its-self to other objects.
-//Henry Heino.
-
+//for comparing itself to other objects.
 
 struct ShapeComparisonOptions
 {

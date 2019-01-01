@@ -1,6 +1,6 @@
 #pragma once
 // A plane, implementing Shape. The form ax+by+cz=d is used to represent the plane.
-//Henry Heino. This file, for now, isn't used. It may be later.
+//This file, for now, isn't used. It may be later.
 #include "Shape.h"
 #include "Point3D.h"
 #include "Line.h"

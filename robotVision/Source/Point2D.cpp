@@ -1,8 +1,8 @@
 #include "Point2D.h"
 // The definitions of methods for the Point2D object.
-// Henry Heino.
+//The Point2D object is a basic point container object.
 
-// Construct a Point3D.
+// Construct a Point2D.
 Point2D::Point2D(double x, double y)
 {
 	this->x=x;

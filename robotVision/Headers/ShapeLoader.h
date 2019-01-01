@@ -1,7 +1,6 @@
 #pragma once
 
 // A class for loading and writing shapes to files.
-//Henry Heino
 
 // Include libraries from this project.
 #include "Shape.h"

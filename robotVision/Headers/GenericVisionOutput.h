@@ -1,7 +1,8 @@
 #pragma once
 
-// A class to output the results of the vision.
-//Henry Heino
+// A class to output the results of the vision,
+//intended for use through the NetworkCommunicator
+//class.
 
 // Libraries from this project.
 #include "VisionOutput.h"

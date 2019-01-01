@@ -2,7 +2,6 @@
 #pragma once
 
 // A class to keep track of visited pixels on an image.
-// Henry Heino.
 
 // Include needed libraries.
 #include "Point2D.h"

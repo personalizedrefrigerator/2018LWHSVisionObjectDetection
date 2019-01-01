@@ -1,7 +1,6 @@
 #pragma once
 
 // A class to keep track of visited pixels on an image.
-// Henry Heino.
 
 // Include needed libraries.
 #include "Point2D.h"
@@ -27,7 +26,7 @@ class VisitedList
 
 	void addVisitedItemsFromOther(VisitedList &other); // Add all visited locations from the other visited list.
 
-	p:
+	private:
 	std::vector<bool> visited;
 	unsigned int width=0, height=0, listLength;
 };

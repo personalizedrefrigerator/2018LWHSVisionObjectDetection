@@ -1,7 +1,7 @@
 #include "Point3D.h"
 
 // The definitions of methods for the Point3D object.
-// Henry Heino.
+//
 
 // Construct a Point3D.
 Point3D::Point3D(double x, double y, double z)

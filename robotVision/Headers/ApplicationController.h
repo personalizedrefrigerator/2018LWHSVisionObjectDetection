@@ -6,8 +6,7 @@
 // Include opencv libraries.
 #include<opencv2/opencv.hpp>
 
-// A clas to run and control the application.
-//Henry Heino
+// A class to run and control the application.
 
 class ApplicationController
 {

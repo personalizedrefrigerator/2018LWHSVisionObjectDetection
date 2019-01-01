@@ -1,7 +1,7 @@
 #pragma once
 
-// Normalize a camera.
-// Henry Heino.
+// Normalize a camera -- use OpenCV to
+//normalize a camera.
 
 // Include opencv libraries.
 #include<opencv2/opencv.hpp>

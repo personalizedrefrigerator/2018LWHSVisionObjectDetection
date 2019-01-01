@@ -2,7 +2,7 @@
 #include "Line.h"
 #include <math.h>
 // The definition of functions defined for a line.
-//Henry Heino.
+//
 
 #define PI 3.145926535897932384626433
 

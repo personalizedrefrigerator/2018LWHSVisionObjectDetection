@@ -47,11 +47,7 @@ NetworkCommunicator::NetworkCommunicator(const std::string& serverIp, const std:
 
 NetworkCommunicator::~NetworkCommunicator()
 {
-	if(socketOpen)
-	{
-		close(socketFileDescriptor);
-		socketOpen = false;
-	}
+	closeSocketIfOpen();
 
 	useNetwork = false;
 	conditionVarSyncData.notify_all();
@@ -111,8 +107,28 @@ void NetworkCommunicator::communicationThreadFunction()
 			{
 				return;
 			}
+
+			closeSocketIfOpen();
 		}
 	}
+}
+
+// Returns true on socket close.
+bool NetworkCommunicator::closeSocketIfOpen()
+{
+	// Clean up if the socket was previously opened.
+	if(socketOpen)
+	{
+		close(socketFileDescriptor);
+		
+		socketOpen = false;
+
+		Logging::log("Socket closed.");
+
+		return true;
+	}
+
+	return false;
 }
 
 // Create a socket client to handle network communication with the 
@@ -131,11 +147,9 @@ bool NetworkCommunicator::openSocket()
 	std::string debugLocation = "NetworkCommunicator.cpp (NetworkCommunicator::NetworkCommunicator)";
 
 	// Clean up if the socket was previously opened.
-	if(socketOpen)
-	{
-		close(socketFileDescriptor);
-		socketOpen = false;
-	}
+	closeSocketIfOpen();
+
+	Logging::log("Opening socket...");
 
 	// Danger! This assumes compilation and execution on Linux!
 	// A protocol of zero means to auto-infer the protocol.
@@ -286,18 +300,23 @@ bool NetworkCommunicator::sendData(const std::string& dataToSend)
 		}
 	}
 
-	int writeResult = write(socketFileDescriptor, dataToSend.c_str(), 
-			dataToSend.length() * sizeof(dataToSend.at(0))); // std::string is by default a std::basic_string<char>.
+	std::string formattedData = dataToSend + "\n\n";
+
+	int writeResult = write(socketFileDescriptor, (formattedData).c_str(), 
+			dataToSend.length() * sizeof(formattedData.at(0))); // std::string is by default a std::basic_string<char>.
 															// .at(0) is used to ensure the size of the data to send
 															// matches the type of character to be used.
 	// If writeResult is -1: The write failed. Log this.
 	if(writeResult < 0)
 	{
 		Logging::error("From NetworkCommunicator::sendData, error writing data.", 
-			"Attempted to send: " + dataToSend + " to " + serverLocation + " on table "
+			"Attempted to send: " + formattedData + " to " + serverLocation + " on table "
 			 + tableName + ". Write failed.", 
 		 	"The provided length may not match the length of the data to send or the socket may not have been opened properly.");
 		
+		// Clean up if the socket was previously opened.
+		closeSocketIfOpen();
+
 		return false;
 	}
 
@@ -331,6 +350,9 @@ std::string NetworkCommunicator::readData()
 		Logging::error("From NetworkCommunicator::readData().",
 			"Unable to read data. Attempting to contact " + serverLocation + " at table " + tableName + ".",
 			"The socket may not have connected to the server.");
+		
+		// Clean up if the socket was previously opened.
+		closeSocketIfOpen();
 	}
 
 	return std::string {buffer};
@@ -369,11 +391,11 @@ std::string NetworkCommunicator::getOrSetNetworkTableSegement(const std::string&
 	// Send data to get or set a variable.
 	if(!accessing)
 	{
-		success = sendData("SET " + tableName + " " + keyName + "=" + valueToSet + ";");
+		success = sendData("SET " + tableName + " " + keyName + "=" + valueToSet + ";\n");
 	}
 	else
 	{
-		success = sendData("GET " + tableName + " " + keyName + ";");
+		success = sendData("GET " + tableName + " " + keyName + ";\n");
 	}
 
 	// If sending the request failed,
@@ -393,6 +415,7 @@ std::string NetworkCommunicator::getOrSetNetworkTableSegement(const std::string&
 
 	// Get and return the server response.
 	std::string response = readData();
+
 	return response;
 }
 

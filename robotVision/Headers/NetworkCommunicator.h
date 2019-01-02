@@ -131,6 +131,8 @@
 		bool openSocket(); 	// Attempt to open a Linux socket to be used for communication. Returns success/failure.
 							// Status is saved in an instance of the NetworkCommunicator class.
 
+		bool closeSocketIfOpen();
+
 		bool getDataUpdateNeeded(); // Determines whether server data must be updated.
 
 		// Main/not socket thread functions.

@@ -2,9 +2,10 @@
 
 // Streams.
 #include <iostream>
+#include "Logging.h"
 
 // Include opencv libraries.
-#include<opencv2/opencv.hpp>
+#include <opencv2/opencv.hpp>
 
 // A class to run and control the application.
 
@@ -35,5 +36,5 @@ class ApplicationController
 	cv::Size imageSize=cv::Size(600,600);
 
 	// The stream to log output to.
-	std::ostream * outputStream=&(std::cout);
+	std::ostream * outputStream = &(Logging::log);
 };

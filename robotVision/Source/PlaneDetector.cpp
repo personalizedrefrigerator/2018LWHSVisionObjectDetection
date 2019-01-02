@@ -84,7 +84,7 @@ void PlaneDetector::detectPoints2D(Point2D startPoint)
 		totalB+=currentColor.getB();
 		mainColor=Color(totalR/times, totalG/times, totalB/times);
 
-		//std::cout << "START" << fringe.size() << "\n";
+		//Logging::log << "START" << fringe.size() << "\n";
 		for(x=-deltaX; x<=deltaX; x+=deltaX)
 		{
 			for(y=-deltaY; y<=deltaY; y+=deltaY)
@@ -100,7 +100,7 @@ void PlaneDetector::detectPoints2D(Point2D startPoint)
 				if(!getVisited(considering))
 				{
 					setVisited(considering, true);
-					//std::cout << isOnImage(considering) << "\n";
+					//Logging::log << isOnImage(considering) << "\n";
 					//TODO: Make color change take direction into account. getColorAt(current).getColorAngle()*180/PI > 5 && getColorAt(current).getColorAngle()*180/PI < 35 && getColorAt(current).getR() > getColorAt(current).getB()+30 && ((int)(getColorAt(current).getR()/5) == (int)(getColorAt(current).getG()/5)) && getColorAt(current).getG() > getColorAt(current).getB()+30 && (getColorAt(current)-getColorAt(considering) <= colorChangeThreshold && 
 					if(isOnImage(considering) && getColorAt(current).getR() > 1 && getColorAt(current).getG() > 1 && getColorAt(current)-mainColor <= averageChangeThreshold || times < startingPixels)
 					{
@@ -108,7 +108,7 @@ void PlaneDetector::detectPoints2D(Point2D startPoint)
 						fringeSize++;
 						planePoints.push_back(considering);
 
-						//std::cout << "ADDED " << fringe.size() << "," << considering.x << "," << considering.y << "\n";
+						//Logging::log << "ADDED " << fringe.size() << "," << considering.x << "," << considering.y << "\n";
 					}
 					else if(isOnImage(considering))// Otherwise, so long as on the image, it is an edge.
 					{
@@ -118,7 +118,7 @@ void PlaneDetector::detectPoints2D(Point2D startPoint)
 			}
 		}
 
-		//std::cout << fringe.size() << "\n";
+		//Logging::log << fringe.size() << "\n";
 	}
 	while(fringeSize > 0);
 
@@ -151,7 +151,7 @@ void PlaneDetector::detectSignificantPoints()
 	int maximum=edgePoints2D.size()-(int)numberOfPixelsConsidering;
 
 
-	//std::cout << "Go through all of the edges, C at a time.\n";
+	//Logging::log << "Go through all of the edges, C at a time.\n";
 	for(int pixelIndex=numberOfPixelsConsidering; pixelIndex < maximum; pixelIndex+=1)
 	{
 		// Get the slope of the current edge (the current pixel and the next

@@ -7,6 +7,9 @@
 // Include serialization libraries.
 #include "Serialize.h"
 
+// Logging libraries.
+#include "Logging.h"
+
 // Include file access libraries.
 #include<fstream>
 
@@ -40,7 +43,7 @@ void CameraNormalizer::calibrate(bool useUI)
 		// Create a name to use for the calibration window.
 		std::string calibrationWindowName="Calibration Window";
 		
-		std::cout << "Calibrating camera " << cameraNumber << '\n';
+		Logging::log << "Calibrating camera " << cameraNumber << '\n';
 		
 		// Open the camera.
 		cv::VideoCapture video;
@@ -234,15 +237,15 @@ void CameraNormalizer::normalize(cv::Mat cameraData)
 // Load the data.
 bool CameraNormalizer::loadData()
 {
-	std::cout << "Starting to load data.\n";
+	Logging::log << "Starting to load data.\n";
 	std::ifstream fileInput;
-	std::cout << "Opened file input.\n";
+	Logging::log << "Opened file input.\n";
 	fileInput.open(filePath);
 	
 	// If the file can be read from,
 	if(fileInput.good())
 	{
-		std::cout << "The file can be read from.\n";
+		Logging::log << "The file can be read from.\n";
 		// Create variables to store different parts of the data.
 		std::string cameraNumberData, cameraMatrixData, distortionCoefficentsData, cornerSizeData;
 

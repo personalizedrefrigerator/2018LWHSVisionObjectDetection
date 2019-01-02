@@ -9,6 +9,8 @@
 ../robotVision/Headers/ApplicationController.h
 iostream
 -
+Logging.h
+../robotVision/Headers/Logging.h
 opencv2/opencv.hpp
 -
 
@@ -115,8 +117,6 @@ ListHelperImplementation.tcc
 ../robotVision/Headers/ListHelperImplementation.tcc
 
 ../robotVision/Headers/ListHelperImplementation.tcc
-iostream
--
 sstream
 -
 
@@ -149,6 +149,16 @@ ntcore.h
 ../robotVision/Headers/ntcore.h
 networktables/NetworkTable.h
 ../robotVision/Headers/networktables/NetworkTable.h
+memory
+-
+set
+-
+thread
+-
+mutex
+-
+condition_variable
+-
 sys/types.h
 -
 netinet/in.h
@@ -317,6 +327,8 @@ NetworkVisionOutput.h
 /home/bob/VisionObjectDetection/robotVision/Source/NetworkVisionOutput.h
 Vector3D.h
 /home/bob/VisionObjectDetection/robotVision/Source/Vector3D.h
+Logging.h
+/home/bob/VisionObjectDetection/robotVision/Source/Logging.h
 NetworkCommunicator.h
 /home/bob/VisionObjectDetection/robotVision/Source/NetworkCommunicator.h
 
@@ -331,8 +343,6 @@ MathHelper.h
 /home/bob/VisionObjectDetection/robotVision/Source/MathHelper.h
 sstream
 -
-iostream
--
 math.h
 -
 
@@ -341,6 +351,8 @@ CameraFilter.h
 /home/bob/VisionObjectDetection/robotVision/Source/CameraFilter.h
 PlaneDetectorOptions.h
 /home/bob/VisionObjectDetection/robotVision/Source/PlaneDetectorOptions.h
+Logging.h
+/home/bob/VisionObjectDetection/robotVision/Source/Logging.h
 vector
 -
 opencv2/stitching.hpp
@@ -355,6 +367,8 @@ opencv2/imgproc.hpp
 -
 Serialize.h
 /home/bob/VisionObjectDetection/robotVision/Source/Serialize.h
+Logging.h
+/home/bob/VisionObjectDetection/robotVision/Source/Logging.h
 fstream
 -
 sstream
@@ -397,14 +411,18 @@ math.h
 /home/bob/VisionObjectDetection/robotVision/Source/ListHelper.cpp
 ListHelper.h
 /home/bob/VisionObjectDetection/robotVision/Source/ListHelper.h
-iostream
--
+Logging.h
+/home/bob/VisionObjectDetection/robotVision/Source/Logging.h
 math.h
 -
 cstdlib
 -
 vector
 -
+
+/home/bob/VisionObjectDetection/robotVision/Source/Logging.cpp
+Logging.h
+/home/bob/VisionObjectDetection/robotVision/Source/Logging.h
 
 /home/bob/VisionObjectDetection/robotVision/Source/MathHelper.cpp
 MathHelper.h
@@ -489,14 +507,14 @@ math.h
 /home/bob/VisionObjectDetection/robotVision/Source/ShapeDetector.cpp
 ShapeDetector.h
 /home/bob/VisionObjectDetection/robotVision/Source/ShapeDetector.h
-iostream
--
+Logging.h
+/home/bob/VisionObjectDetection/robotVision/Source/Logging.h
 
 /home/bob/VisionObjectDetection/robotVision/Source/ShapeList.cpp
 ShapeList.h
 /home/bob/VisionObjectDetection/robotVision/Source/ShapeList.h
-iostream
--
+Logging.h
+/home/bob/VisionObjectDetection/robotVision/Source/Logging.h
 
 /home/bob/VisionObjectDetection/robotVision/Source/ShapeLoader.cpp
 ShapeLoader.h
@@ -527,6 +545,8 @@ ApplicationController.h
 /home/bob/VisionObjectDetection/robotVision/ApplicationController.h
 ListHelper.h
 /home/bob/VisionObjectDetection/robotVision/ListHelper.h
+Logging.h
+/home/bob/VisionObjectDetection/robotVision/Logging.h
 
 /usr/local/include/opencv/cxcore.h
 opencv2/core/core_c.h

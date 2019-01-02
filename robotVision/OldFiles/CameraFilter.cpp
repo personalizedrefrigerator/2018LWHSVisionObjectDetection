@@ -2,19 +2,21 @@
 
 #include "PlaneDetectorOptions.h"
 
+#include "Logging.h"
+
 #include <vector>
-#include<opencv2/stitching.hpp>
+#include <opencv2/stitching.hpp>
 
 // Construct a filtering object.
 CameraFilter::CameraFilter(unsigned int cameraNumber)//cv::Mat startingData, unsigned int cameraNumber)
 {
 	//data=startingData;
-	std::cout << "Loading camera filter...\n";
+	Logging::log("Loading camera filter...");
 	normalizer.setCameraNumber(cameraNumber);
-	std::cout << "Attemptint to load data...\n";
+	Logging::log("Attemptint to load data...");
 	bool couldLoadData=normalizer.loadData();
 	
-	std::cout << "Data loaded!" << couldLoadData << "\n";
+	Logging::log << "Data loaded!" << couldLoadData << "\n";
 
 	// If a file containing the calibration data couldn't be found,
 	if(!couldLoadData)
@@ -200,9 +202,9 @@ void CameraFilter::tier(int multiplier)
 // Show a plane found by the plane detector.
 void CameraFilter::showPlane()
 {
-	//std::cout << "Detecting 2D points.\n";
+	//Logging::log << "Detecting 2D points.\n";
 	planeDetector.detectPoints2D(); // Detect the points on the plane.
-	//std::cout << "Detecting significant points.\n";
+	//Logging::log << "Detecting significant points.\n";
 
 	cv::Mat planeOutput=cv::Mat::zeros(data.rows, data.cols, CV_8UC3);
 	planeDetector.showPlaneRegion(planeOutput);

@@ -1,6 +1,6 @@
 #include "ShapeList.h"
 
-#include <iostream>
+#include "Logging.h"
 
 // Initialize the list.
 ShapeList::ShapeList()
@@ -39,7 +39,7 @@ void ShapeList::remove(unsigned int index)
 	// If handling memory managment and the shape isn't null,
 	if(handlingMemoryManagment && currentShape != nullptr && currentShape != 0)
 	{
-		std::cout << "\nFree at index " << index;
+		Logging::log << "Free at index " << index << "\n";
 		// Free the memory.
 		delete currentShape;
 	}

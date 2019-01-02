@@ -18,6 +18,8 @@
 #include "NetworkVisionOutput.h"
 #include "Vector3D.h"
 
+#include "Logging.h"
+
 // Include the network communication class.
 #include "NetworkCommunicator.h"
 
@@ -56,7 +58,7 @@ void ApplicationController::setOutputStream(std::ostream * newOutput)
 unsigned int ApplicationController::promptForCamera()
 {
 	// Request the camera number.
-	std::cout << "Camera number: ";
+	Logging::log << "Camera number: ";
 
 	// Create a variable to store the string version of the camera number.
 	std::string cameraNumberResponse;
@@ -71,7 +73,7 @@ void ApplicationController::logOutput(std::string output)
 {
 	if(logInfo)
 	{
-		(*outputStream) << "\n" << output;
+		(*outputStream) << output << "\n";
 	}
 }
 
@@ -85,7 +87,7 @@ void ApplicationController::setImageSize(cv::Size newSize)
 void ApplicationController::demoNetworkTables()
 {
 	// Create the network table.
-	NetworkCommunicator mainCommunicator=NetworkCommunicator("10.58.27.2", "testTable");
+	NetworkCommunicator mainCommunicator { "10.58.27.2", "testTable" };
 	
 	// Update a value.
 	mainCommunicator.updateValue("testValue", 123);
@@ -153,7 +155,7 @@ void ApplicationController::demoStitcher()
 void ApplicationController::mainLoop()
 {
 	Vector3D a=(Color(255,100,1)).getVector();
-	std::cout << a.getShadowAngle() << "\n";
+	Logging::log << a.getShadowAngle() << "\n";
 
 	// If the camera number has not been explicitly set,
 	if(!cameraNumberSet)

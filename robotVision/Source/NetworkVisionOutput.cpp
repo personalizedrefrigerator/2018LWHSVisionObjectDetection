@@ -33,9 +33,11 @@ void NetworkVisionOutput::setPixelSize(double pixelSize)
 void NetworkVisionOutput::setAverageColor(Color averageColor)
 {
 	cachedValues.setAverageColor(averageColor);
-	communicator->updateValue("averageColorRed", averageColor.getR());
-	communicator->updateValue("averageColorGreen", averageColor.getG());
-	communicator->updateValue("averageColorBlue", averageColor.getB());
+
+	// Static cast to int to remove conversion of characters to string characters.
+	communicator->updateValue("averageColorRed", static_cast<int>(averageColor.getR()));
+	communicator->updateValue("averageColorGreen", static_cast<int>(averageColor.getG()));
+	communicator->updateValue("averageColorBlue", static_cast<int>(averageColor.getB()));
 }
 
 // Set the found center location.

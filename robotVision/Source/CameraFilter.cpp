@@ -1,6 +1,7 @@
 #include "CameraFilter.h"
 
 #include "PlaneDetectorOptions.h"
+#include "Logging.h"
 
 #include <vector>
 #include <opencv2/stitching.hpp>
@@ -9,13 +10,13 @@
 CameraFilter::CameraFilter(unsigned int cameraNumber)//cv::Mat startingData, unsigned int cameraNumber)
 {
 	//data=startingData;
-	std::cout << "Loading camera filter...\n";
+	Logging::log << "Loading camera filter...\n";
 	normalizer.setCameraNumber(cameraNumber);
 	normalizer.setImageSize(imageSize);
-	std::cout << "Attemptint to load data...\n";
+	Logging::log << "Attemptint to load data...\n";
 	bool couldLoadData=normalizer.loadData();
 	
-	std::cout << "Data loaded!" << couldLoadData << "\n";
+	Logging::log << "Data loaded!" << couldLoadData << "\n";
 
 	// If a file containing the calibration data couldn't be found,
 	if(!couldLoadData)

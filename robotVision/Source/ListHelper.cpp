@@ -1,18 +1,16 @@
 #include "ListHelper.h"
 
-// Include standard input/output.
-#include <iostream>
+#include "Logging.h"
 
+// Standard libraries.
 #include <math.h>
-
 #include <cstdlib>
-
 #include <vector>
 
 // Test the sorting function.
 void ListHelper::testSort()
 {
-	std::cout << "\nStarting merge sort test.";
+	Logging::log("Starting merge sort test.");
 	
 	std::vector< ObjectSortingContainer<double> > list;
 	
@@ -23,21 +21,21 @@ void ListHelper::testSort()
 	
 	
 	
-	std::cout << "\nList: ";
+	Logging::log("List");
 	for(unsigned int index = 0; index < list.size(); index++)
 	{
-		std::cout << list.at(index).getValue() << ", ";
+		Logging::log << list.at(index).getValue() << ", ";
 	}
 	
 	mergeSort(list, true);
 	
-	std::cout << "\nList: ";
+	Logging::log("List: ");
 	for(unsigned int index = 0; index < list.size(); index++)
 	{
-		std::cout << list.at(index).getValue() << ", ";
+		Logging::log << list.at(index).getValue() << ", ";
 	}
 	
-	std::cout << "\n======\nMerge two.";
+	Logging::log("======\nMerge two.");
 	
 	list.clear();
 	
@@ -51,9 +49,10 @@ void ListHelper::testSort()
 	
 	list = mergeTwoSorted(list, list2, true);
 	
-	std::cout << "\nList: ";
+	Logging::log("List: ");
+
 	for(unsigned int index = 0; index < list.size(); index++)
 	{
-		std::cout << list.at(index).getValue() << ", ";
+		Logging::log << list.at(index).getValue() << ", ";
 	}
 }

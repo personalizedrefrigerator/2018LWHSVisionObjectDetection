@@ -11,6 +11,7 @@ CMakeFiles/Vision.dir/robotVision/Source/ApplicationController.cpp.o
  ../robotVision/Headers/Detector.h
  ../robotVision/Headers/GenericVisionOutput.h
  ../robotVision/Headers/Line.h
+ ../robotVision/Headers/Logging.h
  ../robotVision/Headers/NetworkCommunicator.h
  ../robotVision/Headers/NetworkVisionOutput.h
  ../robotVision/Headers/PlaneDetector.h
@@ -308,6 +309,7 @@ CMakeFiles/Vision.dir/robotVision/Source/CameraFilter.cpp.o
  ../robotVision/Headers/CornerDetector.h
  ../robotVision/Headers/Detector.h
  ../robotVision/Headers/Line.h
+ ../robotVision/Headers/Logging.h
  ../robotVision/Headers/PlaneDetector.h
  ../robotVision/Headers/PlaneDetectorOptions.h
  ../robotVision/Headers/Point.h
@@ -449,6 +451,7 @@ CMakeFiles/Vision.dir/robotVision/Source/CameraFilter.cpp.o
 CMakeFiles/Vision.dir/robotVision/Source/CameraNormalizer.cpp.o
  ../robotVision/Headers/CameraNormalizer.h
  ../robotVision/Headers/Color.h
+ ../robotVision/Headers/Logging.h
  ../robotVision/Headers/Point.h
  ../robotVision/Headers/Point2D.h
  ../robotVision/Headers/Serialize.h
@@ -1143,8 +1146,12 @@ CMakeFiles/Vision.dir/robotVision/Source/Line.cpp.o
 CMakeFiles/Vision.dir/robotVision/Source/ListHelper.cpp.o
  ../robotVision/Headers/ListHelper.h
  ../robotVision/Headers/ListHelperImplementation.tcc
+ ../robotVision/Headers/Logging.h
  ../robotVision/Headers/ObjectSortingContainer.h
  /home/bob/VisionObjectDetection/robotVision/Source/ListHelper.cpp
+CMakeFiles/Vision.dir/robotVision/Source/Logging.cpp.o
+ ../robotVision/Headers/Logging.h
+ /home/bob/VisionObjectDetection/robotVision/Source/Logging.cpp
 CMakeFiles/Vision.dir/robotVision/Source/MathHelper.cpp.o
  ../robotVision/Headers/MathHelper.h
  /home/bob/VisionObjectDetection/robotVision/Source/MathHelper.cpp
@@ -1741,6 +1748,7 @@ CMakeFiles/Vision.dir/robotVision/Source/ShapeDetector.cpp.o
  ../robotVision/Headers/CornerDetector.h
  ../robotVision/Headers/Detector.h
  ../robotVision/Headers/Line.h
+ ../robotVision/Headers/Logging.h
  ../robotVision/Headers/PlaneDetector.h
  ../robotVision/Headers/PlaneDetectorOptions.h
  ../robotVision/Headers/Point.h
@@ -1884,6 +1892,7 @@ CMakeFiles/Vision.dir/robotVision/Source/ShapeDetector.cpp.o
 CMakeFiles/Vision.dir/robotVision/Source/ShapeList.cpp.o
  ../robotVision/Headers/Color.h
  ../robotVision/Headers/CornerDetector.h
+ ../robotVision/Headers/Logging.h
  ../robotVision/Headers/Point.h
  ../robotVision/Headers/Point2D.h
  ../robotVision/Headers/Shape.h
@@ -2320,6 +2329,7 @@ CMakeFiles/Vision.dir/robotVision/main.cpp.o
  ../robotVision/Headers/ApplicationController.h
  ../robotVision/Headers/ListHelper.h
  ../robotVision/Headers/ListHelperImplementation.tcc
+ ../robotVision/Headers/Logging.h
  ../robotVision/Headers/ObjectSortingContainer.h
  /home/bob/VisionObjectDetection/robotVision/main.cpp
  /usr/local/include/opencv/cxcore.h

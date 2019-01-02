@@ -41,6 +41,8 @@ NetworkCommunicator::NetworkCommunicator(const std::string& serverIp, const std:
 {
 	serverLocation = serverIp;
 	tableName = initialTableName;
+
+	startCommunicationThread();
 }
 
 NetworkCommunicator::~NetworkCommunicator()
@@ -49,6 +51,67 @@ NetworkCommunicator::~NetworkCommunicator()
 	{
 		close(socketFileDescriptor);
 		socketOpen = false;
+	}
+
+	useNetwork = false;
+	conditionVarSyncData.notify_all();
+
+	Logging::warn("Danger: Joining communication thread. This may cause the application to freeze.");
+	communicationThread->join(); // Wait for the communication thread to stop. This may be troublesome.
+}
+
+// Allow the communication section of this program to run independent
+//of the main thread, to prevent waiting for the server. To be run
+//from the constructor.
+void NetworkCommunicator::startCommunicationThread()
+{
+	Logging::log("Starting communication thread..."); // TODO Make Logging::log thread safe.
+
+	// Start the communication thread and create a refrence to it.
+	communicationThread = std::unique_ptr<std::thread> 
+		{ 
+			new std::thread { [&]() { communicationThreadFunction(); } }	// [&]() { ... }
+																			//is a lambda.
+		}; // This is an rvalue refrence, so, hopefully, the standard library will recognize
+		//this and not delete the thread object created here.
+}
+
+// Function to communicate over the network.
+void NetworkCommunicator::communicationThreadFunction()
+{
+	std::unordered_map<std::string, std::string> valuesToUpload; // The hash of values to upload.
+
+	while(useNetwork)
+	{
+		valuesToUpload.clear(); // Any older values to upload have already been uploaded, or it is
+								// the first time through the loop.
+
+		std::unique_lock<std::mutex> lock { dataLock };
+
+		while(!getDataUpdateNeeded() && useNetwork) { conditionVarSyncData.wait(lock); } // Wait until data needs to be sent to the server.
+		// As the thread resumes, the lock is regained.
+
+		dataUpdateNeeded = false; // Allow new data update requests.
+
+		for(const std::string& key : modifiedList)
+		{
+			valuesToUpload[key] = data[key];
+		}
+
+		lock.unlock();
+
+		Logging::log("Uploading...");
+
+		for(const std::pair<std::string, std::string>& data : valuesToUpload)
+		{
+			setNetworkTableSegement(data.first, data.second);
+
+			// If no longer using the network, stop.
+			if(!useNetwork)
+			{
+				return;
+			}
+		}
 	}
 }
 
@@ -125,13 +188,55 @@ bool NetworkCommunicator::openSocket()
 	
 	serverAddress.sin_addr = *((struct in_addr *) serverHost->h_addr);
 	
-	Logging::log("Waiting to connect to server...");
+	// Set the socket's timeout to 10 seconds.
+	// Resources: 
+	//https://stackoverflow.com/questions/4181784/how-to-set-socket-timeout-in-c-when-making-multiple-connections
+	//and "man setsockopt" in a Linux terminal.
+	timeval timeout;
+	timeout.tv_sec = 10;
+	timeout.tv_usec = 0; // Zero nanoseconds.
+
+	int inputTimeoutResult = setsockopt(socketFileDescriptor,
+		SOL_SOCKET, // Manipulate at the API level. Any other level: Specify the protocol
+		SO_RCVTIMEO, // Limit INPUT operation time to complete.
+		(char *)&timeout, // Give a pointer to the timeout (as a char*).
+		sizeof(timeout));
+
+	if(inputTimeoutResult < 0)
+	{
+		// As before, the location, description, and possible causes of this error
+		//are given to Logging::error for debugging purposes.
+		Logging::error("The error occured inside " + debugLocation + ", the line after if(inputTimeoutResult < 0).",
+			"setsockopt(socketFileDescriptor, SOL_SOCKET, SO_RCVTIMEO, (char *)&timeout, sizeof(timeout)) returned failure.", 
+			"The socket may have been unexpectedly closed or inputs to setsockopt were incorrect.");
+	}
+
+	// Do the same for the sending timeout.
+	int sendTimeoutResult = setsockopt(socketFileDescriptor,
+		SOL_SOCKET, // API level call.
+		SO_SNDTIMEO, // Sending/OUTPUT opperations.
+		(char *)&timeout,
+		sizeof(timeout));
+
+	if(sendTimeoutResult < 0)
+	{
+		// As before, the location, description, and possible causes of this error
+		//are given to Logging::error for debugging purposes.
+		Logging::error("The error occured inside " + debugLocation + ", the line after if(sendTimeoutResult < 0).",
+			"setsockopt(socketFileDescriptor, SOL_SOCKET, SO_RCVTIMEO, (char *)&timeout, sizeof(timeout)) returned failure.", 
+			std::string { "This is running in a thread, so socketFileDescriptor may have been closed or the" } +
+			std::string { "arguments to sendTimeoutResult may have been incorrect." } );
+	}
+
+	Logging::log << "Waiting to connect to server " << serverLocation
+		<< ":" << port << "..." << Logging::endl; 	// Log status information
+													// Note the use of Logging::endl.
+													// std::endl will not work with
+													// this overloaded operator.
 
 	// Connect returns -1 on failure and zero on success.
 	int connectResult = connect(socketFileDescriptor, 
 		(sockaddr *) &serverAddress, sizeof(serverAddress));
-
-	Logging::log("Connected.");
 
 	// On failure, log debug information.
 	//This might break during competition, so the debug
@@ -140,7 +245,7 @@ bool NetworkCommunicator::openSocket()
 	if(connectResult < 0)
 	{
 		std::stringstream errorDescription;
-		errorDescription << "Port: " << port << ". Host: " << serverHost->h_addr;
+		errorDescription << "Port: " << port << ". Host: " << serverLocation << ":" << port;
 
 		// A location, description, and possible causes are given to Logging::error to aid the user in debugging.
 		Logging::error("From the check ensuring connectResult >= 0, attempting to connect to a socket in " + debugLocation + ".",
@@ -150,6 +255,8 @@ bool NetworkCommunicator::openSocket()
 		// Note failure.
 		return false;
 	}
+
+	Logging::log("Connected.");
 
 	// Note success.
 	return true;
@@ -229,8 +336,19 @@ std::string NetworkCommunicator::readData()
 	return std::string {buffer};
 }
 
+bool NetworkCommunicator::getDataUpdateNeeded()
+{
+	return dataUpdateNeeded;
+}
+
+void NetworkCommunicator::noteDataUpdateNeeded()
+{
+	dataUpdateNeeded = true;
+	conditionVarSyncData.notify_all();
+}
+
 // Get or set a segement of the table. Variable valueToSet is only used if accessing is true.
-std::string NetworkCommunicator::getOrSetTableSegement(const std::string& keyName, bool accessing, const std::string& valueToSet)
+std::string NetworkCommunicator::getOrSetNetworkTableSegement(const std::string& keyName, bool accessing, const std::string& valueToSet)
 {
 	// Open a socket if not already open.
 	if(!socketOpen)
@@ -278,16 +396,42 @@ std::string NetworkCommunicator::getOrSetTableSegement(const std::string& keyNam
 	return response;
 }
 
-// Using NetworkCommunicator::getOrSetTableSegement, find the contents of a section of the table.
-std::string NetworkCommunicator::getTableSegement(const std::string& keyName)
+// Using NetworkCommunicator::getOrSetNetworkTableSegement, find the contents of a section of the table.
+std::string NetworkCommunicator::getNetworkTableSegement(const std::string& keyName)
 {
-	std::string result = getOrSetTableSegement(keyName, true, ""); // Access at keyName.
+	std::string result = getOrSetNetworkTableSegement(keyName, true, ""); // Access at keyName.
+
+	return result;
 }
 
-// Using NetworkCommunicator::getOrSetTableSegement, set a section of a table.
+// Using NetworkCommunicator::getOrSetNetworkTableSegement, set a section of a table.
+void NetworkCommunicator::setNetworkTableSegement(const std::string& key, const std::string& value)
+{
+	getOrSetNetworkTableSegement(key, false, value);
+}
+
+// Find the contents of a section of the table.
+std::string NetworkCommunicator::getTableSegement(const std::string& keyName)
+{
+	std::unique_lock<std::mutex> lock { dataLock };
+	std::string result = data[keyName];
+	lock.unlock();
+
+	return result;
+}
+
+// Set a section of a table.
 void NetworkCommunicator::setTableSegement(const std::string& key, const std::string& value)
 {
-	getOrSetTableSegement(key, false, value);
+	std::unique_lock<std::mutex> lock { dataLock };
+
+	data[key] = value;
+	modifiedList.insert(key); 	// modifiedList is a set, so this will not cause there to be two copies
+								// of key in modifiedList.
+
+	lock.unlock();
+
+	noteDataUpdateNeeded();
 }
 
 // Look in NetworkCommunicator.h for the definitions of templated functions.

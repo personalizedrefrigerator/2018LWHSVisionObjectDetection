@@ -1,6 +1,6 @@
 #include "ShapeDetector.h"
 
-#include <iostream>
+#include "Logging.h"
 
 // Constructor.
 ShapeDetector::ShapeDetector()
@@ -178,8 +178,8 @@ bool ShapeDetector::findTargetAndUpdate(Shape &result, double worstMatch)
 			}
 		}
 	}
-	//std::cout << "Shapes found: "<<numberOfShapes << "\n";
-	//std::cout << "Greatest " << greatestRating << "\n";
+	//Logging::log << "Shapes found: "<<numberOfShapes << "\n";
+	//Logging::log << "Greatest " << greatestRating << "\n";
 
 	// If the greatest rating was good enough,
 	if(greatestRating >= worstMatch)
@@ -199,9 +199,9 @@ void ShapeDetector::setComparisonShapes(ShapeList * newComparisonShapeList)
 	// If managing comparisonShapes,
 	if(responsableForComparisonShapes)
 	{
-		std::cout << "\n FREE comparisonShapes.";
+		Logging::log << "FREE comparisonShapes.";
 		delete comparisonShapes;
-		std::cout << " DONE.";
+		Logging::log << " DONE.\n";
 	}
 	
 	// Note that the client is now responsable for managing the comparison shapes.
@@ -272,8 +272,8 @@ ShapeDetector::~ShapeDetector()
 	// If managing comparisonShapes,
 	if(responsableForComparisonShapes)
 	{
-		std::cout << "\n FREE comparisonShapes (in deconstructor).";
+		Logging::log << " FREE comparisonShapes (in deconstructor).";
 		delete comparisonShapes;
-		std::cout << " DONE.";
+		Logging::log << " DONE.\n";
 	}
 }

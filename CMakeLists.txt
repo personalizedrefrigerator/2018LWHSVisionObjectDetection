@@ -38,7 +38,7 @@ include_directories(robotVision/Headers)
 include_directories(build/CMakeGeneratedHeaders)
 
 # Create variables to store the source files stored in the root directory.
-set(SOURCE_NAMES "CameraNormalizer.cpp;CameraFilter.cpp;PlaneDetector.cpp;Point2D.cpp;Point3D.cpp;Line.cpp;Color.cpp;CameraOptionsTrackbarManager.cpp;Shape.cpp;CornerDetector.cpp;VisitedList.cpp;ShapeDetector.cpp;ApplicationController.cpp;NetworkCommunicator.cpp;ShapeList.cpp;VisionApplication.cpp;Serialize.cpp;ShapeLoader.cpp;NetworkVisionOutput.cpp;GenericVisionOutput.cpp;Vector3D.cpp;ListHelper.cpp;ObjectSortingContainer.cpp;Box.cpp;PowerCube.cpp;LightedLine.cpp;MathHelper.cpp;Detector.cpp")
+set(SOURCE_NAMES "CameraNormalizer.cpp;CameraFilter.cpp;PlaneDetector.cpp;Point2D.cpp;Point3D.cpp;Line.cpp;Color.cpp;CameraOptionsTrackbarManager.cpp;Shape.cpp;CornerDetector.cpp;VisitedList.cpp;ShapeDetector.cpp;ApplicationController.cpp;NetworkCommunicator.cpp;ShapeList.cpp;VisionApplication.cpp;Serialize.cpp;ShapeLoader.cpp;NetworkVisionOutput.cpp;GenericVisionOutput.cpp;Vector3D.cpp;ListHelper.cpp;ObjectSortingContainer.cpp;Box.cpp;PowerCube.cpp;LightedLine.cpp;MathHelper.cpp;Detector.cpp;Logging.cpp")
 
 # For all sources, add them to a list, with this as the starting directory.
 set(SOURCE_DIR "robotVision/Source")
@@ -75,7 +75,8 @@ if(USE_WPILIB)
 
 	target_link_libraries(Vision stdc++)
 	target_link_libraries(Vision ntcore wpiutil)
-	target_link_libraries(Vision pthread)
 endif()
+
+target_link_libraries(Vision pthread)
 
 target_link_libraries(Vision ${OpenCV_LIBS})

@@ -7,7 +7,6 @@
 
 // Include standard libraries.
 #include <sstream>
-#include <iostream>
 #include <math.h>
 
 // See Box.h for the constructors.

@@ -28,6 +28,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/Vision.dir/robotVision/Source/LightedLine.cpp.o"
   "CMakeFiles/Vision.dir/robotVision/Source/MathHelper.cpp.o"
   "CMakeFiles/Vision.dir/robotVision/Source/Detector.cpp.o"
+  "CMakeFiles/Vision.dir/robotVision/Source/Logging.cpp.o"
   "Vision.pdb"
   "Vision"
 )

@@ -447,6 +447,33 @@ robotVision/Source/ListHelper.cpp.s:
 	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/robotVision/Source/ListHelper.cpp.s
 .PHONY : robotVision/Source/ListHelper.cpp.s
 
+robotVision/Source/Logging.o: robotVision/Source/Logging.cpp.o
+
+.PHONY : robotVision/Source/Logging.o
+
+# target to build an object file
+robotVision/Source/Logging.cpp.o:
+	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/robotVision/Source/Logging.cpp.o
+.PHONY : robotVision/Source/Logging.cpp.o
+
+robotVision/Source/Logging.i: robotVision/Source/Logging.cpp.i
+
+.PHONY : robotVision/Source/Logging.i
+
+# target to preprocess a source file
+robotVision/Source/Logging.cpp.i:
+	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/robotVision/Source/Logging.cpp.i
+.PHONY : robotVision/Source/Logging.cpp.i
+
+robotVision/Source/Logging.s: robotVision/Source/Logging.cpp.s
+
+.PHONY : robotVision/Source/Logging.s
+
+# target to generate assembly for a file
+robotVision/Source/Logging.cpp.s:
+	$(MAKE) -f CMakeFiles/Vision.dir/build.make CMakeFiles/Vision.dir/robotVision/Source/Logging.cpp.s
+.PHONY : robotVision/Source/Logging.cpp.s
+
 robotVision/Source/MathHelper.o: robotVision/Source/MathHelper.cpp.o
 
 .PHONY : robotVision/Source/MathHelper.o
@@ -951,6 +978,9 @@ help:
 	@echo "... robotVision/Source/ListHelper.o"
 	@echo "... robotVision/Source/ListHelper.i"
 	@echo "... robotVision/Source/ListHelper.s"
+	@echo "... robotVision/Source/Logging.o"
+	@echo "... robotVision/Source/Logging.i"
+	@echo "... robotVision/Source/Logging.s"
 	@echo "... robotVision/Source/MathHelper.o"
 	@echo "... robotVision/Source/MathHelper.i"
 	@echo "... robotVision/Source/MathHelper.s"

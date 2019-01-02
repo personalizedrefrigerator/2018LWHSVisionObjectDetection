@@ -16,6 +16,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/bob/VisionObjectDetection/robotVision/Source/LightedLine.cpp" "/home/bob/VisionObjectDetection/build/CMakeFiles/Vision.dir/robotVision/Source/LightedLine.cpp.o"
   "/home/bob/VisionObjectDetection/robotVision/Source/Line.cpp" "/home/bob/VisionObjectDetection/build/CMakeFiles/Vision.dir/robotVision/Source/Line.cpp.o"
   "/home/bob/VisionObjectDetection/robotVision/Source/ListHelper.cpp" "/home/bob/VisionObjectDetection/build/CMakeFiles/Vision.dir/robotVision/Source/ListHelper.cpp.o"
+  "/home/bob/VisionObjectDetection/robotVision/Source/Logging.cpp" "/home/bob/VisionObjectDetection/build/CMakeFiles/Vision.dir/robotVision/Source/Logging.cpp.o"
   "/home/bob/VisionObjectDetection/robotVision/Source/MathHelper.cpp" "/home/bob/VisionObjectDetection/build/CMakeFiles/Vision.dir/robotVision/Source/MathHelper.cpp.o"
   "/home/bob/VisionObjectDetection/robotVision/Source/NetworkCommunicator.cpp" "/home/bob/VisionObjectDetection/build/CMakeFiles/Vision.dir/robotVision/Source/NetworkCommunicator.cpp.o"
   "/home/bob/VisionObjectDetection/robotVision/Source/NetworkVisionOutput.cpp" "/home/bob/VisionObjectDetection/build/CMakeFiles/Vision.dir/robotVision/Source/NetworkVisionOutput.cpp.o"

@@ -1,6 +1,7 @@
 // Headers from this program.
 #include "ApplicationController.h"
 #include "ListHelper.h"
+#include "Logging.h"
 
 // Run cmake to compile this for release, as
 //cmake ../robotVision -DCMAKE_BUILD_TYPE=Release
@@ -9,6 +10,13 @@
 // The main method.
 int main(int numberOfArguments, char* argumentTexts[])
 {
+	Logging::log("Starting... This is standard logging output.");
+	Logging::warn("Warning output. ");
+	Logging::error("Sample error location.", "Sample error output.", "N/A");
+
+	Logging::log << "Test streams" << Logging::endl; 	// std::endl does not work with these templates.
+														// See https://stackoverflow.com/questions/29324123/c11-variadic-templates-and-stdendl
+
 	ListHelper::testSort();
 	
 	// Create an application controller,

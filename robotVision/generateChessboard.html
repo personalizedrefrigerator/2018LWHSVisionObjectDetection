@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- A basic script for generating a camera-calibration chessboard -->
+<title>Generate a 10 x 7 Chessboard For Camera Calibration</title>
+
+<meta charset="UTF-8"/>
+<meta name="viewport" content="initial-scale=1.0,width=device-width,min-scale=0.5,max-scale=2.0"/>
+
+<style>
+#mainCanvas
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#mainCanvas:hover
+{
+    cursor: pointer;
+}
+</style>
+</head>
+<body>
+<script>
+// Generate the OpenCV camera-calibration chessboard.
+function generateChessboard(ctx, squaresInX, squaresInY, squareSideLength, filledFirst)
+{
+	for(var x = 0; x < squaresInX; x++)
+	{
+		for(var y = 0; y < squaresInY; y++)
+		{
+			ctx.beginPath();
+			ctx.rect(x * squareSideLength, y * squareSideLength, squareSideLength, squareSideLength);
+
+            // If the oddness of x and y are different
+            // XOR whether the first square should be filled,
+			if((x % 2 !== y % 2) ^ filledFirst)
+			{
+				ctx.fill(); // Fill the square.
+			}
+		}
+	}
+}
+
+function main(givenCanvas, givenCtx)
+{
+    // Constants. Variables boardWidth and boardHeight
+    //are in units of squares.
+	var boardWidth = 10, boardHeight = 7;
+	
+	// Base the square length on the board dimensions.
+	var squareLength = window.innerWidth / (boardWidth + 3);
+	
+	// If the board won't fit well determing square length using the window's width,
+	//use the window's height.
+	if(window.innerHeight / boardHeight < window.innerWidth / boardWidth)
+	{
+	    squareLength = window.innerHeight / (boardHeight + 3);
+	}
+
+    // If no canvas was given, make one.
+	var canvas = givenCanvas || document.createElement("canvas");
+	canvas.width = window.innerWidth; 
+	canvas.height = window.innerHeight;
+	
+	canvas.setAttribute("id", "mainCanvas"); // For CSS purposes.
+	
+	// Convert boardWidth and boardHeight to pixels.
+	var boardWidthPixels = boardWidth * squareLength;
+	var boardHeightPixels = boardHeight * squareLength;
+	
+	// Create the drawing context or use givenCtx.
+	var ctx = givenCtx || canvas.getContext("2d");
+	
+	// Fill the context with the background color.
+	ctx.save();
+	
+	ctx.fillStyle = "white";
+	ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+	
+	ctx.restore();
+	
+	// Calculate remaining space after rendering the board.
+	var remainingX = window.innerWidth - boardWidthPixels;
+	var remainingY = window.innerHeight - boardHeightPixels;
+	
+	// OpenCV prefers a white border to surround the image.
+	ctx.translate(remainingX / 2, remainingY / 2);
+
+    // Generate the chessboard, with the first square filled.
+	generateChessboard(ctx, boardWidth, boardHeight, squareLength, true);
+	
+	// If no canvas was provided,
+	if(!givenCanvas)
+	{
+	    // Add the drawing element to the body.
+	    document.body.appendChild(canvas);
+	    
+	    // When the canvas is clicked, 
+	    canvas.addEventListener("click", function(e)
+	    {
+	        // If left-clicked,
+	        if(e.button == 0)
+	        {
+	            // Prevent any other click actions.
+	            e.preventDefault();
+	            
+	            // Open a new tab.
+	            var newWindow = window.open("");
+	            
+	            newWindow.document.open();
+	            
+	            // Ensure that there is a body to write to.
+	            newWindow.document.write("<!DOCTYPE html><html><head><title>Save Image</title></head><body></body></html>");
+	            
+	            // Turn the canvas into an image.
+	            var img = new newWindow.Image();
+	            img.src = canvas.toDataURL("img/png");
+	            
+	            // Add this image to the window.
+	            newWindow.document.body.appendChild(img);
+	            
+	            newWindow.document.close();
+	        }
+	    }, false); // Disable bubbling.
+	    
+	    window.addEventListener("resize", function(e)
+	    {
+	        ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+	        
+	        main(canvas, ctx);
+	    }, true);
+	}
+}
+
+main();
+</script>
+</body>
+</html>

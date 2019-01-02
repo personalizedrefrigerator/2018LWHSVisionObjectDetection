@@ -10,10 +10,12 @@ This program looks for bright yellow objects and finds their corners. It communi
 # Compilation
  * To compile this on Linux, see comments in CMakeLists.txt, or
  * In a terminal, in the root directory,
- 
-    > ./build.sh
-    > cd build
-    > make
+
+```bash
+$ ./build.sh
+$ cd build
+$ make
+```
 
 # Running
  * Run `./Vision` to run the program with user-interface and using the default camera.

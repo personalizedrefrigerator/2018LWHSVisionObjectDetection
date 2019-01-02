@@ -1,0 +1,5 @@
+# Ignore everything in the build directory.
+build/*
+
+# Ignore files such as Box.h.swp
+.*.swp

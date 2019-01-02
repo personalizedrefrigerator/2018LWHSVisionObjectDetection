@@ -1,3 +1,0 @@
-/home/bob/VisionObjectDetection/build/CMakeFiles/rebuild_cache.dir
-/home/bob/VisionObjectDetection/build/CMakeFiles/Vision.dir
-/home/bob/VisionObjectDetection/build/CMakeFiles/edit_cache.dir

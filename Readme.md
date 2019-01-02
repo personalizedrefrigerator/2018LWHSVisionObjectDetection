@@ -8,9 +8,13 @@ This program looks for bright yellow objects and finds their corners. It communi
   * Find and track the largest yellow shape, NOT the brightest - this information is easily accessible, though it may be difficult to do it neatly without a major refactoring. This code might override the comparison method in the Shape class, possibly put in the Box class or a subclass of this.
 
 # Compilation
- * To compile this on Linux, see comments in CMakeLists.txt, or
- * In a terminal, in the root directory,
+ * In a terminal, in the root directory, run:
+If the directory `build` does not exist:
+```bash
+$ mkdir build
+```
 
+After ensuring `build` exists:
 ```bash
 $ ./build.sh
 $ cd build

@@ -1,43 +1,82 @@
 package org.usfirst.frc.team5827.robot;
 
+import java.util.HashMap;
+
 /**
  *  The output from the vision program.
- *  
- * @author 
- *
+ * Usable with both network tables and Sockets.
  */
 public class VisionOutput
 {
-	private double angleToCurrentObject = 0.0;
-	private double currentObjectScreenSize = 0.0;
+	private HashMap<String, String> data;
 	
-	// Get the angle to the current object.
-	public double getAngleToObject()
+	public VisionOutput()
 	{
-		return angleToCurrentObject;
-	}
-
-	// Get the size of the object on the screen.
-	public double getObjectScreenSize()
-	{
-		return currentObjectScreenSize;
-	}
-
-	// Get the distance to the object.
-	public double getDistanceToObject()
-	{
-		return 0;
+		data = new HashMap<String, String>();
 	}
 	
-	// Set the angle to the object on the screen.
-	public void setAngleToObject(double angle)
+	// Get a value as an integer.
+	public int getInt(String key)
 	{
-		angleToCurrentObject = angle;
+		return MathHelper.forceParseInt(data.get(key));
 	}
-
-	// Set the known size of the object on the screen.
-	public void setObjectScreenSize(double size)
+	
+	// Get a value as a double.
+	public double getDouble(String key)
 	{
-		currentObjectScreenSize = size;
+		return MathHelper.forceParseDouble(data.get(key));
+	}
+	
+	// Get a value as a string.
+	public String getString(String key)
+	{
+		return data.get(key);
+	}
+	
+	// Put or update a key in the vision table.
+	public void putKey(String key, String value)
+	{
+		if(key != null)
+		{
+			data.put(key,  value);
+		}
+		else
+		{
+			System.err.println("WARNING: KEY IS NULL.");
+		}
+	}
+	
+	// Get the table as an HTML string.
+	public String getAsHTMLString()
+	{
+		StringBuilder resultBuilder = new StringBuilder();
+		
+		for(String key : data.keySet())
+		{
+			resultBuilder.append("<li>");
+			resultBuilder.append("<b>");
+			resultBuilder.append(WebHelper.htmlEscape(key));
+			resultBuilder.append("</b> ");
+			resultBuilder.append(WebHelper.htmlEscape(getString(key)));
+			resultBuilder.append("</li>\r\n");
+		}
+		
+		return resultBuilder.toString();
+	}
+	
+	// Get the table's contents as a standard string.
+	public String toString()
+	{
+		StringBuilder resultBuilder = new StringBuilder();
+		
+		for(String key : data.keySet())
+		{
+			resultBuilder.append(key);
+			resultBuilder.append(": ");
+			resultBuilder.append(getString(key));
+			resultBuilder.append("\r\n");
+		}
+		
+		return resultBuilder.toString();
 	}
 }

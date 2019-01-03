@@ -16,4 +16,9 @@ public class VisionAuto implements AutonomousManager
 		
 	}
 	
+	@Override
+	public void disable()
+	{
+		communicator.stop();
+	}
 }

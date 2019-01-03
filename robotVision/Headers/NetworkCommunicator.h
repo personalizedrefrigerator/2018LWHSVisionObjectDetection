@@ -145,14 +145,14 @@
 		bool dataUpdateNeeded = false;
 
 		// Constants.
-		static const int defaultValue=0;
-		static const unsigned int chunkSize = 1024;
-		static const unsigned int port = 4342; 	// This port should not need to change --
-												//but it should be tested to ensure that
-												//a deploy and disable do not leave a
-												//port unopenable as a socket server 
-												//runing on linux in C++ can.
-												//TODO: Put test results here.
+		const int defaultValue=0;
+		const unsigned int chunkSize = 1024;
+		const unsigned int port = 4342;	 	// This port should not need to change --
+											//but it should be tested to ensure that
+											//a deploy and disable do not leave a
+											//port unopenable as a socket server 
+											//runing on linux in C++ can.
+											//TODO: Put test results here.
 
 		public:
 

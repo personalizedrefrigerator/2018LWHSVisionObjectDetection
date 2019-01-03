@@ -85,6 +85,17 @@ public class Robot extends IterativeRobot {
 		}
 	}
 
+	// On disable,
+	public void disabledInit() 
+	{
+	    System.out.println("\033[1;31mDISABLED\033[0m");
+	    
+	    if(autoManager != null)
+	    {
+	    	autoManager.disable();
+	    }
+	}
+	
 	/**
 	 * This function is called periodically during autonomous.
 	 */

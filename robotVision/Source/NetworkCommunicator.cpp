@@ -42,6 +42,12 @@ NetworkCommunicator::NetworkCommunicator(const std::string& serverIp, const std:
 	serverLocation = serverIp;
 	tableName = initialTableName;
 
+	Logging::log << "Waiting to connect to server " << serverLocation
+		<< ":" << port << "..." << Logging::endl; 	// Log status information
+													// Note the use of Logging::endl.
+													// std::endl will not work with
+													// this overloaded operator.
+
 	startCommunicationThread();
 }
 
@@ -82,7 +88,7 @@ void NetworkCommunicator::communicationThreadFunction()
 		valuesToUpload.clear(); // Any older values to upload have already been uploaded, or it is
 								// the first time through the loop.
 
-		std::unique_lock<std::mutex> lock { dataLock };
+		std::unique_lock<std::mutex> lock { dataLock }; // Lock the mutex before modifying data.
 
 		while(!getDataUpdateNeeded() && useNetwork) { conditionVarSyncData.wait(lock); } // Wait until data needs to be sent to the server.
 		// As the thread resumes, the lock is regained.
@@ -96,7 +102,7 @@ void NetworkCommunicator::communicationThreadFunction()
 
 		lock.unlock();
 
-		Logging::log("Uploading...");
+		//Logging::log("Uploading...");
 
 		for(const std::pair<std::string, std::string>& data : valuesToUpload)
 		{
@@ -123,8 +129,6 @@ bool NetworkCommunicator::closeSocketIfOpen()
 		
 		socketOpen = false;
 
-		Logging::log("Socket closed.");
-
 		return true;
 	}
 
@@ -148,8 +152,6 @@ bool NetworkCommunicator::openSocket()
 
 	// Clean up if the socket was previously opened.
 	closeSocketIfOpen();
-
-	Logging::log("Opening socket...");
 
 	// Danger! This assumes compilation and execution on Linux!
 	// A protocol of zero means to auto-infer the protocol.
@@ -242,12 +244,6 @@ bool NetworkCommunicator::openSocket()
 			std::string { "arguments to sendTimeoutResult may have been incorrect." } );
 	}
 
-	Logging::log << "Waiting to connect to server " << serverLocation
-		<< ":" << port << "..." << Logging::endl; 	// Log status information
-													// Note the use of Logging::endl.
-													// std::endl will not work with
-													// this overloaded operator.
-
 	// Connect returns -1 on failure and zero on success.
 	int connectResult = connect(socketFileDescriptor, 
 		(sockaddr *) &serverAddress, sizeof(serverAddress));
@@ -270,7 +266,7 @@ bool NetworkCommunicator::openSocket()
 		return false;
 	}
 
-	Logging::log("Connected.");
+	//Logging::log("Connected.");
 
 	// Note success.
 	return true;

@@ -6,6 +6,7 @@ This program looks for bright yellow objects and finds their corners. It communi
 # To Do
  * The angle to a shape is found and communicated by the program, but, though the distance can be found, it is untested (see the Box class) and may be in units of "pixels" instead of realistic units such as millimeters or centimeters.
   * Find and track the largest yellow shape, NOT the brightest - this information is easily accessible, though it may be difficult to do it neatly without a major refactoring. This code might override the comparison method in the Shape class, possibly put in the Box class or a subclass of this.
+  * Make sure that `FIRST_FRC_BSD_License.txt` is the current liscense for the FIRST WpiLib and robot-base software! Sources for this license are currently (Wikipedia)[https://en.wikipedia.org/wiki/BSD_licenses] and (A Github Repository)[https://github.com/FRCTeam1073-TheForceTeam/robot18/blob/master/BSD_License_for_WPILib_code.txt]. This should be double-checked.
 
 # Compilation
  * In a terminal, in the root directory, run:

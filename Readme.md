@@ -3,6 +3,8 @@ This program was created for the 2018 build season, for the Lake Washington High
 
 This program looks for bright yellow objects and finds their corners. It communicates this found data through network tables or sockets.
 
+This code has not been tested in competition.
+
 # To Do
  * The angle to a shape is found and communicated by the program, but, though the distance can be found, it is untested (see the Box class) and may be in units of "pixels" instead of realistic units such as millimeters or centimeters.
   * Find and track the largest yellow shape, NOT the brightest - this information is easily accessible, though it may be difficult to do it neatly without a major refactoring. This code might override the comparison method in the Shape class, possibly put in the Box class or a subclass of this.
